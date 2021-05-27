@@ -1,0 +1,4 @@
+season_name,element_code,start_cost,end_cost,total_points,minutes,goals_scored,assists,clean_sheets,goals_conceded,own_goals,penalties_saved,penalties_missed,yellow_cards,red_cards,saves,bonus,bps,influence,creativity,threat,ict_index
+2017/18,109434,45,44,30,1047,0,0,2,14,0,0,0,0,0,0,2,182,268.0,52.2,47.0,36.7
+2018/19,109434,45,43,60,2716,1,1,4,65,1,0,0,4,0,0,4,429,581.0,138.5,160.0,88.1
+2020/21,109434,45,43,2,90,0,0,0,1,0,0,0,0,0,0,0,15,16.8,4.7,2.0,2.4
