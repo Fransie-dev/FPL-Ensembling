@@ -1,0 +1,5 @@
+,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,0,72,Sub,Liverpool,Bournemouth,2,1,2020-03-07,11928,2019,387642,0,0,0,0,0,0,0,Jack Simpson
+1,0,0,0,19,Sub,West Ham,Bournemouth,4,0,2020-01-01,11843,2019,385627,0,0,0,0,0,0,0,Jack Simpson
+2,0,1,0.011818751692771912,90,DL,Bournemouth,Arsenal,1,1,2019-12-26,11824,2019,372426,0.034685321152210236,0,1,0,0.011818751692771912,0.04650407284498215,0,Jack Simpson
+3,0,0,0,56,Sub,Bournemouth,Liverpool,0,3,2019-12-07,11794,2019,368339,0,0,0,0,0,0,0,Jack Simpson

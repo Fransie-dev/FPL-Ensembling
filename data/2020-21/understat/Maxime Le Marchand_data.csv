@@ -1,0 +1,3 @@
+,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,1,0.009506329894065857,90,DC,Wolverhampton Wanderers,Fulham,1,0,2020-10-04,14474,2020,420328,0,0,0,0,0.009506329894065857,0.1096666008234024,0.1096666008234024,Maxime Le Marchand
+1,0,0,0,28,Sub,Fulham,Aston Villa,0,3,2020-09-28,14114,2020,418644,0,0,0,0,0,0.13724994659423828,0.13724994659423828,Maxime Le Marchand

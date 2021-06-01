@@ -1,0 +1,8 @@
+,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+11,0,0,0,1,Sub,Wolverhampton Wanderers,Arsenal,0,2,2020-07-04,11972,2019,405317,0,0,0,0,0,0,0,Morgan Gibbs-White
+12,0,0,0,1,Sub,Wolverhampton Wanderers,Bournemouth,1,0,2020-06-24,11947,2019,402378,0,0,0,0,0,0,0,Morgan Gibbs-White
+13,0,0,0,1,Sub,West Ham,Wolverhampton Wanderers,0,2,2020-06-20,11934,2019,401390,0,0,0,0,0,0,0,Morgan Gibbs-White
+14,0,0,0,1,Sub,Wolverhampton Wanderers,Liverpool,1,2,2020-01-23,11874,2019,386537,0,0,0,0,0,0,0,Morgan Gibbs-White
+15,0,1,0.02171793021261692,28,Sub,Wolverhampton Wanderers,Watford,2,0,2019-09-28,11705,2019,354706,0,0,0,0,0.02171793021261692,0.14922460913658142,0.12750668823719025,Morgan Gibbs-White
+16,0,0,0,18,Sub,Wolverhampton Wanderers,Chelsea,2,5,2019-09-14,11688,2019,349049,0.041775044053792953,0,1,0,0,0.041775044053792953,0,Morgan Gibbs-White
+17,0,1,0.05013706535100937,69,MC,Wolverhampton Wanderers,Burnley,1,1,2019-08-25,11668,2019,344682,0.029101047664880753,0,2,0,0.05013706535100937,0.11542965471744537,0.065292589366436,Morgan Gibbs-White

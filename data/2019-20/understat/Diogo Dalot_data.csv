@@ -1,0 +1,5 @@
+,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+21,0,0,0,1,Sub,Chelsea,Manchester United,0,2,2020-02-17,11896,2019,387097,0,0,0,0,0,0,0,Diogo Dalot
+22,0,1,0.37155982851982117,1,Sub,Manchester United,Wolverhampton Wanderers,0,0,2020-02-01,11888,2019,386780,0,0,0,0,0.37155982851982117,0.37155982851982117,0,Diogo Dalot
+23,0,0,0,1,Sub,Liverpool,Manchester United,2,0,2020-01-19,11865,2019,386276,0,0,0,0,0,0,0,Diogo Dalot
+24,0,0,0,62,DR,Newcastle United,Manchester United,1,0,2019-10-06,11721,2019,357154,0,0,0,0,0,0.018821140751242638,0.018821140751242638,Diogo Dalot

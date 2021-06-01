@@ -1,0 +1,15 @@
+,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+4,0,0,0,22,DC,Wolverhampton Wanderers,Crystal Palace,2,0,2020-07-20,12012,2019,410406,0,0,0,0,0,0,0,Mamadou Sakho
+5,0,0,0,90,DC,Crystal Palace,Manchester United,0,2,2020-07-16,11996,2019,409485,0,0,0,0,0,0.05622610077261925,0.05622610077261925,Mamadou Sakho
+6,0,0,0,90,DC,Aston Villa,Crystal Palace,2,0,2020-07-12,11983,2019,407825,0,0,0,0,0,0.33793988823890686,0.33793988823890686,Mamadou Sakho
+7,0,0,0,83,Sub,Crystal Palace,Chelsea,2,3,2020-07-07,11977,2019,406252,0,0,0,0,0,0.016738127917051315,0.016738127917051315,Mamadou Sakho
+8,0,0,0,90,DC,Leicester,Crystal Palace,3,0,2020-07-04,11965,2019,405172,0,0,0,0,0,0.3232373893260956,0.3232373893260956,Mamadou Sakho
+9,0,0,0,90,DC,Liverpool,Crystal Palace,4,0,2020-06-24,11951,2019,402535,0,0,0,0,0,0,0,Mamadou Sakho
+10,0,0,0,47,DC,Norwich,Crystal Palace,1,1,2020-01-01,11850,2019,385646,0,0,0,0,0,0,0,Mamadou Sakho
+11,0,0,0,90,DC,Southampton,Crystal Palace,1,1,2019-12-28,11840,2019,372742,0,0,0,0,0,0,0,Mamadou Sakho
+12,0,0,0,90,DC,Crystal Palace,West Ham,2,1,2019-12-26,11826,2019,372479,0,0,0,0,0,0.7882543206214905,0.7882543206214905,Mamadou Sakho
+13,0,0,0,18,DC,Crystal Palace,Bournemouth,1,0,2019-12-03,11791,2019,367417,0,0,0,0,0,0,0,Mamadou Sakho
+14,0,0,0,28,Sub,Burnley,Crystal Palace,0,2,2019-11-30,11773,2019,366176,0,0,0,0,0,0,0,Mamadou Sakho
+15,0,0,0,90,DC,Crystal Palace,Wolverhampton Wanderers,1,1,2019-09-22,11697,2019,353360,0,0,0,0,0,0.1373102068901062,0.1373102068901062,Mamadou Sakho
+16,0,0,0,90,DC,Tottenham,Crystal Palace,4,0,2019-09-14,11687,2019,349108,0.029572835192084312,0,1,0,0,0.07874667644500732,0.04917383939027786,Mamadou Sakho
+17,0,0,0,10,Sub,Crystal Palace,Aston Villa,1,0,2019-08-31,11676,2019,347466,0,0,0,0,0,0,0,Mamadou Sakho

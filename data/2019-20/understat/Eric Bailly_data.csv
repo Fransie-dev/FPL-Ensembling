@@ -1,0 +1,5 @@
+,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+12,0,0,0,41,Sub,Manchester United,Bournemouth,5,2,2020-07-04,11967,2019,405137,0,0,0,0,0,0.4988572299480438,0.4988572299480438,Eric Bailly
+13,0,0,0,1,Sub,Tottenham,Manchester United,1,1,2020-06-19,11936,2019,400837,0,0,0,0,0,0.019167525693774223,0.019167525693774223,Eric Bailly
+14,0,0,0,10,Sub,Manchester United,Manchester City,2,0,2020-03-08,11932,2019,387848,0,0,0,0,0,0,0,Eric Bailly
+15,0,0,0,90,DC,Chelsea,Manchester United,0,2,2020-02-17,11896,2019,387087,0,0,0,0,0,0,0,Eric Bailly

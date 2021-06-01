@@ -1,0 +1,12 @@
+,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,0,16,Sub,Leicester,Southampton,2,0,2021-01-16,14619,2020,442502,0,0,0,0,0,0.026467276737093925,0.026467276737093925,Shane Long
+1,0,0,0,31,Sub,Southampton,West Ham,0,0,2020-12-29,14588,2020,438441,0,0,0,0,0,0,0,Shane Long
+2,0,1,0.020856590941548347,90,FW,Fulham,Southampton,0,0,2020-12-26,14577,2020,438096,0,0,0,0,0.020856590941548347,0.020856590941548347,0,Shane Long
+3,0,0,0,16,Sub,Southampton,Manchester United,2,3,2020-11-29,14534,2020,430376,0,0,0,0,0,0,0,Shane Long
+4,0,0,0,9,Sub,Wolverhampton Wanderers,Southampton,1,1,2020-11-23,14524,2020,429163,0,0,0,0,0,0,0,Shane Long
+5,0,0,0,1,Sub,Southampton,Newcastle United,2,0,2020-11-06,14512,2020,425991,0,0,0,0,0,0.039601054042577744,0.039601054042577744,Shane Long
+6,0,0,0,4,Sub,Aston Villa,Southampton,3,4,2020-11-01,14495,2020,424966,0,0,0,0,0,0,0,Shane Long
+7,0,0,0,2,Sub,Chelsea,Southampton,3,3,2020-10-17,14475,2020,421148,0,0,0,0,0,0,0,Shane Long
+8,0,0,0,5,Sub,Southampton,West Bromwich Albion,2,0,2020-10-04,14473,2020,419964,0,0,0,0,0,0,0,Shane Long
+9,0,1,0.043368175625801086,7,Sub,Southampton,Tottenham,2,5,2020-09-20,14100,2020,416210,0,0,0,0,0.043368175625801086,0,0,Shane Long
+10,0,0,0,3,Sub,Crystal Palace,Southampton,1,0,2020-09-12,14087,2020,414584,0,0,0,0,0,0,0,Shane Long

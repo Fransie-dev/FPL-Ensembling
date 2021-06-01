@@ -1,0 +1,14 @@
+,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,0,90,GK,Fulham,Newcastle United,0,2,2021-05-23,14807,2020,473294,0,0,0,0,0,0.1280137300491333,0.1280137300491333,Martin Dubravka
+1,0,0,0,90,GK,Newcastle United,Sheffield United,1,0,2021-05-19,14801,2020,472432,0,0,0,0,0,0.4635190963745117,0.4635190963745117,Martin Dubravka
+2,0,0,0,90,GK,Newcastle United,Manchester City,3,4,2021-05-14,14791,2020,470641,0,0,0,0,0,0,0,Martin Dubravka
+3,0,0,0,90,GK,Leicester,Newcastle United,2,4,2021-05-07,14779,2020,468279,0,0,0,0,0,0.49063166975975037,0.49063166975975037,Martin Dubravka
+4,0,0,0,90,GK,Newcastle United,Arsenal,0,2,2021-05-02,14771,2020,467605,0,0,0,0,0,0,0,Martin Dubravka
+5,0,0,0,90,GK,Liverpool,Newcastle United,1,1,2021-04-24,14760,2020,465134,0,0,0,0,0,0,0,Martin Dubravka
+6,0,0,0,90,GK,Newcastle United,West Ham,3,2,2021-04-17,14752,2020,462648,0,0,0,0,0,0.05664869770407677,0.05664869770407677,Martin Dubravka
+7,0,0,0,90,GK,Burnley,Newcastle United,1,2,2021-04-11,14736,2020,461583,0,0,0,0,0,0.3263077139854431,0.3263077139854431,Martin Dubravka
+8,0,0,0,90,GK,Newcastle United,Tottenham,2,2,2021-04-04,14732,2020,460234,0,0,0,0,0,0.5661290287971497,0.5661290287971497,Martin Dubravka
+9,0,0,0,90,GK,Brighton,Newcastle United,3,0,2021-03-20,14715,2020,458335,0,0,0,0,0,0.0084286043420434,0.0084286043420434,Martin Dubravka
+10,0,0,0,90,GK,Newcastle United,Aston Villa,1,1,2021-03-12,14712,2020,455935,0,0,0,0,0,0,0,Martin Dubravka
+11,0,0,0,90,GK,West Bromwich Albion,Newcastle United,0,0,2021-03-07,14703,2020,455000,0,0,0,0,0,0,0,Martin Dubravka
+12,0,0,0,90,GK,Newcastle United,Wolverhampton Wanderers,1,1,2021-02-27,14688,2020,452585,0,0,0,0,0,0.08057107031345367,0.08057107031345367,Martin Dubravka

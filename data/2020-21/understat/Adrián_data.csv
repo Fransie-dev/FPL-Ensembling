@@ -1,0 +1,4 @@
+,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,0,90,GK,Sheffield United,Liverpool,0,2,2021-02-28,14694,2020,453338,0,0,0,0,0,0.03478621691465378,0.03478621691465378,Adrián
+1,0,0,0,90,GK,Everton,Liverpool,2,2,2020-10-17,14477,2020,420864,0,0,0,0,0,0.29018184542655945,0.29018184542655945,Adrián
+2,0,0,0,90,GK,Aston Villa,Liverpool,7,2,2020-10-04,14466,2020,420648,0,0,0,0,0,0.07247137278318405,0.07247137278318405,Adrián

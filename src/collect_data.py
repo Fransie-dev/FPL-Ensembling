@@ -52,7 +52,7 @@ def Get_FPL_Data(path):
     fixtures_df = pd.DataFrame(json)  
     fixtures_df.to_csv(path + 'fixtures.csv', index = False)
 
-def Get_Player_Historic_Data(player_history_path):
+def Get_Player_Historic_Data(data_path, player_history_path):
     """[
         This function writes a CSV file for each player which contains 
         some averaged statistics regarding the players past season histories [/history.csv] [2015/16 - 2019/20].
@@ -68,7 +68,7 @@ def Get_Player_Historic_Data(player_history_path):
 
     """    
     players = os.listdir(player_history_path) # Lists All The Player Folders in the Dir
-    players_data = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//players_raw.csv')
+    players_data = pd.read_csv(data_path + 'players_raw.csv')
     for ind in pbar(players_data.index): # ind in [0:693:1]
     # Get the Seasonal History
         player_path = players_data['first_name'][ind] + '_' + players_data['second_name'][ind] + '_' + str(players_data['id'][ind]) # Create player_history_path
@@ -78,7 +78,7 @@ def Get_Player_Historic_Data(player_history_path):
             history_df = pd.DataFrame(json['history_past']) # Extract history
             if not history_df.empty: # If history returned
                 os.makedirs(player_history_path + player_path, exist_ok = True) # Create a new path for the player  
-                history_df.to_csv(player_history_path + player_path + '/history.csv', encoding='utf-8', index = False) # And write his seasonal history
+                history_df.to_csv(player_history_path + player_path + '/history.csv', encoding='utf-8', index = False) # And write his syeasonal history
         else: # However, if the player is within the existing directory
             if not os.path.isfile(player_history_path + player_path + "/history.csv"): # And a history file does not exist
                 json = Access_URL(url = "https://fantasy.premierleague.com/api/element-summary/{}/".format(str(players_data['id'][ind]))) # Feed in Player ID
@@ -293,15 +293,19 @@ def dlt_create_dir(path):
     shutil.rmtree(path,ignore_errors=True)
     os.makedirs(path, exist_ok = True)
     
-async def get_league_players():
+async def get_league_players(season):
     """[This function is used to get a list of all the players]
 
     Returns:
         [type]: [description]
     """    
+    if season == '2020-21':
+        get_epl = 2020
+    if season == '2019-20':
+        get_epl = 2019
     async with aiohttp.ClientSession() as session:
         understat = Understat(session)
-        player = await understat.get_league_players("epl", 2020)
+        player = await understat.get_league_players("epl", get_epl)
         # print(json.dumps(player))
         return player
     
@@ -320,7 +324,7 @@ async def get_player_history(understat_id):
         #print(json.dumps(player_matches))
         return player_matches
     
-def write_league_players(understat_path):
+def write_league_players(understat_path, season):
     """[This function calls get_leauge_players and writes the resulting file to a csv]
 
     Args:
@@ -330,18 +334,18 @@ def write_league_players(understat_path):
         [type]: [description]
     """    
     loop = asyncio.get_event_loop()
-    players = loop.run_until_complete(get_league_players())
+    players = loop.run_until_complete(get_league_players(season))
     player = pd.DataFrame.from_dict(players) # Equivalent of players_raw.csv
     player.to_csv(understat_path + 'understat_players.csv')
     return player
 
 def set_season_time(season):
-    if season == 2020:
+    if season == '2020-21':
         startdate = time.strptime('12-08-2020', '%d-%m-%Y')
         startdate = datetime.fromtimestamp(mktime(startdate))
         enddate = time.strptime('26-07-2021', '%d-%m-%Y')
         enddate = datetime.fromtimestamp(mktime(enddate))
-    if season == 2019:
+    if season == '2019-20':
         startdate = time.strptime('09-08-2019', '%d-%m-%Y')
         startdate = datetime.fromtimestamp(mktime(startdate))
         enddate = time.strptime('26-07-2020', '%d-%m-%Y')
@@ -349,16 +353,17 @@ def set_season_time(season):
     return startdate, enddate
         
 
-def get_all_player_history(understat_path):
+def get_all_player_history(understat_path, season):
     """[summary]
 
     Args:
         players ([type]): [The result of write_league_players]
     """    
 
-    start_date, end_date = set_season_time(2020)
-    players = write_league_players(understat_path)
-    for i in pbar(list(range(len(players)))):
+    start_date, end_date = set_season_time(season)
+    players = write_league_players(understat_path, season)
+    # for i in pbar(list(range(len(players)))): # Throws out of range error in 2020-21 season
+    for i in range(len(players)):
         loop = asyncio.get_event_loop()
         result = loop.run_until_complete(get_player_history(int(players.loc[i][0])))
         name = players.loc[i][1]
@@ -367,7 +372,7 @@ def get_all_player_history(understat_path):
         individuals = individuals[(individuals.date >= start_date)]
         individuals = individuals[(individuals.date <= end_date)]
         individuals['player_name'] = name
-        individuals.to_csv("./{}_data.csv".format(name))
+        individuals.to_csv(understat_path + "{}_data.csv".format(name)) # TODO: FIX THIS DIRECTORY
         if i == 0:
             all_players = individuals
         else:
@@ -375,48 +380,80 @@ def get_all_player_history(understat_path):
     all_players.to_csv(understat_path + 'all_understat_players.csv')
 
 
-def main():
-    # General data
-    data_path = 'C://Users//jd-vz//Desktop//Code//data//'
-    print(f'General data location: {data_path}', end = '\n')
-    inp_general = input('Delete existing general data and download again? [y/n]\n')
-    if inp_general == 'y':
-        dlt_create_dir(data_path)
-        Get_FPL_Data(path=data_path)
-        print('Success', end = '\n')
-     
-    # Detailed player data   
-    player_path = 'C://Users//jd-vz//Desktop//Code//data//players//'
-    print(f'Player data location: {player_path}', end = '\n')
-    inp_detailed = input('Delete existing player data and download again? [y/n]\n')
-    if inp_detailed == 'y':
-        dlt_create_dir(player_path)
-        Get_Player_Historic_Data(player_path)
-        print('Success', end = '\n')
-    
-    # Scrape for and merge gamweek data
-    gameweek_path = 'C://Users//jd-vz//Desktop//Code//data//gw//'  
-    print(f'Gameweek data location: {gameweek_path}', end = '\n')
-    inp_gameweek = input('Delete existing gameweek data and scrape for it again? [y/n]\n')
-    if inp_gameweek ==  'y':
-        dlt_create_dir(gameweek_path)
-        collect_all_gw(max_gw=38, gameweek_path=gameweek_path, data_path=data_path, player_path=player_path)
-        print('Success', end = '\n')
+def main(season):
+    if season == '2020-21':
+        # General data
+        data_path = 'C://Users//jd-vz//Desktop//Code//data//2020-21//'
+        print(f'General data location: {data_path}', end = '\n')
+        inp_general = input('Delete existing general data and download again? [y/n]\n')
+        if inp_general == 'y':
+            dlt_create_dir(data_path)
+            Get_FPL_Data(path=data_path)
+            print('Success', end = '\n')
         
-    # Understat data
-    understat_path = 'C://Users//jd-vz//Desktop//Code//data//understat//'
-    print(f'Understat data location: {understat_path}', end = '\n')
-    inp_gameweek = input('Delete existing understat data and scrape for it again? [y/n]\n')
-    if inp_gameweek ==  'y':
-        dlt_create_dir(understat_path)
-        get_all_player_history(understat_path) # Written as understat_players.csv
-        print('Success', end = '\n')
+        # Detailed player data   
+        player_path = 'C://Users//jd-vz//Desktop//Code//data//2020-21//players//'
+        print(f'Player data location: {player_path}', end = '\n')
+        inp_detailed = input('Delete existing player data and download again? [y/n]\n')
+        if inp_detailed == 'y':
+            dlt_create_dir(player_path)
+            Get_Player_Historic_Data(data_path,player_path)
+            print('Success', end = '\n')
+        
+        # Scrape for and merge gamweek data
+        gameweek_path = 'C://Users//jd-vz//Desktop//Code//data//2020-21//gws//'  
+        print(f'Gameweek data location: {gameweek_path}', end = '\n')
+        inp_gameweek = input('Delete existing gameweek data and scrape for it again? [y/n]\n') # Error
+        if inp_gameweek ==  'y':
+            dlt_create_dir(gameweek_path)
+            collect_all_gw(max_gw=38, gameweek_path=gameweek_path, data_path=data_path, player_path=player_path)
+            print('Success', end = '\n')
+            
+        # Understat data
+        understat_path = 'C://Users//jd-vz//Desktop//Code//data//2020-21//understat//'
+        print(f'Understat data location: {understat_path}', end = '\n')
+        inp_gameweek = input('Delete existing understat data and scrape for it again? [y/n]\n')
+        if inp_gameweek ==  'y':
+            dlt_create_dir(understat_path)
+            get_all_player_history(understat_path, season) # Written as understat_players.csv
+            print('Success', end = '\n')
+            
+    if season == '2019-20':
+        #! Copy data from vaastav before continuing
+        # General data
+        data_path = 'C://Users//jd-vz//Desktop//Code//data//2019-20//'
+        print(f'General data location: {data_path}', end = '\n')
+        
+        # Detailed player data   
+        player_path = 'C://Users//jd-vz//Desktop//Code//data//2019-20///players//'
+        print(f'Player data location: {player_path}', end = '\n')
+        
+        # Scrape for and merge gamweek data
+        gameweek_path = 'C://Users//jd-vz//Desktop//Code//data//2019-20//gws//'  
+        print(f'Gameweek data location: {gameweek_path}', end = '\n')
+        inp_gameweek = input('Delete existing gameweek data and scrape for it again? [y/n]\n')
+        if inp_gameweek ==  'y':
+            dlt_create_dir(gameweek_path)
+            collect_all_gw(max_gw=38, gameweek_path=gameweek_path, data_path=data_path, player_path=player_path)
+            print('Success', end = '\n')
+            
+        # Understat data
+        understat_path = 'C://Users//jd-vz//Desktop//Code//data//2019-20//understat//'
+        print(f'Understat data location: {understat_path}', end = '\n')
+        inp_gameweek = input('Delete existing understat data and scrape for it again? [y/n]\n')
+        if inp_gameweek ==  'y':
+            dlt_create_dir(understat_path)
+            get_all_player_history(understat_path, season) # Written as understat_players.csv
+            print('Success', end = '\n')
+        
+    
+        
+
+        
                 
     
 
 if __name__ == "__main__":
-    main()
-
-
-
-
+    # main(season='2020-21') # Successful execution
+    # main(season='2019-20') # Successful execution
+    print('Success!')

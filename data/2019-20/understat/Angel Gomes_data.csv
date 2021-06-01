@@ -1,0 +1,3 @@
+,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,0,9,Sub,Manchester United,Norwich,4,0,2020-01-11,11862,2019,385832,0.22920328378677368,0,2,0,0,0.22920328378677368,0.13902178406715393,Angel Gomes
+1,0,0,0,8,Sub,West Ham,Manchester United,2,0,2019-09-22,11700,2019,352883,0,0,0,0,0,0.023194000124931335,0.023194000124931335,Angel Gomes

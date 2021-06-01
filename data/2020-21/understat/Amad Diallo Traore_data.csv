@@ -1,0 +1,5 @@
+,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,1,0.035897817462682724,87,AMR,Wolverhampton Wanderers,Manchester United,1,2,2021-05-23,14814,2020,473496,0.36912643909454346,0,1,0,0.035897817462682724,0.8178793787956238,0.4128551185131073,Amad Diallo Traore
+1,0,0,0,6,Sub,Manchester United,Fulham,1,1,2021-05-18,14800,2020,472304,0,0,0,0,0,0,0,Amad Diallo Traore
+2,0,0,0,79,AMR,Manchester United,Leicester,1,2,2021-05-11,14788,2020,469902,0.054054588079452515,1,1,0,0,0.054054588079452515,0,Amad Diallo Traore
+3,0,1,0.027704140171408653,12,Sub,Atalanta,Verona,0,2,2020-11-28,15506,2020,429980,0.049997713416814804,0,1,0,0.027704140171408653,0.09619216620922089,0.01849031075835228,Amad Diallo Traore

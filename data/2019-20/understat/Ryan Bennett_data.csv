@@ -1,0 +1,17 @@
+,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,0,49,DC,Tottenham,Leicester,3,0,2020-07-19,12010,2019,409800,0,0,0,0,0,0.09515675157308578,0.09515675157308578,Ryan Bennett
+1,0,0,0,90,DC,Leicester,Sheffield United,2,0,2020-07-16,11998,2019,409115,0,0,0,0,0,1.0269619226455688,1.0269619226455688,Ryan Bennett
+2,0,0,0,75,Sub,Bournemouth,Leicester,4,1,2020-07-12,11984,2019,408226,0,0,0,0,0,0.12520168721675873,0.12520168721675873,Ryan Bennett
+3,0,0,0,80,DC,Arsenal,Leicester,1,1,2020-07-07,11973,2019,406380,0,0,0,0,0,0.09820639342069626,0.09820639342069626,Ryan Bennett
+4,0,0,0,41,Sub,Leicester,Crystal Palace,3,0,2020-07-04,11965,2019,405169,0,0,0,0,0,0.12727652490139008,0.12727652490139008,Ryan Bennett
+5,0,0,0,58,DC,Watford,Wolverhampton Wanderers,2,1,2020-01-01,11852,2019,385537,0,0,0,0,0,0.08186490088701248,0.08186490088701248,Ryan Bennett
+6,0,0,0,90,DC,Liverpool,Wolverhampton Wanderers,1,0,2019-12-29,11836,2019,372906,0,0,0,0,0,0,0,Ryan Bennett
+7,0,0,0,1,Sub,Wolverhampton Wanderers,Manchester City,3,2,2019-12-27,11832,2019,372656,0,0,0,0,0,0,0,Ryan Bennett
+8,0,0,0,1,Sub,Wolverhampton Wanderers,West Ham,2,0,2019-12-04,11787,2019,367649,0,0,0,0,0,0,0,Ryan Bennett
+9,0,0,0,1,Sub,Wolverhampton Wanderers,Aston Villa,2,1,2019-11-10,11760,2019,363890,0,0,0,0,0,0,0,Ryan Bennett
+10,0,0,0,17,DC,Wolverhampton Wanderers,Southampton,1,1,2019-10-19,11732,2019,357866,0,0,0,0,0,0,0,Ryan Bennett
+11,0,0,0,78,Sub,Manchester City,Wolverhampton Wanderers,0,2,2019-10-06,11716,2019,356858,0,0,0,0,0,0,0,Ryan Bennett
+12,0,0,0,90,DC,Everton,Wolverhampton Wanderers,3,2,2019-09-01,11681,2019,347998,0.025151504203677177,0,1,0,0,0.5011937022209167,0.4760421812534332,Ryan Bennett
+13,0,0,0,90,DC,Wolverhampton Wanderers,Burnley,1,1,2019-08-25,11668,2019,344677,0.06539096683263779,0,1,0,0,0.1306835561990738,0.065292589366436,Ryan Bennett
+14,0,0,0,90,DC,Wolverhampton Wanderers,Manchester United,1,1,2019-08-19,11662,2019,342733,0,0,0,0,0,0.019186047837138176,0.019186047837138176,Ryan Bennett
+15,0,1,0.02391529269516468,90,DC,Leicester,Wolverhampton Wanderers,0,0,2019-08-11,11651,2019,341554,0,0,0,0,0.02391529269516468,0.06395632028579712,0.06395632028579712,Ryan Bennett

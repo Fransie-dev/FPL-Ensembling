@@ -1,0 +1,15 @@
+,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,0,2,Sub,Wolverhampton Wanderers,Manchester United,1,2,2021-05-23,14814,2020,473486,0.012515347450971603,0,1,0,0,0.09176570177078247,0.07925035804510117,Fernando Marçal
+1,0,0,0,22,Sub,Wolverhampton Wanderers,Leeds,1,0,2021-02-19,14684,2020,450383,0.023560622707009315,0,1,0,0,0.023560622707009315,0,Fernando Marçal
+2,0,0,0,19,Sub,Southampton,Wolverhampton Wanderers,1,2,2021-02-14,14672,2020,449458,0,0,0,0,0,0,0,Fernando Marçal
+3,0,0,0,77,DL,Wolverhampton Wanderers,Tottenham,1,1,2020-12-27,14584,2020,438298,0,0,0,0,0,0.19525016844272614,0.19525016844272614,Fernando Marçal
+4,0,0,0,90,ML,Wolverhampton Wanderers,Chelsea,2,1,2020-12-15,14562,2020,434297,0.02192709781229496,0,1,0,0,0.0429547093808651,0.0429547093808651,Fernando Marçal
+5,0,0,0,90,DL,Wolverhampton Wanderers,Aston Villa,0,1,2020-12-12,14552,2020,432758,0,0,0,0,0,0.3484167456626892,0.3484167456626892,Fernando Marçal
+6,0,1,0.013104377314448357,90,DL,Liverpool,Wolverhampton Wanderers,4,0,2020-12-06,14539,2020,432305,0,0,0,0,0.013104377314448357,0.08621591329574585,0.08621591329574585,Fernando Marçal
+7,0,0,0,90,DL,Arsenal,Wolverhampton Wanderers,1,2,2020-11-29,14525,2020,430676,0,0,0,0,0,0.6919524669647217,0.6919524669647217,Fernando Marçal
+8,0,0,0,12,Sub,Leicester,Wolverhampton Wanderers,1,0,2020-11-08,14510,2020,427075,0,0,0,0,0,0.02522078901529312,0.02522078901529312,Fernando Marçal
+9,0,1,0.06145016849040985,21,Sub,Wolverhampton Wanderers,Newcastle United,1,1,2020-10-25,14494,2020,423701,0.08180419355630875,0,1,0,0.06145016849040985,0.143254354596138,0,Fernando Marçal
+10,0,0,0,1,Sub,Leeds,Wolverhampton Wanderers,0,1,2020-10-19,14478,2020,422427,0,0,0,0,0,0,0,Fernando Marçal
+11,0,0,0,7,DL,Wolverhampton Wanderers,Manchester City,1,3,2020-09-21,14105,2020,416985,0,0,0,0,0,0,0,Fernando Marçal
+12,0,0,0,90,DML,Sheffield United,Wolverhampton Wanderers,0,2,2020-09-14,14094,2020,415318,0,0,0,0,0,0.431040495634079,0.431040495634079,Fernando Marçal
+13,0,0,0,80,DC,Lyon,Dijon,4,1,2020-08-28,13990,2020,413899,0,0,0,0,0,0.07006530463695526,0.07006530463695526,Fernando Marçal

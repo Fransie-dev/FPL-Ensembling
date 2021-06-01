@@ -1,0 +1,9 @@
+,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+26,0,0,0,4,Sub,Manchester City,Newcastle United,5,0,2020-07-08,11979,2019,406593,0,0,0,0,0,0,0,Yoshinori Muto
+27,0,0,0,90,AMC,Newcastle United,Leicester,0,3,2020-01-01,11849,2019,385583,0.014181027188897133,0,1,0,0,0.014181027188897133,0,Yoshinori Muto
+28,0,0,0,7,Sub,Burnley,Newcastle United,1,0,2019-12-14,11804,2019,369873,0,0,0,0,0,0,0,Yoshinori Muto
+29,0,0,0,45,AMC,Leicester,Newcastle United,5,0,2019-09-29,11710,2019,355520,0,0,0,0,0,0.015386080369353294,0.015386080369353294,Yoshinori Muto
+30,0,0,0,20,Sub,Liverpool,Newcastle United,3,1,2019-09-14,11683,2019,348758,0,0,0,0,0,0,0,Yoshinori Muto
+31,0,1,0.08367183804512024,5,Sub,Newcastle United,Watford,1,1,2019-08-31,11679,2019,347550,0,0,0,0,0.08367183804512024,0.08367183804512024,0,Yoshinori Muto
+32,0,0,0,1,Sub,Tottenham,Newcastle United,0,1,2019-08-25,11672,2019,344729,0,0,0,0,0,0,0,Yoshinori Muto
+33,0,0,0,21,Sub,Norwich,Newcastle United,3,1,2019-08-17,11657,2019,341920,0,0,0,0,0,0.09373199194669724,0.09373199194669724,Yoshinori Muto

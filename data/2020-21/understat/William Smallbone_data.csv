@@ -1,0 +1,4 @@
+,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,1,0.046092383563518524,63,ML,Leicester,Southampton,2,0,2021-01-16,14619,2020,442498,0,0,0,0,0.046092383563518524,0.16256141662597656,0.11646902561187744,William Smallbone
+1,0,0,0,32,Sub,Southampton,Tottenham,2,5,2020-09-20,14100,2020,416211,0,0,0,0,0,0.024052973836660385,0.024052973836660385,William Smallbone
+2,0,0,0,79,MR,Crystal Palace,Southampton,1,0,2020-09-12,14087,2020,414577,0,0,0,0,0,0,0,William Smallbone

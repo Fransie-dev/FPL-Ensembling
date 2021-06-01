@@ -1,0 +1,12 @@
+,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,0,4,Sub,Tottenham,Sheffield United,4,0,2021-05-02,14773,2020,467842,0,0,0,0,0,0,0,Lys Mousset
+1,0,0,0,15,Sub,Wolverhampton Wanderers,Sheffield United,1,0,2021-04-17,14754,2020,463125,0,0,0,0,0,0,0,Lys Mousset
+2,0,1,0.08218450844287872,6,Sub,Sheffield United,Arsenal,0,3,2021-04-11,14741,2020,462214,0,0,0,0,0.08218450844287872,0.08218450844287872,0,Lys Mousset
+3,0,0,0,26,Sub,Leicester,Sheffield United,5,0,2021-03-14,14710,2020,456885,0,0,0,0,0,0,0,Lys Mousset
+4,0,0,0,30,Sub,Sheffield United,Southampton,0,2,2021-03-06,14701,2020,454644,0,0,0,0,0,0,0,Lys Mousset
+5,0,0,0,67,FW,Crystal Palace,Sheffield United,2,0,2021-01-02,14604,2020,439128,0,0,0,0,0,0.048733070492744446,0.048733070492744446,Lys Mousset
+6,0,0,0,65,FW,Burnley,Sheffield United,1,0,2020-12-29,14587,2020,438425,0.05905785411596298,0,1,0,0,0.2708115577697754,0.2117536962032318,Lys Mousset
+7,0,0,0,14,Sub,Sheffield United,Everton,0,1,2020-12-26,14582,2020,438167,0,0,0,0,0,0,0,Lys Mousset
+8,0,2,0.06943561881780624,25,Sub,Sheffield United,Manchester United,2,3,2020-12-17,14560,2020,435630,0,0,0,0,0.06943561881780624,0.06943561881780624,0,Lys Mousset
+9,0,0,0,18,Sub,Southampton,Sheffield United,3,0,2020-12-13,14551,2020,433456,0,0,0,0,0,0,0,Lys Mousset
+10,0,1,0.6910119652748108,14,Sub,West Bromwich Albion,Sheffield United,1,0,2020-11-28,14527,2020,429962,0.37813103199005127,0,2,0,0.6910119652748108,1.0691429376602173,0,Lys Mousset
