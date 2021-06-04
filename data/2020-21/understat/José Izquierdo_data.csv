@@ -1,2 +1,2 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,1,0.01680678315460682,7,Sub,Sheffield United,Brighton,1,0,2021-04-24,14762,2020,465676,0,0,0,0,0.01680678315460682,0.06661348789930344,0.04980670288205147,José Izquierdo
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,1,0.01680678315460682,7,Sub,Sheffield United,Brighton,1,0,2021-04-24,14762,2020,465676,0,0,0,0,0.01680678315460682,0.06661348789930344,0.04980670288205147,José Izquierdo

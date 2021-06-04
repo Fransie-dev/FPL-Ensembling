@@ -1,26 +1,26 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,90,GK,Manchester United,Newcastle United,3,1,2021-02-21,14681,2020,451552,0,0,0,0,0,0,0,Karl Darlow
-1,0,0,0,90,GK,Chelsea,Newcastle United,2,0,2021-02-15,14667,2020,450118,0,0,0,0,0,0.050620973110198975,0.050620973110198975,Karl Darlow
-2,0,0,0,90,GK,Newcastle United,Southampton,3,2,2021-02-06,14661,2020,447662,0,0,0,0,0,0,0,Karl Darlow
-3,0,0,0,90,GK,Newcastle United,Crystal Palace,1,2,2021-02-02,14652,2020,446766,0,0,0,0,0,0,0,Karl Darlow
-4,0,0,0,90,GK,Everton,Newcastle United,0,2,2021-01-30,14644,2020,445392,0,0,0,0,0,0,0,Karl Darlow
-5,0,0,0,90,GK,Newcastle United,Leeds,1,2,2021-01-26,14631,2020,444951,0,0,0,0,0,0.029672332108020782,0.029672332108020782,Karl Darlow
-6,0,0,0,90,GK,Aston Villa,Newcastle United,2,0,2021-01-23,14535,2020,444396,0,0,0,0,0,0,0,Karl Darlow
-7,0,0,0,90,GK,Arsenal,Newcastle United,3,0,2021-01-18,14615,2020,443047,0,0,0,0,0,0,0,Karl Darlow
-8,0,0,0,90,GK,Sheffield United,Newcastle United,1,0,2021-01-12,14610,2020,441802,0,0,0,0,0,0,0,Karl Darlow
-9,0,0,0,90,GK,Newcastle United,Leicester,1,2,2021-01-03,14597,2020,439611,0,0,0,0,0,0,0,Karl Darlow
-10,0,0,0,90,GK,Newcastle United,Liverpool,0,0,2020-12-30,14591,2020,438723,0,0,0,0,0,0,0,Karl Darlow
-11,0,0,0,90,GK,Manchester City,Newcastle United,2,0,2020-12-26,14581,2020,438198,0,0,0,0,0,0.021482307463884354,0.021482307463884354,Karl Darlow
-12,0,0,0,90,GK,Newcastle United,Fulham,1,1,2020-12-19,14571,2020,436269,0,0,0,0,0,0,0,Karl Darlow
-13,0,0,0,90,GK,Leeds,Newcastle United,5,2,2020-12-16,14558,2020,434654,0,0,0,0,0,0,0,Karl Darlow
-14,0,0,0,90,GK,Newcastle United,West Bromwich Albion,2,1,2020-12-12,14550,2020,433021,0,0,0,0,0,0,0,Karl Darlow
-15,0,0,0,90,GK,Crystal Palace,Newcastle United,0,2,2020-11-27,14530,2020,429242,0,0,0,0,0,0,0,Karl Darlow
-16,0,0,0,90,GK,Newcastle United,Chelsea,0,2,2020-11-21,14521,2020,427643,0,0,0,0,0,0.025088584050536156,0.025088584050536156,Karl Darlow
-17,0,0,0,90,GK,Southampton,Newcastle United,2,0,2020-11-06,14512,2020,425993,0,0,0,0,0,0,0,Karl Darlow
-18,0,0,0,90,GK,Newcastle United,Everton,2,1,2020-11-01,14501,2020,425182,0,0,0,0,0,0.5133301019668579,0.5133301019668579,Karl Darlow
-19,0,0,0,90,GK,Wolverhampton Wanderers,Newcastle United,1,1,2020-10-25,14494,2020,423704,0,0,0,0,0,0,0,Karl Darlow
-20,0,0,0,90,GK,Newcastle United,Manchester United,1,4,2020-10-17,14481,2020,421452,0,0,0,0,0,0,0,Karl Darlow
-21,0,0,0,90,GK,Newcastle United,Burnley,3,1,2020-10-03,14472,2020,419778,0,0,0,0,0,0.11410433053970337,0.11410433053970337,Karl Darlow
-22,0,0,0,90,GK,Tottenham,Newcastle United,1,1,2020-09-27,14111,2020,418049,0,0,0,0,0,0.053926028311252594,0.053926028311252594,Karl Darlow
-23,0,0,0,90,GK,Newcastle United,Brighton,0,3,2020-09-20,14101,2020,416320,0,0,0,0,0,0.053897418081760406,0.053897418081760406,Karl Darlow
-24,0,0,0,90,GK,West Ham,Newcastle United,0,2,2020-09-12,14091,2020,414747,0,0,0,0,0,0.1353103071451187,0.1353103071451187,Karl Darlow
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,90,GK,Manchester United,Newcastle United,3,1,2021-02-21,14681,2020,451552,0,0,0,0,0,0,0,Karl Darlow
+0,0,0,90,GK,Chelsea,Newcastle United,2,0,2021-02-15,14667,2020,450118,0,0,0,0,0,0.050620973110198975,0.050620973110198975,Karl Darlow
+0,0,0,90,GK,Newcastle United,Southampton,3,2,2021-02-06,14661,2020,447662,0,0,0,0,0,0,0,Karl Darlow
+0,0,0,90,GK,Newcastle United,Crystal Palace,1,2,2021-02-02,14652,2020,446766,0,0,0,0,0,0,0,Karl Darlow
+0,0,0,90,GK,Everton,Newcastle United,0,2,2021-01-30,14644,2020,445392,0,0,0,0,0,0,0,Karl Darlow
+0,0,0,90,GK,Newcastle United,Leeds,1,2,2021-01-26,14631,2020,444951,0,0,0,0,0,0.029672332108020782,0.029672332108020782,Karl Darlow
+0,0,0,90,GK,Aston Villa,Newcastle United,2,0,2021-01-23,14535,2020,444396,0,0,0,0,0,0,0,Karl Darlow
+0,0,0,90,GK,Arsenal,Newcastle United,3,0,2021-01-18,14615,2020,443047,0,0,0,0,0,0,0,Karl Darlow
+0,0,0,90,GK,Sheffield United,Newcastle United,1,0,2021-01-12,14610,2020,441802,0,0,0,0,0,0,0,Karl Darlow
+0,0,0,90,GK,Newcastle United,Leicester,1,2,2021-01-03,14597,2020,439611,0,0,0,0,0,0,0,Karl Darlow
+0,0,0,90,GK,Newcastle United,Liverpool,0,0,2020-12-30,14591,2020,438723,0,0,0,0,0,0,0,Karl Darlow
+0,0,0,90,GK,Manchester City,Newcastle United,2,0,2020-12-26,14581,2020,438198,0,0,0,0,0,0.021482307463884354,0.021482307463884354,Karl Darlow
+0,0,0,90,GK,Newcastle United,Fulham,1,1,2020-12-19,14571,2020,436269,0,0,0,0,0,0,0,Karl Darlow
+0,0,0,90,GK,Leeds,Newcastle United,5,2,2020-12-16,14558,2020,434654,0,0,0,0,0,0,0,Karl Darlow
+0,0,0,90,GK,Newcastle United,West Bromwich Albion,2,1,2020-12-12,14550,2020,433021,0,0,0,0,0,0,0,Karl Darlow
+0,0,0,90,GK,Crystal Palace,Newcastle United,0,2,2020-11-27,14530,2020,429242,0,0,0,0,0,0,0,Karl Darlow
+0,0,0,90,GK,Newcastle United,Chelsea,0,2,2020-11-21,14521,2020,427643,0,0,0,0,0,0.025088584050536156,0.025088584050536156,Karl Darlow
+0,0,0,90,GK,Southampton,Newcastle United,2,0,2020-11-06,14512,2020,425993,0,0,0,0,0,0,0,Karl Darlow
+0,0,0,90,GK,Newcastle United,Everton,2,1,2020-11-01,14501,2020,425182,0,0,0,0,0,0.5133301019668579,0.5133301019668579,Karl Darlow
+0,0,0,90,GK,Wolverhampton Wanderers,Newcastle United,1,1,2020-10-25,14494,2020,423704,0,0,0,0,0,0,0,Karl Darlow
+0,0,0,90,GK,Newcastle United,Manchester United,1,4,2020-10-17,14481,2020,421452,0,0,0,0,0,0,0,Karl Darlow
+0,0,0,90,GK,Newcastle United,Burnley,3,1,2020-10-03,14472,2020,419778,0,0,0,0,0,0.11410433053970337,0.11410433053970337,Karl Darlow
+0,0,0,90,GK,Tottenham,Newcastle United,1,1,2020-09-27,14111,2020,418049,0,0,0,0,0,0.053926028311252594,0.053926028311252594,Karl Darlow
+0,0,0,90,GK,Newcastle United,Brighton,0,3,2020-09-20,14101,2020,416320,0,0,0,0,0,0.053897418081760406,0.053897418081760406,Karl Darlow
+0,0,0,90,GK,West Ham,Newcastle United,0,2,2020-09-12,14091,2020,414747,0,0,0,0,0,0.1353103071451187,0.1353103071451187,Karl Darlow

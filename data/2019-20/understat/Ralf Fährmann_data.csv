@@ -1,2 +1,2 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-22,0,0,0,21,GK,Crystal Palace,Norwich,2,0,2019-09-28,11709,2019,354734,0,0,0,0,0,0,0,Ralf Fährmann
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,21,GK,Crystal Palace,Norwich,2,0,2019-09-28,11709,2019,354734,0,0,0,0,0,0,0,Ralf Fährmann

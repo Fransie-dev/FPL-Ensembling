@@ -1,9 +1,9 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,10,Sub,Norwich,West Ham,0,4,2020-07-11,11988,2019,407354,0,0,0,0,0,0,0,Jack Wilshere
-1,0,0,0,19,Sub,West Ham,Chelsea,3,2,2020-07-01,11962,2019,404606,0,0,0,0,0,0.5077891945838928,0.5077891945838928,Jack Wilshere
-2,0,0,0,24,Sub,Everton,West Ham,2,0,2019-10-19,11727,2019,357555,0,0,0,0,0,0,0,Jack Wilshere
-3,0,0,0,10,Sub,West Ham,Crystal Palace,1,2,2019-10-05,11720,2019,356399,0,0,0,0,0,0,0,Jack Wilshere
-4,0,0,0,11,Sub,Bournemouth,West Ham,2,2,2019-09-28,11707,2019,354608,0,0,0,0,0,0,0,Jack Wilshere
-5,0,0,0,19,Sub,West Ham,Manchester United,2,0,2019-09-22,11700,2019,352868,0,0,0,0,0,0,0,Jack Wilshere
-6,0,0,0,47,MC,Brighton,West Ham,1,1,2019-08-17,11655,2019,341861,0,0,0,0,0,0,0,Jack Wilshere
-7,0,0,0,57,DMC,West Ham,Manchester City,0,5,2019-08-10,11644,2019,341186,0,0,0,0,0,0,0,Jack Wilshere
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,10,Sub,Norwich,West Ham,0,4,2020-07-11,11988,2019,407354,0,0,0,0,0,0,0,Jack Wilshere
+0,0,0,19,Sub,West Ham,Chelsea,3,2,2020-07-01,11962,2019,404606,0,0,0,0,0,0.5077891945838928,0.5077891945838928,Jack Wilshere
+0,0,0,24,Sub,Everton,West Ham,2,0,2019-10-19,11727,2019,357555,0,0,0,0,0,0,0,Jack Wilshere
+0,0,0,10,Sub,West Ham,Crystal Palace,1,2,2019-10-05,11720,2019,356399,0,0,0,0,0,0,0,Jack Wilshere
+0,0,0,11,Sub,Bournemouth,West Ham,2,2,2019-09-28,11707,2019,354608,0,0,0,0,0,0,0,Jack Wilshere
+0,0,0,19,Sub,West Ham,Manchester United,2,0,2019-09-22,11700,2019,352868,0,0,0,0,0,0,0,Jack Wilshere
+0,0,0,47,MC,Brighton,West Ham,1,1,2019-08-17,11655,2019,341861,0,0,0,0,0,0,0,Jack Wilshere
+0,0,0,57,DMC,West Ham,Manchester City,0,5,2019-08-10,11644,2019,341186,0,0,0,0,0,0,0,Jack Wilshere

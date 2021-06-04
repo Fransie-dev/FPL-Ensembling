@@ -1,5 +1,5 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-19,0,0,0,90,DL,Crystal Palace,Tottenham,1,1,2020-07-26,12020,2019,411296,0.03144660219550133,0,1,0,0,0.03144660219550133,0,Tyrick Mitchell
-20,0,0,0,90,DL,Wolverhampton Wanderers,Crystal Palace,2,0,2020-07-20,12012,2019,410408,0.11803360283374786,0,2,0,0,0.15117046236991882,0.13094981014728546,Tyrick Mitchell
-21,0,0,0,2,Sub,Crystal Palace,Manchester United,0,2,2020-07-16,11996,2019,409496,0.040330834686756134,0,1,0,0,0,0,Tyrick Mitchell
-22,0,0,0,4,Sub,Leicester,Crystal Palace,3,0,2020-07-04,11965,2019,405184,0,0,0,0,0,0.3232373893260956,0.3232373893260956,Tyrick Mitchell
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,90,DL,Crystal Palace,Tottenham,1,1,2020-07-26,12020,2019,411296,0.03144660219550133,0,1,0,0,0.03144660219550133,0,Tyrick Mitchell
+0,0,0,90,DL,Wolverhampton Wanderers,Crystal Palace,2,0,2020-07-20,12012,2019,410408,0.11803360283374786,0,2,0,0,0.15117046236991882,0.13094981014728546,Tyrick Mitchell
+0,0,0,2,Sub,Crystal Palace,Manchester United,0,2,2020-07-16,11996,2019,409496,0.040330834686756134,0,1,0,0,0,0,Tyrick Mitchell
+0,0,0,4,Sub,Leicester,Crystal Palace,3,0,2020-07-04,11965,2019,405184,0,0,0,0,0,0.3232373893260956,0.3232373893260956,Tyrick Mitchell

@@ -1,9 +1,9 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,3,Sub,West Ham,Everton,0,1,2021-05-09,14783,2020,469535,0,0,0,0,0,0,0,Fabian Delph
-1,0,0,0,17,Sub,Everton,Aston Villa,1,2,2021-05-01,14769,2020,467197,0.02594645880162716,0,1,0,0,0.02594645880162716,0.02594645880162716,Fabian Delph
-2,0,0,0,23,Sub,Arsenal,Everton,0,1,2021-04-23,14755,2020,465059,0,0,0,0,0,0,0,Fabian Delph
-3,0,0,0,28,DML,Burnley,Everton,1,1,2020-12-05,14537,2020,431061,0,0,0,0,0,0.6143262982368469,0.6143262982368469,Fabian Delph
-4,0,0,0,27,Sub,Everton,Leeds,0,1,2020-11-28,14531,2020,429860,0,0,0,0,0,0,0,Fabian Delph
-5,0,1,0.014957983046770096,90,MC,Newcastle United,Everton,2,1,2020-11-01,14501,2020,425203,0.028502553701400757,0,1,0,0.014957983046770096,0.4203451871871948,0.37688466906547546,Fabian Delph
-6,0,0,0,31,Sub,Southampton,Everton,2,0,2020-10-25,14492,2020,423568,0,0,0,0,0,0,0,Fabian Delph
-7,0,0,0,30,Sub,Everton,Brighton,4,2,2020-10-03,14468,2020,419529,0,0,0,0,0,0,0,Fabian Delph
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,3,Sub,West Ham,Everton,0,1,2021-05-09,14783,2020,469535,0,0,0,0,0,0,0,Fabian Delph
+0,0,0,17,Sub,Everton,Aston Villa,1,2,2021-05-01,14769,2020,467197,0.02594645880162716,0,1,0,0,0.02594645880162716,0.02594645880162716,Fabian Delph
+0,0,0,23,Sub,Arsenal,Everton,0,1,2021-04-23,14755,2020,465059,0,0,0,0,0,0,0,Fabian Delph
+0,0,0,28,DML,Burnley,Everton,1,1,2020-12-05,14537,2020,431061,0,0,0,0,0,0.6143262982368469,0.6143262982368469,Fabian Delph
+0,0,0,27,Sub,Everton,Leeds,0,1,2020-11-28,14531,2020,429860,0,0,0,0,0,0,0,Fabian Delph
+0,1,0.014957983046770096,90,MC,Newcastle United,Everton,2,1,2020-11-01,14501,2020,425203,0.028502553701400757,0,1,0,0.014957983046770096,0.4203451871871948,0.37688466906547546,Fabian Delph
+0,0,0,31,Sub,Southampton,Everton,2,0,2020-10-25,14492,2020,423568,0,0,0,0,0,0,0,Fabian Delph
+0,0,0,30,Sub,Everton,Brighton,4,2,2020-10-03,14468,2020,419529,0,0,0,0,0,0,0,Fabian Delph

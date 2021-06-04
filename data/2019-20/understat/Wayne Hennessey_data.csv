@@ -1,4 +1,4 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,90,GK,Liverpool,Crystal Palace,4,0,2020-06-24,11951,2019,402533,0,0,0,0,0,0,0,Wayne Hennessey
-1,0,0,0,90,GK,Arsenal,Crystal Palace,2,2,2019-10-27,11733,2019,360291,0,0,0,0,0,0.11491350084543228,0.11491350084543228,Wayne Hennessey
-2,0,0,0,90,GK,Crystal Palace,Manchester City,0,2,2019-10-19,11726,2019,358085,0,0,0,0,0,0,0,Wayne Hennessey
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,90,GK,Liverpool,Crystal Palace,4,0,2020-06-24,11951,2019,402533,0,0,0,0,0,0,0,Wayne Hennessey
+0,0,0,90,GK,Arsenal,Crystal Palace,2,2,2019-10-27,11733,2019,360291,0,0,0,0,0,0.11491350084543228,0.11491350084543228,Wayne Hennessey
+0,0,0,90,GK,Crystal Palace,Manchester City,0,2,2019-10-19,11726,2019,358085,0,0,0,0,0,0,0,Wayne Hennessey

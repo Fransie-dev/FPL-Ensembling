@@ -1,14 +1,14 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,13,Sub,Chelsea,West Bromwich Albion,2,5,2021-04-03,14727,2020,459182,0,0,0,0,0,0,0,Branislav Ivanovic
-1,0,0,0,7,Sub,West Bromwich Albion,Brighton,1,0,2021-02-27,14692,2020,452267,0,0,0,0,0,0,0,Branislav Ivanovic
-2,0,0,0,68,DC,West Bromwich Albion,Arsenal,0,4,2021-01-02,14600,2020,439281,0,0,0,0,0,0,0,Branislav Ivanovic
-3,0,0,0,42,Sub,West Bromwich Albion,Leeds,0,5,2020-12-29,14590,2020,438470,0,0,0,0,0,0,0,Branislav Ivanovic
-4,0,0,0,1,Sub,Liverpool,West Bromwich Albion,1,1,2020-12-27,14580,2020,438292,0,0,0,0,0,0,0,Branislav Ivanovic
-5,0,0,0,10,Sub,West Bromwich Albion,Aston Villa,0,3,2020-12-20,14574,2020,436975,0,0,0,0,0,0,0,Branislav Ivanovic
-6,0,0,0,90,DC,Newcastle United,West Bromwich Albion,2,1,2020-12-12,14550,2020,433037,0,0,0,0,0,0.04556148871779442,0.04556148871779442,Branislav Ivanovic
-7,0,0,0,90,DC,West Bromwich Albion,Crystal Palace,1,5,2020-12-06,14543,2020,431721,0,0,0,0,0,0.018534081056714058,0.018534081056714058,Branislav Ivanovic
-8,0,0,0,90,DC,West Bromwich Albion,Sheffield United,1,0,2020-11-28,14527,2020,429938,0,0,0,0,0,0.030765287578105927,0.030765287578105927,Branislav Ivanovic
-9,0,1,0.09838248044252396,80,DC,Manchester United,West Bromwich Albion,1,0,2020-11-21,14520,2020,428281,0,0,0,0,0.09838248044252396,0,0,Branislav Ivanovic
-10,0,0,0,90,DC,Fulham,West Bromwich Albion,2,0,2020-11-02,14497,2020,425644,0.048929497599601746,0,1,0,0,0.048929497599601746,0.048929497599601746,Branislav Ivanovic
-11,0,0,0,90,DC,Brighton,West Bromwich Albion,1,1,2020-10-26,14487,2020,423974,0,0,0,0,0,0.021378837525844574,0.021378837525844574,Branislav Ivanovic
-12,0,3,0.3610883355140686,90,DC,West Bromwich Albion,Burnley,0,0,2020-10-19,14484,2020,422347,0,0,0,0,0.3610883355140686,0.18402814865112305,0.18402814865112305,Branislav Ivanovic
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,13,Sub,Chelsea,West Bromwich Albion,2,5,2021-04-03,14727,2020,459182,0,0,0,0,0,0,0,Branislav Ivanovic
+0,0,0,7,Sub,West Bromwich Albion,Brighton,1,0,2021-02-27,14692,2020,452267,0,0,0,0,0,0,0,Branislav Ivanovic
+0,0,0,68,DC,West Bromwich Albion,Arsenal,0,4,2021-01-02,14600,2020,439281,0,0,0,0,0,0,0,Branislav Ivanovic
+0,0,0,42,Sub,West Bromwich Albion,Leeds,0,5,2020-12-29,14590,2020,438470,0,0,0,0,0,0,0,Branislav Ivanovic
+0,0,0,1,Sub,Liverpool,West Bromwich Albion,1,1,2020-12-27,14580,2020,438292,0,0,0,0,0,0,0,Branislav Ivanovic
+0,0,0,10,Sub,West Bromwich Albion,Aston Villa,0,3,2020-12-20,14574,2020,436975,0,0,0,0,0,0,0,Branislav Ivanovic
+0,0,0,90,DC,Newcastle United,West Bromwich Albion,2,1,2020-12-12,14550,2020,433037,0,0,0,0,0,0.04556148871779442,0.04556148871779442,Branislav Ivanovic
+0,0,0,90,DC,West Bromwich Albion,Crystal Palace,1,5,2020-12-06,14543,2020,431721,0,0,0,0,0,0.018534081056714058,0.018534081056714058,Branislav Ivanovic
+0,0,0,90,DC,West Bromwich Albion,Sheffield United,1,0,2020-11-28,14527,2020,429938,0,0,0,0,0,0.030765287578105927,0.030765287578105927,Branislav Ivanovic
+0,1,0.09838248044252396,80,DC,Manchester United,West Bromwich Albion,1,0,2020-11-21,14520,2020,428281,0,0,0,0,0.09838248044252396,0,0,Branislav Ivanovic
+0,0,0,90,DC,Fulham,West Bromwich Albion,2,0,2020-11-02,14497,2020,425644,0.048929497599601746,0,1,0,0,0.048929497599601746,0.048929497599601746,Branislav Ivanovic
+0,0,0,90,DC,Brighton,West Bromwich Albion,1,1,2020-10-26,14487,2020,423974,0,0,0,0,0,0.021378837525844574,0.021378837525844574,Branislav Ivanovic
+0,3,0.3610883355140686,90,DC,West Bromwich Albion,Burnley,0,0,2020-10-19,14484,2020,422347,0,0,0,0,0.3610883355140686,0.18402814865112305,0.18402814865112305,Branislav Ivanovic

@@ -1,2 +1,2 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,1,0.02669377438724041,11,Sub,Sheffield United,Leicester,1,2,2019-08-24,11665,2019,344019,0,0,0,0,0.02669377438724041,0,0,Ravel Morrison
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,1,0.02669377438724041,11,Sub,Sheffield United,Leicester,1,2,2019-08-24,11665,2019,344019,0,0,0,0,0.02669377438724041,0,0,Ravel Morrison

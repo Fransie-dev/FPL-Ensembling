@@ -1,2 +1,2 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,3,Sub,Leicester,Manchester City,0,1,2020-02-22,11904,2019,387275,0,0,0,0,0,0,0,Matthew James
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,3,Sub,Leicester,Manchester City,0,1,2020-02-22,11904,2019,387275,0,0,0,0,0,0,0,Matthew James

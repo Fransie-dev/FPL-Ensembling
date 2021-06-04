@@ -1,12 +1,12 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-3,0,0,0,90,DC,Leicester,Manchester United,0,2,2020-07-26,12018,2019,411472,0,0,0,0,0,0.2970522344112396,0.2970522344112396,Wes Morgan
-4,0,2,0.09436973184347153,90,DC,Tottenham,Leicester,3,0,2020-07-19,12010,2019,409799,0,0,0,0,0.09436973184347153,0.15345367789268494,0.15345367789268494,Wes Morgan
-5,0,0,0,90,DC,Leicester,Sheffield United,2,0,2020-07-16,11998,2019,409114,0,0,0,0,0,0.10115741193294525,0.10115741193294525,Wes Morgan
-6,0,0,0,1,Sub,Wolverhampton Wanderers,Leicester,0,0,2020-02-14,11902,2019,386958,0,0,0,0,0,0,0,Wes Morgan
-7,0,0,0,2,Sub,Leicester,West Ham,4,1,2020-01-22,11876,2019,386456,0,0,0,0,0,0,0,Wes Morgan
-8,0,0,0,3,Sub,Newcastle United,Leicester,0,3,2020-01-01,11849,2019,385600,0,0,0,0,0,0.04334177076816559,0.04334177076816559,Wes Morgan
-9,0,2,0.502011775970459,90,DC,West Ham,Leicester,1,2,2019-12-28,11842,2019,372824,0,0,0,0,0.502011775970459,0.6088867783546448,0.15575642883777618,Wes Morgan
-10,0,0,0,27,Sub,Brighton,Leicester,0,2,2019-11-23,11766,2019,364762,0,0,0,0,0,0,0,Wes Morgan
-11,0,0,0,4,Sub,Crystal Palace,Leicester,0,2,2019-11-03,11747,2019,362135,0,0,0,0,0,0,0,Wes Morgan
-12,0,0,0,10,Sub,Leicester,Burnley,2,1,2019-10-19,11728,2019,357848,0,0,0,0,0,0,0,Wes Morgan
-13,0,0,0,11,Sub,Sheffield United,Leicester,1,2,2019-08-24,11665,2019,344034,0,0,0,0,0,0,0,Wes Morgan
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,90,DC,Leicester,Manchester United,0,2,2020-07-26,12018,2019,411472,0,0,0,0,0,0.2970522344112396,0.2970522344112396,Wes Morgan
+0,2,0.09436973184347153,90,DC,Tottenham,Leicester,3,0,2020-07-19,12010,2019,409799,0,0,0,0,0.09436973184347153,0.15345367789268494,0.15345367789268494,Wes Morgan
+0,0,0,90,DC,Leicester,Sheffield United,2,0,2020-07-16,11998,2019,409114,0,0,0,0,0,0.10115741193294525,0.10115741193294525,Wes Morgan
+0,0,0,1,Sub,Wolverhampton Wanderers,Leicester,0,0,2020-02-14,11902,2019,386958,0,0,0,0,0,0,0,Wes Morgan
+0,0,0,2,Sub,Leicester,West Ham,4,1,2020-01-22,11876,2019,386456,0,0,0,0,0,0,0,Wes Morgan
+0,0,0,3,Sub,Newcastle United,Leicester,0,3,2020-01-01,11849,2019,385600,0,0,0,0,0,0.04334177076816559,0.04334177076816559,Wes Morgan
+0,2,0.502011775970459,90,DC,West Ham,Leicester,1,2,2019-12-28,11842,2019,372824,0,0,0,0,0.502011775970459,0.6088867783546448,0.15575642883777618,Wes Morgan
+0,0,0,27,Sub,Brighton,Leicester,0,2,2019-11-23,11766,2019,364762,0,0,0,0,0,0,0,Wes Morgan
+0,0,0,4,Sub,Crystal Palace,Leicester,0,2,2019-11-03,11747,2019,362135,0,0,0,0,0,0,0,Wes Morgan
+0,0,0,10,Sub,Leicester,Burnley,2,1,2019-10-19,11728,2019,357848,0,0,0,0,0,0,0,Wes Morgan
+0,0,0,11,Sub,Sheffield United,Leicester,1,2,2019-08-24,11665,2019,344034,0,0,0,0,0,0,0,Wes Morgan

@@ -1,2 +1,2 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,2,0.057957686483860016,57,DC,Watford,Sheffield United,0,0,2019-10-05,11719,2019,356249,0,0,0,0,0.057957686483860016,0,0,Sebastian Prödl
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,2,0.057957686483860016,57,DC,Watford,Sheffield United,0,0,2019-10-05,11719,2019,356249,0,0,0,0,0.057957686483860016,0,0,Sebastian Prödl

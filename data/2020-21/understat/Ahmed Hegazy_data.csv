@@ -1,2 +1,2 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,90,DC,West Bromwich Albion,Burnley,0,0,2020-10-19,14484,2020,422346,0,0,0,0,0,0.18402814865112305,0.18402814865112305,Ahmed Hegazy
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,90,DC,West Bromwich Albion,Burnley,0,0,2020-10-19,14484,2020,422346,0,0,0,0,0,0.18402814865112305,0.18402814865112305,Ahmed Hegazy

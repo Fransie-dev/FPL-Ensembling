@@ -1,2 +1,2 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,4,Sub,Chelsea,Everton,4,0,2020-03-08,11925,2019,387820,0,0,0,0,0,0.020872782915830612,0.020872782915830612,Armando Broja
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,4,Sub,Chelsea,Everton,4,0,2020-03-08,11925,2019,387820,0,0,0,0,0,0.020872782915830612,0.020872782915830612,Armando Broja

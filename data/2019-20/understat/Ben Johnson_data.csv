@@ -1,4 +1,4 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-14,0,0,0,90,DL,West Ham,Aston Villa,1,1,2020-07-26,12013,2019,411445,0.028969408944249153,0,1,0,0,0.11030317842960358,0.11030317842960358,Ben Johnson
-15,0,1,0.015314771793782711,90,DR,Manchester United,West Ham,1,1,2020-07-22,12007,2019,410790,0,0,0,0,0.015314771793782711,0,0,Ben Johnson
-16,0,0,0,90,DR,West Ham,Watford,3,1,2020-07-17,12001,2019,409574,0,0,0,0,0,0.31256404519081116,0.31256404519081116,Ben Johnson
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,90,DL,West Ham,Aston Villa,1,1,2020-07-26,12013,2019,411445,0.028969408944249153,0,1,0,0,0.11030317842960358,0.11030317842960358,Ben Johnson
+0,1,0.015314771793782711,90,DR,Manchester United,West Ham,1,1,2020-07-22,12007,2019,410790,0,0,0,0,0.015314771793782711,0,0,Ben Johnson
+0,0,0,90,DR,West Ham,Watford,3,1,2020-07-17,12001,2019,409574,0,0,0,0,0,0.31256404519081116,0.31256404519081116,Ben Johnson

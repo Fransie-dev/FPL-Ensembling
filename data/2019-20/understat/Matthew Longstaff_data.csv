@@ -1,10 +1,10 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-5,0,0,0,1,Sub,Newcastle United,Tottenham,1,3,2020-07-15,12000,2019,408698,0,0,0,0,0,0,0,Matthew Longstaff
-6,0,1,0.08767247945070267,22,Sub,Manchester City,Newcastle United,5,0,2020-07-08,11979,2019,406596,0,0,0,0,0.08767247945070267,0.08767247945070267,0,Matthew Longstaff
-7,0,0,0,90,MC,Everton,Newcastle United,2,2,2020-01-21,11877,2019,386301,0,0,0,0,0,0.043980758637189865,0.043980758637189865,Matthew Longstaff
-8,0,0,0,1,Sub,Newcastle United,Chelsea,1,0,2020-01-18,11868,2019,386210,0,0,0,0,0,0,0,Matthew Longstaff
-9,0,0,0,90,MC,Wolverhampton Wanderers,Newcastle United,1,1,2020-01-11,11853,2019,385814,0,0,0,0,0,0,0,Matthew Longstaff
-10,1,1,0.5488989353179932,90,MC,Manchester United,Newcastle United,4,1,2019-12-26,11829,2019,372609,0.00918099470436573,0,1,1,0.5488989353179932,0.5801206231117249,0.022040721029043198,Matthew Longstaff
-11,0,0,0,90,MC,Newcastle United,Wolverhampton Wanderers,1,1,2019-10-27,11738,2019,360148,0.10171107947826385,0,1,0,0,0.18367312848567963,0.08196204155683517,Matthew Longstaff
-12,0,0,0,90,MC,Chelsea,Newcastle United,1,0,2019-10-19,11725,2019,357802,0,0,0,0,0,0.07242032140493393,0.07242032140493393,Matthew Longstaff
-13,1,2,0.05994679406285286,90,MC,Newcastle United,Manchester United,1,0,2019-10-06,11721,2019,357147,0.0786692351102829,0,1,1,0.05994679406285286,0.13861602544784546,0.03029070422053337,Matthew Longstaff
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,1,Sub,Newcastle United,Tottenham,1,3,2020-07-15,12000,2019,408698,0,0,0,0,0,0,0,Matthew Longstaff
+0,1,0.08767247945070267,22,Sub,Manchester City,Newcastle United,5,0,2020-07-08,11979,2019,406596,0,0,0,0,0.08767247945070267,0.08767247945070267,0,Matthew Longstaff
+0,0,0,90,MC,Everton,Newcastle United,2,2,2020-01-21,11877,2019,386301,0,0,0,0,0,0.043980758637189865,0.043980758637189865,Matthew Longstaff
+0,0,0,1,Sub,Newcastle United,Chelsea,1,0,2020-01-18,11868,2019,386210,0,0,0,0,0,0,0,Matthew Longstaff
+0,0,0,90,MC,Wolverhampton Wanderers,Newcastle United,1,1,2020-01-11,11853,2019,385814,0,0,0,0,0,0,0,Matthew Longstaff
+1,1,0.5488989353179932,90,MC,Manchester United,Newcastle United,4,1,2019-12-26,11829,2019,372609,0.00918099470436573,0,1,1,0.5488989353179932,0.5801206231117249,0.022040721029043198,Matthew Longstaff
+0,0,0,90,MC,Newcastle United,Wolverhampton Wanderers,1,1,2019-10-27,11738,2019,360148,0.10171107947826385,0,1,0,0,0.18367312848567963,0.08196204155683517,Matthew Longstaff
+0,0,0,90,MC,Chelsea,Newcastle United,1,0,2019-10-19,11725,2019,357802,0,0,0,0,0,0.07242032140493393,0.07242032140493393,Matthew Longstaff
+1,2,0.05994679406285286,90,MC,Newcastle United,Manchester United,1,0,2019-10-06,11721,2019,357147,0.0786692351102829,0,1,1,0.05994679406285286,0.13861602544784546,0.03029070422053337,Matthew Longstaff

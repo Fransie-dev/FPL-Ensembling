@@ -1,5 +1,5 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,8,Sub,Eibar,Mallorca,1,2,2020-03-07,12287,2019,396656,0,0,0,0,0,0,0,Ki Sung-yueng
-1,0,0,0,45,Sub,Leicester,Newcastle United,5,0,2019-09-29,11710,2019,355525,0,0,0,0,0,0,0,Ki Sung-yueng
-2,0,0,0,16,Sub,Newcastle United,Brighton,0,0,2019-09-21,11699,2019,352449,0.04251881316304207,0,1,0,0,0.04251881316304207,0,Ki Sung-yueng
-3,0,0,0,76,MC,Norwich,Newcastle United,3,1,2019-08-17,11657,2019,341917,0.012597769498825073,0,1,0,0,0,0,Ki Sung-yueng
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,8,Sub,Eibar,Mallorca,1,2,2020-03-07,12287,2019,396656,0,0,0,0,0,0,0,Ki Sung-yueng
+0,0,0,45,Sub,Leicester,Newcastle United,5,0,2019-09-29,11710,2019,355525,0,0,0,0,0,0,0,Ki Sung-yueng
+0,0,0,16,Sub,Newcastle United,Brighton,0,0,2019-09-21,11699,2019,352449,0.04251881316304207,0,1,0,0,0.04251881316304207,0,Ki Sung-yueng
+0,0,0,76,MC,Norwich,Newcastle United,3,1,2019-08-17,11657,2019,341917,0.012597769498825073,0,1,0,0,0,0,Ki Sung-yueng

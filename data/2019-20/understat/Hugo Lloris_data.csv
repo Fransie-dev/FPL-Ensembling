@@ -1,22 +1,22 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-38,0,0,0,90,GK,Crystal Palace,Tottenham,1,1,2020-07-26,12020,2019,411305,0,0,0,0,0,0,0,Hugo Lloris
-39,0,0,0,90,GK,Tottenham,Leicester,3,0,2020-07-19,12010,2019,409783,0,0,0,0,0,0.08296632766723633,0.08296632766723633,Hugo Lloris
-40,0,0,0,90,GK,Newcastle United,Tottenham,1,3,2020-07-15,12000,2019,408699,0,0,0,0,0,0,0,Hugo Lloris
-41,0,0,0,90,GK,Tottenham,Arsenal,2,1,2020-07-12,11990,2019,407986,0,0,0,0,0,0,0,Hugo Lloris
-42,0,0,0,90,GK,Bournemouth,Tottenham,0,0,2020-07-09,11975,2019,407034,0,0,0,0,0,0.0995556190609932,0.0995556190609932,Hugo Lloris
-43,0,0,0,90,GK,Tottenham,Everton,1,0,2020-07-06,11971,2019,406124,0,0,0,0,0,0.023392867296934128,0.023392867296934128,Hugo Lloris
-44,0,0,0,90,GK,Sheffield United,Tottenham,3,1,2020-07-02,11960,2019,404823,0,0,0,0,0,0,0,Hugo Lloris
-45,0,0,0,90,GK,Tottenham,West Ham,2,0,2020-06-23,11944,2019,402185,0,0,0,0,0,0.02515561319887638,0.02515561319887638,Hugo Lloris
-46,0,0,0,90,GK,Tottenham,Manchester United,1,1,2020-06-19,11936,2019,400809,0,0,0,0,0,0,0,Hugo Lloris
-47,0,0,0,90,GK,Burnley,Tottenham,1,1,2020-03-07,11924,2019,387793,0,0,0,0,0,0,0,Hugo Lloris
-48,0,0,0,90,GK,Chelsea,Tottenham,2,1,2020-02-22,11906,2019,387138,0,0,0,0,0,0,0,Hugo Lloris
-49,0,0,0,90,GK,Aston Villa,Tottenham,2,3,2020-02-16,11894,2019,387028,0,0,0,0,0,0,0,Hugo Lloris
-50,0,0,0,90,GK,Tottenham,Manchester City,2,0,2020-02-02,11890,2019,386822,0,0,0,0,0,0,0,Hugo Lloris
-51,0,0,0,90,GK,Tottenham,Norwich,2,1,2020-01-22,11880,2019,386472,0,0,0,0,0,0.07109328359365463,0.07109328359365463,Hugo Lloris
-52,0,0,0,8,GK,Brighton,Tottenham,3,0,2019-10-05,11713,2019,355982,0,0,0,0,0,0,0,Hugo Lloris
-53,0,0,0,90,GK,Tottenham,Southampton,2,1,2019-09-28,11704,2019,354665,0,0,0,0,0,0,0,Hugo Lloris
-54,0,0,0,90,GK,Tottenham,Crystal Palace,4,0,2019-09-14,11687,2019,349092,0,0,0,0,0,0.1415647566318512,0.1415647566318512,Hugo Lloris
-55,0,0,0,90,GK,Arsenal,Tottenham,2,2,2019-09-01,11682,2019,348107,0,0,0,0,0,0.112809918820858,0.112809918820858,Hugo Lloris
-56,0,0,0,90,GK,Tottenham,Newcastle United,0,1,2019-08-25,11672,2019,344702,0,0,0,0,0,0,0,Hugo Lloris
-57,0,0,0,90,GK,Manchester City,Tottenham,2,2,2019-08-17,11659,2019,342131,0,0,0,0,0,0,0,Hugo Lloris
-58,0,0,0,90,GK,Tottenham,Aston Villa,3,1,2019-08-10,11649,2019,341343,0,0,0,0,0,0.056358423084020615,0.056358423084020615,Hugo Lloris
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,90,GK,Crystal Palace,Tottenham,1,1,2020-07-26,12020,2019,411305,0,0,0,0,0,0,0,Hugo Lloris
+0,0,0,90,GK,Tottenham,Leicester,3,0,2020-07-19,12010,2019,409783,0,0,0,0,0,0.08296632766723633,0.08296632766723633,Hugo Lloris
+0,0,0,90,GK,Newcastle United,Tottenham,1,3,2020-07-15,12000,2019,408699,0,0,0,0,0,0,0,Hugo Lloris
+0,0,0,90,GK,Tottenham,Arsenal,2,1,2020-07-12,11990,2019,407986,0,0,0,0,0,0,0,Hugo Lloris
+0,0,0,90,GK,Bournemouth,Tottenham,0,0,2020-07-09,11975,2019,407034,0,0,0,0,0,0.0995556190609932,0.0995556190609932,Hugo Lloris
+0,0,0,90,GK,Tottenham,Everton,1,0,2020-07-06,11971,2019,406124,0,0,0,0,0,0.023392867296934128,0.023392867296934128,Hugo Lloris
+0,0,0,90,GK,Sheffield United,Tottenham,3,1,2020-07-02,11960,2019,404823,0,0,0,0,0,0,0,Hugo Lloris
+0,0,0,90,GK,Tottenham,West Ham,2,0,2020-06-23,11944,2019,402185,0,0,0,0,0,0.02515561319887638,0.02515561319887638,Hugo Lloris
+0,0,0,90,GK,Tottenham,Manchester United,1,1,2020-06-19,11936,2019,400809,0,0,0,0,0,0,0,Hugo Lloris
+0,0,0,90,GK,Burnley,Tottenham,1,1,2020-03-07,11924,2019,387793,0,0,0,0,0,0,0,Hugo Lloris
+0,0,0,90,GK,Chelsea,Tottenham,2,1,2020-02-22,11906,2019,387138,0,0,0,0,0,0,0,Hugo Lloris
+0,0,0,90,GK,Aston Villa,Tottenham,2,3,2020-02-16,11894,2019,387028,0,0,0,0,0,0,0,Hugo Lloris
+0,0,0,90,GK,Tottenham,Manchester City,2,0,2020-02-02,11890,2019,386822,0,0,0,0,0,0,0,Hugo Lloris
+0,0,0,90,GK,Tottenham,Norwich,2,1,2020-01-22,11880,2019,386472,0,0,0,0,0,0.07109328359365463,0.07109328359365463,Hugo Lloris
+0,0,0,8,GK,Brighton,Tottenham,3,0,2019-10-05,11713,2019,355982,0,0,0,0,0,0,0,Hugo Lloris
+0,0,0,90,GK,Tottenham,Southampton,2,1,2019-09-28,11704,2019,354665,0,0,0,0,0,0,0,Hugo Lloris
+0,0,0,90,GK,Tottenham,Crystal Palace,4,0,2019-09-14,11687,2019,349092,0,0,0,0,0,0.1415647566318512,0.1415647566318512,Hugo Lloris
+0,0,0,90,GK,Arsenal,Tottenham,2,2,2019-09-01,11682,2019,348107,0,0,0,0,0,0.112809918820858,0.112809918820858,Hugo Lloris
+0,0,0,90,GK,Tottenham,Newcastle United,0,1,2019-08-25,11672,2019,344702,0,0,0,0,0,0,0,Hugo Lloris
+0,0,0,90,GK,Manchester City,Tottenham,2,2,2019-08-17,11659,2019,342131,0,0,0,0,0,0,0,Hugo Lloris
+0,0,0,90,GK,Tottenham,Aston Villa,3,1,2019-08-10,11649,2019,341343,0,0,0,0,0,0.056358423084020615,0.056358423084020615,Hugo Lloris

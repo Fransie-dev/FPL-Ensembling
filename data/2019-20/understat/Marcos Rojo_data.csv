@@ -1,4 +1,4 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,1,Sub,Manchester United,Brighton,3,1,2019-11-10,11761,2019,363804,0,0,0,0,0,0,0,Marcos Rojo
-1,0,0,0,90,DC,Manchester United,Liverpool,1,1,2019-10-20,11729,2019,358670,0,0,0,0,0,0.01747880131006241,0.01747880131006241,Marcos Rojo
-2,0,1,0.13206884264945984,28,Sub,Newcastle United,Manchester United,1,0,2019-10-06,11721,2019,357164,0,0,0,0,0.13206884264945984,0.014940571039915085,0.014940571039915085,Marcos Rojo
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,1,Sub,Manchester United,Brighton,3,1,2019-11-10,11761,2019,363804,0,0,0,0,0,0,0,Marcos Rojo
+0,0,0,90,DC,Manchester United,Liverpool,1,1,2019-10-20,11729,2019,358670,0,0,0,0,0,0.01747880131006241,0.01747880131006241,Marcos Rojo
+0,1,0.13206884264945984,28,Sub,Newcastle United,Manchester United,1,0,2019-10-06,11721,2019,357164,0,0,0,0,0.13206884264945984,0.014940571039915085,0.014940571039915085,Marcos Rojo

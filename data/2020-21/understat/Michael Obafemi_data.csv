@@ -1,5 +1,5 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,5,Sub,West Ham,Southampton,3,0,2021-05-23,14813,2020,473472,0,0,0,0,0,0,0,Michael Obafemi
-1,0,0,0,12,Sub,Southampton,Crystal Palace,3,1,2021-05-11,14753,2020,469996,0,0,0,0,0,0.02685382030904293,0.02685382030904293,Michael Obafemi
-2,0,0,0,23,Sub,Liverpool,Southampton,2,0,2021-05-08,14780,2020,469016,0.0549185536801815,0,1,0,0,0.0549185536801815,0.0549185536801815,Michael Obafemi
-3,0,0,0,12,Sub,Burnley,Southampton,0,1,2020-09-26,14109,2020,417695,0,0,0,0,0,0.06713031232357025,0.06713031232357025,Michael Obafemi
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,5,Sub,West Ham,Southampton,3,0,2021-05-23,14813,2020,473472,0,0,0,0,0,0,0,Michael Obafemi
+0,0,0,12,Sub,Southampton,Crystal Palace,3,1,2021-05-11,14753,2020,469996,0,0,0,0,0,0.02685382030904293,0.02685382030904293,Michael Obafemi
+0,0,0,23,Sub,Liverpool,Southampton,2,0,2021-05-08,14780,2020,469016,0.0549185536801815,0,1,0,0,0.0549185536801815,0.0549185536801815,Michael Obafemi
+0,0,0,12,Sub,Burnley,Southampton,0,1,2020-09-26,14109,2020,417695,0,0,0,0,0,0.06713031232357025,0.06713031232357025,Michael Obafemi

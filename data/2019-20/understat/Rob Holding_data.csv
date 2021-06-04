@@ -1,9 +1,9 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-30,0,2,0.1093563660979271,90,DC,Arsenal,Watford,3,2,2020-07-26,12014,2019,411204,0,0,0,0,0.1093563660979271,0.05840850621461868,0.05840850621461868,Rob Holding
-31,0,0,0,90,DC,Aston Villa,Arsenal,1,0,2020-07-21,12003,2019,410525,0,0,0,0,0,0.035457540303468704,0.035457540303468704,Rob Holding
-32,0,0,0,90,DC,Arsenal,Liverpool,2,1,2020-07-15,11993,2019,408839,0,0,0,0,0,0,0,Rob Holding
-33,0,0,0,42,Sub,Arsenal,Norwich,4,0,2020-07-01,11953,2019,404417,0,0,0,0,0,0,0,Rob Holding
-34,0,0,0,90,DC,Southampton,Arsenal,0,2,2020-06-25,11952,2019,402659,0,0,0,0,0,0.2895822823047638,0.2895822823047638,Rob Holding
-35,0,0,0,90,DC,Brighton,Arsenal,2,1,2020-06-20,11941,2019,401285,0,0,0,0,0,0.06019328162074089,0.06019328162074089,Rob Holding
-36,0,0,0,7,Sub,Chelsea,Arsenal,2,2,2020-01-21,11881,2019,386443,0,0,0,0,0,0,0,Rob Holding
-37,0,0,0,77,DC,Leicester,Arsenal,2,0,2019-11-09,11762,2019,363315,0,0,0,0,0,0,0,Rob Holding
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,2,0.1093563660979271,90,DC,Arsenal,Watford,3,2,2020-07-26,12014,2019,411204,0,0,0,0,0.1093563660979271,0.05840850621461868,0.05840850621461868,Rob Holding
+0,0,0,90,DC,Aston Villa,Arsenal,1,0,2020-07-21,12003,2019,410525,0,0,0,0,0,0.035457540303468704,0.035457540303468704,Rob Holding
+0,0,0,90,DC,Arsenal,Liverpool,2,1,2020-07-15,11993,2019,408839,0,0,0,0,0,0,0,Rob Holding
+0,0,0,42,Sub,Arsenal,Norwich,4,0,2020-07-01,11953,2019,404417,0,0,0,0,0,0,0,Rob Holding
+0,0,0,90,DC,Southampton,Arsenal,0,2,2020-06-25,11952,2019,402659,0,0,0,0,0,0.2895822823047638,0.2895822823047638,Rob Holding
+0,0,0,90,DC,Brighton,Arsenal,2,1,2020-06-20,11941,2019,401285,0,0,0,0,0,0.06019328162074089,0.06019328162074089,Rob Holding
+0,0,0,7,Sub,Chelsea,Arsenal,2,2,2020-01-21,11881,2019,386443,0,0,0,0,0,0,0,Rob Holding
+0,0,0,77,DC,Leicester,Arsenal,2,0,2019-11-09,11762,2019,363315,0,0,0,0,0,0,0,Rob Holding

@@ -1,14 +1,14 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-21,0,0,0,1,Sub,Granada,Athletic Club,4,0,2020-07-19,12397,2019,410126,0,0,0,0,0,0,0,Jesús Vallejo
-22,0,0,0,71,DC,Real Sociedad,Granada,2,3,2020-07-10,12367,2019,407279,0,0,0,0,0,0,0,Jesús Vallejo
-23,0,0,0,3,Sub,Granada,Valencia,2,2,2020-07-04,12357,2019,405525,0,0,0,0,0,0,0,Jesús Vallejo
-24,0,0,0,90,DC,Alaves,Granada,0,2,2020-07-01,12343,2019,404580,0,0,0,0,0,0.12129634618759155,0.12129634618759155,Jesús Vallejo
-25,0,0,0,90,DC,Granada,Eibar,1,2,2020-06-28,12338,2019,403834,0,0,0,0,0,0.7015724182128906,0.7015724182128906,Jesús Vallejo
-26,0,0,0,90,DC,Leganes,Granada,0,0,2020-06-22,12327,2019,402015,0,0,0,0,0,0,0,Jesús Vallejo
-27,0,0,0,90,DC,Real Betis,Granada,2,2,2020-06-15,12306,2019,400065,0,0,0,0,0,0,0,Jesús Vallejo
-28,0,0,0,1,Sub,Granada,Getafe,2,1,2020-06-12,12299,2019,399467,0,0,0,0,0,0,0,Jesús Vallejo
-29,0,0,0,90,DC,Levante,Granada,1,1,2020-03-08,12291,2019,397341,0,0,0,0,0,0,0,Jesús Vallejo
-30,0,1,0.07814691215753555,90,DC,Granada,Celta Vigo,0,0,2020-02-29,12276,2019,396078,0,0,0,0,0.07814691215753555,0.12815946340560913,0.12815946340560913,Jesús Vallejo
-31,0,0,0,5,Sub,Sevilla,Granada,2,0,2020-01-25,12230,2019,390497,0,0,0,0,0,0,0,Jesús Vallejo
-32,0,0,0,73,Sub,Wolverhampton Wanderers,Southampton,1,1,2019-10-19,11732,2019,357876,0,0,0,0,0,0,0,Jesús Vallejo
-33,0,0,0,90,DC,Wolverhampton Wanderers,Chelsea,2,5,2019-09-14,11688,2019,349038,0,0,0,0,0,0.05839471146464348,0.05839471146464348,Jesús Vallejo
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,1,Sub,Granada,Athletic Club,4,0,2020-07-19,12397,2019,410126,0,0,0,0,0,0,0,Jesús Vallejo
+0,0,0,71,DC,Real Sociedad,Granada,2,3,2020-07-10,12367,2019,407279,0,0,0,0,0,0,0,Jesús Vallejo
+0,0,0,3,Sub,Granada,Valencia,2,2,2020-07-04,12357,2019,405525,0,0,0,0,0,0,0,Jesús Vallejo
+0,0,0,90,DC,Alaves,Granada,0,2,2020-07-01,12343,2019,404580,0,0,0,0,0,0.12129634618759155,0.12129634618759155,Jesús Vallejo
+0,0,0,90,DC,Granada,Eibar,1,2,2020-06-28,12338,2019,403834,0,0,0,0,0,0.7015724182128906,0.7015724182128906,Jesús Vallejo
+0,0,0,90,DC,Leganes,Granada,0,0,2020-06-22,12327,2019,402015,0,0,0,0,0,0,0,Jesús Vallejo
+0,0,0,90,DC,Real Betis,Granada,2,2,2020-06-15,12306,2019,400065,0,0,0,0,0,0,0,Jesús Vallejo
+0,0,0,1,Sub,Granada,Getafe,2,1,2020-06-12,12299,2019,399467,0,0,0,0,0,0,0,Jesús Vallejo
+0,0,0,90,DC,Levante,Granada,1,1,2020-03-08,12291,2019,397341,0,0,0,0,0,0,0,Jesús Vallejo
+0,1,0.07814691215753555,90,DC,Granada,Celta Vigo,0,0,2020-02-29,12276,2019,396078,0,0,0,0,0.07814691215753555,0.12815946340560913,0.12815946340560913,Jesús Vallejo
+0,0,0,5,Sub,Sevilla,Granada,2,0,2020-01-25,12230,2019,390497,0,0,0,0,0,0,0,Jesús Vallejo
+0,0,0,73,Sub,Wolverhampton Wanderers,Southampton,1,1,2019-10-19,11732,2019,357876,0,0,0,0,0,0,0,Jesús Vallejo
+0,0,0,90,DC,Wolverhampton Wanderers,Chelsea,2,5,2019-09-14,11688,2019,349038,0,0,0,0,0,0.05839471146464348,0.05839471146464348,Jesús Vallejo

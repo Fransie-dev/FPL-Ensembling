@@ -1,5 +1,5 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,24,Sub,Newcastle United,Fulham,1,1,2020-12-19,14571,2020,436294,0,0,0,0,0,0.07373277097940445,0.07373277097940445,Michael Hector
-1,0,0,0,62,DC,Fulham,Aston Villa,0,3,2020-09-28,14114,2020,418634,0,0,0,0,0,0.0438326895236969,0.0438326895236969,Michael Hector
-2,0,1,0.08639734238386154,90,DC,Leeds,Fulham,4,3,2020-09-19,14097,2020,415795,0.019498158246278763,0,1,0,0.08639734238386154,0.34780794382095337,0.3283098042011261,Michael Hector
-3,0,0,0,90,DC,Fulham,Arsenal,0,3,2020-09-12,14086,2020,414502,0,0,0,0,0,0,0,Michael Hector
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,24,Sub,Newcastle United,Fulham,1,1,2020-12-19,14571,2020,436294,0,0,0,0,0,0.07373277097940445,0.07373277097940445,Michael Hector
+0,0,0,62,DC,Fulham,Aston Villa,0,3,2020-09-28,14114,2020,418634,0,0,0,0,0,0.0438326895236969,0.0438326895236969,Michael Hector
+0,1,0.08639734238386154,90,DC,Leeds,Fulham,4,3,2020-09-19,14097,2020,415795,0.019498158246278763,0,1,0,0.08639734238386154,0.34780794382095337,0.3283098042011261,Michael Hector
+0,0,0,90,DC,Fulham,Arsenal,0,3,2020-09-12,14086,2020,414502,0,0,0,0,0,0,0,Michael Hector

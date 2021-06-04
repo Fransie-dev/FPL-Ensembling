@@ -1,4 +1,4 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,12,Sub,Norwich,Aston Villa,1,5,2019-10-05,11717,2019,356287,0,0,0,0,0,0,0,Patrick Roberts
-1,0,0,0,6,Sub,Crystal Palace,Norwich,2,0,2019-09-28,11709,2019,354746,0,0,0,0,0,0,0,Patrick Roberts
-2,0,0,0,1,Sub,Burnley,Norwich,2,0,2019-09-21,11696,2019,352268,0,0,0,0,0,0,0,Patrick Roberts
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,12,Sub,Norwich,Aston Villa,1,5,2019-10-05,11717,2019,356287,0,0,0,0,0,0,0,Patrick Roberts
+0,0,0,6,Sub,Crystal Palace,Norwich,2,0,2019-09-28,11709,2019,354746,0,0,0,0,0,0,0,Patrick Roberts
+0,0,0,1,Sub,Burnley,Norwich,2,0,2019-09-21,11696,2019,352268,0,0,0,0,0,0,0,Patrick Roberts

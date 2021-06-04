@@ -1,39 +1,39 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-37,0,0,0,90,GK,Chelsea,Wolverhampton Wanderers,2,0,2020-07-26,12021,2019,411276,0,0,0,0,0,0,0,Rui Patrício
-38,0,0,0,90,GK,Wolverhampton Wanderers,Crystal Palace,2,0,2020-07-20,12012,2019,410391,0,0,0,0,0,0.03175938501954079,0.03175938501954079,Rui Patrício
-39,0,0,0,90,GK,Burnley,Wolverhampton Wanderers,1,1,2020-07-15,11994,2019,408638,0,0,0,0,0,0,0,Rui Patrício
-40,0,0,0,90,GK,Wolverhampton Wanderers,Everton,3,0,2020-07-12,11992,2019,407747,0,0,0,0,0,0.6167966723442078,0.6167966723442078,Rui Patrício
-41,0,0,0,90,GK,Sheffield United,Wolverhampton Wanderers,1,0,2020-07-08,11980,2019,406553,0,0,0,0,0,0,0,Rui Patrício
-42,0,0,0,90,GK,Wolverhampton Wanderers,Arsenal,0,2,2020-07-04,11972,2019,405304,0,0,0,0,0,0,0,Rui Patrício
-43,0,0,0,90,GK,Aston Villa,Wolverhampton Wanderers,0,1,2020-06-27,11954,2019,402921,0,0,0,0,0,0,0,Rui Patrício
-44,0,0,0,90,GK,Wolverhampton Wanderers,Bournemouth,1,0,2020-06-24,11947,2019,402364,0,0,0,0,0,0,0,Rui Patrício
-45,0,0,0,90,GK,West Ham,Wolverhampton Wanderers,0,2,2020-06-20,11934,2019,401376,0,0,0,0,0,0.055587947368621826,0.055587947368621826,Rui Patrício
-46,0,0,0,90,GK,Wolverhampton Wanderers,Brighton,0,0,2020-03-07,11931,2019,387725,0,0,0,0,0,0.09413589537143707,0.09413589537143707,Rui Patrício
-47,0,0,0,90,GK,Tottenham,Wolverhampton Wanderers,2,3,2020-03-01,11920,2019,387603,0,0,0,0,0,0.03150344267487526,0.03150344267487526,Rui Patrício
-48,0,0,0,90,GK,Wolverhampton Wanderers,Norwich,3,0,2020-02-23,11912,2019,387317,0,0,0,0,0,0,0,Rui Patrício
-49,0,0,0,90,GK,Wolverhampton Wanderers,Leicester,0,0,2020-02-14,11902,2019,386932,0,0,0,0,0,0.07284045964479446,0.07284045964479446,Rui Patrício
-50,0,0,0,90,GK,Manchester United,Wolverhampton Wanderers,0,0,2020-02-01,11888,2019,386783,0,0,0,0,0,0.05603310838341713,0.05603310838341713,Rui Patrício
-51,0,0,0,90,GK,Wolverhampton Wanderers,Liverpool,1,2,2020-01-23,11874,2019,386525,0,0,0,0,0,0.8686730265617371,0.8686730265617371,Rui Patrício
-52,0,0,0,90,GK,Southampton,Wolverhampton Wanderers,2,3,2020-01-18,11870,2019,386104,0,0,0,0,0,0,0,Rui Patrício
-53,0,0,0,90,GK,Wolverhampton Wanderers,Newcastle United,1,1,2020-01-11,11853,2019,385794,0,0,0,0,0,0,0,Rui Patrício
-54,0,0,0,90,GK,Watford,Wolverhampton Wanderers,2,1,2020-01-01,11852,2019,385534,0,0,0,0,0,0.05831553041934967,0.05831553041934967,Rui Patrício
-55,0,0,0,90,GK,Liverpool,Wolverhampton Wanderers,1,0,2019-12-29,11836,2019,372905,0,0,0,0,0,0.03503457084298134,0.03503457084298134,Rui Patrício
-56,0,0,0,90,GK,Wolverhampton Wanderers,Manchester City,3,2,2019-12-27,11832,2019,372643,0,0,0,0,0,0.015043530613183975,0.015043530613183975,Rui Patrício
-57,0,0,0,90,GK,Norwich,Wolverhampton Wanderers,1,2,2019-12-21,11819,2019,371520,0,0,0,0,0,0.08463126420974731,0.08463126420974731,Rui Patrício
-58,0,0,0,90,GK,Wolverhampton Wanderers,Tottenham,1,2,2019-12-15,11812,2019,370319,0,0,0,0,0,0.053649187088012695,0.053649187088012695,Rui Patrício
-59,0,0,0,90,GK,Brighton,Wolverhampton Wanderers,2,2,2019-12-08,11795,2019,369227,0,0,0,0,0,0.3294771611690521,0.3294771611690521,Rui Patrício
-60,0,0,0,90,GK,Wolverhampton Wanderers,West Ham,2,0,2019-12-04,11787,2019,367636,0,0,0,0,0,0,0,Rui Patrício
-61,0,0,0,90,GK,Wolverhampton Wanderers,Sheffield United,1,1,2019-12-01,11780,2019,366758,0,0,0,0,0,0,0,Rui Patrício
-62,0,0,0,90,GK,Bournemouth,Wolverhampton Wanderers,1,2,2019-11-23,11765,2019,364670,0,0,0,0,0,0,0,Rui Patrício
-63,0,0,0,90,GK,Wolverhampton Wanderers,Aston Villa,2,1,2019-11-10,11760,2019,363877,0,0,0,0,0,0.061459772288799286,0.061459772288799286,Rui Patrício
-64,0,0,0,90,GK,Arsenal,Wolverhampton Wanderers,1,1,2019-11-02,11743,2019,361483,0,0,0,0,0,0,0,Rui Patrício
-65,0,0,0,90,GK,Newcastle United,Wolverhampton Wanderers,1,1,2019-10-27,11738,2019,360154,0,0,0,0,0,0,0,Rui Patrício
-66,0,0,0,90,GK,Wolverhampton Wanderers,Southampton,1,1,2019-10-19,11732,2019,357863,0,0,0,0,0,0,0,Rui Patrício
-67,0,0,0,90,GK,Manchester City,Wolverhampton Wanderers,0,2,2019-10-06,11716,2019,356845,0,0,0,0,0,0,0,Rui Patrício
-68,0,0,0,90,GK,Wolverhampton Wanderers,Watford,2,0,2019-09-28,11705,2019,354693,0,0,0,0,0,0.19402451813220978,0.19402451813220978,Rui Patrício
-69,0,0,0,90,GK,Crystal Palace,Wolverhampton Wanderers,1,1,2019-09-22,11697,2019,353371,0,0,0,0,0,0.05312337353825569,0.05312337353825569,Rui Patrício
-70,0,0,0,90,GK,Wolverhampton Wanderers,Chelsea,2,5,2019-09-14,11688,2019,349036,0,0,0,0,0,0.041775044053792953,0.041775044053792953,Rui Patrício
-71,0,0,0,90,GK,Everton,Wolverhampton Wanderers,3,2,2019-09-01,11681,2019,347996,0,0,0,0,0,0,0,Rui Patrício
-72,0,0,0,90,GK,Wolverhampton Wanderers,Burnley,1,1,2019-08-25,11668,2019,344674,0,0,0,0,0,0,0,Rui Patrício
-73,0,0,0,90,GK,Wolverhampton Wanderers,Manchester United,1,1,2019-08-19,11662,2019,342730,0,0,0,0,0,0,0,Rui Patrício
-74,0,0,0,90,GK,Leicester,Wolverhampton Wanderers,0,0,2019-08-11,11651,2019,341551,0,0,0,0,0,0.04423673823475838,0.04423673823475838,Rui Patrício
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,90,GK,Chelsea,Wolverhampton Wanderers,2,0,2020-07-26,12021,2019,411276,0,0,0,0,0,0,0,Rui Patrício
+0,0,0,90,GK,Wolverhampton Wanderers,Crystal Palace,2,0,2020-07-20,12012,2019,410391,0,0,0,0,0,0.03175938501954079,0.03175938501954079,Rui Patrício
+0,0,0,90,GK,Burnley,Wolverhampton Wanderers,1,1,2020-07-15,11994,2019,408638,0,0,0,0,0,0,0,Rui Patrício
+0,0,0,90,GK,Wolverhampton Wanderers,Everton,3,0,2020-07-12,11992,2019,407747,0,0,0,0,0,0.6167966723442078,0.6167966723442078,Rui Patrício
+0,0,0,90,GK,Sheffield United,Wolverhampton Wanderers,1,0,2020-07-08,11980,2019,406553,0,0,0,0,0,0,0,Rui Patrício
+0,0,0,90,GK,Wolverhampton Wanderers,Arsenal,0,2,2020-07-04,11972,2019,405304,0,0,0,0,0,0,0,Rui Patrício
+0,0,0,90,GK,Aston Villa,Wolverhampton Wanderers,0,1,2020-06-27,11954,2019,402921,0,0,0,0,0,0,0,Rui Patrício
+0,0,0,90,GK,Wolverhampton Wanderers,Bournemouth,1,0,2020-06-24,11947,2019,402364,0,0,0,0,0,0,0,Rui Patrício
+0,0,0,90,GK,West Ham,Wolverhampton Wanderers,0,2,2020-06-20,11934,2019,401376,0,0,0,0,0,0.055587947368621826,0.055587947368621826,Rui Patrício
+0,0,0,90,GK,Wolverhampton Wanderers,Brighton,0,0,2020-03-07,11931,2019,387725,0,0,0,0,0,0.09413589537143707,0.09413589537143707,Rui Patrício
+0,0,0,90,GK,Tottenham,Wolverhampton Wanderers,2,3,2020-03-01,11920,2019,387603,0,0,0,0,0,0.03150344267487526,0.03150344267487526,Rui Patrício
+0,0,0,90,GK,Wolverhampton Wanderers,Norwich,3,0,2020-02-23,11912,2019,387317,0,0,0,0,0,0,0,Rui Patrício
+0,0,0,90,GK,Wolverhampton Wanderers,Leicester,0,0,2020-02-14,11902,2019,386932,0,0,0,0,0,0.07284045964479446,0.07284045964479446,Rui Patrício
+0,0,0,90,GK,Manchester United,Wolverhampton Wanderers,0,0,2020-02-01,11888,2019,386783,0,0,0,0,0,0.05603310838341713,0.05603310838341713,Rui Patrício
+0,0,0,90,GK,Wolverhampton Wanderers,Liverpool,1,2,2020-01-23,11874,2019,386525,0,0,0,0,0,0.8686730265617371,0.8686730265617371,Rui Patrício
+0,0,0,90,GK,Southampton,Wolverhampton Wanderers,2,3,2020-01-18,11870,2019,386104,0,0,0,0,0,0,0,Rui Patrício
+0,0,0,90,GK,Wolverhampton Wanderers,Newcastle United,1,1,2020-01-11,11853,2019,385794,0,0,0,0,0,0,0,Rui Patrício
+0,0,0,90,GK,Watford,Wolverhampton Wanderers,2,1,2020-01-01,11852,2019,385534,0,0,0,0,0,0.05831553041934967,0.05831553041934967,Rui Patrício
+0,0,0,90,GK,Liverpool,Wolverhampton Wanderers,1,0,2019-12-29,11836,2019,372905,0,0,0,0,0,0.03503457084298134,0.03503457084298134,Rui Patrício
+0,0,0,90,GK,Wolverhampton Wanderers,Manchester City,3,2,2019-12-27,11832,2019,372643,0,0,0,0,0,0.015043530613183975,0.015043530613183975,Rui Patrício
+0,0,0,90,GK,Norwich,Wolverhampton Wanderers,1,2,2019-12-21,11819,2019,371520,0,0,0,0,0,0.08463126420974731,0.08463126420974731,Rui Patrício
+0,0,0,90,GK,Wolverhampton Wanderers,Tottenham,1,2,2019-12-15,11812,2019,370319,0,0,0,0,0,0.053649187088012695,0.053649187088012695,Rui Patrício
+0,0,0,90,GK,Brighton,Wolverhampton Wanderers,2,2,2019-12-08,11795,2019,369227,0,0,0,0,0,0.3294771611690521,0.3294771611690521,Rui Patrício
+0,0,0,90,GK,Wolverhampton Wanderers,West Ham,2,0,2019-12-04,11787,2019,367636,0,0,0,0,0,0,0,Rui Patrício
+0,0,0,90,GK,Wolverhampton Wanderers,Sheffield United,1,1,2019-12-01,11780,2019,366758,0,0,0,0,0,0,0,Rui Patrício
+0,0,0,90,GK,Bournemouth,Wolverhampton Wanderers,1,2,2019-11-23,11765,2019,364670,0,0,0,0,0,0,0,Rui Patrício
+0,0,0,90,GK,Wolverhampton Wanderers,Aston Villa,2,1,2019-11-10,11760,2019,363877,0,0,0,0,0,0.061459772288799286,0.061459772288799286,Rui Patrício
+0,0,0,90,GK,Arsenal,Wolverhampton Wanderers,1,1,2019-11-02,11743,2019,361483,0,0,0,0,0,0,0,Rui Patrício
+0,0,0,90,GK,Newcastle United,Wolverhampton Wanderers,1,1,2019-10-27,11738,2019,360154,0,0,0,0,0,0,0,Rui Patrício
+0,0,0,90,GK,Wolverhampton Wanderers,Southampton,1,1,2019-10-19,11732,2019,357863,0,0,0,0,0,0,0,Rui Patrício
+0,0,0,90,GK,Manchester City,Wolverhampton Wanderers,0,2,2019-10-06,11716,2019,356845,0,0,0,0,0,0,0,Rui Patrício
+0,0,0,90,GK,Wolverhampton Wanderers,Watford,2,0,2019-09-28,11705,2019,354693,0,0,0,0,0,0.19402451813220978,0.19402451813220978,Rui Patrício
+0,0,0,90,GK,Crystal Palace,Wolverhampton Wanderers,1,1,2019-09-22,11697,2019,353371,0,0,0,0,0,0.05312337353825569,0.05312337353825569,Rui Patrício
+0,0,0,90,GK,Wolverhampton Wanderers,Chelsea,2,5,2019-09-14,11688,2019,349036,0,0,0,0,0,0.041775044053792953,0.041775044053792953,Rui Patrício
+0,0,0,90,GK,Everton,Wolverhampton Wanderers,3,2,2019-09-01,11681,2019,347996,0,0,0,0,0,0,0,Rui Patrício
+0,0,0,90,GK,Wolverhampton Wanderers,Burnley,1,1,2019-08-25,11668,2019,344674,0,0,0,0,0,0,0,Rui Patrício
+0,0,0,90,GK,Wolverhampton Wanderers,Manchester United,1,1,2019-08-19,11662,2019,342730,0,0,0,0,0,0,0,Rui Patrício
+0,0,0,90,GK,Leicester,Wolverhampton Wanderers,0,0,2019-08-11,11651,2019,341551,0,0,0,0,0,0.04423673823475838,0.04423673823475838,Rui Patrício

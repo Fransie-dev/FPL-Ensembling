@@ -1,8 +1,8 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,90,DML,Wolverhampton Wanderers,Liverpool,0,1,2021-03-15,14714,2020,457424,0,0,0,0,0,0.042834676802158356,0.042834676802158356,Jonny
-1,0,0,0,90,DML,Aston Villa,Wolverhampton Wanderers,0,0,2021-03-06,14695,2020,454767,0,0,0,0,0,0.00994910765439272,0.00994910765439272,Jonny
-2,0,0,0,57,DML,Manchester City,Wolverhampton Wanderers,4,1,2021-03-02,14720,2020,453566,0,0,0,0,0,0,0,Jonny
-3,0,1,0.05170465260744095,90,DML,Newcastle United,Wolverhampton Wanderers,1,1,2021-02-27,14688,2020,452604,0.024455219507217407,0,1,0,0.05170465260744095,0.19585461914539337,0.11969475448131561,Jonny
-4,0,0,0,60,DML,Wolverhampton Wanderers,Leeds,1,0,2021-02-19,14684,2020,450377,0,0,0,0,0,0.0330161489546299,0.0330161489546299,Jonny
-5,0,0,0,71,DML,Southampton,Wolverhampton Wanderers,1,2,2021-02-14,14672,2020,449452,0.026445593684911728,0,1,0,0,0.051839325577020645,0.025393733754754066,Jonny
-6,0,0,0,47,DML,Wolverhampton Wanderers,Leicester,0,0,2021-02-07,14664,2020,448322,0,0,0,0,0,0,0,Jonny
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,90,DML,Wolverhampton Wanderers,Liverpool,0,1,2021-03-15,14714,2020,457424,0,0,0,0,0,0.042834676802158356,0.042834676802158356,Jonny
+0,0,0,90,DML,Aston Villa,Wolverhampton Wanderers,0,0,2021-03-06,14695,2020,454767,0,0,0,0,0,0.00994910765439272,0.00994910765439272,Jonny
+0,0,0,57,DML,Manchester City,Wolverhampton Wanderers,4,1,2021-03-02,14720,2020,453566,0,0,0,0,0,0,0,Jonny
+0,1,0.05170465260744095,90,DML,Newcastle United,Wolverhampton Wanderers,1,1,2021-02-27,14688,2020,452604,0.024455219507217407,0,1,0,0.05170465260744095,0.19585461914539337,0.11969475448131561,Jonny
+0,0,0,60,DML,Wolverhampton Wanderers,Leeds,1,0,2021-02-19,14684,2020,450377,0,0,0,0,0,0.0330161489546299,0.0330161489546299,Jonny
+0,0,0,71,DML,Southampton,Wolverhampton Wanderers,1,2,2021-02-14,14672,2020,449452,0.026445593684911728,0,1,0,0,0.051839325577020645,0.025393733754754066,Jonny
+0,0,0,47,DML,Wolverhampton Wanderers,Leicester,0,0,2021-02-07,14664,2020,448322,0,0,0,0,0,0,0,Jonny

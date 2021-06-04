@@ -1,2 +1,2 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,90,GK,West Bromwich Albion,Chelsea,3,3,2020-09-26,14108,2020,417598,0,0,0,0,0,0.14356312155723572,0.14356312155723572,Willy Caballero
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,90,GK,West Bromwich Albion,Chelsea,3,3,2020-09-26,14108,2020,417598,0,0,0,0,0,0.14356312155723572,0.14356312155723572,Willy Caballero

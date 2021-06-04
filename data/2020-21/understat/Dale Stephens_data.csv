@@ -1,8 +1,8 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,7,Sub,Tottenham,Burnley,4,0,2021-02-28,14693,2020,452990,0,0,0,0,0,0,0,Dale Stephens
-1,0,0,0,18,Sub,Burnley,Manchester City,0,2,2021-02-03,14646,2020,446990,0,0,0,0,0,0,0,Dale Stephens
-2,0,0,0,9,Sub,Burnley,Sheffield United,1,0,2020-12-29,14587,2020,438414,0,0,0,0,0,0,0,Dale Stephens
-3,0,1,0.02883651852607727,15,Sub,Leeds,Burnley,1,0,2020-12-27,14578,2020,438237,0,0,0,0,0.02883651852607727,0.08621090650558472,0.057374387979507446,Dale Stephens
-4,0,0,0,47,MC,Burnley,Chelsea,0,3,2020-10-31,14496,2020,424499,0,0,0,0,0,0,0,Dale Stephens
-5,0,1,0.033842820674180984,72,MC,Newcastle United,Burnley,3,1,2020-10-03,14472,2020,419798,0,0,0,0,0.033842820674180984,0.07356542348861694,0.03972260281443596,Dale Stephens
-6,0,1,0.019589899107813835,90,MC,Burnley,Southampton,0,1,2020-09-26,14109,2020,417679,0,0,0,0,0.019589899107813835,0.08147256821393967,0.06188266724348068,Dale Stephens
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,7,Sub,Tottenham,Burnley,4,0,2021-02-28,14693,2020,452990,0,0,0,0,0,0,0,Dale Stephens
+0,0,0,18,Sub,Burnley,Manchester City,0,2,2021-02-03,14646,2020,446990,0,0,0,0,0,0,0,Dale Stephens
+0,0,0,9,Sub,Burnley,Sheffield United,1,0,2020-12-29,14587,2020,438414,0,0,0,0,0,0,0,Dale Stephens
+0,1,0.02883651852607727,15,Sub,Leeds,Burnley,1,0,2020-12-27,14578,2020,438237,0,0,0,0,0.02883651852607727,0.08621090650558472,0.057374387979507446,Dale Stephens
+0,0,0,47,MC,Burnley,Chelsea,0,3,2020-10-31,14496,2020,424499,0,0,0,0,0,0,0,Dale Stephens
+0,1,0.033842820674180984,72,MC,Newcastle United,Burnley,3,1,2020-10-03,14472,2020,419798,0,0,0,0,0.033842820674180984,0.07356542348861694,0.03972260281443596,Dale Stephens
+0,1,0.019589899107813835,90,MC,Burnley,Southampton,0,1,2020-09-26,14109,2020,417679,0,0,0,0,0.019589899107813835,0.08147256821393967,0.06188266724348068,Dale Stephens

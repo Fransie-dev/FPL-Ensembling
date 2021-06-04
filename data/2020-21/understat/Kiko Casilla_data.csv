@@ -1,4 +1,4 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,90,GK,Leeds,West Bromwich Albion,3,1,2021-05-23,14808,2020,473308,0,0,0,0,0,0.08454515784978867,0.08454515784978867,Kiko Casilla
-1,0,0,0,90,GK,Southampton,Leeds,0,2,2021-05-18,14802,2020,472333,0,0,0,0,0,0.18502359092235565,0.18502359092235565,Kiko Casilla
-2,0,0,0,90,GK,Leeds,Brighton,0,1,2021-01-16,14618,2020,442299,0,0,0,0,0,0,0,Kiko Casilla
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,90,GK,Leeds,West Bromwich Albion,3,1,2021-05-23,14808,2020,473308,0,0,0,0,0,0.08454515784978867,0.08454515784978867,Kiko Casilla
+0,0,0,90,GK,Southampton,Leeds,0,2,2021-05-18,14802,2020,472333,0,0,0,0,0,0.18502359092235565,0.18502359092235565,Kiko Casilla
+0,0,0,90,GK,Leeds,Brighton,0,1,2021-01-16,14618,2020,442299,0,0,0,0,0,0,0,Kiko Casilla

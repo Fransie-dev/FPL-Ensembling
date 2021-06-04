@@ -1,5 +1,5 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,48,DR,West Bromwich Albion,Manchester United,1,1,2021-02-14,14673,2020,449638,0,0,0,0,0,0.15599408745765686,0.15599408745765686,Lee Peltier
-1,0,0,0,90,DR,Tottenham,West Bromwich Albion,2,0,2021-02-07,14663,2020,448058,0,0,0,0,0,0,0,Lee Peltier
-2,0,0,0,90,DL,West Bromwich Albion,Leeds,0,5,2020-12-29,14590,2020,438461,0.022321734577417374,0,1,0,0,0.022321734577417374,0,Lee Peltier
-3,0,0,0,2,Sub,Manchester City,West Bromwich Albion,1,1,2020-12-15,14564,2020,434464,0,0,0,0,0,0,0,Lee Peltier
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,48,DR,West Bromwich Albion,Manchester United,1,1,2021-02-14,14673,2020,449638,0,0,0,0,0,0.15599408745765686,0.15599408745765686,Lee Peltier
+0,0,0,90,DR,Tottenham,West Bromwich Albion,2,0,2021-02-07,14663,2020,448058,0,0,0,0,0,0,0,Lee Peltier
+0,0,0,90,DL,West Bromwich Albion,Leeds,0,5,2020-12-29,14590,2020,438461,0.022321734577417374,0,1,0,0,0.022321734577417374,0,Lee Peltier
+0,0,0,2,Sub,Manchester City,West Bromwich Albion,1,1,2020-12-15,14564,2020,434464,0,0,0,0,0,0,0,Lee Peltier

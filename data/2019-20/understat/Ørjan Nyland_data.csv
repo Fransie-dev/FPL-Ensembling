@@ -1,8 +1,8 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,90,GK,Aston Villa,Wolverhampton Wanderers,0,1,2020-06-27,11954,2019,402905,0,0,0,0,0,0.026355259120464325,0.026355259120464325,Ørjan Nyland
-1,0,0,0,90,GK,Newcastle United,Aston Villa,1,1,2020-06-24,11949,2019,402410,0,0,0,0,0,0,0,Ørjan Nyland
-2,0,0,0,90,GK,Aston Villa,Chelsea,1,2,2020-06-21,11933,2019,401658,0,0,0,0,0,0.14319603145122528,0.14319603145122528,Ørjan Nyland
-3,0,0,0,90,GK,Aston Villa,Sheffield United,0,0,2020-06-17,11913,2019,400322,0,0,0,0,0,0,0,Ørjan Nyland
-4,0,0,0,90,GK,Aston Villa,Manchester City,1,6,2020-01-12,11856,2019,385982,0,0,0,0,0,0,0,Ørjan Nyland
-5,0,0,0,3,Sub,Burnley,Aston Villa,1,2,2020-01-01,11846,2019,385518,0,0,0,0,0,0,0,Ørjan Nyland
-6,0,0,0,83,Sub,Wolverhampton Wanderers,Aston Villa,2,1,2019-11-10,11760,2019,363902,0,0,0,0,0,0.02495569735765457,0.02495569735765457,Ørjan Nyland
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,90,GK,Aston Villa,Wolverhampton Wanderers,0,1,2020-06-27,11954,2019,402905,0,0,0,0,0,0.026355259120464325,0.026355259120464325,Ørjan Nyland
+0,0,0,90,GK,Newcastle United,Aston Villa,1,1,2020-06-24,11949,2019,402410,0,0,0,0,0,0,0,Ørjan Nyland
+0,0,0,90,GK,Aston Villa,Chelsea,1,2,2020-06-21,11933,2019,401658,0,0,0,0,0,0.14319603145122528,0.14319603145122528,Ørjan Nyland
+0,0,0,90,GK,Aston Villa,Sheffield United,0,0,2020-06-17,11913,2019,400322,0,0,0,0,0,0,0,Ørjan Nyland
+0,0,0,90,GK,Aston Villa,Manchester City,1,6,2020-01-12,11856,2019,385982,0,0,0,0,0,0,0,Ørjan Nyland
+0,0,0,3,Sub,Burnley,Aston Villa,1,2,2020-01-01,11846,2019,385518,0,0,0,0,0,0,0,Ørjan Nyland
+0,0,0,83,Sub,Wolverhampton Wanderers,Aston Villa,2,1,2019-11-10,11760,2019,363902,0,0,0,0,0,0.02495569735765457,0.02495569735765457,Ørjan Nyland

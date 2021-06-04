@@ -1,9 +1,9 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,90,GK,Southampton,Crystal Palace,3,1,2021-05-11,14753,2020,469984,0,0,0,0,0,0.4003390073776245,0.4003390073776245,Fraser Forster
-1,0,0,0,90,GK,Liverpool,Southampton,2,0,2021-05-08,14780,2020,469005,0,0,0,0,0,0.06701760739088058,0.06701760739088058,Fraser Forster
-2,0,0,0,90,GK,West Bromwich Albion,Southampton,3,0,2021-04-12,14743,2020,462366,0,0,0,0,0,0.03163868188858032,0.03163868188858032,Fraser Forster
-3,0,0,0,90,GK,Southampton,Burnley,3,2,2021-04-04,14733,2020,460029,0,0,0,0,0,0.6149501800537109,0.6149501800537109,Fraser Forster
-4,0,0,0,90,GK,Southampton,Brighton,1,2,2021-03-14,14713,2020,456740,0,0,0,0,0,0,0,Fraser Forster
-5,0,0,0,90,GK,Sheffield United,Southampton,0,2,2021-03-06,14701,2020,454647,0,0,0,0,0,0,0,Fraser Forster
-6,0,0,0,90,GK,Everton,Southampton,1,0,2021-03-01,14686,2020,453452,0,0,0,0,0,0,0,Fraser Forster
-7,0,0,0,90,GK,Southampton,Liverpool,1,0,2021-01-04,14598,2020,439909,0,0,0,0,0,0,0,Fraser Forster
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,90,GK,Southampton,Crystal Palace,3,1,2021-05-11,14753,2020,469984,0,0,0,0,0,0.4003390073776245,0.4003390073776245,Fraser Forster
+0,0,0,90,GK,Liverpool,Southampton,2,0,2021-05-08,14780,2020,469005,0,0,0,0,0,0.06701760739088058,0.06701760739088058,Fraser Forster
+0,0,0,90,GK,West Bromwich Albion,Southampton,3,0,2021-04-12,14743,2020,462366,0,0,0,0,0,0.03163868188858032,0.03163868188858032,Fraser Forster
+0,0,0,90,GK,Southampton,Burnley,3,2,2021-04-04,14733,2020,460029,0,0,0,0,0,0.6149501800537109,0.6149501800537109,Fraser Forster
+0,0,0,90,GK,Southampton,Brighton,1,2,2021-03-14,14713,2020,456740,0,0,0,0,0,0,0,Fraser Forster
+0,0,0,90,GK,Sheffield United,Southampton,0,2,2021-03-06,14701,2020,454647,0,0,0,0,0,0,0,Fraser Forster
+0,0,0,90,GK,Everton,Southampton,1,0,2021-03-01,14686,2020,453452,0,0,0,0,0,0,0,Fraser Forster
+0,0,0,90,GK,Southampton,Liverpool,1,0,2021-01-04,14598,2020,439909,0,0,0,0,0,0,0,Fraser Forster

@@ -1,27 +1,27 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,90,GK,Manchester United,Fulham,1,1,2021-05-18,14800,2020,472291,0,0,0,0,0,0.04619088023900986,0.04619088023900986,David de Gea
-1,0,0,0,90,GK,Manchester United,Leicester,1,2,2021-05-11,14788,2020,469895,0,0,0,0,0,0,0,David de Gea
-2,0,0,0,90,GK,Chelsea,Manchester United,0,0,2021-02-28,14685,2020,453220,0,0,0,0,0,0.019558336585760117,0.019558336585760117,David de Gea
-3,0,0,0,90,GK,Manchester United,Newcastle United,3,1,2021-02-21,14681,2020,451538,0,0,0,0,0,0.04900996387004852,0.04900996387004852,David de Gea
-4,0,0,0,90,GK,West Bromwich Albion,Manchester United,1,1,2021-02-14,14673,2020,449651,0,0,0,0,0,0.016491416841745377,0.016491416841745377,David de Gea
-5,0,0,0,90,GK,Manchester United,Everton,3,3,2021-02-06,14660,2020,447926,0,0,0,0,0,0.10795629024505615,0.10795629024505615,David de Gea
-6,0,0,0,90,GK,Manchester United,Southampton,9,0,2021-02-02,14651,2020,446739,0,0,0,0,0,0.9621796607971191,0.9621796607971191,David de Gea
-7,0,0,0,90,GK,Arsenal,Manchester United,0,0,2021-01-30,14635,2020,445867,0,0,0,0,0,0,0,David de Gea
-8,0,0,0,90,GK,Manchester United,Sheffield United,1,2,2021-01-27,14628,2020,445201,0,0,0,0,0,0.04452449828386307,0.04452449828386307,David de Gea
-9,0,0,0,90,GK,Fulham,Manchester United,1,2,2021-01-20,14607,2020,443641,0,0,0,0,0,0.03267478570342064,0.03267478570342064,David de Gea
-10,0,0,0,90,GK,Liverpool,Manchester United,0,0,2021-01-17,14620,2020,442844,0,0,0,0,0,0,0,David de Gea
-11,0,0,0,90,GK,Burnley,Manchester United,0,1,2021-01-12,14088,2020,441830,0,0,0,0,0,0,0,David de Gea
-12,0,0,0,90,GK,Manchester United,Aston Villa,2,1,2021-01-01,14596,2020,438869,0,0,0,0,0,0.1274557262659073,0.1274557262659073,David de Gea
-13,0,0,0,90,GK,Manchester United,Wolverhampton Wanderers,1,0,2020-12-29,14592,2020,438545,0,0,0,0,0,0.01096188835799694,0.01096188835799694,David de Gea
-14,0,0,0,90,GK,Leicester,Manchester United,2,2,2020-12-26,14579,2020,438060,0,0,0,0,0,0,0,David de Gea
-15,0,0,0,90,GK,Manchester United,Leeds,6,2,2020-12-20,14570,2020,436845,0,0,0,0,0,0.6021042466163635,0.6021042466163635,David de Gea
-16,0,0,0,90,GK,Manchester United,Manchester City,0,0,2020-12-12,14549,2020,433173,0,0,0,0,0,0,0,David de Gea
-17,0,0,0,48,GK,Southampton,Manchester United,2,3,2020-11-29,14534,2020,430379,0,0,0,0,0,0,0,David de Gea
-18,0,0,0,90,GK,Manchester United,West Bromwich Albion,1,0,2020-11-21,14520,2020,428265,0,0,0,0,0,0,0,David de Gea
-19,0,0,0,90,GK,Everton,Manchester United,1,3,2020-11-07,14509,2020,426047,0,0,0,0,0,0,0,David de Gea
-20,0,0,0,90,GK,Manchester United,Arsenal,0,1,2020-11-01,14500,2020,425359,0,0,0,0,0,0,0,David de Gea
-21,0,0,0,90,GK,Manchester United,Chelsea,0,0,2020-10-24,14491,2020,423090,0,0,0,0,0,0,0,David de Gea
-22,0,0,0,90,GK,Newcastle United,Manchester United,1,4,2020-10-17,14481,2020,421466,0,0,0,0,0,0.09414176642894745,0.09414176642894745,David de Gea
-23,0,0,0,90,GK,Manchester United,Tottenham,1,6,2020-10-04,14471,2020,420483,0,0,0,0,0,0,0,David de Gea
-24,0,0,0,90,GK,Brighton,Manchester United,2,3,2020-09-26,14106,2020,417141,0,0,0,0,0,0,0,David de Gea
-25,0,0,0,90,GK,Manchester United,Crystal Palace,1,3,2020-09-19,14098,2020,415901,0,0,0,0,0,0,0,David de Gea
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,90,GK,Manchester United,Fulham,1,1,2021-05-18,14800,2020,472291,0,0,0,0,0,0.04619088023900986,0.04619088023900986,David de Gea
+0,0,0,90,GK,Manchester United,Leicester,1,2,2021-05-11,14788,2020,469895,0,0,0,0,0,0,0,David de Gea
+0,0,0,90,GK,Chelsea,Manchester United,0,0,2021-02-28,14685,2020,453220,0,0,0,0,0,0.019558336585760117,0.019558336585760117,David de Gea
+0,0,0,90,GK,Manchester United,Newcastle United,3,1,2021-02-21,14681,2020,451538,0,0,0,0,0,0.04900996387004852,0.04900996387004852,David de Gea
+0,0,0,90,GK,West Bromwich Albion,Manchester United,1,1,2021-02-14,14673,2020,449651,0,0,0,0,0,0.016491416841745377,0.016491416841745377,David de Gea
+0,0,0,90,GK,Manchester United,Everton,3,3,2021-02-06,14660,2020,447926,0,0,0,0,0,0.10795629024505615,0.10795629024505615,David de Gea
+0,0,0,90,GK,Manchester United,Southampton,9,0,2021-02-02,14651,2020,446739,0,0,0,0,0,0.9621796607971191,0.9621796607971191,David de Gea
+0,0,0,90,GK,Arsenal,Manchester United,0,0,2021-01-30,14635,2020,445867,0,0,0,0,0,0,0,David de Gea
+0,0,0,90,GK,Manchester United,Sheffield United,1,2,2021-01-27,14628,2020,445201,0,0,0,0,0,0.04452449828386307,0.04452449828386307,David de Gea
+0,0,0,90,GK,Fulham,Manchester United,1,2,2021-01-20,14607,2020,443641,0,0,0,0,0,0.03267478570342064,0.03267478570342064,David de Gea
+0,0,0,90,GK,Liverpool,Manchester United,0,0,2021-01-17,14620,2020,442844,0,0,0,0,0,0,0,David de Gea
+0,0,0,90,GK,Burnley,Manchester United,0,1,2021-01-12,14088,2020,441830,0,0,0,0,0,0,0,David de Gea
+0,0,0,90,GK,Manchester United,Aston Villa,2,1,2021-01-01,14596,2020,438869,0,0,0,0,0,0.1274557262659073,0.1274557262659073,David de Gea
+0,0,0,90,GK,Manchester United,Wolverhampton Wanderers,1,0,2020-12-29,14592,2020,438545,0,0,0,0,0,0.01096188835799694,0.01096188835799694,David de Gea
+0,0,0,90,GK,Leicester,Manchester United,2,2,2020-12-26,14579,2020,438060,0,0,0,0,0,0,0,David de Gea
+0,0,0,90,GK,Manchester United,Leeds,6,2,2020-12-20,14570,2020,436845,0,0,0,0,0,0.6021042466163635,0.6021042466163635,David de Gea
+0,0,0,90,GK,Manchester United,Manchester City,0,0,2020-12-12,14549,2020,433173,0,0,0,0,0,0,0,David de Gea
+0,0,0,48,GK,Southampton,Manchester United,2,3,2020-11-29,14534,2020,430379,0,0,0,0,0,0,0,David de Gea
+0,0,0,90,GK,Manchester United,West Bromwich Albion,1,0,2020-11-21,14520,2020,428265,0,0,0,0,0,0,0,David de Gea
+0,0,0,90,GK,Everton,Manchester United,1,3,2020-11-07,14509,2020,426047,0,0,0,0,0,0,0,David de Gea
+0,0,0,90,GK,Manchester United,Arsenal,0,1,2020-11-01,14500,2020,425359,0,0,0,0,0,0,0,David de Gea
+0,0,0,90,GK,Manchester United,Chelsea,0,0,2020-10-24,14491,2020,423090,0,0,0,0,0,0,0,David de Gea
+0,0,0,90,GK,Newcastle United,Manchester United,1,4,2020-10-17,14481,2020,421466,0,0,0,0,0,0.09414176642894745,0.09414176642894745,David de Gea
+0,0,0,90,GK,Manchester United,Tottenham,1,6,2020-10-04,14471,2020,420483,0,0,0,0,0,0,0,David de Gea
+0,0,0,90,GK,Brighton,Manchester United,2,3,2020-09-26,14106,2020,417141,0,0,0,0,0,0,0,David de Gea
+0,0,0,90,GK,Manchester United,Crystal Palace,1,3,2020-09-19,14098,2020,415901,0,0,0,0,0,0,0,David de Gea

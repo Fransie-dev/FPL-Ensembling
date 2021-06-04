@@ -1,8 +1,8 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-0,0,0,0,90,DC,Manchester City,Liverpool,1,1,2020-11-08,14511,2020,427247,0,0,0,0,0,0,0,Joseph Gomez
-1,0,0,0,90,DC,Liverpool,West Ham,2,1,2020-10-31,14499,2020,424644,0,0,0,0,0,0.46252939105033875,0.46252939105033875,Joseph Gomez
-2,0,0,0,90,DC,Liverpool,Sheffield United,2,1,2020-10-24,14490,2020,423214,0,0,0,0,0,0.6176787614822388,0.6176787614822388,Joseph Gomez
-3,0,0,0,80,Sub,Everton,Liverpool,2,2,2020-10-17,14477,2020,420877,0,0,0,0,0,0.3684523403644562,0.3684523403644562,Joseph Gomez
-4,0,0,0,64,DC,Aston Villa,Liverpool,7,2,2020-10-04,14466,2020,420651,0,0,0,0,0,0,0,Joseph Gomez
-5,0,0,0,90,DC,Liverpool,Arsenal,3,1,2020-09-28,14115,2020,418695,0.06542927026748657,0,1,0,0,0.41131943464279175,0.3458901643753052,Joseph Gomez
-6,0,0,0,90,DC,Liverpool,Leeds,4,3,2020-09-12,14090,2020,414676,0,0,0,0,0,0.22544020414352417,0.22544020414352417,Joseph Gomez
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,90,DC,Manchester City,Liverpool,1,1,2020-11-08,14511,2020,427247,0,0,0,0,0,0,0,Joseph Gomez
+0,0,0,90,DC,Liverpool,West Ham,2,1,2020-10-31,14499,2020,424644,0,0,0,0,0,0.46252939105033875,0.46252939105033875,Joseph Gomez
+0,0,0,90,DC,Liverpool,Sheffield United,2,1,2020-10-24,14490,2020,423214,0,0,0,0,0,0.6176787614822388,0.6176787614822388,Joseph Gomez
+0,0,0,80,Sub,Everton,Liverpool,2,2,2020-10-17,14477,2020,420877,0,0,0,0,0,0.3684523403644562,0.3684523403644562,Joseph Gomez
+0,0,0,64,DC,Aston Villa,Liverpool,7,2,2020-10-04,14466,2020,420651,0,0,0,0,0,0,0,Joseph Gomez
+0,0,0,90,DC,Liverpool,Arsenal,3,1,2020-09-28,14115,2020,418695,0.06542927026748657,0,1,0,0,0.41131943464279175,0.3458901643753052,Joseph Gomez
+0,0,0,90,DC,Liverpool,Leeds,4,3,2020-09-12,14090,2020,414676,0,0,0,0,0,0.22544020414352417,0.22544020414352417,Joseph Gomez

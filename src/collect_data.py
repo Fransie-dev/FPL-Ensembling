@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import requests
-import progressbar as pb
+
 import csv
 import shutil
 import asyncio
@@ -201,7 +201,7 @@ def collect_all_gw(max_gw, gameweek_path, data_path, player_path):
         data_path ([type]): [description]
         player_path ([type]): [description]
     """    
-    for i in pbar(list(range(1, max_gw + 1))): # Check here
+    for i in list(range(1, max_gw + 1)): # Check here
         collect_gw(i, gameweek_path=gameweek_path, data_path=data_path, player_path=player_path)
     merge_gw(type='FPL', gameweek_path=gameweek_path)
     
@@ -253,6 +253,7 @@ def merge_gw(type, gameweek_path):
     Inspiration:
         https://github.com/vaastav/Fantasy-Premier-League/blob/master/collector.py
     """ 
+    count_directory(gameweek_path)
     if type == 'Understat':
         prefix = 'US_gw'
     if type == 'FPL':
@@ -336,7 +337,7 @@ def write_league_players(understat_path, season):
     loop = asyncio.get_event_loop()
     players = loop.run_until_complete(get_league_players(season))
     player = pd.DataFrame.from_dict(players) # Equivalent of players_raw.csv
-    player.to_csv(understat_path + 'understat_players.csv')
+    player.to_csv(understat_path + 'understat_players.csv', index = False)
     return player
 
 def set_season_time(season):
@@ -372,13 +373,12 @@ def get_all_player_history(understat_path, season):
         individuals = individuals[(individuals.date >= start_date)]
         individuals = individuals[(individuals.date <= end_date)]
         individuals['player_name'] = name
-        individuals.to_csv(understat_path + "{}_data.csv".format(name)) # TODO: FIX THIS DIRECTORY
+        individuals.to_csv(understat_path + "{}_data.csv".format(name), index = False) 
         if i == 0:
             all_players = individuals
         else:
             all_players = all_players.append(individuals)
-    all_players.to_csv(understat_path + 'all_understat_players.csv')
-
+    all_players.to_csv(understat_path + 'all_understat_players.csv', index = False) 
 
 def main(season):
     if season == '2020-21':
@@ -434,7 +434,7 @@ def main(season):
         inp_gameweek = input('Delete existing gameweek data and scrape for it again? [y/n]\n')
         if inp_gameweek ==  'y':
             dlt_create_dir(gameweek_path)
-            collect_all_gw(max_gw=38, gameweek_path=gameweek_path, data_path=data_path, player_path=player_path)
+            collect_all_gw(max_gw=47, gameweek_path=gameweek_path, data_path=data_path, player_path=player_path)
             print('Success', end = '\n')
             
         # Understat data
@@ -454,6 +454,6 @@ def main(season):
     
 
 if __name__ == "__main__":
-    # main(season='2020-21') # Successful execution
-    # main(season='2019-20') # Successful execution
+    main(season='2020-21') # Successful execution
+    main(season='2019-20') # Successful execution
     print('Success!')

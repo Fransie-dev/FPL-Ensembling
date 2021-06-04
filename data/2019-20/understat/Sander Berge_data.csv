@@ -1,15 +1,15 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-15,0,0,0,90,MC,Southampton,Sheffield United,3,1,2020-07-26,12015,2019,411433,0,0,0,0,0,0,0,Sander Berge
-16,0,0,0,90,MC,Sheffield United,Everton,0,1,2020-07-20,12009,2019,410369,0.09634491056203842,0,1,0,0,0.22941462695598602,0.22941462695598602,Sander Berge
-17,0,0,0,47,MC,Leicester,Sheffield United,2,0,2020-07-16,11998,2019,409132,0,0,0,0,0,0,0,Sander Berge
-18,0,0,0,65,MC,Sheffield United,Chelsea,3,0,2020-07-11,11989,2019,407509,0,0,0,0,0,0.057496920228004456,0.057496920228004456,Sander Berge
-19,0,0,0,90,MC,Sheffield United,Wolverhampton Wanderers,1,0,2020-07-08,11980,2019,406546,0,0,0,0,0,0,0,Sander Berge
-20,0,3,0.4548318684101105,90,MC,Burnley,Sheffield United,1,1,2020-07-05,11963,2019,405563,0,0,0,0,0.4548318684101105,0.5400625467300415,0.10129658877849579,Sander Berge
-21,1,1,0.09194900840520859,90,MC,Sheffield United,Tottenham,3,1,2020-07-02,11960,2019,404816,0.6180425882339478,1,1,1,0.09194900840520859,1.442540168762207,0.7325485944747925,Sander Berge
-22,0,0,0,41,Sub,Manchester United,Sheffield United,3,0,2020-06-24,11950,2019,402331,0,0,0,0,0,0,0,Sander Berge
-23,0,0,0,67,MC,Newcastle United,Sheffield United,3,0,2020-06-21,11938,2019,401623,0,0,0,0,0,0.07149442285299301,0.07149442285299301,Sander Berge
-24,0,0,0,70,MC,Aston Villa,Sheffield United,0,0,2020-06-17,11913,2019,400343,0,0,0,0,0,0,0,Sander Berge
-25,0,0,0,1,Sub,Sheffield United,Norwich,1,0,2020-03-07,11929,2019,387682,0,0,0,0,0,0,0,Sander Berge
-26,0,0,0,83,MC,Sheffield United,Brighton,1,1,2020-02-22,11909,2019,387158,0,0,0,0,0,0,0,Sander Berge
-27,0,1,0.0539725199341774,64,MC,Sheffield United,Bournemouth,2,1,2020-02-09,11900,2019,386911,0,0,0,0,0.0539725199341774,0,0,Sander Berge
-28,0,0,0,69,MC,Crystal Palace,Sheffield United,0,1,2020-02-01,11885,2019,386708,0,0,0,0,0,0.017906801775097847,0.017906801775097847,Sander Berge
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,90,MC,Southampton,Sheffield United,3,1,2020-07-26,12015,2019,411433,0,0,0,0,0,0,0,Sander Berge
+0,0,0,90,MC,Sheffield United,Everton,0,1,2020-07-20,12009,2019,410369,0.09634491056203842,0,1,0,0,0.22941462695598602,0.22941462695598602,Sander Berge
+0,0,0,47,MC,Leicester,Sheffield United,2,0,2020-07-16,11998,2019,409132,0,0,0,0,0,0,0,Sander Berge
+0,0,0,65,MC,Sheffield United,Chelsea,3,0,2020-07-11,11989,2019,407509,0,0,0,0,0,0.057496920228004456,0.057496920228004456,Sander Berge
+0,0,0,90,MC,Sheffield United,Wolverhampton Wanderers,1,0,2020-07-08,11980,2019,406546,0,0,0,0,0,0,0,Sander Berge
+0,3,0.4548318684101105,90,MC,Burnley,Sheffield United,1,1,2020-07-05,11963,2019,405563,0,0,0,0,0.4548318684101105,0.5400625467300415,0.10129658877849579,Sander Berge
+1,1,0.09194900840520859,90,MC,Sheffield United,Tottenham,3,1,2020-07-02,11960,2019,404816,0.6180425882339478,1,1,1,0.09194900840520859,1.442540168762207,0.7325485944747925,Sander Berge
+0,0,0,41,Sub,Manchester United,Sheffield United,3,0,2020-06-24,11950,2019,402331,0,0,0,0,0,0,0,Sander Berge
+0,0,0,67,MC,Newcastle United,Sheffield United,3,0,2020-06-21,11938,2019,401623,0,0,0,0,0,0.07149442285299301,0.07149442285299301,Sander Berge
+0,0,0,70,MC,Aston Villa,Sheffield United,0,0,2020-06-17,11913,2019,400343,0,0,0,0,0,0,0,Sander Berge
+0,0,0,1,Sub,Sheffield United,Norwich,1,0,2020-03-07,11929,2019,387682,0,0,0,0,0,0,0,Sander Berge
+0,0,0,83,MC,Sheffield United,Brighton,1,1,2020-02-22,11909,2019,387158,0,0,0,0,0,0,0,Sander Berge
+0,1,0.0539725199341774,64,MC,Sheffield United,Bournemouth,2,1,2020-02-09,11900,2019,386911,0,0,0,0,0.0539725199341774,0,0,Sander Berge
+0,0,0,69,MC,Crystal Palace,Sheffield United,0,1,2020-02-01,11885,2019,386708,0,0,0,0,0,0.017906801775097847,0.017906801775097847,Sander Berge

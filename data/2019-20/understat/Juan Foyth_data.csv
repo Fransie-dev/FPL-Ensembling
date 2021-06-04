@@ -1,5 +1,5 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-16,0,0,0,48,DC,Norwich,Tottenham,2,2,2019-12-28,11839,2019,372795,0,0,0,0,0,0,0,Juan Foyth
-17,0,0,0,1,Sub,Wolverhampton Wanderers,Tottenham,1,2,2019-12-15,11812,2019,370341,0,0,0,0,0,0,0,Juan Foyth
-18,0,0,0,17,Sub,Tottenham,Sheffield United,1,1,2019-11-09,11759,2019,363145,0.02350112982094288,0,1,0,0,0.0990934669971466,0.0990934669971466,Juan Foyth
-19,0,0,0,1,Sub,Everton,Tottenham,1,1,2019-11-03,11748,2019,362359,0,0,0,0,0,0,0,Juan Foyth
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,0,0,48,DC,Norwich,Tottenham,2,2,2019-12-28,11839,2019,372795,0,0,0,0,0,0,0,Juan Foyth
+0,0,0,1,Sub,Wolverhampton Wanderers,Tottenham,1,2,2019-12-15,11812,2019,370341,0,0,0,0,0,0,0,Juan Foyth
+0,0,0,17,Sub,Tottenham,Sheffield United,1,1,2019-11-09,11759,2019,363145,0.02350112982094288,0,1,0,0,0.0990934669971466,0.0990934669971466,Juan Foyth
+0,0,0,1,Sub,Everton,Tottenham,1,1,2019-11-03,11748,2019,362359,0,0,0,0,0,0,0,Juan Foyth

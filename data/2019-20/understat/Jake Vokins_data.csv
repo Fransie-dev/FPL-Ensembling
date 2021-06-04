@@ -1,2 +1,2 @@
-,goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
-1,0,1,0.013284161686897278,90,DL,Southampton,Brighton,1,1,2020-07-16,12002,2019,409457,0.09659572690725327,0,1,0,0.013284161686897278,0.5018613934516907,0.4885772168636322,Jake Vokins
+goals,shots,xG,time,position,h_team,a_team,h_goals,a_goals,date,id,season,roster_id,xA,assists,key_passes,npg,npxG,xGChain,xGBuildup,player_name
+0,1,0.013284161686897278,90,DL,Southampton,Brighton,1,1,2020-07-16,12002,2019,409457,0.09659572690725327,0,1,0,0.013284161686897278,0.5018613934516907,0.4885772168636322,Jake Vokins
