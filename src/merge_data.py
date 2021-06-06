@@ -3,6 +3,7 @@
 # Imports and functions 
 # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 import pandas as pd
+# pd.set_option('display.max_rows', None) # Slows down code too much, just view from variable explorer
 import numpy as np
 import difflib
 
@@ -47,11 +48,16 @@ def read_data(fpl_path, understat_path):
     return understat, fpl_to_understat, fpl, teams, fixtures
 
 def rename_teams(teams,fpl, cols = ['team','opponent_team', 'team_a', 'team_h']):
-    """[This function maps the team id to the fpl dataset]
+    """[This function replaces the integer value used to indicate the teams with the FPL's associated string]
 
     Args:
-        cols (list, optional): [description]. Defaults to ['opponent_team', 'team_a', 'team_h'].
-    """    
+        teams ([type]): [description]
+        fpl ([type]): [description]
+        cols (list, optional): [description]. Defaults to ['team','opponent_team', 'team_a', 'team_h'].
+
+    Returns:
+        [type]: [A converted dataframe]
+    """
     for col in cols:
         for i in np.arange(start = 0, stop = len(teams)):
             id = teams['id'][i]
@@ -60,21 +66,57 @@ def rename_teams(teams,fpl, cols = ['team','opponent_team', 'team_a', 'team_h'])
     return fpl
 
 def intersect(a, b):
-    print(len(list(set(a) & set(b))), 'unique, matching entries within the two columns')
+    """[This function finds the intersection between two dataframe columns]
+
+    Args:
+        a ([type]): [description]
+        b ([type]): [description]
+
+    Returns:
+        [type]: [The intersection]
+    """    
+    print(len(list(set(a) & set(b))), 'unique and matching names between FPL and Understat')
     return list(set(a) & set(b))
 
 def union(a, b):
+    """[This function finds the union between two dataframe columns]
+
+    Args:
+        a ([type]): [description]
+        b ([type]): [description]
+
+    Returns:
+        [type]: [The union]
+    """    
     print(len(list(set(a) | set(b))), 'unique, not necessarily matching entries within the two columns')
     return list(set(a) | set(b))
     
 
 def merge_fpl_data(fpl, fixtures, teams):
+    """[This function merges the relevant data scraped from the FPL API]
+
+    Args:
+        fpl ([type]): [description]
+        fixtures ([type]): [description]
+        teams ([type]): [description]
+
+    Returns:
+        [type]: [A merged dataframe]
+    """    
     fpl = pd.merge(fpl, fixtures, on='fixture') # Now have some match statistics
     fpl = pd.merge(fpl, teams, left_on='team', right_on='name')
     fpl = rename_teams(teams, fpl)
     return fpl
     
 def rename_fpl_teams(fpl):
+    """[This function replaces all the acronyms used by the FPL API for the different teams]
+
+    Args:
+        fpl ([type]): [description]
+
+    Returns:
+        [type]: [A renamed dataframe]
+    """    
     team_reps = {
         'Man City':'Manchester City', 
         'Man Utd': 'Manchester United', 
@@ -106,7 +148,18 @@ def rename_fpl_teams(fpl):
     return fpl
 
 
-def get_matching_names(understat_names, fpl_names, threshold):
+def get_matching_names(understat_names, fpl_names):
+    """[This function checks for similarity between understat and fpl names, and renames the most matching understat
+    name to the associated FPL name.]
+
+    Args:
+        understat_names ([type]): [description]
+        fpl_names ([type]): [description]
+        threshold ([type]): [description]
+
+    Returns:
+        [type]: [description]
+    """    
     seq = difflib.SequenceMatcher()
     understat_similar = []
     fpl_similar = []
@@ -115,105 +168,123 @@ def get_matching_names(understat_names, fpl_names, threshold):
         for j in range(len(fpl_names)):
             seq.set_seqs(understat_names[i].lower(), fpl_names[j].lower())
             ratio_similar = seq.ratio()
-            if ratio_similar > threshold:
-                understat_similar.append(understat_names[i])
-                fpl_similar.append(fpl_names[j])
-                ratio.append(ratio_similar)
+            understat_similar.append(understat_names[i])
+            fpl_similar.append(fpl_names[j])
+            ratio.append(ratio_similar)
     similarity_matched_df = pd.DataFrame({'understat':understat_similar, 'fpl':fpl_similar, 'similarity': ratio})
     similarity_matched_df_final = similarity_matched_df.loc[similarity_matched_df.groupby('understat')['similarity'].idxmax()]
+    print(similarity_matched_df_final)
     return similarity_matched_df_final
 
+def exact_matches(understat, fpl):
+    """[This function matches the entries whos names and dates match exactly]
 
+    Args:
+        understat ([type]): [description]
+        fpl ([type]): [description]
+
+    Returns:
+        [type]: [The merged data, and the sets of data used to construct it]
+    """    
+    matching_names = intersect(understat['player_name'].unique(),fpl['player_name'].unique())
+    fpl_matched = fpl[fpl['player_name'].isin(matching_names)]
+    understat_matched = understat[understat['player_name'].isin(matching_names)]
+    names_merged_on_date = pd.merge(fpl_matched, understat_matched, left_on=['player_name', 'kickoff_time'], right_on=['player_name', 'date']) 
+    return names_merged_on_date, fpl_matched, understat_matched
+
+
+def remove_matched_names(fpl, understat, names_merged_on_date):
+    """[This function checks which names were matched previously, removes them and returns the unmatched data]
+
+    Args:
+        fpl ([type]): [description]
+        understat ([type]): [description]
+        names_merged_on_date ([type]): [description]
+
+    Returns:
+        [type]: [description]
+    """    
+    fpl_not_matched = fpl[~fpl['player_name'].isin(names_merged_on_date['player_name'].unique())] 
+    understat_not_matched = understat[~understat['player_name'].isin(names_merged_on_date['player_name'].unique())] 
+    return fpl_not_matched, understat_not_matched
     
     
-# season = '2019-20' 
-season = '2020-21'
+season = '2019-20' 
+# season = '2020-21'
 fpl_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//gws//' 
 understat_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//understat//'
 data_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//'
 understat, fpl_to_understat, fpl, teams, fixtures = read_data(fpl_path, understat_path)
 fpl = merge_fpl_data(fpl, fixtures, teams) # No understat statistics included in this dataframe
-fpl = rename_fpl_teams(fpl)
+fpl = rename_fpl_teams(fpl) # Keep team naming convention standard across understat and fpl
+names_merged_on_date, fpl_matched, understat_matched = exact_matches(understat, fpl) # Data merged on player name and match date
+fpl_not_matched, understat_not_matched = remove_matched_names(fpl, understat, names_merged_on_date) # Those names that did not match previously
+
+
 
 
 # %%
-# <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-# First match the entries whos names and dates match exactly
-# <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-matching_names = intersect(understat['player_name'],fpl['player_name'])
-fpl_matched = fpl[fpl['player_name'].isin(matching_names)]
-understat_matched = understat[understat['player_name'].isin(matching_names)]
-names_merged_on_date = pd.merge(fpl_matched, understat_matched, left_on=['player_name', 'kickoff_time'], right_on=['player_name', 'date']) 
+understat_not_matched['player_name'].unique().__len__()
+
+
+
 # %%
 # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 # Now find the entries whos names and dates DID NOT match exactly and use a similarity finder to
 # manually look for potential spelling errors
 # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-fpl_not_matched = fpl[~fpl['player_name'].isin(names_merged_on_date['player_name'].unique())] 
-understat_not_matched = understat[~understat['player_name'].isin(names_merged_on_date['player_name'].unique())]
+
+
 similarity_matched_df = get_matching_names(understat_not_matched['player_name'].unique(),
-                                           fpl_not_matched['player_name'].unique(),
-                                           threshold=0.5) # Returns a dataframe of matching names with a degree of similarity
-wrongly_matched_names = ['Alisson', 'Allan', 'Ederson', 'Emerson',  'Joelinton', 
-                         'André Gomes', 'Ben Chilwell', 'Bernardo Silva', 'David Luiz', 
-                         'Felipe Anderson', 'Ricardo Pereira', 'Lucas Moura', 'Rodri', 'Rúben Dias',
-                         'Rúben Vinagre', 'Trézéguet', 'Vitinha', 'Willian'] # Manually look for names that do not logically make sense in similarity_matched_df
-wrongly_matched_entries = understat_not_matched[~understat_not_matched['player_name'].isin(understat_not_matched)]
-similarity_matched_df = similarity_matched_df[~similarity_matched_df['understat'].isin(wrongly_matched_names)] # Remove all those names that have no logical match
-name_mapper = dict(zip(similarity_matched_df['understat'], similarity_matched_df['fpl'])) # Create dictionary to rename
-updt = dict(zip(wrongly_matched_names, wrongly_matched_names)) # Create dictionary to keep wrongly mapped names
-name_mapper.update(updt)
-name_mapper
-# TODO: SEE WHY UNDERSTAT_NOT_MATCHED is throwing NA's
-# %%
-print(understat_not_matched['player_name'].unique())
-understat_not_matched['player_name'] = understat_not_matched['player_name'].map(name_mapper)  # Rename, note all the wrongly matched ones are removed from the dataset
-print(understat_not_matched['player_name'].unique())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                           fpl_not_matched['player_name'].unique()) # Returns a dataframe of matching names with a degree of similarity
 
 # %%
-names_merged_on_similarity = pd.merge(fpl_not_matched, understat_not_matched, left_on=['player_name', 'kickoff_time'],
-                        right_on=['player_name', 'date']) # Merge using player name and date of game
-# %%
-# %%
-# <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-# Now find the entries whos names and dates still did not match exactly by lowering the threshold 
-# and removing them from the pool
-# <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-fpl_still_not_matched = fpl_not_matched[~fpl_not_matched['player_name'].isin(union(names_merged_on_similarity['player_name'].unique(),
-                                                                                   names_merged_on_date['player_name'].unique()))] # Names that were not within the similarity dataframe
-understat_still_not_matched = understat_not_matched[~understat_not_matched['player_name'].isin(union(names_merged_on_similarity['player_name'].unique(),
-                                                                                   names_merged_on_date['player_name'].unique()))] # Names that were not within the similarity dataframe
-similarity_matched_df = get_matching_names(understat_still_not_matched['player_name'].unique(),
-                                           fpl_still_not_matched['player_name'].unique(),
-                                           threshold=0.5) # Returns a dataframe of matching names with a degree of similarity
-similarity_matched_df
-# %%
-names_merged_on_game = pd.merge(fpl_still_not_matched, understat_still_not_matched, left_on=['player_name', 'team_a', 'team_h'], right_on=['player_name','a_team', 'h_team'])
+
+def create_renaming_dict(similarity_matched_df, understat_not_matched, fpl_not_matched, season):
+    """[This function uses the result from get_matching_names to construct a renaming dictionary, as well as subset the data]
+
+    Args:
+        similarity_matched_df ([type]): [description]
+        understat_not_matched ([type]): [description]
+        fpl_not_matched ([type]): [description]
+    """    
+    if season == '2020-21':
+        wrongly_matched_names = ['Alisson', 'Allan', 'André Gomes', 'Bernard', 'Bernardo', 'Bernardo Silva', 'David Luiz', 'Ederson', 'Emerson', 
+                            'Fabinho', 'Felipe Anderson', 'Fred',  'Hélder Costa', 'Joelinton', 'Jonny', 'Jorginho', 'Kepa', 'Lucas Moura', 'Raphinha', 
+                            'Ricardo Pereira', 'Rodri', 'Rúben Dias','Rúben Vinagre', 'Semi Ajayi', 'Trézéguet', 'Vitinha', 'Willian'] 
+    if season == '2019-20':
+        wrongly_matched_names = ['Adrián','Alisson','André Gomes','Angelino', 'Bernard', 'Bernardo', 'Bernardo Silva','Borja Bastón', 
+                                 'Chicharito','David Luiz','Ederson', 'Emerson', 'Fabinho', 'Felipe Anderson', 'Fred','Joelinton', 'Jonny',
+                                 'Jorginho','Jota', 'Kepa','Kiko Femenía','Pedro', 'Ricardo Pereira', 'Rodri','Rúben Vinagre','Trézéguet','Wesley','Willian']
+    
+    similar_rename = similarity_matched_df[~similarity_matched_df['understat'].isin(wrongly_matched_names)] # Subset similarly matching names
+    understat_no_similar = understat_not_matched[understat_not_matched['player_name'].isin(wrongly_matched_names)] # Subset Understat: No similar match
+    understat_similar = understat_not_matched[~understat_not_matched['player_name'].isin(wrongly_matched_names)] # Subset Understat: Similar match
+
+    fpl_similar = fpl_not_matched[fpl_not_matched['player_name'].isin(similar_rename['fpl'].unique())] # Subset FPL: Similar match
+    fpl_no_similar = fpl_not_matched[~fpl_not_matched['player_name'].isin(similar_rename['fpl'].unique())] # Subset FPL: No similar match
+    
+    name_mapper = dict(zip(similar_rename['understat'], similar_rename['fpl'])) # Create dictionary to rename the similarly matched names # Creates missing values
+    understat_similar['player_name'] = understat_similar['player_name'].map(name_mapper)  # Rename, note all the wrongly matched ones are removed from the dataset
+    
+    return understat_no_similar, understat_similar, fpl_similar, fpl_no_similar
 
 
+understat_no_similar, understat_similar, fpl_similar, fpl_no_similar = create_renaming_dict(similarity_matched_df, understat_not_matched, fpl_not_matched, season)
 # %%
-union(names_merged_on_similarity['player_name'].unique(),names_merged_on_date['player_name'].unique())
+understat_similar.isnull().sum()
+# %%
+names_merged_on_similarity = pd.merge(fpl_similar, understat_similar, left_on=['player_name', 'kickoff_time'], right_on=['player_name', 'date']) # Merge using player name and date of game
 
-# %%
+
+
+
+
+
+
+
+
+
+
+
+
