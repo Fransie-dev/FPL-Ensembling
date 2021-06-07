@@ -134,6 +134,8 @@ def rename_fpl_teams(fpl):
     fpl['team'] = fpl['team'].map(team_reps)
     fpl['team_a'] = fpl['team_a'].map(team_reps)
     fpl['team_h'] = fpl['team_h'].map(team_reps)
+    fpl['opponent_team'] = fpl['opponent_team'].map(team_reps)
+    fpl['name'] = fpl['name'].map(team_reps)
     return fpl
 
 
@@ -318,7 +320,7 @@ def compare_datasets(understat_final, understat, fpl, data_path, season):
     print('The original understat data set contains',understat['player_name'].unique().__len__(), 'unique players')
     print('The original FPL data set contains', fpl.__len__(), 'rows')
     print('The original FPL data set contains',fpl['player_name'].unique().__len__(), 'unique players\n')
-    path = data_path + 'Training Data//'
+    path = data_path + 'training//'
     dlt_create_dir(path)
     fpl.to_csv(path + 'fpl.csv', index = False)
     understat_final.to_csv(path + 'understat_merged.csv', index = False)
