@@ -1,7 +1,8 @@
-# %%
 import difflib
+import os
 import numpy as np
 import pandas as pd
+from collect_data import dlt_create_dir
 
 
 def read_data(fpl_path, understat_path, data_path):
@@ -302,7 +303,7 @@ def final_merge_understat(names_merged_on_date, names_merged_on_similarity, name
     understat_final = pd.concat([names_merged_on_date, names_merged_on_similarity, names_merged_manually])
     return understat_final
 
-def compare_datasets(understat_final, understat, fpl, data_path):
+def compare_datasets(understat_final, understat, fpl, data_path, season):
     """[This function compares the original and merged data, and saves the FPL and merged FPL/Understat data to CSV's.]
 
     Args:
@@ -318,8 +319,10 @@ def compare_datasets(understat_final, understat, fpl, data_path):
     print('The original understat data set contains',understat['player_name'].unique().__len__(), 'unique players')
     print('The original FPL data set contains', fpl.__len__(), 'rows')
     print('The original FPL data set contains',fpl['player_name'].unique().__len__(), 'unique players\n')
-    fpl.to_csv(data_path + 'fpl.csv')
-    understat_final.to_csv(data_path + 'understat_merged.csv')
+    path = data_path + 'Training Data//'
+    dlt_create_dir(path)
+    fpl.to_csv(path + 'fpl.csv')
+    understat_final.to_csv(path + 'understat_merged.csv')
     
     
 
@@ -339,10 +342,13 @@ def main(season):
     no_similar_matches_df = get_matching_names(understat_no_similar['player_name'].unique(), fpl_no_similar['player_name'].unique()) # Repeat process and manually investigate non-matching names
     names_merged_manually = final_rename(understat_no_similar, fpl_no_similar)
     understat_final = final_merge_understat(names_merged_on_date, names_merged_on_similarity, names_merged_manually)
-    compare_datasets(understat_final, understat, fpl, data_path)
+    compare_datasets(understat_final, understat, fpl, data_path, season)
 
 
 if __name__ == "__main__":
     main(season='2020-21') # Successful execution
     main(season='2019-20') # Successful execution
     print('Success!')
+
+
+# TODO: Impute values in the merged understat data, such that more gameweeks are available.
