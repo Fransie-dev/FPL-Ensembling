@@ -1,5 +1,4 @@
 import difflib
-import os
 import numpy as np
 import pandas as pd
 from collect_data import dlt_create_dir
@@ -321,8 +320,8 @@ def compare_datasets(understat_final, understat, fpl, data_path, season):
     print('The original FPL data set contains',fpl['player_name'].unique().__len__(), 'unique players\n')
     path = data_path + 'Training Data//'
     dlt_create_dir(path)
-    fpl.to_csv(path + 'fpl.csv')
-    understat_final.to_csv(path + 'understat_merged.csv')
+    fpl.to_csv(path + 'fpl.csv', index = False)
+    understat_final.to_csv(path + 'understat_merged.csv', index = False)
     
     
 
