@@ -97,7 +97,7 @@ def merge_fpl_data(fpl, fixtures, teams):
     fpl = rename_teams(teams, fpl)
     return fpl
     
-def rename_fpl_teams(fpl):
+def rename_fpl_teams(fpl, features = ['team', 'team_a', 'team_h', 'opponent_team', 'name']):
     """[This function replaces the acronyms used to indicate teams by the FPL API with the teams full names, as seen in the understat data]
 
     Args:
@@ -105,6 +105,8 @@ def rename_fpl_teams(fpl):
 
     Returns:
         [type]: [A renamed dataframe]
+    NOTE:
+        New teams from different seasons need to be added here
     """    
     team_reps = {
         'Man City':'Manchester City', 
@@ -131,11 +133,9 @@ def rename_fpl_teams(fpl):
         'Bournemouth':'Bournemouth', 
         'Norwich':'Norwich'
         }
-    fpl['team'] = fpl['team'].map(team_reps)
-    fpl['team_a'] = fpl['team_a'].map(team_reps)
-    fpl['team_h'] = fpl['team_h'].map(team_reps)
-    fpl['opponent_team'] = fpl['opponent_team'].map(team_reps)
-    fpl['name'] = fpl['name'].map(team_reps)
+    for feature in features:
+        fpl[feature] = fpl[feature].map(team_reps)
+
     return fpl
 
 
@@ -211,6 +211,8 @@ def map_similar_names(similarity_matched_df, understat_not_matched, fpl_not_matc
         similarity_matched_df ([type]): [description]
         understat_not_matched ([type]): [description]
         fpl_not_matched ([type]): [description]
+    NOTE:
+        New names from different seasons need to be added here
     """    
     if season == '2020-21':
         wrongly_matched_names = ['Adrián', 'Alisson', 'Allan', 'André Gomes', 'Bernard', 'Bernardo', 'Bernardo Silva', 'David Luiz', 'Ederson', 'Emerson', 
@@ -250,6 +252,9 @@ def final_rename(understat_no_similar, fpl_no_similar):
 
     Returns:
         [type]: [description]
+        
+    NOTE:
+        New names from different seasons need to be added here
     """    
     name_mapper = {'Adrián':'Adrián Bernabé', # Contains both seasons corrections
                    'Alisson':'Alisson Ramses Becker',
