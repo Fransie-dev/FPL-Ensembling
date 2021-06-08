@@ -69,8 +69,7 @@ def fpl_remove_duplicates_and_id(fpl):
                   'kickoff_time']].copy()
     fpl_df.sort_values(by='GW',inplace=True)
     return fpl_df
-# %%
-%%time
+# %%time
 # TODO: One hot encode categorical features
 season='2019-20'
 training_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//training//'
