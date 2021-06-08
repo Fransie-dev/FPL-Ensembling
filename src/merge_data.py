@@ -358,4 +358,3 @@ if __name__ == "__main__":
 
 
 # TODO: Impute values in the merged understat data, such that more gameweeks are available.
-# %%
