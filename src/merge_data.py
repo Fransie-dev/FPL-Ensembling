@@ -1,6 +1,7 @@
 import difflib
 import numpy as np
 import pandas as pd
+from pandas.core.frame import DataFrame
 from collect_data import dlt_create_dir
 
 

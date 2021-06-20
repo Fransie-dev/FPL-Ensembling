@@ -19,12 +19,12 @@ def read_data(data_path, training_path):
     return fpl, teams, understat
 
 
-def change_team_strength(teams, fpl):
+def change_team_strength(teams, data):
     """[This function changes the current constant strength layout to fixture based features]
 
     Args:
         teams ([type]): [description]
-        fpl ([type]): [description]
+        data ([type]): [description]
 
     Returns:
         [type]: [description]
@@ -34,18 +34,18 @@ def change_team_strength(teams, fpl):
     team_h_strength_defense = []
     team_a_strength_attack = []
     team_a_strength_defense = []
-    for i in range(len(fpl)):
-            team_h_strength_attack.append(teams[teams['name'] == fpl['team_h'][i]]['strength_attack_home'].values)
-            team_h_strength_defense.append(teams[teams['name'] == fpl['team_h'][i]]['strength_defence_home'].values)
-            team_a_strength_attack.append(teams[teams['name'] == fpl['team_a'][i]]['strength_attack_away'].values)
-            team_a_strength_defense.append(teams[teams['name'] == fpl['team_a'][i]]['strength_defence_away'].values)
-    fpl['team_h_strength_attack'] = team_h_strength_attack
-    fpl['team_h_strength_defense'] = team_h_strength_defense
-    fpl['team_a_strength_attack'] = team_a_strength_attack
-    fpl['team_a_strength_defense'] = team_a_strength_defense
-    fpl['team_h_strength_overall'] = fpl['team_h_strength_attack']/2 + fpl['team_h_strength_defense']/2
-    fpl['team_a_strength_overall'] = fpl['team_a_strength_attack']/2 + fpl['team_a_strength_defense']/2
-    return fpl
+    for i in range(len(data)):
+            team_h_strength_attack.append(teams[teams['name'] == data['team_h'][i]]['strength_attack_home'].values)
+            team_h_strength_defense.append(teams[teams['name'] == data['team_h'][i]]['strength_defence_home'].values)
+            team_a_strength_attack.append(teams[teams['name'] == data['team_a'][i]]['strength_attack_away'].values)
+            team_a_strength_defense.append(teams[teams['name'] == data['team_a'][i]]['strength_defence_away'].values) # TODO: Fix this, some empty values being logged
+    data['team_h_strength_attack'] = team_h_strength_attack
+    data['team_h_strength_defense'] = team_h_strength_defense
+    data['team_a_strength_attack'] = team_a_strength_attack
+    data['team_a_strength_defense'] = team_a_strength_defense
+    data['team_h_strength_overall'] = data['team_h_strength_attack']/2 + data['team_h_strength_defense']/2
+    data['team_a_strength_overall'] = data['team_a_strength_attack']/2 + data['team_a_strength_defense']/2
+    return teams, data
 
 
 def fpl_remove_duplicates_and_id(fpl):
@@ -57,16 +57,16 @@ def fpl_remove_duplicates_and_id(fpl):
     Returns:
         [type]: [description]
     """    
-    fpl.drop(['FPL_ID', 'fixture', 'id','name', 'short_name', 'opponent_team', 'round', 'team', 'strength','strength_attack_away', 
-              'strength_attack_home', 'strength_defence_away', 'strength_defence_home', 'strength_overall_away', 
-              'strength_overall_home'], axis = 1, inplace = True) # Duplicate features
+    # fpl.drop(['FPL_ID', 'fixture', 'id','name', 'short_name', 'opponent_team', 'round', 'team', 'strength','strength_attack_away', 
+    #           'strength_attack_home', 'strength_defence_away', 'strength_defence_home', 'strength_overall_away', 
+    #           'strength_overall_home'], axis = 1, inplace = True) # Duplicate features
     fpl_df = fpl[['GW', 'player_name', 'total_points', 'was_home',
                   'team_h', 'team_h_difficulty', 'team_h_score', 'team_h_strength_attack', 'team_h_strength_defense', 'team_h_strength_overall',
                   'team_a', 'team_a_difficulty', 'team_a_score', 'team_h_strength_attack', 'team_h_strength_defense', 'team_h_strength_overall',
                   'position',  'goals_scored', 'goals_conceded', 'assists', 'clean_sheets','penalties_saved', 'penalties_missed', 
                   'saves','own_goals', 'red_cards', 'yellow_cards', 'minutes', 
                   'selected', 'value', 'bonus', 'bps', 'transfers_balance', 'transfers_in', 'transfers_out', 'influence', 'creativity', 'threat', 'ict_index',
-                  'kickoff_time']].copy()
+                  'kickoff_time']]
     fpl_df.sort_values(by='GW',inplace=True)
     return fpl_df
 
@@ -79,11 +79,8 @@ def one_hot_encode(fpl):
     Returns:
         [type]: [description]
     """    
-    print('Before one hot encoding, the data is of shape ', fpl.shape)
     fpl = pd.get_dummies(fpl, columns=['was_home', 'position', 'team_h', 'team_a'], 
                       prefix=['home', 'position', 'team_h', 'team_a'])
-    print('After one hot encoding, the data is of shape ', fpl.shape)
-    print('The data gained 45 features, and removed four of them')
     fpl.drop(columns=['home_False'], axis=1, inplace=True)
     return fpl
 
@@ -123,18 +120,38 @@ def preprocess_fpl(fpl, teams):
     Returns:
         [type]: [description]
     """    
-    fpl = change_team_strength(teams, fpl) 
+    teams, fpl = change_team_strength(teams, fpl) 
     fpl = fpl_remove_duplicates_and_id(fpl)
-    fpl = one_hot_encode(fpl)
+    # fpl = one_hot_encode(fpl)
     return fpl
     
 
 def preprocess_understat(understat, teams):
-    understat = change_team_strength(teams, understat)
+    teams, understat = change_team_strength(teams, understat)
     understat = understat_remove_duplicates_and_id(understat)
-    understat = one_hot_encode(understat)
+    # understat = one_hot_encode(understat)
     return understat
-    
+
+# %%
+season = '2020-21'
+training_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//training//'
+data_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//'
+fpl_init, teams_init, understat_init = read_data(data_path, training_path) # TODO: Check which ones do not log correctly
+fpl, teams, understat = read_data(data_path, training_path) 
+fpl = preprocess_fpl(fpl, teams)
+understat = preprocess_understat(understat, teams)
+fpl.to_csv(training_path + 'cleaned_fpl.csv')
+understat.to_csv(training_path + 'cleaned_understat.csv')
+# %%
+
+
+# NOTE: Renaming process of teams is ruining it
+teams_init['name'].unique()
+# %%
+teams['name'].unique
+
+
+# %%
 def main(season):
     training_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//training//'
     data_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//'
@@ -143,9 +160,9 @@ def main(season):
     understat = preprocess_understat(understat, teams)
     fpl.to_csv(training_path + 'cleaned_fpl.csv')
     understat.to_csv(training_path + 'cleaned_understat.csv')
-
+    
+# %%
 if __name__ == "__main__":
     main(season='2020-21') # Successful execution
     main(season='2019-20') # Successful execution
     print('Success!')
-
