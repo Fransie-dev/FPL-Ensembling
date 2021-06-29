@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import requests
-
+from utilities import dlt_create_dir
 import csv
 import shutil
 import asyncio
@@ -68,7 +68,7 @@ def Get_Player_Historic_Data(data_path, player_history_path):
 
     """    
     players = os.listdir(player_history_path) # Lists All The Player Folders in the Dir
-    players_data = pd.read_csv(data_path + 'players_raw.csv')
+    players_data = pd.read_csv(data_path + 'players_raw.csv', index_col=0)
     for ind in pbar(players_data.index): # ind in [0:693:1]
     # Get the Seasonal History
         player_path = players_data['first_name'][ind] + '_' + players_data['second_name'][ind] + '_' + str(players_data['id'][ind]) # Create player_history_path
@@ -285,14 +285,7 @@ def merge_gw(type, gameweek_path):
             writer.writerow(row)
     print(f'Succesfully wrote the {prefix} gameweek files from {gameweek_path} into a merged gameweek file to {out_path}')
     
-def dlt_create_dir(path):
-    """[This function simply deletes and recreates a directory]
 
-    Args:
-        path ([type]): [The location of the directory]
-    """    
-    shutil.rmtree(path,ignore_errors=True)
-    os.makedirs(path, exist_ok = True)
     
 async def get_league_players(season):
     """[This function is used to get a list of all the players]

@@ -2,7 +2,7 @@ import difflib
 import numpy as np
 import pandas as pd
 from pandas.core.frame import DataFrame
-from collect_data import dlt_create_dir
+from utilities import dlt_create_dir
 
 
 def read_data(fpl_path, understat_path, data_path):
@@ -18,19 +18,19 @@ def read_data(fpl_path, understat_path, data_path):
         [fpl]: [FPL api data]
 
     """
-    understat = pd.read_csv(understat_path + 'all_understat_players.csv')
+    understat = pd.read_csv(understat_path + 'all_understat_players.csv', index_col=0)
     understat['date']=pd.to_datetime(understat['date']).dt.date
            
-    fpl = pd.read_csv(fpl_path + 'merged_gw.csv') 
+    fpl = pd.read_csv(fpl_path + 'merged_gw.csv', index_col=0) 
     fpl.rename(columns = {'element':'FPL_ID', 'name':'player_name'},inplace = True) 
     fpl['kickoff_time'] = pd.to_datetime(fpl['kickoff_time']).dt.date
     
-    fixtures = pd.read_csv(data_path + 'fixtures.csv')
+    fixtures = pd.read_csv(data_path + 'fixtures.csv', index_col=0)
     fixtures = fixtures[['id', 'team_a', 'team_a_difficulty', 'team_h', 'team_h_difficulty']]
     fixtures.rename(columns={'id':'fixture'}, inplace=True)
 
     
-    teams = pd.read_csv(data_path + 'teams.csv')
+    teams = pd.read_csv(data_path + 'teams.csv', index_col=0)
     teams = teams[['id', 'name', 'short_name', 'strength', 'strength_attack_away', 'strength_attack_home', 'strength_defence_away', 'strength_defence_home', 'strength_overall_away', 'strength_overall_home']]
 
     
