@@ -1,9 +1,9 @@
 # %%
+import sys
 sys.path.insert(0, 'C://Users//jd-vz//Desktop//Code//src//')
 import pandas as pd
 import statsmodels.api as sm
 from collections import Counter
-import sys
 import stepwiseSelection as ss
 from utilities import dlt_create_dir
 
