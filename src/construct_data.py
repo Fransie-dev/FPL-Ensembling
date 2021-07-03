@@ -1,6 +1,7 @@
 # %%
 import pandas as pd
 import matplotlib.pyplot as plt
+from utilities import delete_any_duplicates
 
 def read_data(season):
     """[This function reads the data and defines the features that will be averaged]
@@ -8,8 +9,8 @@ def read_data(season):
     Returns:
         [type]: [description]
     """    
-    understat = pd.read_csv(f'C://Users//jd-vz//Desktop//Code//data//{season}//training//cleaned_understat.csv', index_col=0)
-    fpl = pd.read_csv(f'C://Users//jd-vz//Desktop//Code//data//{season}//training//cleaned_fpl.csv', index_col=0)
+    understat = delete_any_duplicates(pd.read_csv(f'C://Users//jd-vz//Desktop//Code//data//{season}//training//cleaned_understat.csv', index_col=0))
+    fpl = delete_any_duplicates(pd.read_csv(f'C://Users//jd-vz//Desktop//Code//data//{season}//training//cleaned_fpl.csv', index_col=0))
     fpl_avg = ['assists', 'bonus', 'bps', 'clean_sheets', 'creativity', 'goals_conceded', 'goals_scored', 
                'ict_index', 'influence', 'saves', 'threat']
     understat_avg = ['assists', 'bonus', 'bps', 'clean_sheets', 'creativity', 'goals_conceded', 'goals_scored', 
@@ -39,12 +40,12 @@ def rolling_avg(data, prev_games, feats):
 def plot_player(player, feature, prev_games, data):
     subset = data.loc[data.player_name == player]
     plt.plot(subset['GW'], subset[feature], label = feature)
-    plt.plot(subset['GW'], subset[feature + '_last_' + str(prev_games)], label = feature +  '_last_' + str(prev_games))
+    # plt.plot(subset['GW'], subset[feature + '_last_' + str(prev_games)], label = feature +  '_last_' + str(prev_games))
     plt.legend()
     plt.show()
 
 def plot_Ozil(understat_avg, prev_games, understat):
-    for feat in understat.columns:
+    for feat in understat_avg:
         plot_player('Mesut Özil', feat, prev_games=prev_games, data = understat)
 
 def main(season, prev_games):
@@ -55,8 +56,28 @@ def main(season, prev_games):
     
 # %%
 if __name__ == '__main__':
-    main('2019-20', prev_games=12)
+    fpl, fpl_avg, understat, understat_avg = read_data(season='2019-20')
+    plot_Ozil(understat_avg=fpl.columns.drop(['GW', 'player_name','home_True', 'position_DEF', 'position_FWD',
+                                                'position_GK', 'position_MID', 
+                                                'kickoff_time',
+                                                'team_h_Arsenal', 'team_h_Aston Villa',
+                                                'team_h_Bournemouth', 'team_h_Brighton', 'team_h_Burnley',
+                                                'team_h_Chelsea', 'team_h_Crystal Palace', 'team_h_Everton',
+                                                'team_h_Leicester', 'team_h_Liverpool', 'team_h_Manchester City',
+                                                'team_h_Manchester United', 'team_h_Newcastle', 'team_h_Norwich',
+                                                'team_h_Sheffield United', 'team_h_Southampton', 'team_h_Tottenham',
+                                                'team_h_Watford', 'team_h_West Ham', 'team_h_Wolverhampton Wanderers',
+                                                'team_a_Arsenal', 'team_a_Aston Villa', 'team_a_Bournemouth',
+                                                'team_a_Brighton', 'team_a_Burnley', 'team_a_Chelsea',
+                                                'team_a_Crystal Palace', 'team_a_Everton', 'team_a_Leicester',
+                                                'team_a_Liverpool', 'team_a_Manchester City',
+                                                'team_a_Manchester United', 'team_a_Newcastle', 'team_a_Norwich',
+                                                'team_a_Sheffield United', 'team_a_Southampton', 'team_a_Tottenham',
+                                                'team_a_Watford', 'team_a_West Ham', 'team_a_Wolverhampton Wanderers']), prev_games=3, understat = understat)
+    
     
     
 # %%
+# %%
+
 # %%

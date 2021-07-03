@@ -1,39 +1,38 @@
+# %%
 import difflib
 import numpy as np
 import pandas as pd
-from pandas.core.frame import DataFrame
 from utilities import dlt_create_dir
-
 
 def read_data(fpl_path, understat_path, data_path):
     """[This function reads in the data from collect_data.py and returns the unmerged understat and fpl data,
     including FPL team and fixture data]
+    Error: Index column required for csvs
 
     Args:
         fpl_path ([type]): [description]
         understat_path ([type]): [description]
 
     Returns:
-        [understat]: ['goals','shots','xG','time','position','h_team','a_team','h_goals','a_goals','date','id','season','roster_id','xA','assists','key_passes','npg','npxG' 'xGChain' 'xGBuildup', 'player_name']
+        [understat]: ['goals','shots','xG','time','position','h_team','a_team','h_goals','a_goals','date','id','season','roster_id',
+                        'xA','assists','key_passes','npg','npxG' 'xGChain' 'xGBuildup', 'player_name']
         [fpl]: [FPL api data]
 
     """
-    understat = pd.read_csv(understat_path + 'all_understat_players.csv', index_col=0)
+    understat = pd.read_csv(understat_path + 'all_understat_players.csv')
     understat['date']=pd.to_datetime(understat['date']).dt.date
            
-    fpl = pd.read_csv(fpl_path + 'merged_gw.csv', index_col=0) 
+    fpl = pd.read_csv(fpl_path + 'merged_gw.csv') 
     fpl.rename(columns = {'element':'FPL_ID', 'name':'player_name'},inplace = True) 
     fpl['kickoff_time'] = pd.to_datetime(fpl['kickoff_time']).dt.date
     
-    fixtures = pd.read_csv(data_path + 'fixtures.csv', index_col=0)
+    fixtures = pd.read_csv(data_path + 'fixtures.csv')
     fixtures = fixtures[['id', 'team_a', 'team_a_difficulty', 'team_h', 'team_h_difficulty']]
     fixtures.rename(columns={'id':'fixture'}, inplace=True)
-
     
-    teams = pd.read_csv(data_path + 'teams.csv', index_col=0)
+    teams = pd.read_csv(data_path + 'teams.csv')
     teams = teams[['id', 'name', 'short_name', 'strength', 'strength_attack_away', 'strength_attack_home', 'strength_defence_away', 'strength_defence_home', 'strength_overall_away', 'strength_overall_home']]
-
-    
+  
     return understat, fpl, teams, fixtures
 
 def rename_teams(teams,fpl, cols = ['team','opponent_team', 'team_a', 'team_h']):
@@ -78,7 +77,7 @@ def union(a, b):
     Returns:
         [type]: [The union]
     """    
-    print(len(list(set(a) | set(b))), 'unique, not necessarily matching entries within the two columns')
+    print(len(list(set(a) | set(b))), 'unique, not necessarily matching names between FPL and Understat')
     return list(set(a) | set(b))
     
 
@@ -168,7 +167,7 @@ def get_matching_names(understat_names, fpl_names):
     print(similarity_matched_df_final)
     return similarity_matched_df_final
 
-def exact_matches(understat, fpl):
+def exact_matches(understat, fpl, join = 'inner'):
     """[This function performs the first initial match, that is the entries whos names and dates match exactly between the
     understat and fpl datasets]
 
@@ -182,7 +181,7 @@ def exact_matches(understat, fpl):
     matching_names = intersect(understat['player_name'].unique(),fpl['player_name'].unique())
     fpl_matched = fpl[fpl['player_name'].isin(matching_names)]
     understat_matched = understat[understat['player_name'].isin(matching_names)]
-    names_merged_on_date = pd.merge(fpl_matched, understat_matched, left_on=['player_name', 'kickoff_time'], right_on=['player_name', 'date']) 
+    names_merged_on_date = pd.merge(fpl_matched, understat_matched, left_on=['player_name', 'kickoff_time'], right_on=['player_name', 'date'], how= join) 
     return names_merged_on_date, fpl_matched, understat_matched
 
 
@@ -242,7 +241,7 @@ def map_similar_names(similarity_matched_df, understat_not_matched, fpl_not_matc
     return understat_no_similar, understat_similar, fpl_similar, fpl_no_similar
 
 
-def final_rename(understat_no_similar, fpl_no_similar):
+def final_rename(understat_no_similar, fpl_no_similar, join = 'inner'):
     """[This function performs the third and final manual matching. It manually investigates those names that had no similar name, searches for the player name
     or nickname in the understat data, checks the team, Googles the player's true name, and finds the corresponding FPL name. The function then renames all those 
     understat entries to the associated FPL name]
@@ -293,7 +292,7 @@ def final_rename(understat_no_similar, fpl_no_similar):
                    'Willian':'Willian Borges Da Silva',
                    }
     understat_no_similar['player_name'] = understat_no_similar['player_name'].map(name_mapper)
-    names_merged_manually = pd.merge(fpl_no_similar, understat_no_similar, left_on=['player_name', 'kickoff_time'], right_on=['player_name', 'date']) # Merge using player name and date of game
+    names_merged_manually = pd.merge(fpl_no_similar, understat_no_similar, left_on=['player_name', 'kickoff_time'], right_on=['player_name', 'date'],how=join) # Merge using player name and date of game
     return names_merged_manually
 
 def final_merge_understat(names_merged_on_date, names_merged_on_similarity, names_merged_manually):
@@ -310,7 +309,7 @@ def final_merge_understat(names_merged_on_date, names_merged_on_similarity, name
     understat_final = pd.concat([names_merged_on_date, names_merged_on_similarity, names_merged_manually])
     return understat_final
 
-def compare_datasets(understat_final, understat, fpl, data_path, season):
+def compare_datasets(understat_final, understat, fpl, data_path, fpl_name = 'fpl.csv', understat_name = 'understat_merged.csv'):
     """[This function compares the original and merged data, and saves the FPL and merged FPL/Understat data to CSV's.]
 
     Args:
@@ -322,40 +321,47 @@ def compare_datasets(understat_final, understat, fpl, data_path, season):
     print('\nThe final merged understat data contains', understat_final.isnull().sum().sum(), 'missing values')
     print('The final merged understat data set contains', understat_final.__len__(), 'rows')
     print('The final merged understat data set contains', understat_final['player_name'].unique().__len__(), 'unique players')
-    print('The original understat data set contains', understat_final.__len__(), 'rows')
+    print('The original understat data set contains', understat.__len__(), 'rows')
     print('The original understat data set contains',understat['player_name'].unique().__len__(), 'unique players')
     print('The original FPL data set contains', fpl.__len__(), 'rows')
     print('The original FPL data set contains',fpl['player_name'].unique().__len__(), 'unique players\n')
     path = data_path + 'training//'
-    dlt_create_dir(path)
-    fpl.to_csv(path + 'fpl.csv', index = False)
-    understat_final.to_csv(path + 'understat_merged.csv', index = False)
+    fpl.to_csv(path + fpl_name, index = False)
+    understat_final.to_csv(path + understat_name, index = False)
     
+def join_data(fpl, understat, first_exec, data_path, fpl_name, understat_name, join, season):
+    path = data_path + 'training//'
+    if first_exec == True:
+        dlt_create_dir(path) # Quick and dirty fix
+    names_merged_on_date, fpl_matched, understat_matched = exact_matches(understat, fpl, join) # Data merged on player name and match date
+    fpl_not_matched, understat_not_matched = remove_matched_names(fpl, understat, names_merged_on_date) # Those names that did not match previously
+    similarity_matched_df = get_matching_names(understat_not_matched['player_name'].unique(), fpl_not_matched['player_name'].unique()) # Returns a dataframe of matching names with a degree of similarity
+    understat_no_similar, understat_similar, fpl_similar, fpl_no_similar = map_similar_names(similarity_matched_df, understat_not_matched, fpl_not_matched, season) # Maps similar names manually
+    names_merged_on_similarity = pd.merge(fpl_similar, understat_similar, left_on=['player_name', 'kickoff_time'], right_on=['player_name', 'date'], how=join) # Merge using player name and date of game
+    no_similar_matches_df = get_matching_names(understat_no_similar['player_name'].unique(), fpl_no_similar['player_name'].unique()) # Repeat process and manually investigate non-matching names
+    names_merged_manually = final_rename(understat_no_similar, fpl_no_similar, join = join)
+    understat_final = final_merge_understat(names_merged_on_date, names_merged_on_similarity, names_merged_manually)
+    compare_datasets(understat_final, understat, fpl, data_path, fpl_name = fpl_name, understat_name = understat_name)
+     
+def create_fpl_understat(understat, fpl, teams, fixtures, season, data_path):
+    fpl = merge_fpl_data(fpl, fixtures, teams) # No understat statistics included in this dataframe
+    fpl = rename_fpl_teams(fpl) # Keep team naming convention standard across understat and fpl
+    join_data(fpl, understat, first_exec = True, data_path = data_path, fpl_name = 'fpl.csv', understat_name = 'understat_merged.csv', join = 'inner', season = season)
+    join_data(fpl, understat, first_exec = False, data_path = data_path, fpl_name = 'fpl.csv', understat_name = 'understat_miss_merged.csv', join = 'left', season = season)
     
-
 
 def main(season):
+    # Updt 1: 2021/06/30 - Clean up code a little, add a left joined understat CSV
     fpl_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//gws//' 
     understat_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//understat//'
     data_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//'
     understat, fpl, teams, fixtures = read_data(fpl_path, understat_path, data_path)
-    fpl = merge_fpl_data(fpl, fixtures, teams) # No understat statistics included in this dataframe
-    fpl = rename_fpl_teams(fpl) # Keep team naming convention standard across understat and fpl
-    names_merged_on_date, fpl_matched, understat_matched = exact_matches(understat, fpl) # Data merged on player name and match date
-    fpl_not_matched, understat_not_matched = remove_matched_names(fpl, understat, names_merged_on_date) # Those names that did not match previously
-    similarity_matched_df = get_matching_names(understat_not_matched['player_name'].unique(), fpl_not_matched['player_name'].unique()) # Returns a dataframe of matching names with a degree of similarity
-    understat_no_similar, understat_similar, fpl_similar, fpl_no_similar = map_similar_names(similarity_matched_df, understat_not_matched, fpl_not_matched, season) # Maps similar names manually
-    names_merged_on_similarity = pd.merge(fpl_similar, understat_similar, left_on=['player_name', 'kickoff_time'], right_on=['player_name', 'date']) # Merge using player name and date of game
-    no_similar_matches_df = get_matching_names(understat_no_similar['player_name'].unique(), fpl_no_similar['player_name'].unique()) # Repeat process and manually investigate non-matching names
-    names_merged_manually = final_rename(understat_no_similar, fpl_no_similar)
-    understat_final = final_merge_understat(names_merged_on_date, names_merged_on_similarity, names_merged_manually)
-    compare_datasets(understat_final, understat, fpl, data_path, season)
+    create_fpl_understat(understat, fpl, teams, fixtures, season, data_path)
+    
+
 
 
 if __name__ == "__main__":
     main(season='2020-21') # Successful execution
     main(season='2019-20') # Successful execution
     print('Success!')
-
-
-# TODO: Impute values in the merged understat data, such that more gameweeks are available.

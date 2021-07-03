@@ -3,7 +3,6 @@ import pandas as pd
 import requests
 from utilities import dlt_create_dir
 import csv
-import shutil
 import asyncio
 import aiohttp
 from understat import Understat 
@@ -11,9 +10,9 @@ import pandas as pd
 import nest_asyncio
 from datetime import datetime
 from time import mktime
-import time
 import pandas as pd
 import progressbar as pb
+from utilities import set_season_time
 nest_asyncio.apply()
 pbar = pb.ProgressBar()
 
@@ -192,7 +191,7 @@ def collect_gw(gw, gameweek_path, data_path, player_path):
     for row in rows:
         writer.writerow(row)
         
-def collect_all_gw(max_gw, gameweek_path, data_path, player_path):
+def collect_all_gw(season, gameweek_path, data_path, player_path):
     """[This function recursively calls collect all_gw]
 
     Args:
@@ -201,6 +200,10 @@ def collect_all_gw(max_gw, gameweek_path, data_path, player_path):
         data_path ([type]): [description]
         player_path ([type]): [description]
     """    
+    if season == '2019-20':
+        max_gw = 47
+    else:
+        max_gw = 38
     for i in list(range(1, max_gw + 1)): # Check here
         collect_gw(i, gameweek_path=gameweek_path, data_path=data_path, player_path=player_path)
     merge_gw(type='FPL', gameweek_path=gameweek_path)
@@ -221,7 +224,7 @@ def count_directory(gws_folder):
         if file.startswith('gw'): # eg: '.txt'
             count_num_gw += 1
     print(f'There are {count_num_gw} gameweek files that can be merged')
-    if count_num_gw == 47:
+    if count_num_gw == 47: # Hardcoded solution for 
         count_num_gw = delete_directory(gws_folder)
         print(f'After deleting, there are now {count_num_gw} gameweek files that can be merged')
     else:
@@ -333,30 +336,16 @@ def write_league_players(understat_path, season):
     player.to_csv(understat_path + 'understat_players.csv', index = False)
     return player
 
-def set_season_time(season):
-    if season == '2020-21':
-        startdate = time.strptime('12-08-2020', '%d-%m-%Y')
-        startdate = datetime.fromtimestamp(mktime(startdate))
-        enddate = time.strptime('26-07-2021', '%d-%m-%Y')
-        enddate = datetime.fromtimestamp(mktime(enddate))
-    if season == '2019-20':
-        startdate = time.strptime('09-08-2019', '%d-%m-%Y')
-        startdate = datetime.fromtimestamp(mktime(startdate))
-        enddate = time.strptime('26-07-2020', '%d-%m-%Y')
-        enddate = datetime.fromtimestamp(mktime(enddate))
-    return startdate, enddate
-        
+   
 
 def get_all_player_history(understat_path, season):
-    """[summary]
-
+    """[This function extracts the understat data and writes it as a csv]
     Args:
         players ([type]): [The result of write_league_players]
     """    
 
     start_date, end_date = set_season_time(season)
     players = write_league_players(understat_path, season)
-    # for i in pbar(list(range(len(players)))): # Throws out of range error in 2020-21 season
     for i in range(len(players)):
         loop = asyncio.get_event_loop()
         result = loop.run_until_complete(get_player_history(int(players.loc[i][0])))
@@ -372,81 +361,51 @@ def get_all_player_history(understat_path, season):
         else:
             all_players = all_players.append(individuals)
     all_players.to_csv(understat_path + 'all_understat_players.csv', index = False) 
-
+       
+    
 def main(season):
-    if season == '2020-21':
-        # General data
-        data_path = 'C://Users//jd-vz//Desktop//Code//data//2020-21//'
-        print(f'General data location: {data_path}', end = '\n')
+    # //: The data obtained from vaastav needs to be copied before starting this 
+    # Updt 1: 2021/06/30 - Clean up code a little, untested
+    data_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//'
+    player_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//players//'
+    gameweek_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//gws//' 
+    understat_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//understat//'
+    
+    print(f'General data location: {data_path}', end = '\n')
+    if season == '2020-21': 
         inp_general = input('Delete existing general data and download again? [y/n]\n')
         if inp_general == 'y':
             dlt_create_dir(data_path)
             Get_FPL_Data(path=data_path)
-            print('Success', end = '\n')
-        
-        # Detailed player data   
-        player_path = 'C://Users//jd-vz//Desktop//Code//data//2020-21//players//'
-        print(f'Player data location: {player_path}', end = '\n')
+            print('Downloaded general data...', end = '\n')
+            
+    print(f'Player data location: {player_path}', end = '\n')
+    if season == '2020-21':
         inp_detailed = input('Delete existing player data and download again? [y/n]\n')
         if inp_detailed == 'y':
             dlt_create_dir(player_path)
             Get_Player_Historic_Data(data_path,player_path)
-            print('Success', end = '\n')
-        
-        # Scrape for and merge gamweek data
-        gameweek_path = 'C://Users//jd-vz//Desktop//Code//data//2020-21//gws//'  
-        print(f'Gameweek data location: {gameweek_path}', end = '\n')
-        inp_gameweek = input('Delete existing gameweek data and scrape for it again? [y/n]\n') # Error
+            print('Downloaded player data...', end = '\n')
+            
+    print(f'Gameweek data location: {gameweek_path}', end = '\n') # Need to do this for both seasons
+    if season == '2019-20' or '2020-21':          
+        inp_gameweek = input('Delete existing gameweek data and scrape for it again? [y/n]\n') 
         if inp_gameweek ==  'y':
             dlt_create_dir(gameweek_path)
-            collect_all_gw(max_gw=38, gameweek_path=gameweek_path, data_path=data_path, player_path=player_path)
-            print('Success', end = '\n')
-            
-        # Understat data
-        understat_path = 'C://Users//jd-vz//Desktop//Code//data//2020-21//understat//'
-        print(f'Understat data location: {understat_path}', end = '\n')
+            collect_all_gw(season = season, gameweek_path=gameweek_path, data_path=data_path, player_path=player_path)
+            print('Created gameweek data...', end = '\n')
+        
+    print(f'Understat data location: {understat_path}', end = '\n') # Need to do this for both seasons
+    if season == '2019-20' or '2020-21':   
         inp_gameweek = input('Delete existing understat data and scrape for it again? [y/n]\n')
         if inp_gameweek ==  'y':
             dlt_create_dir(understat_path)
-            get_all_player_history(understat_path, season) # Written as understat_players.csv
-            print('Success', end = '\n')
-            
-    if season == '2019-20':
-        #! Copy data from vaastav before continuing
-        # General data
-        data_path = 'C://Users//jd-vz//Desktop//Code//data//2019-20//'
-        print(f'General data location: {data_path}', end = '\n')
-        
-        # Detailed player data   
-        player_path = 'C://Users//jd-vz//Desktop//Code//data//2019-20///players//'
-        print(f'Player data location: {player_path}', end = '\n')
-        
-        # Scrape for and merge gamweek data
-        gameweek_path = 'C://Users//jd-vz//Desktop//Code//data//2019-20//gws//'  
-        print(f'Gameweek data location: {gameweek_path}', end = '\n')
-        inp_gameweek = input('Delete existing gameweek data and scrape for it again? [y/n]\n')
-        if inp_gameweek ==  'y':
-            dlt_create_dir(gameweek_path)
-            collect_all_gw(max_gw=47, gameweek_path=gameweek_path, data_path=data_path, player_path=player_path)
-            print('Success', end = '\n')
-            
-        # Understat data
-        understat_path = 'C://Users//jd-vz//Desktop//Code//data//2019-20//understat//'
-        print(f'Understat data location: {understat_path}', end = '\n')
-        inp_gameweek = input('Delete existing understat data and scrape for it again? [y/n]\n')
-        if inp_gameweek ==  'y':
-            dlt_create_dir(understat_path)
-            get_all_player_history(understat_path, season) # Written as understat_players.csv
-            print('Success', end = '\n')
-        
-    
+            get_all_player_history(understat_path, season) 
+            print('Downloaded relevant understat data...', end = '\n')
         
 
-        
-                
-    
 
 if __name__ == "__main__":
-    main(season='2020-21') # Successful execution
     main(season='2019-20') # Successful execution
-    print('Success!')
+    main(season='2020-21') # Successful execution
+    print('Script executed.')

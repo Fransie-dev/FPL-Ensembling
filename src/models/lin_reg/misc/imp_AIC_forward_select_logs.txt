@@ -1,0 +1,1433 @@
+
+Entered : bonus
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.569
+Model:                            OLS   Adj. R-squared:                  0.569
+Method:                 Least Squares   F-statistic:                 2.406e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:54:56   Log-Likelihood:                -36159.
+No. Observations:               18225   AIC:                         7.232e+04
+Df Residuals:                   18223   BIC:                         7.234e+04
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+intercept      1.2031      0.013     89.625      0.000       1.177       1.229
+bonus          3.7319      0.024    155.125      0.000       3.685       3.779
+==============================================================================
+Omnibus:                     5993.693   Durbin-Watson:                   1.932
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            19395.071
+Skew:                           1.691   Prob(JB):                         0.00
+Kurtosis:                       6.755   Cond. No.                         1.89
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+AIC: 72322.67121240647
+BIC: 72338.29231152021
+
+
+Entered : shots
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.604
+Model:                            OLS   Adj. R-squared:                  0.604
+Method:                 Least Squares   F-statistic:                 1.389e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:54:56   Log-Likelihood:                -35390.
+No. Observations:               18225   AIC:                         7.079e+04
+Df Residuals:                   18222   BIC:                         7.081e+04
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+intercept      0.9182      0.015     62.454      0.000       0.889       0.947
+bonus          3.4565      0.024    143.627      0.000       3.409       3.504
+shots          0.4880      0.012     40.075      0.000       0.464       0.512
+==============================================================================
+Omnibus:                     5663.374   Durbin-Watson:                   1.914
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            17159.043
+Skew:                           1.621   Prob(JB):                         0.00
+Kurtosis:                       6.477   Cond. No.                         2.80
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+AIC: 70785.30459365895
+BIC: 70808.73624232959
+
+
+Entered : ict_index
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.731
+Model:                            OLS   Adj. R-squared:                  0.731
+Method:                 Least Squares   F-statistic:                 1.652e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:54:57   Log-Likelihood:                -31860.
+No. Observations:               18225   AIC:                         6.373e+04
+Df Residuals:                   18221   BIC:                         6.376e+04
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+intercept      0.5802      0.013     45.873      0.000       0.555       0.605
+bonus          2.4536      0.023    108.658      0.000       2.409       2.498
+shots         -0.2807      0.013    -21.578      0.000      -0.306      -0.255
+ict_index      0.4446      0.005     92.839      0.000       0.435       0.454
+==============================================================================
+Omnibus:                     5303.546   Durbin-Watson:                   1.847
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            22267.176
+Skew:                           1.382   Prob(JB):                         0.00
+Kurtosis:                       7.657   Cond. No.                         9.15
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+AIC: 63728.33837742836
+BIC: 63759.58057565586
+
+
+Entered : influence
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.774
+Model:                            OLS   Adj. R-squared:                  0.774
+Method:                 Least Squares   F-statistic:                 1.561e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:54:57   Log-Likelihood:                -30274.
+No. Observations:               18225   AIC:                         6.056e+04
+Df Residuals:                   18220   BIC:                         6.060e+04
+Df Model:                           4                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+intercept      0.3597      0.012     29.524      0.000       0.336       0.384
+bonus          1.9542      0.022     87.358      0.000       1.910       1.998
+shots          0.0550      0.013      4.163      0.000       0.029       0.081
+ict_index      0.1129      0.007     15.812      0.000       0.099       0.127
+influence      0.0872      0.001     58.859      0.000       0.084       0.090
+==============================================================================
+Omnibus:                     4943.161   Durbin-Watson:                   1.816
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            20092.754
+Skew:                           1.293   Prob(JB):                         0.00
+Kurtosis:                       7.447   Cond. No.                         40.5
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+AIC: 60557.915944521126
+BIC: 60596.96869230551
+
+
+Entered : minutes
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.793
+Model:                            OLS   Adj. R-squared:                  0.793
+Method:                 Least Squares   F-statistic:                 1.394e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:54:58   Log-Likelihood:                -29485.
+No. Observations:               18225   AIC:                         5.898e+04
+Df Residuals:                   18219   BIC:                         5.903e+04
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+intercept      0.1029      0.013      7.753      0.000       0.077       0.129
+bonus          2.2021      0.022     98.851      0.000       2.158       2.246
+shots          0.0939      0.013      7.394      0.000       0.069       0.119
+ict_index      0.0520      0.007      7.429      0.000       0.038       0.066
+influence      0.0664      0.002     44.026      0.000       0.063       0.069
+minutes        0.0127      0.000     40.585      0.000       0.012       0.013
+==============================================================================
+Omnibus:                     3995.067   Durbin-Watson:                   1.784
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            17653.948
+Skew:                           1.011   Prob(JB):                         0.00
+Kurtosis:                       7.377   Cond. No.                         148.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+AIC: 58982.500112435315
+BIC: 59029.363409776575
+
+
+Entered : goals_conceded
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.839
+Model:                            OLS   Adj. R-squared:                  0.839
+Method:                 Least Squares   F-statistic:                 1.584e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:54:59   Log-Likelihood:                -27180.
+No. Observations:               18225   AIC:                         5.437e+04
+Df Residuals:                   18218   BIC:                         5.443e+04
+Df Model:                           6                                         
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+intercept          0.1209      0.012     10.335      0.000       0.098       0.144
+bonus              1.9662      0.020     98.804      0.000       1.927       2.005
+shots              0.0946      0.011      8.452      0.000       0.073       0.116
+ict_index          0.0339      0.006      5.495      0.000       0.022       0.046
+influence          0.0724      0.001     54.414      0.000       0.070       0.075
+minutes            0.0234      0.000     74.776      0.000       0.023       0.024
+goals_conceded    -0.7085      0.010    -72.408      0.000      -0.728      -0.689
+==============================================================================
+Omnibus:                     3864.892   Durbin-Watson:                   1.877
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            16055.508
+Skew:                           0.996   Prob(JB):                         0.00
+Kurtosis:                       7.145   Cond. No.                         151.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+AIC: 54374.88323550027
+BIC: 54429.5570823984
+
+
+Entered : npg
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.852
+Model:                            OLS   Adj. R-squared:                  0.852
+Method:                 Least Squares   F-statistic:                 1.496e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:54:59   Log-Likelihood:                -26430.
+No. Observations:               18225   AIC:                         5.288e+04
+Df Residuals:                   18217   BIC:                         5.294e+04
+Df Model:                           7                                         
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+intercept          0.1440      0.011     12.809      0.000       0.122       0.166
+bonus              1.8233      0.019     93.801      0.000       1.785       1.861
+shots             -0.0079      0.011     -0.715      0.475      -0.030       0.014
+ict_index          0.0309      0.006      5.209      0.000       0.019       0.042
+influence          0.0469      0.001     32.756      0.000       0.044       0.050
+minutes            0.0286      0.000     87.223      0.000       0.028       0.029
+goals_conceded    -0.7249      0.009    -77.113      0.000      -0.743      -0.706
+npg                1.9536      0.049     39.533      0.000       1.857       2.050
+==============================================================================
+Omnibus:                     4235.906   Durbin-Watson:                   1.872
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            17338.425
+Skew:                           1.099   Prob(JB):                         0.00
+Kurtosis:                       7.243   Cond. No.                         389.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+AIC: 52876.831940632896
+BIC: 52939.31633708791
+
+
+Entered : assists
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.883
+Model:                            OLS   Adj. R-squared:                  0.883
+Method:                 Least Squares   F-statistic:                 1.718e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:00   Log-Likelihood:                -24281.
+No. Observations:               18225   AIC:                         4.858e+04
+Df Residuals:                   18216   BIC:                         4.865e+04
+Df Model:                           8                                         
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+intercept          0.1303      0.010     13.037      0.000       0.111       0.150
+bonus              1.6317      0.017     93.273      0.000       1.597       1.666
+shots              0.0006      0.010      0.057      0.954      -0.019       0.020
+ict_index         -0.0488      0.005     -9.056      0.000      -0.059      -0.038
+influence          0.0307      0.001     23.726      0.000       0.028       0.033
+minutes            0.0330      0.000    110.643      0.000       0.032       0.034
+goals_conceded    -0.7203      0.008    -86.220      0.000      -0.737      -0.704
+npg                3.0465      0.047     65.315      0.000       2.955       3.138
+assists            2.3768      0.034     69.610      0.000       2.310       2.444
+==============================================================================
+Omnibus:                     3918.109   Durbin-Watson:                   1.862
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            15087.616
+Skew:                           1.033   Prob(JB):                         0.00
+Kurtosis:                       6.950   Cond. No.                         435.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+AIC: 48580.182952734016
+BIC: 48650.47789874591
+
+
+Entered : bps
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.918
+Model:                            OLS   Adj. R-squared:                  0.918
+Method:                 Least Squares   F-statistic:                 2.266e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:01   Log-Likelihood:                -21039.
+No. Observations:               18225   AIC:                         4.210e+04
+Df Residuals:                   18215   BIC:                         4.218e+04
+Df Model:                           9                                         
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+intercept          0.0635      0.008      7.555      0.000       0.047       0.080
+bonus              1.1394      0.016     72.709      0.000       1.109       1.170
+shots              0.1218      0.008     14.617      0.000       0.105       0.138
+ict_index         -0.0500      0.005    -11.074      0.000      -0.059      -0.041
+influence         -0.0212      0.001    -17.168      0.000      -0.024      -0.019
+minutes            0.0185      0.000     61.925      0.000       0.018       0.019
+goals_conceded    -0.5370      0.007    -73.609      0.000      -0.551      -0.523
+npg                2.6197      0.039     66.590      0.000       2.543       2.697
+assists            1.8111      0.029     61.829      0.000       1.754       1.868
+bps                0.1403      0.002     88.224      0.000       0.137       0.143
+==============================================================================
+Omnibus:                     2620.642   Durbin-Watson:                   1.918
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            17051.441
+Skew:                           0.523   Prob(JB):                         0.00
+Kurtosis:                       7.622   Cond. No.                         448.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+AIC: 42097.80557380227
+BIC: 42175.91106937103
+
+
+Entered : clean_sheets
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.932
+Model:                            OLS   Adj. R-squared:                  0.932
+Method:                 Least Squares   F-statistic:                 2.487e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:02   Log-Likelihood:                -19365.
+No. Observations:               18225   AIC:                         3.875e+04
+Df Residuals:                   18214   BIC:                         3.884e+04
+Df Model:                          10                                         
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+intercept          0.0791      0.008     10.317      0.000       0.064       0.094
+bonus              1.1385      0.014     79.643      0.000       1.110       1.167
+shots              0.1003      0.008     13.185      0.000       0.085       0.115
+ict_index         -0.0478      0.004    -11.604      0.000      -0.056      -0.040
+influence         -0.0071      0.001     -6.183      0.000      -0.009      -0.005
+minutes            0.0113      0.000     37.860      0.000       0.011       0.012
+goals_conceded    -0.2398      0.008    -29.010      0.000      -0.256      -0.224
+npg                2.6885      0.036     74.874      0.000       2.618       2.759
+assists            1.8996      0.027     70.985      0.000       1.847       1.952
+bps                0.1117      0.002     73.215      0.000       0.109       0.115
+clean_sheets       1.4379      0.024     60.613      0.000       1.391       1.484
+==============================================================================
+Omnibus:                     2326.816   Durbin-Watson:                   1.993
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            24134.965
+Skew:                           0.217   Prob(JB):                         0.00
+Kurtosis:                       8.621   Cond. No.                         448.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+AIC: 38751.05070648937
+BIC: 38836.966751615015
+
+
+Entered : yellow_cards
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.936
+Model:                            OLS   Adj. R-squared:                  0.936
+Method:                 Least Squares   F-statistic:                 2.409e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:02   Log-Likelihood:                -18827.
+No. Observations:               18225   AIC:                         3.768e+04
+Df Residuals:                   18213   BIC:                         3.777e+04
+Df Model:                          11                                         
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+intercept          0.0878      0.007     11.788      0.000       0.073       0.102
+bonus              1.1407      0.014     82.183      0.000       1.113       1.168
+shots              0.0857      0.007     11.575      0.000       0.071       0.100
+ict_index         -0.0462      0.004    -11.547      0.000      -0.054      -0.038
+influence         -0.0045      0.001     -4.059      0.000      -0.007      -0.002
+minutes            0.0134      0.000     45.237      0.000       0.013       0.014
+goals_conceded    -0.2461      0.008    -30.653      0.000      -0.262      -0.230
+npg                2.7803      0.035     79.498      0.000       2.712       2.849
+assists            1.9482      0.026     74.861      0.000       1.897       1.999
+bps                0.1019      0.002     67.461      0.000       0.099       0.105
+clean_sheets       1.4885      0.023     64.483      0.000       1.443       1.534
+yellow_cards      -0.6966      0.021    -33.275      0.000      -0.738      -0.656
+==============================================================================
+Omnibus:                     2591.705   Durbin-Watson:                   1.993
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            30342.911
+Skew:                           0.274   Prob(JB):                         0.00
+Kurtosis:                       9.297   Cond. No.                         451.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+AIC: 37677.45540631583
+BIC: 37771.18200099835
+
+
+Entered : goals_scored
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.940
+Model:                            OLS   Adj. R-squared:                  0.940
+Method:                 Least Squares   F-statistic:                 2.371e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:03   Log-Likelihood:                -18215.
+No. Observations:               18225   AIC:                         3.646e+04
+Df Residuals:                   18212   BIC:                         3.656e+04
+Df Model:                          12                                         
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+intercept          0.0996      0.007     13.811      0.000       0.085       0.114
+bonus              1.0799      0.014     79.809      0.000       1.053       1.106
+shots              0.0555      0.007      7.704      0.000       0.041       0.070
+ict_index         -0.0523      0.004    -13.522      0.000      -0.060      -0.045
+influence         -0.0099      0.001     -9.084      0.000      -0.012      -0.008
+minutes            0.0153      0.000     52.600      0.000       0.015       0.016
+goals_conceded    -0.2529      0.008    -32.562      0.000      -0.268      -0.238
+npg                0.4603      0.073      6.264      0.000       0.316       0.604
+assists            2.1178      0.026     82.680      0.000       2.068       2.168
+bps                0.0972      0.001     66.252      0.000       0.094       0.100
+clean_sheets       1.5124      0.022     67.723      0.000       1.469       1.556
+yellow_cards      -0.7302      0.020    -36.031      0.000      -0.770      -0.691
+goals_scored       2.7275      0.077     35.553      0.000       2.577       2.878
+==============================================================================
+Omnibus:                     2596.331   Durbin-Watson:                   1.997
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            33963.000
+Skew:                           0.207   Prob(JB):                         0.00
+Kurtosis:                       9.675   Cond. No.                     1.29e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.29e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+AIC: 36456.5099509882
+BIC: 36558.0470952276
+
+
+Entered : penalties_saved
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.943
+Model:                            OLS   Adj. R-squared:                  0.943
+Method:                 Least Squares   F-statistic:                 2.305e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:04   Log-Likelihood:                -17772.
+No. Observations:               18225   AIC:                         3.557e+04
+Df Residuals:                   18211   BIC:                         3.568e+04
+Df Model:                          13                                         
+Covariance Type:            nonrobust                                         
+===================================================================================
+                      coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------
+intercept           0.1016      0.007     14.428      0.000       0.088       0.115
+bonus               1.0330      0.013     77.678      0.000       1.007       1.059
+shots               0.0463      0.007      6.578      0.000       0.033       0.060
+ict_index          -0.0473      0.004    -12.521      0.000      -0.055      -0.040
+influence          -0.0147      0.001    -13.672      0.000      -0.017      -0.013
+minutes             0.0160      0.000     56.236      0.000       0.015       0.017
+goals_conceded     -0.2591      0.008    -34.166      0.000      -0.274      -0.244
+npg                 0.4559      0.072      6.355      0.000       0.315       0.596
+assists             2.1988      0.025     87.446      0.000       2.149       2.248
+bps                 0.0970      0.001     67.732      0.000       0.094       0.100
+clean_sheets        1.5177      0.022     69.629      0.000       1.475       1.560
+yellow_cards       -0.7370      0.020    -37.258      0.000      -0.776      -0.698
+goals_scored        2.9241      0.075     38.905      0.000       2.777       3.071
+penalties_saved     4.5824      0.152     30.124      0.000       4.284       4.881
+==============================================================================
+Omnibus:                     1797.606   Durbin-Watson:                   1.996
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            13716.721
+Skew:                          -0.118   Prob(JB):                         0.00
+Kurtosis:                       7.244   Cond. No.                     1.95e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.95e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+AIC: 35572.24685283289
+BIC: 35681.59454662917
+
+
+Entered : saves
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.945
+Model:                            OLS   Adj. R-squared:                  0.945
+Method:                 Least Squares   F-statistic:                 2.218e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:05   Log-Likelihood:                -17464.
+No. Observations:               18225   AIC:                         3.496e+04
+Df Residuals:                   18210   BIC:                         3.508e+04
+Df Model:                          14                                         
+Covariance Type:            nonrobust                                         
+===================================================================================
+                      coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------
+intercept           0.1059      0.007     15.301      0.000       0.092       0.120
+bonus               1.0205      0.013     77.995      0.000       0.995       1.046
+shots               0.0317      0.007      4.570      0.000       0.018       0.045
+ict_index          -0.0261      0.004     -6.848      0.000      -0.034      -0.019
+influence          -0.0271      0.001    -23.214      0.000      -0.029      -0.025
+minutes             0.0166      0.000     58.975      0.000       0.016       0.017
+goals_conceded     -0.2643      0.007    -35.440      0.000      -0.279      -0.250
+npg                 0.4674      0.071      6.627      0.000       0.329       0.606
+assists             2.3251      0.025     92.143      0.000       2.276       2.375
+bps                 0.0978      0.001     69.449      0.000       0.095       0.101
+clean_sheets        1.5134      0.021     70.611      0.000       1.471       1.555
+yellow_cards       -0.7081      0.019    -36.340      0.000      -0.746      -0.670
+goals_scored        3.2135      0.075     42.960      0.000       3.067       3.360
+penalties_saved     4.1875      0.150     27.842      0.000       3.893       4.482
+saves               0.1997      0.008     25.024      0.000       0.184       0.215
+==============================================================================
+Omnibus:                     1947.574   Durbin-Watson:                   1.994
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            16231.476
+Skew:                          -0.151   Prob(JB):                         0.00
+Kurtosis:                       7.613   Cond. No.                     1.96e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.96e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+AIC: 34958.05833683605
+BIC: 35075.216580189204
+
+
+Entered : red_cards
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.946
+Model:                            OLS   Adj. R-squared:                  0.946
+Method:                 Least Squares   F-statistic:                 2.129e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:06   Log-Likelihood:                -17223.
+No. Observations:               18225   AIC:                         3.448e+04
+Df Residuals:                   18209   BIC:                         3.460e+04
+Df Model:                          15                                         
+Covariance Type:            nonrobust                                         
+===================================================================================
+                      coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------
+intercept           0.1115      0.007     16.303      0.000       0.098       0.125
+bonus               1.0311      0.013     79.793      0.000       1.006       1.056
+shots               0.0271      0.007      3.954      0.000       0.014       0.041
+ict_index          -0.0260      0.004     -6.899      0.000      -0.033      -0.019
+influence          -0.0266      0.001    -23.025      0.000      -0.029      -0.024
+minutes             0.0169      0.000     60.719      0.000       0.016       0.017
+goals_conceded     -0.2559      0.007    -34.715      0.000      -0.270      -0.241
+npg                 0.4671      0.070      6.710      0.000       0.331       0.604
+assists             2.3518      0.025     94.329      0.000       2.303       2.401
+bps                 0.0942      0.001     67.295      0.000       0.091       0.097
+clean_sheets        1.5450      0.021     72.878      0.000       1.503       1.587
+yellow_cards       -0.7266      0.019    -37.748      0.000      -0.764      -0.689
+goals_scored        3.2491      0.074     44.003      0.000       3.104       3.394
+penalties_saved     4.2059      0.148     28.336      0.000       3.915       4.497
+saves               0.2003      0.008     25.435      0.000       0.185       0.216
+red_cards          -2.0749      0.094    -22.100      0.000      -2.259      -1.891
+==============================================================================
+Omnibus:                     1847.131   Durbin-Watson:                   1.994
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            15111.193
+Skew:                          -0.079   Prob(JB):                         0.00
+Kurtosis:                       7.458   Cond. No.                     1.96e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.96e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+AIC: 34477.64787222798
+BIC: 34602.61666513801
+
+
+Entered : own_goals
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.947
+Model:                            OLS   Adj. R-squared:                  0.947
+Method:                 Least Squares   F-statistic:                 2.035e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:07   Log-Likelihood:                -17058.
+No. Observations:               18225   AIC:                         3.415e+04
+Df Residuals:                   18208   BIC:                         3.428e+04
+Df Model:                          16                                         
+Covariance Type:            nonrobust                                         
+===================================================================================
+                      coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------
+intercept           0.1120      0.007     16.529      0.000       0.099       0.125
+bonus               1.0334      0.013     80.694      0.000       1.008       1.058
+shots               0.0252      0.007      3.704      0.000       0.012       0.039
+ict_index          -0.0265      0.004     -7.111      0.000      -0.034      -0.019
+influence          -0.0264      0.001    -23.126      0.000      -0.029      -0.024
+minutes             0.0171      0.000     61.973      0.000       0.017       0.018
+goals_conceded     -0.2521      0.007    -34.495      0.000      -0.266      -0.238
+npg                 0.4739      0.069      6.869      0.000       0.339       0.609
+assists             2.3595      0.025     95.483      0.000       2.311       2.408
+bps                 0.0929      0.001     66.946      0.000       0.090       0.096
+clean_sheets        1.5480      0.021     73.679      0.000       1.507       1.589
+yellow_cards       -0.7276      0.019    -38.145      0.000      -0.765      -0.690
+goals_scored        3.2665      0.073     44.638      0.000       3.123       3.410
+penalties_saved     4.1956      0.147     28.523      0.000       3.907       4.484
+saves               0.2045      0.008     26.184      0.000       0.189       0.220
+red_cards          -2.0942      0.093    -22.507      0.000      -2.277      -1.912
+own_goals          -1.9717      0.108    -18.250      0.000      -2.183      -1.760
+==============================================================================
+Omnibus:                     1782.233   Durbin-Watson:                   1.998
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            14148.359
+Skew:                          -0.025   Prob(JB):                         0.00
+Kurtosis:                       7.316   Cond. No.                     1.96e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.96e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+AIC: 34149.27396791796
+BIC: 34282.053310384865
+
+
+Entered : xA
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.948
+Model:                            OLS   Adj. R-squared:                  0.948
+Method:                 Least Squares   F-statistic:                 1.947e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:09   Log-Likelihood:                -16913.
+No. Observations:               18225   AIC:                         3.386e+04
+Df Residuals:                   18207   BIC:                         3.400e+04
+Df Model:                          17                                         
+Covariance Type:            nonrobust                                         
+===================================================================================
+                      coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------
+intercept           0.1218      0.007     18.057      0.000       0.109       0.135
+bonus               1.0450      0.013     82.132      0.000       1.020       1.070
+shots               0.0110      0.007      1.613      0.107      -0.002       0.024
+ict_index           0.0028      0.004      0.687      0.492      -0.005       0.011
+influence          -0.0282      0.001    -24.768      0.000      -0.030      -0.026
+minutes             0.0163      0.000     58.537      0.000       0.016       0.017
+goals_conceded     -0.2500      0.007    -34.474      0.000      -0.264      -0.236
+npg                 0.4759      0.068      6.953      0.000       0.342       0.610
+assists             2.4606      0.025     97.549      0.000       2.411       2.510
+bps                 0.0961      0.001     69.149      0.000       0.093       0.099
+clean_sheets        1.5383      0.021     73.768      0.000       1.497       1.579
+yellow_cards       -0.7151      0.019    -37.756      0.000      -0.752      -0.678
+goals_scored        3.1259      0.073     42.779      0.000       2.983       3.269
+penalties_saved     4.0996      0.146     28.070      0.000       3.813       4.386
+saves               0.1951      0.008     25.118      0.000       0.180       0.210
+red_cards          -2.0558      0.092    -22.263      0.000      -2.237      -1.875
+own_goals          -1.9543      0.107    -18.232      0.000      -2.164      -1.744
+xA                 -0.7963      0.047    -17.044      0.000      -0.888      -0.705
+==============================================================================
+Omnibus:                     1873.648   Durbin-Watson:                   1.991
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            15826.430
+Skew:                          -0.059   Prob(JB):                         0.00
+Kurtosis:                       7.564   Cond. No.                     1.96e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.96e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+AIC: 33862.77556292762
+BIC: 34003.3654549514
+
+
+Entered : xGChain
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.948
+Model:                            OLS   Adj. R-squared:                  0.948
+Method:                 Least Squares   F-statistic:                 1.854e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:10   Log-Likelihood:                -16842.
+No. Observations:               18225   AIC:                         3.372e+04
+Df Residuals:                   18206   BIC:                         3.387e+04
+Df Model:                          18                                         
+Covariance Type:            nonrobust                                         
+===================================================================================
+                      coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------
+intercept           0.1367      0.007     20.002      0.000       0.123       0.150
+bonus               1.0317      0.013     81.086      0.000       1.007       1.057
+shots               0.0291      0.007      4.201      0.000       0.016       0.043
+ict_index           0.0059      0.004      1.440      0.150      -0.002       0.014
+influence          -0.0284      0.001    -25.039      0.000      -0.031      -0.026
+minutes             0.0163      0.000     59.075      0.000       0.016       0.017
+goals_conceded     -0.2531      0.007    -35.013      0.000      -0.267      -0.239
+npg                 0.5358      0.068      7.839      0.000       0.402       0.670
+assists             2.4682      0.025     98.201      0.000       2.419       2.517
+bps                 0.0970      0.001     69.969      0.000       0.094       0.100
+clean_sheets        1.5493      0.021     74.513      0.000       1.509       1.590
+yellow_cards       -0.7165      0.019    -37.976      0.000      -0.753      -0.679
+goals_scored        3.1016      0.073     42.595      0.000       2.959       3.244
+penalties_saved     4.1046      0.145     28.214      0.000       3.819       4.390
+saves               0.1910      0.008     24.659      0.000       0.176       0.206
+red_cards          -2.0593      0.092    -22.388      0.000      -2.240      -1.879
+own_goals          -1.9572      0.107    -18.330      0.000      -2.166      -1.748
+xA                 -0.6110      0.049    -12.456      0.000      -0.707      -0.515
+xGChain            -0.2417      0.020    -11.968      0.000      -0.281      -0.202
+==============================================================================
+Omnibus:                     1866.921   Durbin-Watson:                   1.995
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            15561.934
+Skew:                          -0.074   Prob(JB):                         0.00
+Kurtosis:                       7.524   Cond. No.                     1.96e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.96e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+AIC: 33721.96150363771
+BIC: 33870.36194521837
+
+
+Entered : threat
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.949
+Model:                            OLS   Adj. R-squared:                  0.948
+Method:                 Least Squares   F-statistic:                 1.766e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:11   Log-Likelihood:                -16795.
+No. Observations:               18225   AIC:                         3.363e+04
+Df Residuals:                   18205   BIC:                         3.379e+04
+Df Model:                          19                                         
+Covariance Type:            nonrobust                                         
+===================================================================================
+                      coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------
+intercept           0.1437      0.007     20.956      0.000       0.130       0.157
+bonus               1.0309      0.013     81.227      0.000       1.006       1.056
+shots            1.997e-05      0.008      0.003      0.998      -0.015       0.015
+ict_index          -0.0374      0.006     -6.194      0.000      -0.049      -0.026
+influence          -0.0235      0.001    -18.969      0.000      -0.026      -0.021
+minutes             0.0162      0.000     58.591      0.000       0.016       0.017
+goals_conceded     -0.2534      0.007    -35.144      0.000      -0.267      -0.239
+npg                 0.5229      0.068      7.667      0.000       0.389       0.657
+assists             2.4449      0.025     97.070      0.000       2.395       2.494
+bps                 0.0987      0.001     70.804      0.000       0.096       0.101
+clean_sheets        1.5393      0.021     74.132      0.000       1.499       1.580
+yellow_cards       -0.7050      0.019    -37.391      0.000      -0.742      -0.668
+goals_scored        3.0042      0.073     40.970      0.000       2.860       3.148
+penalties_saved     4.0748      0.145     28.074      0.000       3.790       4.359
+saves               0.1811      0.008     23.246      0.000       0.166       0.196
+red_cards          -2.0494      0.092    -22.334      0.000      -2.229      -1.869
+own_goals          -1.9455      0.107    -18.265      0.000      -2.154      -1.737
+xA                 -0.4244      0.053     -8.071      0.000      -0.528      -0.321
+xGChain            -0.2476      0.020    -12.286      0.000      -0.287      -0.208
+threat              0.0084      0.001      9.674      0.000       0.007       0.010
+==============================================================================
+Omnibus:                     1930.772   Durbin-Watson:                   1.996
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            16540.186
+Skew:                          -0.109   Prob(JB):                         0.00
+Kurtosis:                       7.662   Cond. No.                     1.99e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.99e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+AIC: 33630.51699320247
+BIC: 33786.72798434001
+
+
+Entered : position_MID
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.949
+Model:                            OLS   Adj. R-squared:                  0.949
+Method:                 Least Squares   F-statistic:                 1.691e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:12   Log-Likelihood:                -16726.
+No. Observations:               18225   AIC:                         3.349e+04
+Df Residuals:                   18204   BIC:                         3.366e+04
+Df Model:                          20                                         
+Covariance Type:            nonrobust                                         
+===================================================================================
+                      coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------
+intercept           0.0978      0.008     12.442      0.000       0.082       0.113
+bonus               1.0363      0.013     81.909      0.000       1.012       1.061
+shots              -0.0100      0.008     -1.323      0.186      -0.025       0.005
+ict_index          -0.0510      0.006     -8.317      0.000      -0.063      -0.039
+influence          -0.0218      0.001    -17.520      0.000      -0.024      -0.019
+minutes             0.0162      0.000     58.679      0.000       0.016       0.017
+goals_conceded     -0.2543      0.007    -35.401      0.000      -0.268      -0.240
+npg                 0.5241      0.068      7.714      0.000       0.391       0.657
+assists             2.4239      0.025     96.356      0.000       2.375       2.473
+bps                 0.1000      0.001     71.796      0.000       0.097       0.103
+clean_sheets        1.5306      0.021     73.939      0.000       1.490       1.571
+yellow_cards       -0.7055      0.019    -37.558      0.000      -0.742      -0.669
+goals_scored        2.9589      0.073     40.449      0.000       2.816       3.102
+penalties_saved     4.0332      0.145     27.884      0.000       3.750       4.317
+saves               0.1840      0.008     23.692      0.000       0.169       0.199
+red_cards          -2.0244      0.091    -22.140      0.000      -2.204      -1.845
+own_goals          -1.9235      0.106    -18.124      0.000      -2.131      -1.715
+xA                 -0.4102      0.052     -7.828      0.000      -0.513      -0.308
+xGChain            -0.2513      0.020    -12.514      0.000      -0.291      -0.212
+threat              0.0105      0.001     11.854      0.000       0.009       0.012
+position_MID        0.1128      0.010     11.770      0.000       0.094       0.132
+==============================================================================
+Omnibus:                     1911.921   Durbin-Watson:                   2.003
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            16784.034
+Skew:                          -0.038   Prob(JB):                         0.00
+Kurtosis:                       7.701   Cond. No.                     1.99e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.99e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+AIC: 33494.34039920583
+BIC: 33658.36193990024
+
+
+Entered : creativity
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.949
+Model:                            OLS   Adj. R-squared:                  0.949
+Method:                 Least Squares   F-statistic:                 1.620e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:14   Log-Likelihood:                -16676.
+No. Observations:               18225   AIC:                         3.340e+04
+Df Residuals:                   18203   BIC:                         3.357e+04
+Df Model:                          21                                         
+Covariance Type:            nonrobust                                         
+===================================================================================
+                      coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------
+intercept           0.0962      0.008     12.265      0.000       0.081       0.112
+bonus               1.0295      0.013     81.465      0.000       1.005       1.054
+shots              -0.0162      0.008     -2.139      0.032      -0.031      -0.001
+ict_index          -1.1997      0.115    -10.430      0.000      -1.425      -0.974
+influence           0.0937      0.012      8.066      0.000       0.071       0.116
+minutes             0.0159      0.000     57.771      0.000       0.015       0.016
+goals_conceded     -0.2551      0.007    -35.615      0.000      -0.269      -0.241
+npg                 0.5230      0.068      7.719      0.000       0.390       0.656
+assists             2.4110      0.025     95.981      0.000       2.362       2.460
+bps                 0.1012      0.001     72.589      0.000       0.099       0.104
+clean_sheets        1.5257      0.021     73.881      0.000       1.485       1.566
+yellow_cards       -0.7082      0.019    -37.800      0.000      -0.745      -0.671
+goals_scored        2.9362      0.073     40.229      0.000       2.793       3.079
+penalties_saved     4.0198      0.144     27.865      0.000       3.737       4.303
+saves               0.1801      0.008     23.227      0.000       0.165       0.195
+red_cards          -2.0943      0.091    -22.899      0.000      -2.274      -1.915
+own_goals          -1.9368      0.106    -18.298      0.000      -2.144      -1.729
+xA                 -0.4282      0.052     -8.188      0.000      -0.531      -0.326
+xGChain            -0.2523      0.020    -12.598      0.000      -0.292      -0.213
+threat              0.1255      0.012     10.877      0.000       0.103       0.148
+position_MID        0.1151      0.010     12.037      0.000       0.096       0.134
+creativity          0.1153      0.012     10.000      0.000       0.093       0.138
+==============================================================================
+Omnibus:                     1945.461   Durbin-Watson:                   2.004
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            17441.366
+Skew:                          -0.054   Prob(JB):                         0.00
+Kurtosis:                       7.791   Cond. No.                     2.01e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 2.01e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+AIC: 33396.48426808516
+BIC: 33568.31635833645
+
+
+Entered : penalties_missed
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.949
+Model:                            OLS   Adj. R-squared:                  0.949
+Method:                 Least Squares   F-statistic:                 1.552e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:15   Log-Likelihood:                -16643.
+No. Observations:               18225   AIC:                         3.333e+04
+Df Residuals:                   18202   BIC:                         3.351e+04
+Df Model:                          22                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+intercept            0.0967      0.008     12.346      0.000       0.081       0.112
+bonus                1.0285      0.013     81.534      0.000       1.004       1.053
+shots               -0.0156      0.008     -2.061      0.039      -0.030      -0.001
+ict_index           -1.2051      0.115    -10.495      0.000      -1.430      -0.980
+influence            0.0946      0.012      8.164      0.000       0.072       0.117
+minutes              0.0160      0.000     58.048      0.000       0.015       0.017
+goals_conceded      -0.2553      0.007    -35.704      0.000      -0.269      -0.241
+npg                  0.5353      0.068      7.912      0.000       0.403       0.668
+assists              2.4127      0.025     96.219      0.000       2.364       2.462
+bps                  0.1003      0.001     71.841      0.000       0.098       0.103
+clean_sheets         1.5317      0.021     74.260      0.000       1.491       1.572
+yellow_cards        -0.7124      0.019    -38.079      0.000      -0.749      -0.676
+goals_scored         2.9344      0.073     40.277      0.000       2.792       3.077
+penalties_saved      4.0247      0.144     27.950      0.000       3.742       4.307
+saves                0.1801      0.008     23.269      0.000       0.165       0.195
+red_cards           -2.1031      0.091    -23.036      0.000      -2.282      -1.924
+own_goals           -1.9418      0.106    -18.378      0.000      -2.149      -1.735
+xA                  -0.4162      0.052     -7.970      0.000      -0.519      -0.314
+xGChain             -0.2566      0.020    -12.831      0.000      -0.296      -0.217
+threat               0.1262      0.012     10.958      0.000       0.104       0.149
+position_MID         0.1143      0.010     11.978      0.000       0.096       0.133
+creativity           0.1158      0.012     10.064      0.000       0.093       0.138
+penalties_missed    -1.1200      0.137     -8.203      0.000      -1.388      -0.852
+==============================================================================
+Omnibus:                     1923.575   Durbin-Watson:                   2.005
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            16978.994
+Skew:                          -0.049   Prob(JB):                         0.00
+Kurtosis:                       7.728   Cond. No.                     2.01e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 2.01e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+AIC: 33331.23559850848
+BIC: 33510.87823831665
+
+
+Entered : position_DEF
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.949
+Model:                            OLS   Adj. R-squared:                  0.949
+Method:                 Least Squares   F-statistic:                 1.488e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:16   Log-Likelihood:                -16624.
+No. Observations:               18225   AIC:                         3.330e+04
+Df Residuals:                   18201   BIC:                         3.348e+04
+Df Model:                          23                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+intercept            0.0442      0.012      3.791      0.000       0.021       0.067
+bonus                1.0304      0.013     81.738      0.000       1.006       1.055
+shots               -0.0127      0.008     -1.672      0.095      -0.027       0.002
+ict_index           -1.2339      0.115    -10.748      0.000      -1.459      -1.009
+influence            0.0963      0.012      8.308      0.000       0.074       0.119
+minutes              0.0161      0.000     58.419      0.000       0.016       0.017
+goals_conceded      -0.2556      0.007    -35.783      0.000      -0.270      -0.242
+npg                  0.5311      0.068      7.858      0.000       0.399       0.664
+assists              2.4343      0.025     96.212      0.000       2.385       2.484
+bps                  0.0995      0.001     71.021      0.000       0.097       0.102
+clean_sheets         1.5362      0.021     74.504      0.000       1.496       1.577
+yellow_cards        -0.7196      0.019    -38.425      0.000      -0.756      -0.683
+goals_scored         2.9974      0.074     40.769      0.000       2.853       3.141
+penalties_saved      4.0506      0.144     28.145      0.000       3.769       4.333
+saves                0.2021      0.009     23.668      0.000       0.185       0.219
+red_cards           -2.1224      0.091    -23.256      0.000      -2.301      -1.944
+own_goals           -1.9627      0.106    -18.585      0.000      -2.170      -1.756
+xA                  -0.4063      0.052     -7.785      0.000      -0.509      -0.304
+xGChain             -0.2616      0.020    -13.085      0.000      -0.301      -0.222
+threat               0.1293      0.012     11.225      0.000       0.107       0.152
+position_MID         0.1665      0.013     12.967      0.000       0.141       0.192
+creativity           0.1189      0.012     10.332      0.000       0.096       0.141
+penalties_missed    -1.1245      0.136     -8.244      0.000      -1.392      -0.857
+position_DEF         0.0846      0.014      6.069      0.000       0.057       0.112
+==============================================================================
+Omnibus:                     1855.598   Durbin-Watson:                   2.005
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            15565.200
+Skew:                          -0.040   Prob(JB):                         0.00
+Kurtosis:                       7.527   Cond. No.                     2.01e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 2.01e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+AIC: 33296.39235478209
+BIC: 33483.84554414713
+
+
+Entered : value
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.950
+Model:                            OLS   Adj. R-squared:                  0.950
+Method:                 Least Squares   F-statistic:                 1.428e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:18   Log-Likelihood:                -16608.
+No. Observations:               18225   AIC:                         3.327e+04
+Df Residuals:                   18200   BIC:                         3.346e+04
+Df Model:                          24                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+intercept           -0.0846      0.025     -3.349      0.001      -0.134      -0.035
+bonus                1.0312      0.013     81.872      0.000       1.007       1.056
+shots               -0.0206      0.008     -2.675      0.007      -0.036      -0.005
+ict_index           -1.2347      0.115    -10.764      0.000      -1.460      -1.010
+influence            0.0968      0.012      8.364      0.000       0.074       0.120
+minutes              0.0160      0.000     57.899      0.000       0.015       0.017
+goals_conceded      -0.2548      0.007    -35.697      0.000      -0.269      -0.241
+npg                  0.5447      0.068      8.061      0.000       0.412       0.677
+assists              2.4232      0.025     95.585      0.000       2.374       2.473
+bps                  0.0997      0.001     71.207      0.000       0.097       0.102
+clean_sheets         1.5357      0.021     74.545      0.000       1.495       1.576
+yellow_cards        -0.7158      0.019    -38.232      0.000      -0.753      -0.679
+goals_scored         2.9582      0.074     40.100      0.000       2.814       3.103
+penalties_saved      4.0362      0.144     28.065      0.000       3.754       4.318
+saves                0.2013      0.009     23.591      0.000       0.185       0.218
+red_cards           -2.1225      0.091    -23.277      0.000      -2.301      -1.944
+own_goals           -1.9604      0.106    -18.578      0.000      -2.167      -1.754
+xA                  -0.4123      0.052     -7.905      0.000      -0.515      -0.310
+xGChain             -0.2776      0.020    -13.765      0.000      -0.317      -0.238
+threat               0.1294      0.012     11.242      0.000       0.107       0.152
+position_MID         0.1690      0.013     13.165      0.000       0.144       0.194
+creativity           0.1187      0.012     10.323      0.000       0.096       0.141
+penalties_missed    -1.1415      0.136     -8.374      0.000      -1.409      -0.874
+position_DEF         0.0998      0.014      7.039      0.000       0.072       0.128
+value                0.0025      0.000      5.744      0.000       0.002       0.003
+==============================================================================
+Omnibus:                     1886.030   Durbin-Watson:                   2.005
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            16210.954
+Skew:                          -0.039   Prob(JB):                         0.00
+Kurtosis:                       7.620   Cond. No.                     2.49e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 2.49e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+AIC: 33265.3832749351
+BIC: 33460.64701385702
+
+
+Entered : npxG
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.950
+Model:                            OLS   Adj. R-squared:                  0.950
+Method:                 Least Squares   F-statistic:                 1.373e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:19   Log-Likelihood:                -16595.
+No. Observations:               18225   AIC:                         3.324e+04
+Df Residuals:                   18199   BIC:                         3.345e+04
+Df Model:                          25                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+intercept           -0.0847      0.025     -3.355      0.001      -0.134      -0.035
+bonus                1.0320      0.013     81.980      0.000       1.007       1.057
+shots               -0.0287      0.008     -3.658      0.000      -0.044      -0.013
+ict_index           -1.2126      0.115    -10.570      0.000      -1.437      -0.988
+influence            0.0944      0.012      8.157      0.000       0.072       0.117
+minutes              0.0160      0.000     57.869      0.000       0.015       0.017
+goals_conceded      -0.2552      0.007    -35.770      0.000      -0.269      -0.241
+npg                  0.4857      0.069      7.086      0.000       0.351       0.620
+assists              2.4152      0.025     95.140      0.000       2.365       2.465
+bps                  0.1007      0.001     71.300      0.000       0.098       0.103
+clean_sheets         1.5299      0.021     74.191      0.000       1.489       1.570
+yellow_cards        -0.7135      0.019    -38.122      0.000      -0.750      -0.677
+goals_scored         2.9704      0.074     40.270      0.000       2.826       3.115
+penalties_saved      4.0238      0.144     27.993      0.000       3.742       4.306
+saves                0.2008      0.009     23.549      0.000       0.184       0.217
+red_cards           -2.1115      0.091    -23.165      0.000      -2.290      -1.933
+own_goals           -1.9575      0.105    -18.563      0.000      -2.164      -1.751
+xA                  -0.3971      0.052     -7.606      0.000      -0.499      -0.295
+xGChain             -0.3163      0.022    -14.654      0.000      -0.359      -0.274
+threat               0.1261      0.012     10.949      0.000       0.104       0.149
+position_MID         0.1786      0.013     13.769      0.000       0.153       0.204
+creativity           0.1168      0.011     10.158      0.000       0.094       0.139
+penalties_missed    -1.1404      0.136     -8.371      0.000      -1.407      -0.873
+position_DEF         0.1070      0.014      7.514      0.000       0.079       0.135
+value                0.0024      0.000      5.494      0.000       0.002       0.003
+npxG                 0.2438      0.049      5.009      0.000       0.148       0.339
+==============================================================================
+Omnibus:                     1899.239   Durbin-Watson:                   2.006
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            16452.167
+Skew:                          -0.048   Prob(JB):                         0.00
+Kurtosis:                       7.654   Cond. No.                     2.49e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 2.49e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+AIC: 33242.27609167168
+BIC: 33445.35038015048
+
+
+Entered : xGBuildup
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.950
+Model:                            OLS   Adj. R-squared:                  0.950
+Method:                 Least Squares   F-statistic:                 1.325e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:21   Log-Likelihood:                -16565.
+No. Observations:               18225   AIC:                         3.318e+04
+Df Residuals:                   18198   BIC:                         3.340e+04
+Df Model:                          26                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+intercept           -0.0926      0.025     -3.668      0.000      -0.142      -0.043
+bonus                1.0340      0.013     82.257      0.000       1.009       1.059
+shots               -0.0266      0.008     -3.386      0.001      -0.042      -0.011
+ict_index           -1.1937      0.115    -10.420      0.000      -1.418      -0.969
+influence            0.0925      0.012      8.000      0.000       0.070       0.115
+minutes              0.0158      0.000     57.193      0.000       0.015       0.016
+goals_conceded      -0.2535      0.007    -35.563      0.000      -0.267      -0.239
+npg                  0.4889      0.068      7.144      0.000       0.355       0.623
+assists              2.4271      0.025     95.587      0.000       2.377       2.477
+bps                  0.1001      0.001     70.893      0.000       0.097       0.103
+clean_sheets         1.5362      0.021     74.559      0.000       1.496       1.577
+yellow_cards        -0.7158      0.019    -38.301      0.000      -0.752      -0.679
+goals_scored         2.9805      0.074     40.465      0.000       2.836       3.125
+penalties_saved      4.0309      0.144     28.087      0.000       3.750       4.312
+saves                0.2031      0.009     23.850      0.000       0.186       0.220
+red_cards           -2.1111      0.091    -23.198      0.000      -2.289      -1.933
+own_goals           -1.9622      0.105    -18.638      0.000      -2.169      -1.756
+xA                  -0.1977      0.058     -3.399      0.001      -0.312      -0.084
+xGChain             -0.6624      0.050    -13.340      0.000      -0.760      -0.565
+threat               0.1241      0.012     10.784      0.000       0.102       0.147
+position_MID         0.1744      0.013     13.458      0.000       0.149       0.200
+creativity           0.1147      0.011      9.985      0.000       0.092       0.137
+penalties_missed    -1.1793      0.136     -8.665      0.000      -1.446      -0.913
+position_DEF         0.0980      0.014      6.870      0.000       0.070       0.126
+value                0.0027      0.000      6.268      0.000       0.002       0.004
+npxG                 0.5084      0.059      8.556      0.000       0.392       0.625
+xGBuildup            0.4061      0.052      7.736      0.000       0.303       0.509
+==============================================================================
+Omnibus:                     1874.185   Durbin-Watson:                   2.004
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            15874.477
+Skew:                          -0.054   Prob(JB):                         0.00
+Kurtosis:                       7.571   Cond. No.                     2.49e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 2.49e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+AIC: 33184.43623246913
+BIC: 33395.321070504804
+
+
+Entered : key_passes
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.950
+Model:                            OLS   Adj. R-squared:                  0.950
+Method:                 Least Squares   F-statistic:                 1.277e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:23   Log-Likelihood:                -16557.
+No. Observations:               18225   AIC:                         3.317e+04
+Df Residuals:                   18197   BIC:                         3.339e+04
+Df Model:                          27                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+intercept           -0.0959      0.025     -3.801      0.000      -0.145      -0.046
+bonus                1.0347      0.013     82.338      0.000       1.010       1.059
+shots               -0.0230      0.008     -2.916      0.004      -0.038      -0.008
+ict_index           -1.1790      0.115    -10.291      0.000      -1.404      -0.954
+influence            0.0913      0.012      7.894      0.000       0.069       0.114
+minutes              0.0157      0.000     55.879      0.000       0.015       0.016
+goals_conceded      -0.2531      0.007    -35.517      0.000      -0.267      -0.239
+npg                  0.4896      0.068      7.158      0.000       0.356       0.624
+assists              2.4216      0.025     95.267      0.000       2.372       2.471
+bps                  0.0998      0.001     70.680      0.000       0.097       0.103
+clean_sheets         1.5374      0.021     74.640      0.000       1.497       1.578
+yellow_cards        -0.7165      0.019    -38.352      0.000      -0.753      -0.680
+goals_scored         2.9755      0.074     40.408      0.000       2.831       3.120
+penalties_saved      4.0268      0.143     28.069      0.000       3.746       4.308
+saves                0.2050      0.009     24.043      0.000       0.188       0.222
+red_cards           -2.1132      0.091    -23.230      0.000      -2.292      -1.935
+own_goals           -1.9618      0.105    -18.641      0.000      -2.168      -1.756
+xA                  -0.1610      0.059     -2.735      0.006      -0.276      -0.046
+xGChain             -0.6468      0.050    -12.988      0.000      -0.744      -0.549
+threat               0.1223      0.012     10.628      0.000       0.100       0.145
+position_MID         0.1776      0.013     13.681      0.000       0.152       0.203
+creativity           0.1167      0.011     10.152      0.000       0.094       0.139
+penalties_missed    -1.1832      0.136     -8.697      0.000      -1.450      -0.917
+position_DEF         0.1019      0.014      7.131      0.000       0.074       0.130
+value                0.0029      0.000      6.605      0.000       0.002       0.004
+npxG                 0.5016      0.059      8.441      0.000       0.385       0.618
+xGBuildup            0.3919      0.053      7.451      0.000       0.289       0.495
+key_passes          -0.0523      0.013     -3.942      0.000      -0.078      -0.026
+==============================================================================
+Omnibus:                     1869.431   Durbin-Watson:                   2.004
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            15789.283
+Skew:                          -0.052   Prob(JB):                         0.00
+Kurtosis:                       7.559   Cond. No.                     2.49e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 2.49e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+AIC: 33170.882061669865
+BIC: 33389.57744926242
+
+
+Entered : team_h_Newcastle
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.950
+Model:                            OLS   Adj. R-squared:                  0.950
+Method:                 Least Squares   F-statistic:                 1.232e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:24   Log-Likelihood:                -16554.
+No. Observations:               18225   AIC:                         3.317e+04
+Df Residuals:                   18196   BIC:                         3.339e+04
+Df Model:                          28                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+intercept           -0.1014      0.025     -4.007      0.000      -0.151      -0.052
+bonus                1.0343      0.013     82.316      0.000       1.010       1.059
+shots               -0.0235      0.008     -2.972      0.003      -0.039      -0.008
+ict_index           -1.1786      0.115    -10.288      0.000      -1.403      -0.954
+influence            0.0912      0.012      7.891      0.000       0.069       0.114
+minutes              0.0156      0.000     55.817      0.000       0.015       0.016
+goals_conceded      -0.2524      0.007    -35.405      0.000      -0.266      -0.238
+npg                  0.4879      0.068      7.133      0.000       0.354       0.622
+assists              2.4217      0.025     95.289      0.000       2.372       2.472
+bps                  0.0999      0.001     70.725      0.000       0.097       0.103
+clean_sheets         1.5377      0.021     74.666      0.000       1.497       1.578
+yellow_cards        -0.7162      0.019    -38.344      0.000      -0.753      -0.680
+goals_scored         2.9767      0.074     40.431      0.000       2.832       3.121
+penalties_saved      4.0295      0.143     28.092      0.000       3.748       4.311
+saves                0.2048      0.009     24.014      0.000       0.188       0.221
+red_cards           -2.1128      0.091    -23.229      0.000      -2.291      -1.934
+own_goals           -1.9590      0.105    -18.617      0.000      -2.165      -1.753
+xA                  -0.1590      0.059     -2.701      0.007      -0.274      -0.044
+xGChain             -0.6474      0.050    -13.003      0.000      -0.745      -0.550
+threat               0.1223      0.012     10.626      0.000       0.100       0.145
+position_MID         0.1778      0.013     13.695      0.000       0.152       0.203
+creativity           0.1166      0.011     10.148      0.000       0.094       0.139
+penalties_missed    -1.1804      0.136     -8.677      0.000      -1.447      -0.914
+position_DEF         0.1015      0.014      7.099      0.000       0.073       0.129
+value                0.0029      0.000      6.725      0.000       0.002       0.004
+npxG                 0.5032      0.059      8.468      0.000       0.387       0.620
+xGBuildup            0.3934      0.053      7.480      0.000       0.290       0.496
+key_passes          -0.0527      0.013     -3.974      0.000      -0.079      -0.027
+team_h_Newcastle     0.0554      0.020      2.747      0.006       0.016       0.095
+==============================================================================
+Omnibus:                     1867.152   Durbin-Watson:                   2.004
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            15739.246
+Skew:                          -0.052   Prob(JB):                         0.00
+Kurtosis:                       7.551   Cond. No.                     2.49e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 2.49e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+AIC: 33165.32598146831
+BIC: 33391.83191861774
+
+
+Entered : xG
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.950
+Model:                            OLS   Adj. R-squared:                  0.950
+Method:                 Least Squares   F-statistic:                 1.190e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:26   Log-Likelihood:                -16550.
+No. Observations:               18225   AIC:                         3.316e+04
+Df Residuals:                   18195   BIC:                         3.339e+04
+Df Model:                          29                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+intercept           -0.1045      0.025     -4.124      0.000      -0.154      -0.055
+bonus                1.0347      0.013     82.353      0.000       1.010       1.059
+shots               -0.0210      0.008     -2.647      0.008      -0.037      -0.005
+ict_index           -1.1735      0.115    -10.245      0.000      -1.398      -0.949
+influence            0.0907      0.012      7.849      0.000       0.068       0.113
+minutes              0.0156      0.000     55.738      0.000       0.015       0.016
+goals_conceded      -0.2522      0.007    -35.392      0.000      -0.266      -0.238
+npg                  0.0943      0.162      0.583      0.560      -0.223       0.411
+assists              2.4206      0.025     95.251      0.000       2.371       2.470
+bps                  0.0999      0.001     70.773      0.000       0.097       0.103
+clean_sheets         1.5373      0.021     74.656      0.000       1.497       1.578
+yellow_cards        -0.7158      0.019    -38.324      0.000      -0.752      -0.679
+goals_scored         3.3726      0.165     20.455      0.000       3.049       3.696
+penalties_saved      4.0276      0.143     28.084      0.000       3.747       4.309
+saves                0.2045      0.009     23.983      0.000       0.188       0.221
+red_cards           -2.1120      0.091    -23.225      0.000      -2.290      -1.934
+own_goals           -1.9589      0.105    -18.620      0.000      -2.165      -1.753
+xA                  -0.1604      0.059     -2.726      0.006      -0.276      -0.045
+xGChain             -0.6454      0.050    -12.964      0.000      -0.743      -0.548
+threat               0.1216      0.012     10.563      0.000       0.099       0.144
+position_MID         0.1763      0.013     13.573      0.000       0.151       0.202
+creativity           0.1161      0.011     10.105      0.000       0.094       0.139
+penalties_missed    -0.7154      0.220     -3.248      0.001      -1.147      -0.284
+position_DEF         0.1008      0.014      7.051      0.000       0.073       0.129
+value                0.0030      0.000      6.889      0.000       0.002       0.004
+npxG                 1.1214      0.238      4.713      0.000       0.655       1.588
+xGBuildup            0.3917      0.053      7.449      0.000       0.289       0.495
+key_passes          -0.0528      0.013     -3.977      0.000      -0.079      -0.027
+team_h_Newcastle     0.0550      0.020      2.727      0.006       0.015       0.095
+xG                  -0.6153      0.229     -2.683      0.007      -1.065      -0.166
+==============================================================================
+Omnibus:                     1867.923   Durbin-Watson:                   2.004
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            15748.733
+Skew:                          -0.053   Prob(JB):                         0.00
+Kurtosis:                       7.553   Cond. No.                     7.46e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 7.46e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+AIC: 33160.11484016011
+BIC: 33394.43132686641
+
+
+Entered : team_h_Manchester City
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           total_points   R-squared:                       0.950
+Model:                            OLS   Adj. R-squared:                  0.950
+Method:                 Least Squares   F-statistic:                 1.150e+04
+Date:                Fri, 02 Jul 2021   Prob (F-statistic):               0.00
+Time:                        12:55:28   Log-Likelihood:                -16548.
+No. Observations:               18225   AIC:                         3.316e+04
+Df Residuals:                   18194   BIC:                         3.340e+04
+Df Model:                          30                                         
+Covariance Type:            nonrobust                                         
+==========================================================================================
+                             coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------
+intercept                 -0.1085      0.025     -4.269      0.000      -0.158      -0.059
+bonus                      1.0342      0.013     82.307      0.000       1.010       1.059
+shots                     -0.0212      0.008     -2.665      0.008      -0.037      -0.006
+ict_index                 -1.1731      0.115    -10.242      0.000      -1.398      -0.949
+influence                  0.0907      0.012      7.846      0.000       0.068       0.113
+minutes                    0.0156      0.000     55.369      0.000       0.015       0.016
+goals_conceded            -0.2509      0.007    -35.067      0.000      -0.265      -0.237
+npg                        0.0912      0.162      0.563      0.573      -0.226       0.408
+assists                    2.4201      0.025     95.235      0.000       2.370       2.470
+bps                        0.1000      0.001     70.806      0.000       0.097       0.103
+clean_sheets               1.5387      0.021     74.685      0.000       1.498       1.579
+yellow_cards              -0.7156      0.019    -38.321      0.000      -0.752      -0.679
+goals_scored               3.3745      0.165     20.468      0.000       3.051       3.698
+penalties_saved            4.0251      0.143     28.068      0.000       3.744       4.306
+saves                      0.2047      0.009     24.007      0.000       0.188       0.221
+red_cards                 -2.1122      0.091    -23.229      0.000      -2.290      -1.934
+own_goals                 -1.9572      0.105    -18.604      0.000      -2.163      -1.751
+xA                        -0.1614      0.059     -2.742      0.006      -0.277      -0.046
+xGChain                   -0.6446      0.050    -12.949      0.000      -0.742      -0.547
+threat                     0.1215      0.012     10.562      0.000       0.099       0.144
+position_MID               0.1763      0.013     13.577      0.000       0.151       0.202
+creativity                 0.1160      0.011     10.102      0.000       0.094       0.139
+penalties_missed          -0.7148      0.220     -3.245      0.001      -1.147      -0.283
+position_DEF               0.1015      0.014      7.102      0.000       0.074       0.130
+value                      0.0031      0.000      7.086      0.000       0.002       0.004
+npxG                       1.1246      0.238      4.727      0.000       0.658       1.591
+xGBuildup                  0.3954      0.053      7.515      0.000       0.292       0.499
+key_passes                -0.0529      0.013     -3.990      0.000      -0.079      -0.027
+team_h_Newcastle           0.0533      0.020      2.639      0.008       0.014       0.093
+xG                        -0.6196      0.229     -2.702      0.007      -1.069      -0.170
+team_h_Manchester City    -0.0415      0.021     -1.981      0.048      -0.083      -0.000
+==============================================================================
+Omnibus:                     1868.030   Durbin-Watson:                   2.005
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            15751.436
+Skew:                          -0.053   Prob(JB):                         0.00
+Kurtosis:                       7.553   Cond. No.                     7.46e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 7.46e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+AIC: 33158.183516262216
+BIC: 33400.3105525254
+
