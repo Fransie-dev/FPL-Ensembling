@@ -1,25 +1,23 @@
 # %%
 import sys
-from pandas.core.frame import DataFrame
 sys.path.insert(0, 'C://Users//jd-vz//Desktop//Code//src//')
 import pandas as pd
 from utilities import one_hot_encode
 from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import StandardScaler
-from utilities import dlt_create_dir
-from merge_data import intersect, union
+from merge_data import intersect
 
 def scale_numeric(df):
-    total_points = df['total_points']
-    std_scaler = StandardScaler()
-    df_scale = df.drop(columns = ['total_points'], axis = 1)
-    df_scaled = std_scaler.fit_transform(df_scale.to_numpy())
-    df_scaled = pd.DataFrame(df_scaled, columns=df_scale.columns) 
-    df_scaled['total_points'] = total_points
-    return df_scaled
+    std_scaler_X = StandardScaler()
+    std_scaler_Y = StandardScaler()
+    df_scaled = pd.DataFrame(std_scaler_X.fit_transform(df.drop(columns = ['total_points'], axis = 1).values), columns=df.drop(columns = ['total_points'], axis = 1).columns, index=df.index)
+    df_scaled['total_points'] = std_scaler_Y.fit_transform(df['total_points'].to_numpy().reshape(-1, 1))
+    return df_scaled, std_scaler_X, std_scaler_Y
     
 def outliers_removal(df, type):
-    # NB: This function removes too many outlying points
+    # NB: This function removes too many outlying points and should be reconsiderd
+    #! Assumes normal distribution
+    #* Package that investigates the data distribution... exp, beta, gamma... technomatex
+    #* Exp --> upper qnt
     numeric_types = ['int16', 'int32', 'int64', 'float16', 'float32', 'float64']
     for col in df.select_dtypes(include=numeric_types).columns:
         if type == 'IQR':
@@ -36,13 +34,6 @@ def outliers_removal(df, type):
         print(f'Removed {df_len - len(df)} entries from {col} with the {type} method')
     return df
    
-def feat_removal(df, lin_reg_dir, data_str):
-    feats = pd.read_csv(lin_reg_dir + f'misc//selected_{data_str}_features.csv', index_col=0)
-    df_21 = one_hot_encode(pd.read_csv('C://Users//jd-vz//Desktop//Code//data//2020-21//training//' + f'cleaned_{data_str}.csv', index_col=0))
-    cut = intersect(df.columns, df_21.columns)
-    df = df[cut]
-    print(df.columns)
-    return df, feats
 
 def valid_features(data_str, lin_reg_dir):
     df_20 = one_hot_encode(pd.read_csv('C://Users//jd-vz//Desktop//Code//data//2019-20//training//' + f'cleaned_{data_str}.csv', index_col=0)).columns
@@ -50,38 +41,47 @@ def valid_features(data_str, lin_reg_dir):
     feats = pd.read_csv(lin_reg_dir + f'misc//selected_{data_str}_features.csv', index_col=0)
     feat_pool = intersect(df_20, df_21)
     valid_feats = intersect(feats.Feature, feat_pool)
-    valid_feats = valid_feats + ['total_points']
+    valid_feats = valid_feats + ['total_points'] # Features within both datasets, and the target
     return valid_feats
 
-def preprocess_data(data_str, season, OHE = True, FEAT = True,OUTLIER = None, SCL = None):
+def preprocess_data(data_str, season, OHE = True, FEAT = True, OUTLIER = None, SCL = True):
     #! Confirm the order of this program with Thorstens 
     #! Linear Regression: One hot encode categorical --> Apply Feature Selection Results --> Remove Outliers --> Scale all features
     train_dir = f'C://Users//jd-vz//Desktop//Code//data//{season}//training//' 
     lin_reg_dir = 'C://Users//jd-vz//Desktop//Code//src//models//lin_reg//'
     df = pd.read_csv(train_dir + f'cleaned_{data_str}.csv', index_col=0)
-    feats = pd.read_csv(lin_reg_dir + f'misc//selected_{data_str}_features.csv', index_col=0)
     if OHE == True:
         df = one_hot_encode(df)
     if FEAT == True:
        val_feat = valid_features('fpl', lin_reg_dir)
        df = df[val_feat + ['player_name', 'GW']]
     if OUTLIER == True:
-        df[val_feat] = outliers_removal(df[val_feat], type = 'SD')
+        df[val_feat] = outliers_removal(df[val_feat], type = 'IQR') # Not recommended
     if SCL == True:
-        df[val_feat] = scale_numeric(df[val_feat])
-    # df.to_csv(lin_reg_dir + 'data//' f'{data_str}_{season}_training_data.csv')
+        df[val_feat], std_scaler_X, std_scaler_Y = scale_numeric(df[val_feat])
+        return df,  std_scaler_X, std_scaler_Y, val_feat
     return df
 
-def main(season):
-    for data_str in ['fpl', 'understat', 'imp']:
-        preprocess_data(data_str, season, OHE = True, FEAT = True, OUTLIER = False, SCL = True) 
-
-if __name__ == '__main__':
-    dlt_create_dir('C://Users//jd-vz//Desktop//Code//src//models//lin_reg//data')
-    main('2019-20')
-    main('2020-21')
 # %%
-    
-    
-    
-DataFrame.shape
+# df_20_fpl = preprocess_data('fpl', '2019-20')
+# df_21_fpl = preprocess_data('fpl', '2020-21')
+
+# %%
+# df_20_fpl, std_scale_X_20, std_scale_Y_20, scl_feat_20 = preprocess_data('fpl', '2019-20', SCL = True)
+# # %%
+# df_21_fpl, std_scale_X_21, std_scale_Y_21, scl_feat_21 = preprocess_data('fpl', '2020-21', SCL = True)
+# # %%
+# df_20_fpl[scl_feat_20] = std_scale_20.inverse_transform(df_20_fpl[scl_feat_20])
+# # %%
+# df_20_fpl[scl_feat_20]
+# # %%
+# df_20_understat = preprocess_data('understat', '2019-20')
+# df_21_understat = preprocess_data('understat', '2020-21')
+# # %%
+# df_20_imp = preprocess_data('imp', '2019-20')
+# df_21_imp = preprocess_data('imp', '2020-21')
+
+
+
+# # %%
+# %%

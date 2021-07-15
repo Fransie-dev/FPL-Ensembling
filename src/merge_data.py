@@ -64,7 +64,7 @@ def intersect(a, b):
     Returns:
         [type]: [The intersection]
     """    
-    print(len(list(set(a) & set(b))), 'unique and matching names between FPL and Understat')
+    # print(len(list(set(a) & set(b))), 'unique and matching names between FPL and Understat')
     return list(set(a) & set(b))
 
 def union(a, b):
