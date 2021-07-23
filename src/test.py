@@ -1,110 +1,46 @@
-# %%
-from os import name
+
+import numpy as np # linear algebra
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import matplotlib.pyplot as plt
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestRegressor
-import pandas as pd
-import numpy as np
-
+import seaborn as sns
+sns.set_style(style='darkgrid')
+from sklearn.feature_selection import RFECV, VarianceThreshold
+from sklearn.model_selection import train_test_split, StratifiedShuffleSplit
+from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.impute import SimpleImputer
+from sklearn.metrics import make_scorer, accuracy_score
+from sklearn.preprocessing import OrdinalEncoder
+random_state = 42
+X_train2_sup = X_train2.copy() #deep copy
 # %%
+%%time
+X_model, X_valid, y_model, y_valid = train_test_split(X_train2_sup, y_train, stratify=y_train, random_state=random_state, test_size=.8)
 
-def metrics(model, y_test, y_pred):
-    """[This function compares the real and predicted data to each other]
+model_dict = {'LogisticRegression': LogisticRegression(penalty='l1', solver='saga', C=2, multi_class='multinomial', n_jobs=-1, random_state=random_state)
+             , 'ExtraTreesClassifier': ExtraTreesClassifier(n_estimators=200, max_depth=3, min_samples_leaf=.06, n_jobs=-1, random_state=random_state)
+              , 'RandomForestClassifier': RandomForestClassifier(n_estimators=20, max_depth=2, min_samples_leaf=.1, random_state=random_state, n_jobs=-1)
+             }
+estimator_dict = {}
+importance_fatures_sorted_all = pd.DataFrame()
+for model_name, model in model_dict.items():
+    print('='*10, model_name, '='*10)
+    model.fit(X_model, y_model)
+    print('Accuracy in training:', accuracy_score(model.predict(X_model), y_model))
+    print('Accuracy in valid:', accuracy_score(model.predict(X_valid), y_valid))
+    importance_values = np.absolute(model.coef_) if model_name == 'LogisticRegression' else model.feature_importances_
+    importance_fatures_sorted = pd.DataFrame(importance_values.reshape([-1, len(X_train2_sup.columns)]), columns=X_train2_sup.columns).mean(axis=0).sort_values(ascending=False).to_frame()
+    importance_fatures_sorted.rename(columns={0: 'feature_importance'}, inplace=True)
+    importance_fatures_sorted['ranking']= importance_fatures_sorted['feature_importance'].rank(ascending=False)
+    importance_fatures_sorted['model'] = model_name
+    print('Show top 10 important features:')
+    display(importance_fatures_sorted.drop('model', axis=1).head(10))
+    importance_fatures_sorted_all = importance_fatures_sorted_all.append(importance_fatures_sorted)
+    estimator_dict[model_name] = model
 
-    Args:
-        y_test ([type]): [The actual, true data]
-        y_pred ([type]): [The predicted data]
-    """
-    print(f'\n{model}: R-squared score = ', r2_score(y_test, y_pred))
-    print(f'{model}: Mean squared error = ',
-          mean_squared_error(y_test, y_pred))
-    print(f'{model}: Root mean squared error = ', np.sqrt(
-        mean_squared_error(y_test, y_pred)), end='\n\n')
-
-def test_LR_model(X_train, X_test, y_train, y_test):
-    """[This function tests a linear regression model on the provided data]
-
-    Args:
-        X_train ([type]): [The training predictors]
-        X_test ([type]): [The testing predictors]
-        y_train ([type]): [The testing predictors]
-        y_test ([type]): [The training response]
-    """
-    regressor = LinearRegression(normalize=True,n_jobs=-1)
-    regressor.fit(X_train, y_train)
-    y_pred = regressor.predict(X_test)
-    y_pred_train = regressor.predict(X_train)
-    metrics('Linear Regression', y_test, y_pred)
-    return y_pred_train
-
-
-
-def test_tree_model(X_train, X_test, y_train, y_test):
-    """[This function tests a random forest model on the provided data]
-
-    Args:
-        X_train ([type]): [The training predictors]
-        X_test ([type]): [The testing predictors]
-        y_train ([type]): [The testing predictors]
-        y_test ([type]): [The training response]
-    """
-    tree = RandomForestRegressor(n_estimators=200)
-    tree.fit(X_train, y_train)
-    y_pred = tree.predict(X_test)
-    metrics('Random Forest Regressor', y_test, y_pred)
-    
-    
-    
-season = '2019-20'
-training_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//training//'
-fpl = pd.read_csv(training_path + 'cleaned_fpl.csv', index_col=0)
-understat = pd.read_csv(training_path + 'cleaned_understat.csv', index_col=0)
-fpl_feat = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//2019-20//training//OLS/selected_fpl_features.csv', index_col=0)
-understat_feat = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//2019-20//training//OLS/selected_understat_features.csv', index_col=0)
-df_fpl = fpl[fpl_feat['Feature'].to_list() + ['total_points']].copy()
-
-
-# %%
-# X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=0)                   
-# lr = LinearRegression(normalize=False,n_jobs=-1)
-# lr.fit(X_train, y_train)
-# y_pred = lr.predict(X_test)
-# # y_pred_train = lr.predict(X_train)
-# metrics('Linear Regression', y_test, y_pred)
-
-# # %%
-# feat = 'ict_index'
-# plt.scatter(X_train[feat], y_train, color = "red")
-# plt.scatter(X_train[feat], lr.predict(X_train), color = "green")
-# plt.title(f"Total points versus {feat}")
-# plt.xlabel(f"{feat}")
-# plt.ylabel("Total Points")
-# plt.show()
-# %%
-X = df_fpl.drop(columns=['total_points'])                   
-Y = df_fpl['total_points']
-X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=0)                   
-sc_X = StandardScaler()
-X_train = sc_X.fit_transform(X_train)
-X_test = sc_X.transform(X_test)
-sc_y = StandardScaler()
-y_train = sc_y.fit_transform(y_train)
-regressor = LinearRegression()
-regressor.fit(X_train, y_train)
-y_pred = regressor.predict(X_test)
-# %%
-
-
-
-
-
-
-
-
-
+plt.title('Feature importance ranked by number of features by model')
+sns.lineplot(data=importance_fatures_sorted_all, x='ranking', y='feature_importance', hue='model')
+plt.xlabel("Number of features selected")
 
 
 
