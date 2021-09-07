@@ -1,0 +1,103 @@
+---
+title: "data_collection_report"
+author: "Francois van Zyl"
+date: "05/09/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+library(knitr)
+library(kableExtra)
+fixtures <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2020-21/fixtures.csv')
+players_raw <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2020-21/players_raw.csv')
+players_type <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2020-21/players_type.csv')
+teams <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2020-21/teams.csv')
+gw <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2020-21/players/Aaron_Connolly_78/gw.csv')
+history <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2020-21/players/Aaron_Connolly_78/history.csv')
+merged_gw <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2020-21/gws/merged_gw.csv')
+train_fpl <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2020-21/training/fpl.csv')
+cleaned_fpl <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2020-21/training/cleaned_fpl.csv')
+cleaned_us <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2020-21/training/cleaned_understat.csv') 
+all_us <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2020-21/understat/all_understat_players.csv') 
+
+```
+
+
+```{r}
+# First elements table
+players_raw[c('first_name', 'second_name', 'id', 'element_type', 'total_points', 'transfers_in')] %>% head(10) %>%  kable( "latex", longtable = T, booktabs = T)
+```
+
+
+```{r}
+# Second gameweek table
+gw[c('element','fixture','opponent_team','total_points','was_home', 'kickoff_time')]%>% head(5) %>%  kable( "latex", longtable = T, booktabs = T)
+```
+
+```{r}
+# Third understat table
+all_us[c('goals','shots','xG','date','player_name')]%>% head(5) %>%  kable( "latex", longtable = T, booktabs = T)
+```
+
+
+```{r}
+levels(cleaned_fpl$kickoff_time)
+```
+
+```{r}
+length(unique(cleaned_fpl$kickoff_time))
+```
+
+
+
+```{r}
+length(unique(cleaned_fpl$player_name))
+```
+
+```{r}
+length(unique(cleaned_us$player_name))
+```
+
+
+```{r}
+length(unique(cleaned_fpl$team_a))
+```
+
+```{r}
+length(unique(cleaned_us$team_a))
+```
+```{r}
+length(unique(all_us$a_team))
+```
+
+
+
+```{r}
+library(knitr)
+library(kableExtra)
+fixtures <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2019-20/fixtures.csv')
+players_raw <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2019-20/players_raw.csv')
+# players_type <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2019-20/players_type.csv')
+teams <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2019-20/teams.csv')
+# gw <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2019-20/players/Aaron_Connolly_78/gw.csv')
+# history <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2019-20/players/Aaron_Connolly_78/history.csv')
+merged_gw <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2019-20/gws/merged_gw.csv')
+train_fpl <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2019-20/training/fpl.csv')
+cleaned_fpl <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2019-20/training/cleaned_fpl.csv')
+cleaned_us <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2019-20/training/cleaned_understat.csv') 
+all_us <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2019-20/understat/all_understat_players.csv') 
+
+```
+
+
+```{r}
+cleaned_us[complete.cases(cleaned_us),]
+```
+
+

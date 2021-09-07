@@ -1,83 +1,167 @@
+# -*- coding: utf-8 -*-
+# %%
+"""Compare all detection algorithms by plotting decision boundaries and
+the number of decision boundaries.
+"""
+# Author: Yue Zhao <zhaoy@cmu.edu>
+# License: BSD 2 clause
 
-import numpy as np # linear algebra
-import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+from __future__ import division
+from __future__ import print_function
+
+import os
+import sys
+
+# %%
+# supress warnings for clean output
+import warnings
+
+warnings.filterwarnings("ignore")
+import numpy as np
+from numpy import percentile
 import matplotlib.pyplot as plt
-import seaborn as sns
-sns.set_style(style='darkgrid')
-from sklearn.feature_selection import RFECV, VarianceThreshold
-from sklearn.model_selection import train_test_split, StratifiedShuffleSplit
-from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import make_scorer, accuracy_score
-from sklearn.preprocessing import OrdinalEncoder
+import matplotlib.font_manager
+
+# Import all models
+from pyod.models.abod import ABOD
+from pyod.models.cblof import CBLOF
+from pyod.models.feature_bagging import FeatureBagging
+from pyod.models.hbos import HBOS
+from pyod.models.iforest import IForest
+from pyod.models.knn import KNN
+from pyod.models.lof import LOF
+from pyod.models.loci import LOCI
+from pyod.models.mcd import MCD
+from pyod.models.ocsvm import OCSVM
+from pyod.models.pca import PCA
+from pyod.models.sos import SOS
+from pyod.models.lscp import LSCP
+from pyod.models.cof import COF
+from pyod.models.sod import SOD
+
+# TODO: add neural networks, LOCI, SOS, COF, SOD
+
+# Define the number of inliers and outliers
+n_samples = 200
+outliers_fraction = 0.25
+clusters_separation = [0]
+
+# Compare given detectors under given settings
+# Initialize the data
+xx, yy = np.meshgrid(np.linspace(-7, 7, 100), np.linspace(-7, 7, 100))
+n_inliers = int((1. - outliers_fraction) * n_samples)
+n_outliers = int(outliers_fraction * n_samples)
+ground_truth = np.zeros(n_samples, dtype=int)
+ground_truth[-n_outliers:] = 1
+
+# initialize a set of detectors for LSCP
+detector_list = [LOF(n_neighbors=5), LOF(n_neighbors=10), LOF(n_neighbors=15),
+                 LOF(n_neighbors=20), LOF(n_neighbors=25), LOF(n_neighbors=30),
+                 LOF(n_neighbors=35), LOF(n_neighbors=40), LOF(n_neighbors=45),
+                 LOF(n_neighbors=50)]
+
+# Show the statics of the data
+print('Number of inliers: %i' % n_inliers)
+print('Number of outliers: %i' % n_outliers)
+print(
+    'Ground truth shape is {shape}. Outlier are 1 and inliers are 0.\n'.format(
+        shape=ground_truth.shape))
+print(ground_truth, '\n')
+
 random_state = 42
-X_train2_sup = X_train2.copy() #deep copy
-# %%
-%%time
-X_model, X_valid, y_model, y_valid = train_test_split(X_train2_sup, y_train, stratify=y_train, random_state=random_state, test_size=.8)
+# Define nine outlier detection tools to be compared
+classifiers = {
+    'Angle-based Outlier Detector (ABOD)':
+        ABOD(contamination=outliers_fraction),
+    'Cluster-based Local Outlier Factor (CBLOF)':
+        CBLOF(contamination=outliers_fraction,
+              check_estimator=False, random_state=random_state),
+    'Feature Bagging':
+        FeatureBagging(LOF(n_neighbors=35),
+                       contamination=outliers_fraction,
+                       random_state=random_state),
+    'Histogram-base Outlier Detection (HBOS)': HBOS(
+        contamination=outliers_fraction),
+    'Isolation Forest': IForest(contamination=outliers_fraction,
+                                random_state=random_state),
+    'K Nearest Neighbors (KNN)': KNN(
+        contamination=outliers_fraction),
+    'Average KNN': KNN(method='mean',
+                       contamination=outliers_fraction),
+    # 'Median KNN': KNN(method='median',
+    #                   contamination=outliers_fraction),
+    'Local Outlier Factor (LOF)':
+        LOF(n_neighbors=35, contamination=outliers_fraction),
+    # 'Local Correlation Integral (LOCI)':
+    #     LOCI(contamination=outliers_fraction),
+    'Minimum Covariance Determinant (MCD)': MCD(
+        contamination=outliers_fraction, random_state=random_state),
+    'One-class SVM (OCSVM)': OCSVM(contamination=outliers_fraction),
+    'Principal Component Analysis (PCA)': PCA(
+        contamination=outliers_fraction, random_state=random_state),
+    # 'Stochastic Outlier Selection (SOS)': SOS(
+    #     contamination=outliers_fraction),
+    'Locally Selective Combination (LSCP)': LSCP(
+        detector_list, contamination=outliers_fraction,
+        random_state=random_state),
+    # 'Connectivity-Based Outlier Factor (COF)':
+    #     COF(n_neighbors=35, contamination=outliers_fraction),
+    # 'Subspace Outlier Detection (SOD)':
+    #     SOD(contamination=outliers_fraction),
+}
 
-model_dict = {'LogisticRegression': LogisticRegression(penalty='l1', solver='saga', C=2, multi_class='multinomial', n_jobs=-1, random_state=random_state)
-             , 'ExtraTreesClassifier': ExtraTreesClassifier(n_estimators=200, max_depth=3, min_samples_leaf=.06, n_jobs=-1, random_state=random_state)
-              , 'RandomForestClassifier': RandomForestClassifier(n_estimators=20, max_depth=2, min_samples_leaf=.1, random_state=random_state, n_jobs=-1)
-             }
-estimator_dict = {}
-importance_fatures_sorted_all = pd.DataFrame()
-for model_name, model in model_dict.items():
-    print('='*10, model_name, '='*10)
-    model.fit(X_model, y_model)
-    print('Accuracy in training:', accuracy_score(model.predict(X_model), y_model))
-    print('Accuracy in valid:', accuracy_score(model.predict(X_valid), y_valid))
-    importance_values = np.absolute(model.coef_) if model_name == 'LogisticRegression' else model.feature_importances_
-    importance_fatures_sorted = pd.DataFrame(importance_values.reshape([-1, len(X_train2_sup.columns)]), columns=X_train2_sup.columns).mean(axis=0).sort_values(ascending=False).to_frame()
-    importance_fatures_sorted.rename(columns={0: 'feature_importance'}, inplace=True)
-    importance_fatures_sorted['ranking']= importance_fatures_sorted['feature_importance'].rank(ascending=False)
-    importance_fatures_sorted['model'] = model_name
-    print('Show top 10 important features:')
-    display(importance_fatures_sorted.drop('model', axis=1).head(10))
-    importance_fatures_sorted_all = importance_fatures_sorted_all.append(importance_fatures_sorted)
-    estimator_dict[model_name] = model
+# Show all detectors
+for i, clf in enumerate(classifiers.keys()):
+    print('Model', i + 1, clf)
 
-plt.title('Feature importance ranked by number of features by model')
-sns.lineplot(data=importance_fatures_sorted_all, x='ranking', y='feature_importance', hue='model')
-plt.xlabel("Number of features selected")
+# Fit the models with the generated data and
+# compare model performances
+for i, offset in enumerate(clusters_separation):
+    np.random.seed(42)
+    # Data generation
+    X1 = 0.3 * np.random.randn(n_inliers // 2, 2) - offset
+    X2 = 0.3 * np.random.randn(n_inliers // 2, 2) + offset
+    X = np.r_[X1, X2]
+    # Add outliers
+    X = np.r_[X, np.random.uniform(low=-6, high=6, size=(n_outliers, 2))]
 
+    # Fit the model
+    plt.figure(figsize=(15, 12))
+    for i, (clf_name, clf) in enumerate(classifiers.items()):
+        print()
+        print(i + 1, 'fitting', clf_name)
+        # fit the data and tag outliers
+        clf.fit(X)
+        scores_pred = clf.decision_function(X) * -1
+        y_pred = clf.predict(X)
+        threshold = percentile(scores_pred, 100 * outliers_fraction)
+        n_errors = (y_pred != ground_truth).sum()
+        # plot the levels lines and the points
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-# %%
-feat = 'ict_index'
-plt.scatter(x=X_train[feat], y=y_train)
-# %%
-plt.xlabel(feat)
-plt.ylabel(y_train.name)
-plt.plot(X_train[feat], y_pred_train, color = 'red')
+        Z = clf.decision_function(np.c_[xx.ravel(), yy.ravel()]) * -1
+        Z = Z.reshape(xx.shape)
+        subplot = plt.subplot(3, 4, i + 1)
+        subplot.contourf(xx, yy, Z, levels=np.linspace(Z.min(), threshold, 7),
+                         cmap=plt.cm.Blues_r)
+        a = subplot.contour(xx, yy, Z, levels=[threshold],
+                            linewidths=2, colors='red')
+        subplot.contourf(xx, yy, Z, levels=[threshold, Z.max()],
+                         colors='orange')
+        b = subplot.scatter(X[:-n_outliers, 0], X[:-n_outliers, 1], c='white',
+                            s=20, edgecolor='k')
+        c = subplot.scatter(X[-n_outliers:, 0], X[-n_outliers:, 1], c='black',
+                            s=20, edgecolor='k')
+        subplot.axis('tight')
+        subplot.legend(
+            [a.collections[0], b, c],
+            ['learned decision function', 'true inliers', 'true outliers'],
+            prop=matplotlib.font_manager.FontProperties(size=10),
+            loc='lower right')
+        subplot.set_xlabel("%d. %s (errors: %d)" % (i + 1, clf_name, n_errors))
+        subplot.set_xlim((-7, 7))
+        subplot.set_ylim((-7, 7))
+    plt.subplots_adjust(0.04, 0.1, 0.96, 0.94, 0.1, 0.26)
+    plt.suptitle("Outlier detection")
+plt.savefig('ALL.png', dpi=300)
 plt.show()
-# %%
-
-# %%
-df_viz = df_fpl.copy()
-df_viz['total_points'] = fpl.total_points
-
-sns.lmplot(x="threat", y="total_points", hue = 'home_True', data=fpl)
-
-# %%
-import seaborn as sns; sns.set_theme(color_codes=True)
-ax = sns.regplot(x="threat", y="total_points", data=df_viz)
-# %%
-def viz_corr(X, Y):
-    corrmat = df_viz.corr() 
-    f, ax = plt.subplots(figsize =(20, 20))
-    sns.heatmap(corrmat, ax = ax, cmap ="YlGnBu", linewidths = 0.1) # Multicollinearity
 # %%

@@ -12,6 +12,7 @@ df_us = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//2020-21//training//c
 # sns.set_style('white')
 # sns.set_context("paper", font_scale = 2)
 # sns.displot(data=df, x="total_points", kind="hist", bins = 100, aspect = 1.5)
+
 # %%
 def plot_feat(df, feat):
     sns.set_style('white')
@@ -20,6 +21,7 @@ def plot_feat(df, feat):
 # %%
 # plot_feat(df, 'ict_index')
 # %%
+pd.read_csv()
 
 
 # %%

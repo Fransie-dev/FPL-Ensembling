@@ -4,7 +4,19 @@ sys.path.insert(0, 'C://Users//jd-vz//Desktop//Code//src//')
 import pandas as pd
 from utilities import one_hot_encode
 from sklearn.preprocessing import StandardScaler
-from merge_data import intersect
+
+def intersect(a, b):
+    """[This function finds the intersection between two player name columns]
+
+    Args:
+        a ([type]): [description]
+        b ([type]): [description]
+
+    Returns:
+        [type]: [The intersection]
+    """    
+    # print(len(list(set(a) & set(b))), 'unique and matching names between FPL and Understat')
+    return list(set(a) & set(b))
 
 def scale_numeric(df):
     std_scaler_X = StandardScaler()
@@ -34,10 +46,10 @@ def outliers_removal(df, type):
         print(f'Removed {df_len - len(df)} entries from {col} with the {type} method')
     return df
    
-
+# updt: changed cleaned to shifted 
 def valid_features(data_str, lin_reg_dir):
-    df_20 = one_hot_encode(pd.read_csv('C://Users//jd-vz//Desktop//Code//data//2019-20//training//' + f'cleaned_{data_str}.csv', index_col=0)).columns
-    df_21 = one_hot_encode(pd.read_csv('C://Users//jd-vz//Desktop//Code//data//2020-21//training//' + f'cleaned_{data_str}.csv', index_col=0)).columns
+    df_20 = one_hot_encode(pd.read_csv('C://Users//jd-vz//Desktop//Code//data//2019-20//training//' + f'shifted_{data_str}.csv')).columns
+    df_21 = one_hot_encode(pd.read_csv('C://Users//jd-vz//Desktop//Code//data//2020-21//training//' + f'shifted_{data_str}.csv')).columns
     feats = pd.read_csv(lin_reg_dir + f'misc//selected_{data_str}_features.csv', index_col=0) # Linear Regression selected features
     feat_pool = intersect(df_20, df_21)
     valid_feats = intersect(feats.Feature, feat_pool)
@@ -49,7 +61,7 @@ def preprocess_data(data_str, season, OHE = True, FEAT = True, OUTLIER = None, S
     #! Linear Regression: One hot encode categorical --> Apply Feature Selection Results --> Remove Outliers --> Scale all features
     train_dir = f'C://Users//jd-vz//Desktop//Code//data//{season}//training//' 
     lin_reg_dir = 'C://Users//jd-vz//Desktop//Code//src//models//lin_reg//'
-    df = pd.read_csv(train_dir + f'cleaned_{data_str}.csv', index_col=0)
+    df = pd.read_csv(train_dir + f'shifted_{data_str}.csv')
     if OHE == True:
         df = one_hot_encode(df)
     if FEAT == True:
@@ -61,27 +73,4 @@ def preprocess_data(data_str, season, OHE = True, FEAT = True, OUTLIER = None, S
         df[val_feat], std_scaler_X, std_scaler_Y = scale_numeric(df[val_feat])
         return df,  std_scaler_X, std_scaler_Y, val_feat
     return df
-
-# %%
-# df_20_fpl = preprocess_data('fpl', '2019-20')
-# df_21_fpl = preprocess_data('fpl', '2020-21')
-
-# %%
-# df_20_fpl, std_scale_X_20, std_scale_Y_20, scl_feat_20 = preprocess_data('fpl', '2019-20', SCL = True)
-# # %%
-# df_21_fpl, std_scale_X_21, std_scale_Y_21, scl_feat_21 = preprocess_data('fpl', '2020-21', SCL = True)
-# # %%
-# df_20_fpl[scl_feat_20] = std_scale_20.inverse_transform(df_20_fpl[scl_feat_20])
-# # %%
-# df_20_fpl[scl_feat_20]
-# # %%
-# df_20_understat = preprocess_data('understat', '2019-20')
-# df_21_understat = preprocess_data('understat', '2020-21')
-# # %%
-# df_20_imp = preprocess_data('imp', '2019-20')
-# df_21_imp = preprocess_data('imp', '2020-21')
-
-
-
-# # %%
 # %%

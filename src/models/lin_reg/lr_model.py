@@ -1,12 +1,14 @@
 # %%
+import sys
+sys.path.insert(0, 'C://Users//jd-vz//Desktop//Code//src//models//lin_reg//')
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
 import sklearn.metrics as metrics
+import sys
+# %%
 # from sklearn.svm import SVR
-import thundersvm
-from thundersvm import SVR
 from lr_preprocess import preprocess_data
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
@@ -14,7 +16,7 @@ import keras
 from keras.models import Sequential
 from keras.layers import Dense
 import tensorflow as tf
-from keras.backend.tensorflow_backend import set_session
+from keras.backend.tensorflow_backend import less, set_session
 from keras.backend.tensorflow_backend import clear_session
 from keras.backend.tensorflow_backend import get_session
 # import tensorflow
@@ -22,9 +24,11 @@ from livelossplot import PlotLossesKeras
 import pandas as pd
 from numba import cuda
 cuda.list_devices()
+# %%
 
 # %%
 
+# %%
 
 def regression_results(y_true, y_pred, model_string):
     # Regression metrics
@@ -179,14 +183,12 @@ def test_scaled_net(X_train, y_train, X_test, y_test, std_scale_Y_train, std_sca
         GW ([type]): [description]
     """    
     regressor = Sequential()
-    regressor.add(Dense(500, activation= "relu"))
-    # regressor.add(Dense(500, activation= "relu"))
-    # regressor.add(Dense(500, activation= "relu")) # No diff
+    regressor.add(Dense(500, activation= "relu",))
     regressor.add(Dense(250, activation= "relu"))
     regressor.add(Dense(1))
     regressor.compile(loss= "mse" , optimizer="adam", metrics=["mse"])
     history = regressor.fit(X_train, y_train,
-          epochs=50,
+          epochs=20,
           validation_split=0.2)
     y_train_rescaled = np.round(std_scale_Y_train.inverse_transform(y_train))
     y_test_rescaled = np.round(std_scale_Y_test.inverse_transform(y_test))
@@ -201,7 +203,7 @@ def test_scaled_net(X_train, y_train, X_test, y_test, std_scale_Y_train, std_sca
     cuda.close() # Dlt for mem
 
     
-    
+
 def split_data(df, df_test, GW):
     df = df.append(df_test[df_test['GW'] < GW])
     df_test = df_test[df_test['GW'] == GW] 
@@ -229,8 +231,9 @@ def test_scaled_models(data_str, GW):
     X_train, y_train, X_test, y_test, std_scale_X_train, \
         std_scale_Y_train, scl_feat_train, std_scale_X_test, \
             std_scale_Y_test, scl_feat_test = generate_data(data_str, GW = GW, scale = True, outlier_rem=False)
-    # test_scaled_LR_model(X_train, y_train, X_test, y_test, std_scale_Y_train, std_scale_Y_test, GW = GW)
-    test_scaled_SVR_model(X_train, y_train, X_test, y_test, std_scale_Y_train, std_scale_Y_test, GW = GW)   # Takes ~5 min
+    print(X_train.shape, X_test.shape)
+    test_scaled_LR_model(X_train, y_train, X_test, y_test, std_scale_Y_train, std_scale_Y_test, GW = GW)
+    # test_scaled_SVR_model(X_train, y_train, X_test, y_test, std_scale_Y_train, std_scale_Y_test, GW = GW)   # Takes ~5 min
     # test_scaled_RF_model(X_train, y_train, X_test, y_test, std_scale_Y_train, std_scale_Y_test, GW = GW)  
     # test_scaled_net(X_train, y_train, X_test, y_test, std_scale_Y_train, std_scale_Y_test, GW)
     # #! SARIMAX, fireTS
@@ -248,4 +251,6 @@ test_scaled_models(data_str='fpl', GW = 1)
 # test_scaled_models(data_str='understat', GW = 1)
 # %%
 # test_scaled_models(data_str='imp', GW = 1)
+# %%
+fpl = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//2019-20//training//shifted_fpl.csv')
 # %%
