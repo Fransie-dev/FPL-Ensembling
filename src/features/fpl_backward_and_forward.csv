@@ -1,0 +1,31 @@
+,Feature,Occurences
+0,value,2
+1,strength_defence_home,2
+2,clean_sheets_shift,2
+3,goals_scored_shift,2
+4,penalties_saved_shift,2
+5,saves_shift,2
+6,assists_shift,2
+7,bps_shift,2
+8,influence_shift,2
+9,penalties_missed_shift,2
+10,yellow_cards_shift,2
+11,creativity_shift,2
+12,own_goals_shift,2
+13,red_cards_shift,2
+14,minutes_shift,2
+15,bonus_shift,2
+16,ict_index_shift,2
+17,threat_shift,2
+18,goals_conceded_shift,2
+19,position_DEF,2
+20,position_MID,2
+21,team_Arsenal,2
+22,team_Man City,2
+23,team_Newcastle,2
+24,position_FWD,1
+25,position_GK,1
+26,team_Burnley,1
+27,team_h_Other,1
+28,team_Chelsea,1
+29,team_h_Sheffield Utd,1

@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from utilities import delete_any_duplicates
 
-def read_data(season):
+def read_data(season = '2019-00'):
     """[This function reads the data and defines the features that will be averaged]
 
     Returns:
@@ -52,7 +52,9 @@ def main(season, prev_games):
     fpl, fpl_avg, understat, understat_avg = read_data(season)
     fpl = fpl.groupby(['player_name']).apply(rolling_avg, prev_games = prev_games, feats=fpl_avg)
     understat = understat.groupby(['player_name']).apply(rolling_avg, prev_games = prev_games, feats=understat_avg)
-    plot_Ozil(understat_avg, prev_games, understat)
+    # plot_Ozil(understat_avg, prev_games, understat)
+    
+main(season='2019-20', prev_games = 1)
     
 # %%
 if __name__ == '__main__':

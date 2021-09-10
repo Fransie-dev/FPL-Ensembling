@@ -133,3 +133,4 @@ time_series_plot(df)
 import seaborn as sns
 sns.violinplot(x = 'position', y = 'total_points', data = df)
 # %%
+df.groupby('Sex').size

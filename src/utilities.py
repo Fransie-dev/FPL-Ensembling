@@ -205,3 +205,5 @@ def change_team_strength(teams, fpl):
 
 # fpl = change_team_strength(teams, fpl).dropna()
 # understat = change_team_strength(teams, understat).dropna()
+
+# cols = [non_shifted_feats['features'].to_list() + [col for col in df_test.columns if col.endswith('_shift')]]

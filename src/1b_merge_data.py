@@ -23,8 +23,7 @@ def merge_fixtures(fpl_path, understat_path, data_path):
     fixtures.rename(columns={'id':'fixture'}, inplace=True)
     
     teams = pd.read_csv(data_path + 'teams.csv')
-    teams = teams[['id', 'name', 'short_name', 'strength', 'strength_attack_away', 'strength_attack_home', 
-                   'strength_defence_away', 'strength_defence_home', 'strength_overall_away', 'strength_overall_home']]
+    teams = teams[['id', 'name', 'short_name', 'strength', 'strength_attack_away', 'strength_attack_home', 'strength_defence_away', 'strength_defence_home', 'strength_overall_away', 'strength_overall_home']]
   
 
     fpl = pd.read_csv(fpl_path + 'merged_gw.csv') 
@@ -169,7 +168,6 @@ def exact_matches(understat, fpl, join = 'inner'):
     understat_matched = understat[understat['player_name'].isin(matching_names)]
     exact_merge = pd.merge(fpl_matched, understat_matched, left_on=['player_name', 'kickoff_time'], right_on=['player_name', 'date'], how= join) 
     return exact_merge
-
 
 def remove_matched_names(fpl, understat, exact_merge):
     """[This function checks which names were matched in the first name/date match performed, removes them and returns the 
@@ -323,11 +321,11 @@ def main(season):
     fpl, understat = join_data(fpl, understat, season)
     fpl.to_csv(training_path + 'fpl.csv', index = False)
     understat.to_csv(training_path + 'understat_merged.csv', index = False)
+    fpl[fpl.duplicated(['player_name', 'GW'])].to_csv(training_path + 'fpl_dups.csv', index = False)
+    understat[understat.duplicated(['player_name', 'GW'])].to_csv(training_path + 'us_dups.csv', index = False)
     
 
 if __name__ == "__main__":
     main(season='2020-21') # Successful execution
     main(season='2019-20') # Successful execution
     print('Success!')
-# %%
-# Updt: removed 

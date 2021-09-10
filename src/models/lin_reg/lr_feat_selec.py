@@ -17,10 +17,10 @@ def read_data(season):
         [type]: [description]
     """    
     training_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//training//'
-    fpl = pd.read_csv(training_path + 'cleaned_fpl.csv', index_col=0)
-    understat = pd.read_csv(training_path + 'cleaned_understat.csv', index_col=0)
-    understat_imp = pd.read_csv(training_path + 'cleaned_imp.csv', index_col=0)
-    return fpl, understat, understat_imp
+    fpl = pd.read_csv(training_path + 'shifted_fpl.csv')
+    understat = pd.read_csv(training_path + 'shifted_us.csv')
+    # understat_imp = pd.read_csv(training_path + 'cleaned_imp.csv', index_col=0)
+    return fpl, understat
 
 
 def backward_elimination(df, data_str, threshold_in = 0.05, verbose = True):
@@ -153,7 +153,7 @@ def one_hot_encode(fpl):
     fpl.drop(columns=['home_False'], axis=1, inplace=True)
     return fpl
 
-fpl, understat, understat_imp = read_data(season = '2019-20') # Season stays constant for feature selection
+fpl, understat = read_data(season = '2019-20') # Season stays constant for feature selection
 
 def feature_selection(df, data_str, required_votes):
     data = one_hot_encode(df)
@@ -174,10 +174,10 @@ def feature_selection(df, data_str, required_votes):
     
 def main(required_votes):
     # TODO: Add averages and lag data to the match
-    fpl, understat, imp = read_data(season = '2019-20') # Season stays constant for feature selection
+    fpl, understat = read_data(season = '2019-20') # Season stays constant for feature selection
     feature_selection(fpl, 'fpl', required_votes)
     feature_selection(understat, 'understat', required_votes)
-    feature_selection(imp, 'imp', required_votes)
+    # feature_selection(imp, 'imp', required_votes)
 
 
     
