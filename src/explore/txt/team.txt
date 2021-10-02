@@ -1,0 +1,34 @@
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Sun Sep 19 11:33:29 2021
+\begin{table}[ht]
+\centering
+\begin{tabular}{rllrlllrlllrlllrl}
+  \hline
+ & Level &   & N & \% & Level &   & N & \% & Level &   & N & \% & Level &   & N & \% \\ 
+  \hline
+1 & Man Utd &  & 2622 & 5.6 & Arsenal &  & 1095 & 5.2 & Sheffield Utd &  & 2356 & 5.0 & Man City &  & 1070 & 5.1 \\ 
+  2 & Brighton &  & 2508 & 5.4 & Brighton &  & 1077 & 5.1 & Burnley &  & 2355 & 5.0 & Aston Villa &  & 1067 & 5.1 \\ 
+  3 & Newcastle &  & 2501 & 5.3 & Everton &  & 1070 & 5.1 & Brighton &  & 2354 & 5.0 & Chelsea &  & 1063 & 5.0 \\ 
+  4 & Arsenal &  & 2490 & 5.3 & Chelsea &  & 1068 & 5.1 & Liverpool &  & 2354 & 5.0 & Leicester &  & 1060 & 5.0 \\ 
+  5 & Southampton &  & 2468 & 5.3 & Spurs &  & 1065 & 5.1 & Man City &  & 2351 & 5.0 & Liverpool &  & 1055 & 5.0 \\ 
+  6 & Spurs &  & 2432 & 5.2 & Man Utd &  & 1064 & 5.0 & Chelsea &  & 2350 & 5.0 & West Ham &  & 1055 & 5.0 \\ 
+  7 & Wolves &  & 2385 & 5.1 & Newcastle &  & 1064 & 5.0 & Spurs &  & 2348 & 5.0 & Wolves &  & 1055 & 5.0 \\ 
+  8 & West Ham &  & 2381 & 5.1 & Leicester &  & 1059 & 5.0 & Aston Villa &  & 2344 & 5.0 & Man Utd &  & 1054 & 5.0 \\ 
+  9 & Aston Villa &  & 2347 & 5.0 & Liverpool &  & 1056 & 5.0 & Wolves &  & 2344 & 5.0 & Southampton &  & 1053 & 5.0 \\ 
+  10 & Everton &  & 2305 & 4.9 & West Ham &  & 1054 & 5.0 & Everton &  & 2341 & 5.0 & Arsenal &  & 1051 & 5.0 \\ 
+  11 & Liverpool &  & 2269 & 4.8 & Southampton &  & 1052 & 5.0 & Southampton &  & 2341 & 5.0 & Brighton &  & 1050 & 5.0 \\ 
+  12 & Crystal Palace &  & 2245 & 4.8 & Sheffield Utd &  & 1049 & 5.0 & Crystal Palace &  & 2339 & 5.0 & Crystal Palace &  & 1050 & 5.0 \\ 
+  13 & Leicester &  & 2193 & 4.7 & Aston Villa &  & 1040 & 4.9 & West Ham &  & 2338 & 5.0 & Everton &  & 1050 & 5.0 \\ 
+  14 & Burnley &  & 2171 & 4.6 & Man City &  & 1037 & 4.9 & Leicester &  & 2335 & 5.0 & Sheffield Utd &  & 1049 & 5.0 \\ 
+  15 & Man City &  & 2170 & 4.6 & Crystal Palace &  & 1033 & 4.9 & Newcastle &  & 2333 & 5.0 & Burnley &  & 1047 & 5.0 \\ 
+  16 & Sheffield Utd &  & 2163 & 4.6 & Wolves &  & 1030 & 4.9 & Arsenal &  & 2328 & 5.0 & Newcastle &  & 1047 & 5.0 \\ 
+  17 & Chelsea &  & 2099 & 4.5 & Burnley &  & 991 & 4.7 & Man Utd &  & 2327 & 5.0 & Spurs &  & 1045 & 5.0 \\ 
+  18 & Fulham &  & 1294 & 2.8 & Norwich &  & 546 & 2.6 & West Brom &  & 1226 & 2.6 & Norwich &  & 538 & 2.6 \\ 
+  19 & Leeds &  & 1215 & 2.6 & Watford &  & 533 & 2.5 & Leeds &  & 1221 & 2.6 & Bournemouth &  & 537 & 2.5 \\ 
+  20 & West Brom &  & 1214 & 2.6 & Fulham &  & 531 & 2.5 & Fulham &  & 1207 & 2.6 & Leeds &  & 527 & 2.5 \\ 
+  21 & Bournemouth &  & 1174 & 2.5 & Bournemouth &  & 526 & 2.5 & Norwich &  & 1127 & 2.4 & Watford &  & 526 & 2.5 \\ 
+  22 & Watford &  & 1126 & 2.4 & Leeds &  & 525 & 2.5 & Watford &  & 1126 & 2.4 & Fulham &  & 519 & 2.5 \\ 
+  23 & Norwich &  & 1095 & 2.3 & West Brom &  & 522 & 2.5 & Bournemouth &  & 1122 & 2.4 & West Brom &  & 519 & 2.5 \\ 
+   \hline
+\end{tabular}
+\end{table}

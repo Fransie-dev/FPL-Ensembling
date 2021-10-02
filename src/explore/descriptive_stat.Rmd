@@ -1,0 +1,287 @@
+---
+title: "EDA"
+author: "Francois van Zyl"
+date: "13/09/2021"
+output: 
+  html_document: 
+    theme: lumen
+---
+
+
+```{r warning=F, message=F}
+# Libraries ---------------------------------------------------------------
+library(ggplot2)
+library(knitr)
+library(dplyr)
+library(kableExtra)
+library(autoEDA)
+library(rattle)
+library(rpart)
+library(rpart.plot)
+library(partykit)
+library(tidyrules)
+library(papeR) # For formatting
+# Separate numerical + categorical ----------------------------------------
+setwd('C://Users//jd-vz//Desktop//Code//src//explore//')
+df <- read.csv(file = 'C://Users//jd-vz//Desktop//Code//data//collected_fpl.csv')
+# df <- read.csv(file = 'C://Users//jd-vz//Desktop//Code//data//collected_us.csv')
+num_feat <- df[sapply(df, is.numeric)]
+cat_feat <- df[,colnames(df)[grepl('factor|logical|character',sapply(df,class))]]
+
+
+```
+
+
+
+```{r }
+# These features could be interesting to investigate
+unique(df$clean_sheets)
+unique(df$clean_sheets)
+unique(df$penalties_missed) 
+unique(df$penalties_saved) # This is not a binary feature
+unique(df$yellow_cards)
+unique(df$red_cards)
+unique(df$was_home)
+```
+# By position
+
+```{r}
+df_temp <- df
+pos_test <- summarize(df_temp, type = "numeric", group = 'position', test = FALSE, quantiles = TRUE)
+pos_test %>% kable() %>% kable_styling(full_width = FALSE)
+```
+## Observations 
+* Assists
+  + GK have a lower spread of assists
+  + A GK scored an assist, potential outlier
+  
+* Bonus
+  + FWD have a significantly higher mean and SD than the rest
+
+* BPS
+  + FWD have the highest SD 
+  + FWD have the lowest mean
+  + DEF have the highest mean
+  
+* Creativity
+  + GK has a very low mean and SD
+  + MID have the highest creativity.
+  
+* Goals Scored
+  + GK scored a goal, potential outlier
+  + FWD score more goals
+  + MID scored four goals
+  
+* ICT
+  + FWD has highest mean and SD
+  + MID has max ICT
+
+
+* Influence
+  + Def the highest avg influence, but not close to others max.
+
+* minutes
+  + On avg, GK plays the least and DEF the most
+
+* Own goal
+  + DEF do it the most, FWD the least
+
+* Penalties missed
+  + DEF. FWD. and MID have taken shots and missed penalties.
+
+* Red cards
+  + Defenders get the most, only marginally
+  + Goalkeepers get the least
+
+* Saves
+  + GK specific
+
+* Selected
+  + As expected, more FWD are selected
+  
+* Threat
+  + GK low.
+  + Mid surprisingly high
+  
+* Total points
+  + GK score least
+  + FWD score most
+  
+* Value
+  + GK and DEF have a lower average value
+  + FWD and MID more on avg.
+
+* Yellow cards
+  + More DEF and MID get yellow cards
+
+# By home (with p-value)
+
+```{r}
+df_temp <- df
+pos_test <- summarize(df_temp, type = "numeric", group = 'was_home', 
+                      test = c("wilcox.test"), quantiles = TRUE) # Since normality cannot be assumed
+pos_test %>% kable() %>% kable_styling(full_width = FALSE) 
+```
+
+## Observations 
+
+* BPS
+  + More BPS obtained at home (slight)
+
+* Clean sheets
+  + More clean sheets are obtained at home
+
+* Creativity
+  + More creativity at home
+
+
+* Goals conceded
+  + Less goals are conceded at home
+
+* ICT
+  + A higher ICT index is obtained at home
+
+* Penalties missed
+  + More penalties missed away from home
+
+* Penalties saved
+  + More penalties saved at home
+
+* Threat
+  + A higher threat is observed at home
+
+* Total points
+  + More total points scored at home
+
+* Transfer balance
+  + Negative balance at home, positive away from home
+
+# Clean sheets
+
+```{r }
+df_temp <- df
+df_temp$clean_sheets <- as.factor(df_temp$clean_sheets)
+cs_test <- summarize(df_temp, type = "numeric", group = 'clean_sheets', test = c("wilcox.test"))
+cs_test %>% kable() %>% kable_styling(full_width = FALSE,) 
+```
+
+## Observations
+
+Sample size? 42028 vs 4839a
+
+
+# Penalties missed
+
+```{r }
+df_temp <- df
+df_temp$penalties_missed <- as.factor(df_temp$penalties_missed)
+pm_test <- summarize(df_temp, type = "numeric", group = 'penalties_missed', test = c("wilcox.test"))
+pm_test %>% kable() %>% kable_styling(full_width = FALSE) 
+```
+
+## Observations
+
+Sample size? 46824 vs 43 
+
+
+
+# Red cards
+
+```{r }
+df_temp <- df
+df_temp$red_cards <- as.factor(df_temp$red_cards)
+rc_test <- summarize(df_temp, type = "numeric", group = 'red_cards', test = c("wilcox.test"))
+rc_test %>% kable() %>% kable_styling(full_width = FALSE) 
+```
+
+## Observations
+
+Sample size? 46774 vs 93
+
+
+# Yellow cards
+
+```{r }
+df_temp <- df
+df_temp$yellow_cards <- as.factor(df_temp$yellow_cards)
+yc_test <- summarize(df_temp, type = "numeric", group = 'yellow_cards', test = c("wilcox.test"))
+yc_test %>% kable() %>% kable_styling(full_width = FALSE) 
+```
+
+## Observations
+
+Sample size? 44494 vs 2373
+
+
+
+
+
+# Investigate
+
+```{r}
+summarize(df, type = "numeric", group = NULL,
+                       test = FALSE, count = FALSE)  %>% kable() %>% kable_styling(full_width = FALSE) 
+```
+
+## Observations 
+
+* BPS, creativity, influence, threat, ict index, very skew.
+
+* YC, value transfers, total_points, skew
+
+* 
+
+
+* 
+
+
+* 
+
+
+* 
+
+
+* 
+
+
+* 
+
+
+* Strengths seem normal
+
+
+
+
+
+* 
+  + 
+
+
+* 
+  + 
+
+
+* 
+  + 
+
+
+* 
+  + 
+
+
+* 
+  + 
+
+
+* 
+  + 
+
+
+* 
+  + 
+
+
+
+
+
+

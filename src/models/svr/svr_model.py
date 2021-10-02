@@ -35,3 +35,4 @@ grid_search.best_estimator_
 # %%
 grid_search.best_score_
 # %%
+from sklearn.neighbors import KNeighborsRegressor

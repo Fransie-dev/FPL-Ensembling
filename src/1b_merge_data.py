@@ -67,19 +67,6 @@ def intersect(a, b):
     """    
     # print(len(list(set(a) & set(b))), 'unique and matching names between FPL and Understat')
     return list(set(a) & set(b))
-
-def union(a, b):
-    """[This function finds the union between two player name columns]
-
-    Args:
-        a ([type]): [description]
-        b ([type]): [description]
-
-    Returns:
-        [type]: [The union]
-    """    
-    print(len(list(set(a) | set(b))), 'unique, not necessarily matching names between FPL and Understat')
-    return list(set(a) | set(b))
     
 def rename_fpl_teams(fpl, features = ['team', 'team_a', 'team_h']):
     """[This function replaces the acronyms used to indicate teams by the FPL API with the teams full names, as seen in the understat data]
@@ -270,7 +257,7 @@ def final_rename(understat_no_similar, fpl_no_similar, join = 'inner'):
                    'Wesley':'Wesley Moraes',
                    'Willian':'Willian Borges Da Silva',
                    }
-    understat_no_similar['player_name'] = understat_no_similar['player_name'].copy().map(name_mapper)
+    understat_no_similar['player_name'] = understat_no_similar['player_name'].map(name_mapper)
     manual_merge = pd.merge(fpl_no_similar, understat_no_similar, left_on=['player_name', 'kickoff_time'],
                                      right_on=['player_name', 'date'], how=join) # Merge using player name and date of game
     return manual_merge
@@ -293,6 +280,7 @@ def final_merge_understat(exact_merge, similar_merge, manual_merge, understat):
     print('Manually: ', manual_merge.shape[0], ' instances merged corresponding to: ', manual_merge['player_name'].unique().__len__(), ' unique players')
     print('Lost: ', understat.shape[0] -  understat_final.shape[0], ' instances corresponding to: ', understat['player_name'].unique().__len__() 
           -  understat_final['player_name'].unique().__len__(), ' unique players', end='\n\n')
+    print(list(set(understat_final['player_name'].unique()) - set(understat['player_name'].unique())))
     
     return understat_final
 
@@ -321,11 +309,10 @@ def main(season):
     fpl, understat = join_data(fpl, understat, season)
     fpl.to_csv(training_path + 'fpl.csv', index = False)
     understat.to_csv(training_path + 'understat_merged.csv', index = False)
-    fpl[fpl.duplicated(['player_name', 'GW'])].to_csv(training_path + 'fpl_dups.csv', index = False)
-    understat[understat.duplicated(['player_name', 'GW'])].to_csv(training_path + 'us_dups.csv', index = False)
-    
+
 
 if __name__ == "__main__":
     main(season='2020-21') # Successful execution
     main(season='2019-20') # Successful execution
     print('Success!')
+# %%

@@ -26,32 +26,7 @@ def set_season_time(season):
         enddate = datetime.fromtimestamp(mktime(enddate))
     return startdate, enddate
 
-def missing_zero_values_table(df):
-    """[This function checks for missing values]
 
-    Args:
-        df ([type]): [description]
-
-    Returns:
-        [type]: [description]
-    """    
-    zero_val = (df == 0.00).astype(int).sum(axis=0)
-    mis_val = df.isnull().sum()
-    mis_val_percent = 100 * df.isnull().sum() / len(df)
-    mz_table = pd.concat([zero_val, mis_val, mis_val_percent], axis=1)
-    mz_table = mz_table.rename(
-    columns = {0 : 'Zero Values', 1 : 'Missing Values', 2 : '% of Total Values'})
-    mz_table['Total Zero Missing Values'] = mz_table['Zero Values'] + mz_table['Missing Values']
-    mz_table['% Total Zero Missing Values'] = 100 * mz_table['Total Zero Missing Values'] / len(df)
-    mz_table['Data Type'] = df.dtypes
-    mz_table = mz_table[
-        mz_table.iloc[:,1] != 0].sort_values(
-    '% of Total Values', ascending=False).round(1)
-    print ("The dataframe has " + str(df.shape[1]) + " columns and " + str(df.shape[0]) + " Rows.\n"      
-        "There are " + str(mz_table.shape[0]) +
-            " columns that have missing values.")
-    return mz_table
-    
     
 def dlt_create_dir(path):
     """[This function deletes (if existing) and creates a directory]
@@ -207,3 +182,18 @@ def change_team_strength(teams, fpl):
 # understat = change_team_strength(teams, understat).dropna()
 
 # cols = [non_shifted_feats['features'].to_list() + [col for col in df_test.columns if col.endswith('_shift')]]
+
+
+
+def union(a, b):
+    """[This function finds the union between two player name columns]
+
+    Args:
+        a ([type]): [description]
+        b ([type]): [description]
+
+    Returns:
+        [type]: [The union]
+    """    
+    print(len(list(set(a) | set(b))), 'unique, not necessarily matching names between FPL and Understat')
+    return list(set(a) | set(b))

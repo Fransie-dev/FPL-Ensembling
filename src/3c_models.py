@@ -17,27 +17,11 @@ from sklearnex import patch_sklearn
 import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
-# %%
 patch_sklearn()
-# %%
-
-
 
 def read_data():
-    shift = []
-    # df_test = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//2020-21//training//shifted_us.csv')
-    # df_train = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//2019-20//training//shifted_us.csv')
-    df_test = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//2020-21//training//shifted_fpl.csv')
-    df_train = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//2019-20//training//shifted_fpl.csv')
-    shifted_feats = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//2019-20//features//shifted.csv')['features']
-    for df in df_train, df_test:
-        for feat in shifted_feats:
-            if feat in df.columns:
-                df.drop(feat, axis=1, inplace=True)
-                shift.append(feat + '_shift')
+    df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//engineered_us.csv')
     return df_test, df_train, shift
-
-
 
 def change_different_teams(df_test, df_train):
     changed_teams = ['Fulham', 'Leeds', 'West Brom', 'Watford', 'Bournemouth', 'Norwich'] # These teams are not in both seasons
@@ -207,8 +191,8 @@ def test_scaled_net(X_train, y_train, X_test, y_test, std_scale_Y, GW):
         GW ([type]): [description]
     """    
     regressor = Sequential()
-    regressor.add(Dense(500, activation= "relu",))
-    regressor.add(Dense(500, activation= "relu"))
+    regressor.add(Dense(96, activation= "relu",))
+    regressor.add(Dense(416, activation= "relu"))
     regressor.add(Dense(1))
     regressor.compile(loss= "mse" , optimizer="adam", metrics=["mse"])
     history = regressor.fit(X_train, y_train, epochs=20, validation_split=0.2)
@@ -231,10 +215,11 @@ boruta_select= ['round' ,'value' ,'clean_sheets_shift','goals_scored_shift','sav
 fwd_select = ['threat_shift', 'bonus_shift', 'creativity_shift', 'influence_shift', 'minutes_shift', 'goals_conceded_shift', 'clean_sheets_shift', 'assists_shift', 'goals_scored_shift', 'yellow_cards_shift', 'bps_shift', 'penalties_saved_shift', 'saves_shift', 'red_cards_shift', 'own_goals_shift', 'position_MID', 'ict_index_shift', 'penalties_missed_shift', 'position_DEF', 'strength_defence_home', 'value', 'team_Man City', 'team_Newcastle', 'team_Arsenal', 'team_Chelsea', 'team_h_Sheffield Utd']
 bwd_select = ['value', 'strength_defence_home', 'clean_sheets_shift', 'goals_scored_shift', 'penalties_saved_shift', 'saves_shift', 'assists_shift', 'bps_shift', 'influence_shift', 'penalties_missed_shift', 'yellow_cards_shift', 'creativity_shift', 'own_goals_shift', 'red_cards_shift', 'minutes_shift', 'bonus_shift', 'ict_index_shift', 'threat_shift', 'goals_conceded_shift', 'position_DEF', 'position_FWD', 'position_GK', 'position_MID', 'team_Arsenal', 'team_Burnley', 'team_Man City', 'team_Newcastle', 'team_h_Other']
 vif_feat_lt_20 = ['team_a_difficulty', 'bps_shift', 'minutes_shift', 'goals_scored_shift', 'goals_conceded_shift', 'clean_sheets_shift', 'bonus_shift', 'selected', 'value', 'saves_shift', 'assists_shift', 'team_h_score_shift', 'team_a_score_shift', 'yellow_cards_shift', 'penalties_saved_shift', 'round', 'penalties_missed_shift', 'red_cards_shift', 'own_goals_shift']
+boruta_shap_select = ['npg_shift_per_minute', 'goals_scored_shift_per_minute', 'selected', 'minutes_shift', 'value', 'Player_Rank', 'bonus_shift', 'bonus_shift_per_minute', 'bps_shift', 'total_points_shift_to_value', 'bps_shift_per_minute', 'assists_shift', 'bonus_shift_to_value', 'bps_shift_to_value', 'form', 'influence_shift', 'total_points_shift_per_minute']
 # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 # %%
 # %%
-# df_test, df_train, shift = read_data()
+df_test, df_train, shift = read_data()
 # df_test, df_train = change_different_teams(df_test, df_train)
 GW = 3
 min_date = df_test[df_test['GW'] == GW]['kickoff_time'].min() # The first date of the gameweek
@@ -243,18 +228,19 @@ num_feats = df_scl.select_dtypes(include='number').drop(columns = ['total_points
 extracts = ['player_name', 'GW', 'total_points_shift', 'kickoff_time']
 std_scaler_X, std_scaler_Y = StandardScaler(), StandardScaler()
 df_scl[num_feats] = std_scaler_X.fit_transform(df_scl[num_feats])
-# %%
 df_scl['total_points_shift'] = std_scaler_Y.fit_transform(df_scl['total_points_shift'].to_numpy().reshape(-1, 1))
-# %%
 df_scl = one_hot_encode(df_scl)
 df_train, df_test = df_scl[df_scl['kickoff_time'] < min_date], df_scl[df_scl['kickoff_time'] >= min_date] 
 X_train = df_train.drop(columns = extracts) 
 y_train = df_train['total_points_shift']
 X_test = df_test.drop(columns = extracts) 
 y_test = df_test['total_points_shift']
-
+select = boruta_shap_select
+X_train, X_test = X_train[select], X_test[select]
+test_scaled_net(X_train, y_train, X_test, y_test, std_scaler_Y, GW)
 # %%
-test_scaled_RF_model(X_train, y_train, X_test, y_test, std_scaler_Y, GW)
+# %%
+# test_scaled_RF_model(X_train, y_train, X_test, y_test, std_scaler_Y, GW)
 
 # %%
 # from numpy import mean
@@ -292,14 +278,12 @@ test_scaled_RF_model(X_train, y_train, X_test, y_test, std_scaler_Y, GW)
 # select = fwd_select
 # X_train, X_test = X_train[select], X_test[select]
 
-
-
 # test_scaled_LR_model(X_train, y_train, X_test, y_test, std_scaler_Y, GW)
 # test_scaled_SVR_model(X_train, y_train, X_test, y_test, std_scaler_Y, GW) 
 # test_scaled_knn_model(X_train, y_train, X_test, y_test, std_scaler_Y, GW) 
-test_scaled_net(X_train, y_train, X_test, y_test, std_scaler_Y, GW)
+# test_scaled_net(X_train, y_train, X_test, y_test, std_scaler_Y, GW)
 # test_scaled_RF_model(X_train, y_train, X_test, y_test, std_scaler_Y, GW)
-# %%
+
 
 
 
@@ -335,9 +319,6 @@ def reduce_multicollin(X_train, y_train, X_test, y_test):
 
 
 
-# reduce_multicollin(X_train, y_train, X_test, y_test)
-# test_scaled_LR_model(X_train, y_train, X_test, y_test, std_scaler_Y, GW)
-
-
-
-
+reduce_multicollin(X_train, y_train, X_test, y_test)
+test_scaled_LR_model(X_train, y_train, X_test, y_test, std_scaler_Y, GW)
+# %%

@@ -1,0 +1,672 @@
+\begin{center}
+% latex table generated in R 3.6.2 byfactor(0)
+698 Levels: �\230rjan Nyland Çaglar Söyüncü Aaron Connolly Aaron Cresswell Aaron Lennon Aaron Mooy Aaron Ramsdale ... Zack Steffen
+[1] 916
+  [1] Aaron Mooy                               Adam Lallana                             Adam Masina                             
+  [4] Adam Webster                             Adama Traoré                            Ademola Lookman                         
+  [7] Adrian Mariappa                          Adrián San Miguel del Castillo          Albian Ajeti                            
+ [10] Alex Iwobi                               Alex McCarthy                            Alex Oxlade-Chamberlain                 
+ [13] Alexander Tettey                         Alexandre Lacazette                      Alexandre Nascimento Costa Silva        
+ [16] Alexis Sánchez                          Alireza Jahanbakhsh                      Andre Green                             
+ [19] Andrew Surman                            Andriy Yarmolenko                        Andy Carroll                            
+ [22] Andy King                                Angel Gomes                              Angelo Ogbonna                          
+ [25] Anthony Knockaert                        Antonio Rüdiger                         Arnaut Danjuma Groeneveld               
+ [28] Arthur Masuaku                           Artur Boruc                              Ashley Young                            
+ [31] Asmir Begovic                            Axel Tuanzebe                            Bailey Peacock-Farrell                  
+ [34] Bamidele Alli                            Ben Davies                               Ben Gibson                              
+ [37] Ben Johnson                              Ben Osborn                               Benjamin Mendy                          
+ [40] Beram Kayal                              Bernardo Mota Veiga de Carvalho e Silva  Birkir Bjarnason                        
+ [43] Callum Hudson-Odoi                       Callum Slattery                          Carl Jenkinson                          
+ [46] Carlos Sánchez                          Cenk Tosun                               Charlie Austin                          
+ [49] Charlie Daniels                          Charlie Taylor                           Cheikhou Kouyaté                       
+ [52] Chris Smalling                           Christian Atsu                           Christian Fuchs                         
+ [55] Christian Kabasele                       Christoph Zimmermann                     Ciaran Clark                            
+ [58] Claudio Bravo                            Cédric Soares                           Dan Gosling                             
+ [61] Daniel Amartey                           Daniel Drinkwater                        Danilo Luiz da Silva                    
+ [64] Danny Ward                               Danny Welbeck                            Daryl Janmaat                           
+ [67] David Brooks                             David Button                             David Luiz Moreira Marinho              
+ [70] Davide Zappacosta                        DeAndre Yedlin                           Dejan Lovren                            
+ [73] Demarai Gray                             Dennis Praet                             Dennis Srbeny                           
+ [76] Djibril Sidibé                          Domingos Quina                           Edward Nketiah                          
+ [79] Eldin Jakupovic                          Emil Krafth                              Emiliano Martínez                      
+ [82] Eric Bailly                              Eric Dier                                Ethan Ampadu                            
+ [85] Ezri Konsa Ngoyo                         Fabian Delph                             Federico Fernández                     
+ [88] Fernando Luiz Rosa                       Fikayo Tomori                            Florian Lejeune                         
+ [91] Fraser Forster                           Frederick Woodman                        Frederico Rodrigues de Paula Santos     
+ [94] Frédéric Guilbert                      Gary Cahill                              Gaëtan Bong                            
+ [97] Giovani Lo Celso                         Grady Diangana                           Harry Wilson                            
+[100] Henri Lansbury                           Heung-Min Son                            Heurelho da Silva Gomes                 
+[103] Héctor Bellerín                        Hélder Costa                            Ibrahim Amadou                          
+[106] Idrissa Gueye                            Ismaïla Sarr                            Ivan Cavaleiro                          
+[109] Jack Colback                             Jack Simpson                             Jack Stacey                             
+[112] Jacob Murphy                             Jake Eastwood                            James Chester                           
+[115] James Garner                             James Justin                             James McCarthy                          
+[118] James Tomkins                            Jan Vertonghen                           Jed Steer                               
+[121] Jeff Hendrick                            Jeffrey Schlupp                          Jesús Vallejo Lázaro                  
+[124] Joe Hart                                 Joel Matip                               John Ruddy                              
+[127] Jonas Lössl                             Jordon Ibe                               Jose Luis Mato Sanmartín               
+[130] José Diogo Dalot Teixeira               José Heriberto Izquierdo Mena           José �\201ngel Esmorís Tasende           
+[133] João Pedro Cavaco Cancelo               Juan Foyth                               Junior Stanislas                        
+[136] Karl Darlow                              Kayne Ramsay                             Keinan Davis                            
+[139] Kelechi Iheanacho                        Ken Sema                                 Kevin Long                              
+[142] Kieran Tierney                           Kieran Trippier                          Kieron Freeman                          
+[145] Konstantinos Mavropanos                  Kortney Hause                            Laurent Koscielny                       
+[148] Leandro Trossard                         Lee Grant                                Leighton Baines                         
+[151] Leon Balogun                             Leroy Sané                              Lewis Cook                              
+[154] Lewis Gibson                             Lloyd Kelly                              Lovre Kalinic                           
+[157] Lucas Torreira                           Luke Amos                                Luke Dreher                             
+[160] Lys Mousset                              Maarten Stekelenburg                     Mamadou Sakho                           
+[163] Marc Navarro                             Marcos Alonso                            Marcos Rojo                             
+[166] Mario Lemina                             Mario Vrancic                            Mark Duffy                              
+[169] Mark Noble                               Mark Travers                             Marko Arnautovic                        
+[172] Marvelous Nakamba                        Mason Holgate                            Matej Vydra                             
+[175] Matt Targett                             Matteo Darmian                           Matthew Clarke                          
+[178] Matty James                              Max Kilman                               Maya Yoshida                            
+[181] Mesut Özil                              Michael McGovern                         Michael Verrips                         
+[184] Michy Batshuayi                          Mohamed Elneny                           Mohamed Elyounoussi                     
+[187] Morgan Gibbs-White                       Moussa Djenepo                           Muhamed Bešić                         
+[190] Naby Keita                               Nampalys Mendy                           Nathaniel Chalobah                      
+[193] Nemanja Matic                            Nicolás Otamendi                        Pablo Zabaleta                          
+[196] Patrick Roberts                          Paulo Gazzaniga                          Pedro Lomba Neto                        
+[199] Pedro Obiang                             Phil Bardsley                            Phil Jagielka                           
+[202] Phil Jones                               Philip Heise                             Pontus Dahlberg                         
+[205] Rachid Ghezzal                           Rafael Camacho                           Ralf Fahrmann                           
+[208] Ravel Morrison                           Reece James                              Rhian Brewster                          
+[211] Richard Stearman                         Rob Holding                              Robbie Brady                            
+[214] Robert Kenedy Nunes do Nascimento        Roberto Jimenez Gago                     Rolando Aarons                          
+[217] Romelu Lukaku                            Ruben Loftus-Cheek                       Ryan Sessegnon                          
+[220] Rúben Gonçalo Silva Nascimento Vinagre Sam Byram                                Sam Gallagher                           
+[223] Sam Surridge                             Sead Kolasinac                           Sebastian Prödl                        
+[226] Serge Aurier                             Sergio Romero                            Shane Long                              
+[229] Shkodran Mustafi                         Simon Francis                            Simon Mignolet                          
+[232] Simon Moore                              Steven Defour                            Stuart Armstrong                        
+[235] Sung-yueng Ki                            Tahith Chong                             Theo Walcott                            
+[238] Timm Klose                               Tom Cleverley                            Troy Parrott                            
+[241] Tyreke Johnson                           Victor Wanyama                           Vincent Janssen                         
+[244] Víctor Camarasa                         Wayne Hennessey                          Wes Morgan                              
+[247] Wesley Hoedt                             Will Norris                              Willian Borges Da Silva                 
+[250] Willy Caballero                          Winston Reid                             Xherdan Shaqiri                         
+[253] Yoshinori Muto                           Yves Bissouma                            �\230rjan Nyland                           
+[256] Adam Forshaw                             Adrien Silva                             Ahmed El-Sayed Hegazy                   
+[259] Alexis Mac Allister                      Alfie Mawson                             Alphonse Areola                         
+[262] Angus Gunn                               Anthony Gordon                           Antonee Robinson                        
+[265] Barry Douglas                            Benjamin Chilwell                        Bernard Anício Caldeira Duarte         
+[268] Bernardo Fernandes da Silva Junior       Billy Gilmour                            Brandon Pierrick                        
+[271] Bruno André Cavaco Jordao               Bukayo Saka                              Calum Chambers                          
+[274] Cameron Carter-Vickers                   Cedric Kipre                             Christian Benteke                       
+[277] Christian Pulisic                        Christian Walton                         Connor Wickham                          
+[280] Conor Townsend                           Cyrus Christie                           Dale Stephens                           
+[283] Dan Burn                                 Danny Rose                               Darren Randolph                         
+[286] David Martin                             Davinson Sánchez                        Davy Pröpper                           
+[289] Diogo Jota                               Divock Origi                             Dwight Gayle                            
+[292] Emerson Palmieri dos Santos              Emile Smith Rowe                         Erik Lamela                             
+[295] Ezgjan Alioski                           Fabian Schär                            Fabio Silva                             
+[298] Fabián Balbuena                         Fabricio Agosto Ramírez                 Filip Benkovic                          
+[301] Florin Andone                            Francisco Casilla Cortés                Gabriel Teodoro Martinelli Silva        
+[304] Gedson Carvalho Fernandes                Glenn Murray                             Hakim Ziyech                            
+[307] Hamza Choudhury                          Harvey Elliott                           Ian Carlo Poveda-Ocampo                 
+[310] Jack Robinson                            Jack Wilshere                            Jairo Riedewald                         
+[313] Jake Vokins                              James Milner                             Japhet Tanganga                         
+[316] Jarrad Branthwaite                       Jason Steele                             Jay-Roy Grot                            
+[319] Jayden Bogle                             Jean Michaël Seri                       Jean-Philippe Gbamin                    
+[322] Jonathan Castro Otto                     Jonathan Leko                            Jonjoe Kenny                            
+[325] Jonny Evans                              Jordan Hugill                            Jordan Stevens                          
+[328] Joseph Willock                           Josh Sims                                José Izquierdo                         
+[331] João Virgínia                          Joël Veltman                            Kamil Grosicki                          
+[334] Kamil Miazek                             Kelland Watts                            Kenneth Zohore                          
+[337] Kenny Tete                               Kevin McDonald                           Konstantinos Tsimikas                   
+[340] Leif Davis                               Leonardo Campana                         Liam Cooper                             
+[343] Luke Freeman                             Luke Thomas                              Léo Bonatini                           
+[346] Manuel Lanzini                           Marcus Bettinelli                        Mark Gillespie                          
+[349] Martin Dubravka                          Martin Kelly                             Martín Montoya                         
+[352] Mateo Kovacic                            Matija Sarkic                            Matt Macey                              
+[355] Matt Phillips                            Matt Ritchie                             Matteo Guendouzi                        
+[358] Matthew Longstaff                        Max Lowe                                 Max Meyer                               
+[361] Maxime Le Marchand                       Michael Obafemi                          Mohammed Salisu                         
+[364] Nathan Ferguson                          Nathan Tella                             Neco Williams                           
+[367] Oliver Burke                             Oliver Casey                             Oliver Skipp                            
+[370] Olivier Giroud                           Pablo Marí                              Patrick van Aanholt                     
+[373] Paul Dummett                             Reiss Nelson                             Ricardo Domingos Barbosa Pereira        
+[376] Robert Snodgrass                         Ryan Bennett                             Ryan Fraser                             
+[379] Sam Field                                Sam Woods                                Shane Duffy                             
+[382] Sofiane Boufal                           Sokratis Papastathopoulos                Stefan Johansen                         
+[385] Takumi Minamino                          Tammy Abraham                            Thiago Thiago                           
+[388] Vitor Ferreira                           Wes Foderingham                          William Saliba                          
+[391] Yan Valery                               Zeze Steven Sessegnon                    Aaron Cresswell                         
+[394] Alisson Ramses Becker                    Allan Saint-Maximin                      Andy Lonergan                           
+[397] Billy Sharp                              Caoimhin Kelleher                        Chris Mepham                            
+[400] Conor Hourihane                          Diego Rico                               Felipe Anderson Pereira Gomes           
+[403] Georges-Kévin Nkoudou                   Granit Xhaka                             Harvey Barnes                           
+[406] Henrikh Mkhitaryan                       Isaac Success Ajayi                      Jack Stephens                           
+[409] Javier Manquillo                         Jetro Willems                            John Stones                             
+[412] Jonathan Kodjia                          Jordan Ayew                              Joseph Gomez                            
+[415] Josip Drmic                              Jürgen Locadia                          Kenny McLean                            
+[418] Kevin Danso                              Morgan Schneiderlin                      Onel Hernández                         
+[421] Phil Foden                               Romain Saïss                            Ross Barkley                            
+[424] Sébastien Haller                        Tom Davies                               Aaron Wan-Bissaka                       
+[427] Adrián Bernabé                         Ahmed El Mohamady                        Ainsley Maitland-Niles                  
+[430] Andreas Pereira                          Anthony Driscoll-Glennon                 Anwar El Ghazi                          
+[433] Ashley Barnes                            Aymeric Laporte                          Ben Mee                                 
+[436] Bjorn Engels                             Bobby Thomas                             Brandon Williams                        
+[439] Branislav Ivanovic                       Curtis Jones                             César Azpilicueta                      
+[442] Dean Henderson                           Elia Caprile                             Eric Garcia                             
+[445] Hal Robson-Kanu                          Ilkay Gündogan                          Indiana Vassilev                        
+[448] Jack Cork                                James Bree                               James Tarkowski                         
+[451] Jamie Shackleton                         Jannik Vestergaard                       Jesse Lingard                           
+[454] Johann Berg Gudmundsson                  Josh Benson                              José Ignacio Peleteiro Romallo         
+[457] Juan Mata                                Liam Delap                               Marek Rodák                            
+[460] Mateusz Bogusz                           Matthew Lowton                           Mbwana Samatta                          
+[463] Mohamed Naser El Sayed Elneny            Moussa Sissoko                           Nathan Redmond                          
+[466] Neil Taylor                              Oleksandr Zinchenko                      Oliver Norwood                          
+[469] Oskar Buur                               Pablo Hernández Domínguez              Pascal Groß                            
+[472] Pascal Struijk                           Rekeem Harper                            Riyad Mahrez                            
+[475] Ryan Inniss                              Scott Dann                               Sean Longstaff                          
+[478] Sergio Agüero                           Teden Mengi                              Tim Ream                                
+[481] Toby Alderweireld                        Tom Cairney                              Tom Heaton                              
+[484] Tommy Doyle                              Wesley Moraes                            Zack Steffen                            
+[487] Gabriel Fernando de Jesus                Javier Hernández Balcázar              John Fleck                              
+[490] Jonjo Shelvey                            Marc Albrighton                          N'Golo Kanté                           
+[493] Patrick Cutrone                          Pedro Rodríguez Ledesma                 Roberto Pereyra                         
+[496] Ryan Bertrand                            Tanguy Ndombele                          Troy Deeney                             
+[499] Wilfred Ndidi                            Ayoze Pérez                             Cengiz Ünder                           
+[502] Cole Palmer                              Conor Gallagher                          Daniel Castelo Podence                  
+[505] Daniel James                             Diego Llorente                           Edouard Mendy                           
+[508] Erik Pieters                             Fernando Marçal                         Gabriel Magalhães                      
+[511] Gareth Bale                              Harrison Reed                            Issa Diop                               
+[514] Jack O'Connell                           Jay Rodriguez                            Jayson Molumby                          
+[517] John Egan                                Jordan Henderson                         Jorge Luiz Frello Filho                 
+[520] Josh Onomah                              Kepa Arrizabalaga                        Kieran Gibbs                            
+[523] Kurt Zouma                               Kyle Edwards                             Leander Dendoncker                      
+[526] Luka Milivojevic                         Mace Goodridge                           Meritan Shabani                         
+[529] Moise Kean                               Odion Ighalo                             Rúnar Alex Rúnarsson                  
+[532] Scott McTominay                          Sergio Reguilón                         Thiago Alcántara do Nascimento         
+[535] Timothy Fosu-Mensah                      William Smallbone                        Andreas Christensen                     
+[538] Anthony Martial                          Daniel N'Lundulu                         Etienne Capoue                          
+[541] Grant Hanley                             José Holebas                            Kyle Walker-Peters                      
+[544] Lucas Rodrigues Moura da Silva           Luke Shaw                                Matt Doherty                            
+[547] Michail Antonio                          Nacho Monreal                            Allan Marques Loureiro                  
+[550] André Filipe Tavares Gomes              Darnell Furlong                          Denis Odoi                              
+[553] Harry Winks                              Jack Harrison                            Jacob Ramsey                            
+[556] Jamaal Lascelles                         James Maddison                           Jimmy Dunne                             
+[559] Mason Mount                              Michael Hector                           Miguel Almirón                         
+[562] Niels Nkounkou                           Ryan Fredericks                          Sadio Mané                             
+[565] Steven Bergwijn                          Victor Lindelöf                         Wesley Fofana                           
+[568] Adam Idah                                Adam Smith                               Craig Cathcart                          
+[571] Dimitri Foulquier                        James McArthur                           Mahmoud Ahmed Ibrahim Hassan            
+[574] Mason Greenwood                          Maximillian Aarons                       Moritz Leitner                          
+[577] Paul Pogba                               Steven Alzate                            Tom Trybull                             
+[580] Tudor Baluta                             Willy Boly                               Aboubakar Kamara                        
+[583] Alex Nicolao Telles                      Andi Zeqiri                              Bobby Decordova-Reid                    
+[586] Carlos Vinicius Alves Morais             Craig Dawson                             Dara O'Shea                             
+[589] Eberechi Eze                             Edinson Cavani                           Facundo Pellistri                       
+[592] Ferran Torres                            Jamie Vardy                              Joachim Andersen                        
+[595] Joe Bryan                                Kevin De Bruyne                          Ki-Jana Hoever                          
+[598] Kyle Bartley                             Nathaniel Clyne                          Neeskens Kebano                         
+[601] Oluwasemilogo Adesewo Ibidapo Ajayi      Owen Otasowie                            Rayan Ait Nouri                         
+[604] Robin Olsen                              Stephen Henderson                        Tyler Roberts                           
+[607] Çaglar Söyüncü                       Alfie Whiteman                           Andros Townsend                         
+[610] David McGoldrick                         Dominic Calvert-Lewin                    Douglas Luiz Soares de Paulo            
+[613] Hugo Lloris                              Raheem Sterling                          Solomon March                           
+[616] Aaron Connolly                           Donny van de Beek                        Isaac Hayden                            
+[619] Islam Slimani                            Ivan Ricardo Neves Abreu Cavaleiro       Jack Butland                            
+[622] Joel Ward                                Kalvin Phillips                          Lewis Dunk                              
+[625] Nathan Aké                              Nathaniel Phillips                       Richarlison de Andrade                  
+[628] Romaine Sawyers                          Saïd Benrahma                           Seamus Coleman                          
+[631] Terence Kongolo                          Virgil van Dijk                          Aaron Lennon                            
+[634] Addji Keaninkin Marc-Israel Guehi        Che Adams                                Ezequiel Schelotto                      
+[637] Francisco Femenía Far                   Harry Lewis                              Tim Krul                                
+[640] Will Hughes                              Ben Godfrey                              Daniel Ceballos Fernández              
+[643] Ellis Simms                              Fabio Henrique Tavares                   James Rodríguez                        
+[646] James Trafford                           Joe Rodon                                Joelinton Cássio Apolinário de Lira   
+[649] Jordan Pickford                          Karlo Ziger                              Lewis Richardson                        
+[652] Lucas Digne                              Mathew Ryan                              Max Thompson                            
+[655] Neal Maupay                              Nicolas Pépé                           Raphael Dias Belloli                    
+[658] Rhys Williams                            Rodrigo Moreno                           Timothy Castagne                        
+[661] Tyrick Mitchell                          Akin Famewo                              Archie Mair                             
+[664] Leon Clarke                              Lukasz Fabianski                         Bertrand Traoré                        
+[667] Danny Ings                               Ibrahima Diallo                          Jack Jenkins                            
+[670] João Filipe Iria Santos Moutinho        Kai Havertz                              Lee Peltier                             
+[673] Matheus Pereira                          Robert Sánchez                          Yerry Mina                              
+[676] Andre Gray                               Beni Baningime                           Brandon Austin                          
+[679] Callum Robinson                          Christian Eriksen                        Jefferson Lerma                         
+[682] Kyle Walker                              Marco Stiepermann                        Michel Vorm                             
+[685] Mohamed Salah                            Vicente Guaita                           Callum Wilson                           
+[688] Conor Coady                              Enda Stevens                             Hélder Wander Sousa de Azevedo e Costa 
+[691] Jake Livermore                           Leighton Clarkson                        Thomas Partey                           
+[694] Trent Alexander-Arnold                   Wilfried Zaha                            Bernard Ashley-Seal                     
+[697] Chris Wood                               Oliver McBurnie                          Rodrigo Hernandez                       
+[700] Elliot Anderson                          Gylfi Sigurdsson                         Josh Brownhill                          
+[703] Nick Pope                                Tariq Lamptey                            Dominic Solanke                         
+[706] Harry Kane                               Jack Grealish                            Michael Keane                           
+[709] Pablo Fornals                            Taylor Perry                             Aleksandar Mitrović                    
+[712] David de Gea                             Raúl Jiménez                           David Silva                             
+[715] Ederson Santana de Moraes                Pierre-Emile Højbjerg                   Scott Carson                            
+[718] Daniel Langley                           Faustino Anjorin                         Jake Cain                               
+[721] John Lundstram                           Kean Bryan                               Robin Koch                              
+[724] Ayotomiwa Dele-Bashiru                   Jamal Lewis                              Joshua King                             
+[727] Oriol Romeu Vidal                        Matthew Cash                             Ashley Westwood                         
+[730] Christian Saydee                         Gavin Kilkenny                           Luke Cundle                             
+[733] Philip Billing                           Felix Nmecha                             Filip Krovinovic                        
+[736] Pierre-Emerick Aubameyang                Sander Berge                             Theo Corbeanu                           
+[739] Steve Cook                               Anthony Mancini                          Dwight McNeil                           
+[742] Joel Mumbongo                            Georginio Wijnaldum                      Oumar Niasse                            
+[745] Ben White                                Christian Marques                        Lewis Richards                          
+[748] Nélson Cabral Semedo                    Tyrone Mings                             Vladimir Coufal                         
+[751] Mihai-Alexandru Dobre                    Nathan Holland                           Rhu-endly Martina                       
+[754] Robert Elliot                            Andreas Söndergaard                     Charlie Cresswell                       
+[757] Cheikh Diaby                             George Baldock                           Karlan Grant                            
+[760] Kgaogelo Chauke                          Luke Mbete                               Niall Huggins                           
+[763] Taylor Harwood-Bellis                    James Daly                               Antwoine Hackford                       
+[766] Jakub Moder                              Jensen Weir                              Max Sanders                             
+[769] Nigel Lonwijk                            Teddy Jenks                              Abdoulaye Doucouré                     
+[772] John McGinn                              Joseph Anang                             Ademipo Odubeko                         
+[775] Allan Tchaptchet                         Caleb Watts                              Frederik Alves                          
+[778] Illan Meslier                            Reda Khadra                              Sam Johnstone                           
+[781] Will Ferry                               Tyreece John-Jules                       Youri Tielemans                         
+[784] Alexandre Jankewitz                      Amad Diallo                              Jean-Philippe Mateta                    
+[787] Percy Tau                                Timo Werner                              Tyler Onyango                           
+[790] Nya Kirby                                Alfie Devine                             Hugo Bueno                              
+[793] Kyron Gordon                             Morgan Sanson                            Rúben Diogo da Silva Neves             
+[796] Aaron Ramsdale                           Abd-Al-Ali Morakinyo Olaposi Koiki       Bernardo Costa Da Rosa                  
+[799] Gonçalo Bento Soares Cardoso            Jack Rodwell                             Jeremy Ngakia                           
+[802] João Pedro Junqueira de Jesus           Teemu Pukki                              Thomas Allan                            
+[805] Claudio Gomes                            Iliman Ndiaye                            Martin �\230degaard                        
+[808] Michal Karbownik                         Okay Yokuslu                             Ozan Kabak                              
+[811] Richard Nartey                           Ryan Finnigan                            Thakgalo Leshabela                      
+[814] Thomas McGill                            Vontae Daley-Campbell                    Zak Brunt                               
+[817] Giovanni McGregor                        Marcus Rashford                          Ryan Giles                              
+[820] Bernd Leno                               Joe Gelhardt                             Moisés Caicedo                         
+[823] Ola Aina                                 Emiliano Buendía                        Jan Bednarek                            
+[826] Liam Gibson                              Conor Coventry                           Dane Scarlett                           
+[829] Frankie Maguire                          Jamal Baptiste                           Rúben Santos Gato Alves Dias           
+[832] Richairo Zivkovic                        Carney Chukwuemeka                       Kaine Hayden                            
+[835] Panagiotis Retsos                        Chris Basham                             Harry Tyrer                             
+[838] Jakub Ojrzynski                          Kyle John                                Liam Hughes                             
+[841] Nathan Broadhead                         Nathan Trott                             Reece Hannam                            
+[844] Ryan Astley                              Shola Shoretire                          Sidnei Tavares                          
+[847] Willian José Da Silva                   Ignacio Pussetto                         André-Frank Zambo Anguissa             
+[850] Gaetano Berardi                          Jaden Philogene-Bidace                   Roberto Firmino                         
+[853] Shane Flynn                              João Manuel Neves Virgínia             Nabil Bentaleb                          
+[856] Tomas Soucek                             Valentino Lazaro                         Josh Maja                               
+[859] Nathan Bishop                            Andrew Robertson                         Borja González Tomás                  
+[862] Gerard Deulofeu                          Lukas Rupp                               Armando Broja                           
+[865] Harvey White                             José Reina                              Lukas Jensen                            
+[868] Nikola Tavares                           Zech Medley                              Declan Rice                             
+[871] Thanawat Suengchitthawon                 Josh Martin                              Matthew Smith                           
+[874] Isaac Price                              Jesurun Rak-Sakyi                        Mateusz Klich                           
+[877] Miguel Azeez                             Reece Welch                              Tosin Adarabioyo                        
+[880] Adalberto Peñaranda                     Alfie Lewis                              Jordan Thomas                           
+[883] Ondrej Duda                              Dennis Cirkin                            Crysencio Summerville                   
+[886] Sam Greenwood                            Jack Young                               Todd Cantwell                           
+[889] Cody Drameh                              Lewis Bate                               Anthony Elanga                          
+[892] Ben Woodburn                             Billy Koumetio                           Caleb Taylor                            
+[895] Fabio Carvalho                           Harry Maguire                            Ollie Watkins                           
+[898] Tawanda Maswanhise                       Taylor Gardner-Hickman                   Valentino Livramento                    
+[901] Darnell Johnson                          George Hirst                             Jacob Maddox                            
+[904] Mbaye Diagne                             Alex Cochrane                            John-Kymani Gordon                      
+[907] Harry Boyes                              Rui Pedro dos Santos Patrício           Toby King                               
+[910] Daniel Adshead                           Bruno Miguel Borges Fernandes            Femi Seriki                             
+[913] Nile John                                Sylvester Jasper                         Tim Iroegbunam                          
+[916] William Osula                           
+927 Levels: �\230rjan Nyland Çaglar Söyüncü Aaron Connolly Aaron Cresswell Aaron Lennon Aaron Mooy Aaron Ramsdale ... Zeze Steven Sessegnon
+                         player_name      team position value minutes bps GW kickoff_time season total_points creativity influence threat
+14   Adrián San Miguel del Castillo Liverpool       GK    45      51   7  1   2019-08-09   2019            1        0.0      10.6      0
+538  Adrián San Miguel del Castillo Liverpool       GK    45       0   0  1   2020-09-12   2020            0        0.0       0.0      0
+932                   Vitor Ferreira    Wolves      MID    50       4   4  1   2020-09-14   2020            1        0.8       1.2      0
+964  Adrián San Miguel del Castillo Liverpool       GK    45      90  12  2   2019-08-17   2019            3        0.0      12.2      0
+1493 Adrián San Miguel del Castillo Liverpool       GK    45       0   0  2   2020-09-20   2020            0        0.0       0.0      0
+1997                  Vitor Ferreira    Wolves      MID    50       0   0  2   2020-09-21   2020            0        0.0       0.0      0
+2032 Adrián San Miguel del Castillo Liverpool       GK    45      90  10  3   2019-08-24   2019            2        0.0       9.2      0
+2561 Adrián San Miguel del Castillo Liverpool       GK    45       0   0  3   2020-09-28   2020            0        0.0       0.0      0
+3080                  Vitor Ferreira    Wolves      MID    50      17   4  3   2020-09-27   2020            1       12.1       7.4      0
+3116 Adrián San Miguel del Castillo Liverpool       GK    45      90  25  4   2019-08-31   2019            6        0.0      20.8      0
+3648 Adrián San Miguel del Castillo Liverpool       GK    45      90  14  4   2020-10-04   2020            0        0.0      23.0      0
+4173                  Vitor Ferreira    Wolves      MID    50       0   0  4   2020-10-04   2020            0        0.0       0.0      0
+4212 Adrián San Miguel del Castillo Liverpool       GK    46      90   7  5   2019-09-14   2019            2        0.0       4.6      0
+4750 Adrián San Miguel del Castillo Liverpool       GK    45      90  14  5   2020-10-17   2020            2        0.0      19.2      0
+5294                  Vitor Ferreira    Wolves      MID    49       0   0  5   2020-10-19   2020            0        0.0       0.0      0
+5334 Adrián San Miguel del Castillo Liverpool       GK    46      90  12  6   2019-09-22   2019            2        0.0      12.4      0
+5874 Adrián San Miguel del Castillo Liverpool       GK    45       0   0  6   2020-10-24   2020            0        0.0       0.0      0
+6425                  Vitor Ferreira    Wolves      MID    49       0   0  6   2020-10-25   2020            0        0.0       0.0      0
+6466 Adrián San Miguel del Castillo Liverpool       GK    46      90  22  7   2019-09-28   2019            5        0.0      15.8      0
+7010 Adrián San Miguel del Castillo Liverpool       GK    45       0   0  7   2020-10-31   2020            0        0.0       0.0      0
+7568                  Vitor Ferreira    Wolves      MID    49       0   0  7   2020-10-30   2020            0        0.0       0.0      0
+7609 Adrián San Miguel del Castillo Liverpool       GK    46      90  10  8   2019-10-05   2019            2        0.0       4.8      0
+8158 Adrián San Miguel del Castillo Liverpool       GK    44       0   0  8   2020-11-08   2020            0        0.0       0.0      0
+8719                  Vitor Ferreira    Wolves      MID    48       0   0  8   2020-11-08   2020            0        0.0       0.0      0
+8760 Adrián San Miguel del Castillo Liverpool       GK    46       0   0  9   2019-10-20   2019            0        0.0       0.0      0
+     ict_index assists bonus goals_conceded goals_scored saves own_goals penalties_saved penalties_missed red_cards yellow_cards
+14         1.1       0     0              1            0     2         0               0                0         0            0
+538        0.0       0     0              0            0     0         0               0                0         0            0
+932        0.2       0     0              0            0     0         0               0                0         0            0
+964        1.2       0     0              1            0     3         0               0                0         0            0
+1493       0.0       0     0              0            0     0         0               0                0         0            0
+1997       0.0       0     0              0            0     0         0               0                0         0            0
+2032       0.9       0     0              1            0     2         0               0                0         0            0
+2561       0.0       0     0              0            0     0         0               0                0         0            0
+3080       2.0       0     0              1            0     0         0               0                0         0            0
+3116       2.1       0     0              0            0     2         0               0                0         0            0
+3648       2.3       0     0              7            0     4         0               0                0         0            0
+4173       0.0       0     0              0            0     0         0               0                0         0            0
+4212       0.5       0     0              1            0     0         0               0                0         0            0
+4750       1.9       0     0              2            0     3         0               0                0         0            0
+5294       0.0       0     0              0            0     0         0               0                0         0            0
+5334       1.2       0     0              1            0     1         0               0                0         0            0
+5874       0.0       0     0              0            0     0         0               0                0         0            0
+6425       0.0       0     0              0            0     0         0               0                0         0            0
+6466       1.6       0     0              0            0     2         0               0                0         0            1
+7010       0.0       0     0              0            0     0         0               0                0         0            0
+7568       0.0       0     0              0            0     0         0               0                0         0            0
+7609       0.5       0     0              1            0     0         0               0                0         0            0
+8158       0.0       0     0              0            0     0         0               0                0         0            0
+8719       0.0       0     0              0            0     0         0               0                0         0            0
+8760       0.0       0     0              0            0     0         0               0                0         0            0
+     team_h_score team_a_score clean_sheets was_home  opponent_team selected transfers_in transfers_out transfers_balance
+14              4            1            0     True        Norwich        0            0             0                 0
+538             4            3            0     True          Leeds    18419            0             0                 0
+932             0            2            0    False  Sheffield Utd     2432            0             0                 0
+964             1            2            0    False    Southampton   178033       163790         28977            134813
+1493            0            2            0    False        Chelsea    20756          627          2101             -1474
+1997            1            3            0     True       Man City     2901          288           564              -276
+2032            3            1            0     True        Arsenal   226686        64235         28057             36178
+2561            3            1            0     True        Arsenal    20341          606          2353             -1747
+3080            4            0            0    False       West Ham     2711          190           665              -475
+3116            0            3            1    False        Burnley   330807       107126         24868             82258
+3648            7            2            0    False    Aston Villa    20094          528          1620             -1092
+4173            1            0            0     True         Fulham     2665          180           437              -257
+4212            3            1            0     True      Newcastle   433745       109913         23814             86099
+4750            2            2            0    False        Everton    33318        15958          5222             10736
+5294            0            1            0    False          Leeds     2510          106           420              -314
+5334            1            2            0    False        Chelsea   422546        24280         31214             -6934
+5874            2            1            0     True  Sheffield Utd    56189        22406          4478             17928
+6425            1            1            0     True      Newcastle     2440           55           219              -164
+6466            0            1            1    False  Sheffield Utd   470770        56153         20991             35162
+7010            2            1            0     True       West Ham    38773         1568         16250            -14682
+7568            2            0            0     True Crystal Palace     2350           56           203              -147
+7609            2            1            0     True      Leicester   479476        32847         25812              7035
+8158            1            1            0    False       Man City    34343          774          5711             -4937
+8719            1            0            0    False      Leicester     2250           48           192              -144
+8760            1            1            0    False        Man Utd   408110        14356         86712            -72356
+     strength_attack_away strength_attack_home strength_defence_away strength_defence_home strength_overall_away strength_overall_home
+14                   1320                 1310                  1330                  1310                  1350                  1340
+538                  1210                 1190                  1230                  1300                  1210                  1250
+932                  1130                 1120                  1120                  1040                  1110                  1080
+964                  1320                 1310                  1330                  1310                  1350                  1340
+1493                 1210                 1190                  1230                  1300                  1210                  1250
+1997                 1130                 1120                  1120                  1040                  1110                  1080
+2032                 1320                 1310                  1330                  1310                  1350                  1340
+2561                 1210                 1190                  1230                  1300                  1210                  1250
+3080                 1130                 1120                  1120                  1040                  1110                  1080
+3116                 1320                 1310                  1330                  1310                  1350                  1340
+3648                 1210                 1190                  1230                  1300                  1210                  1250
+4173                 1130                 1120                  1120                  1040                  1110                  1080
+4212                 1320                 1310                  1330                  1310                  1350                  1340
+4750                 1210                 1190                  1230                  1300                  1210                  1250
+5294                 1130                 1120                  1120                  1040                  1110                  1080
+5334                 1320                 1310                  1330                  1310                  1350                  1340
+5874                 1210                 1190                  1230                  1300                  1210                  1250
+6425                 1130                 1120                  1120                  1040                  1110                  1080
+6466                 1320                 1310                  1330                  1310                  1350                  1340
+7010                 1210                 1190                  1230                  1300                  1210                  1250
+7568                 1130                 1120                  1120                  1040                  1110                  1080
+7609                 1320                 1310                  1330                  1310                  1350                  1340
+8158                 1210                 1190                  1230                  1300                  1210                  1250
+8719                 1130                 1120                  1120                  1040                  1110                  1080
+8760                 1320                 1310                  1330                  1310                  1350                  1340
+ [ reached 'max' / getOption("max.print") -- omitted 106 rows ]
+                         player_name      team position value minutes bps GW kickoff_time season total_points creativity influence threat
+14   Adrián San Miguel del Castillo Liverpool       GK    45      51   7  1   2019-08-09   2019            1        0.0      10.6      0
+538  Adrián San Miguel del Castillo Liverpool       GK    45       0   0  1   2020-09-12   2020            0        0.0       0.0      0
+932                   Vitor Ferreira    Wolves      MID    50       4   4  1   2020-09-14   2020            1        0.8       1.2      0
+964  Adrián San Miguel del Castillo Liverpool       GK    45      90  12  2   2019-08-17   2019            3        0.0      12.2      0
+1493 Adrián San Miguel del Castillo Liverpool       GK    45       0   0  2   2020-09-20   2020            0        0.0       0.0      0
+1997                  Vitor Ferreira    Wolves      MID    50       0   0  2   2020-09-21   2020            0        0.0       0.0      0
+2032 Adrián San Miguel del Castillo Liverpool       GK    45      90  10  3   2019-08-24   2019            2        0.0       9.2      0
+2561 Adrián San Miguel del Castillo Liverpool       GK    45       0   0  3   2020-09-28   2020            0        0.0       0.0      0
+3080                  Vitor Ferreira    Wolves      MID    50      17   4  3   2020-09-27   2020            1       12.1       7.4      0
+3116 Adrián San Miguel del Castillo Liverpool       GK    45      90  25  4   2019-08-31   2019            6        0.0      20.8      0
+3648 Adrián San Miguel del Castillo Liverpool       GK    45      90  14  4   2020-10-04   2020            0        0.0      23.0      0
+4173                  Vitor Ferreira    Wolves      MID    50       0   0  4   2020-10-04   2020            0        0.0       0.0      0
+4212 Adrián San Miguel del Castillo Liverpool       GK    46      90   7  5   2019-09-14   2019            2        0.0       4.6      0
+4750 Adrián San Miguel del Castillo Liverpool       GK    45      90  14  5   2020-10-17   2020            2        0.0      19.2      0
+5294                  Vitor Ferreira    Wolves      MID    49       0   0  5   2020-10-19   2020            0        0.0       0.0      0
+5334 Adrián San Miguel del Castillo Liverpool       GK    46      90  12  6   2019-09-22   2019            2        0.0      12.4      0
+5874 Adrián San Miguel del Castillo Liverpool       GK    45       0   0  6   2020-10-24   2020            0        0.0       0.0      0
+6425                  Vitor Ferreira    Wolves      MID    49       0   0  6   2020-10-25   2020            0        0.0       0.0      0
+6466 Adrián San Miguel del Castillo Liverpool       GK    46      90  22  7   2019-09-28   2019            5        0.0      15.8      0
+7010 Adrián San Miguel del Castillo Liverpool       GK    45       0   0  7   2020-10-31   2020            0        0.0       0.0      0
+7568                  Vitor Ferreira    Wolves      MID    49       0   0  7   2020-10-30   2020            0        0.0       0.0      0
+7609 Adrián San Miguel del Castillo Liverpool       GK    46      90  10  8   2019-10-05   2019            2        0.0       4.8      0
+8158 Adrián San Miguel del Castillo Liverpool       GK    44       0   0  8   2020-11-08   2020            0        0.0       0.0      0
+8719                  Vitor Ferreira    Wolves      MID    48       0   0  8   2020-11-08   2020            0        0.0       0.0      0
+8760 Adrián San Miguel del Castillo Liverpool       GK    46       0   0  9   2019-10-20   2019            0        0.0       0.0      0
+     ict_index assists bonus goals_conceded goals_scored saves own_goals penalties_saved penalties_missed red_cards yellow_cards
+14         1.1       0     0              1            0     2         0               0                0         0            0
+538        0.0       0     0              0            0     0         0               0                0         0            0
+932        0.2       0     0              0            0     0         0               0                0         0            0
+964        1.2       0     0              1            0     3         0               0                0         0            0
+1493       0.0       0     0              0            0     0         0               0                0         0            0
+1997       0.0       0     0              0            0     0         0               0                0         0            0
+2032       0.9       0     0              1            0     2         0               0                0         0            0
+2561       0.0       0     0              0            0     0         0               0                0         0            0
+3080       2.0       0     0              1            0     0         0               0                0         0            0
+3116       2.1       0     0              0            0     2         0               0                0         0            0
+3648       2.3       0     0              7            0     4         0               0                0         0            0
+4173       0.0       0     0              0            0     0         0               0                0         0            0
+4212       0.5       0     0              1            0     0         0               0                0         0            0
+4750       1.9       0     0              2            0     3         0               0                0         0            0
+5294       0.0       0     0              0            0     0         0               0                0         0            0
+5334       1.2       0     0              1            0     1         0               0                0         0            0
+5874       0.0       0     0              0            0     0         0               0                0         0            0
+6425       0.0       0     0              0            0     0         0               0                0         0            0
+6466       1.6       0     0              0            0     2         0               0                0         0            1
+7010       0.0       0     0              0            0     0         0               0                0         0            0
+7568       0.0       0     0              0            0     0         0               0                0         0            0
+7609       0.5       0     0              1            0     0         0               0                0         0            0
+8158       0.0       0     0              0            0     0         0               0                0         0            0
+8719       0.0       0     0              0            0     0         0               0                0         0            0
+8760       0.0       0     0              0            0     0         0               0                0         0            0
+     team_h_score team_a_score clean_sheets was_home  opponent_team selected transfers_in transfers_out transfers_balance
+14              4            1            0     True        Norwich        0            0             0                 0
+538             4            3            0     True          Leeds    18419            0             0                 0
+932             0            2            0    False  Sheffield Utd     2432            0             0                 0
+964             1            2            0    False    Southampton   178033       163790         28977            134813
+1493            0            2            0    False        Chelsea    20756          627          2101             -1474
+1997            1            3            0     True       Man City     2901          288           564              -276
+2032            3            1            0     True        Arsenal   226686        64235         28057             36178
+2561            3            1            0     True        Arsenal    20341          606          2353             -1747
+3080            4            0            0    False       West Ham     2711          190           665              -475
+3116            0            3            1    False        Burnley   330807       107126         24868             82258
+3648            7            2            0    False    Aston Villa    20094          528          1620             -1092
+4173            1            0            0     True         Fulham     2665          180           437              -257
+4212            3            1            0     True      Newcastle   433745       109913         23814             86099
+4750            2            2            0    False        Everton    33318        15958          5222             10736
+5294            0            1            0    False          Leeds     2510          106           420              -314
+5334            1            2            0    False        Chelsea   422546        24280         31214             -6934
+5874            2            1            0     True  Sheffield Utd    56189        22406          4478             17928
+6425            1            1            0     True      Newcastle     2440           55           219              -164
+6466            0            1            1    False  Sheffield Utd   470770        56153         20991             35162
+7010            2            1            0     True       West Ham    38773         1568         16250            -14682
+7568            2            0            0     True Crystal Palace     2350           56           203              -147
+7609            2            1            0     True      Leicester   479476        32847         25812              7035
+8158            1            1            0    False       Man City    34343          774          5711             -4937
+8719            1            0            0    False      Leicester     2250           48           192              -144
+8760            1            1            0    False        Man Utd   408110        14356         86712            -72356
+     strength_attack_away strength_attack_home strength_defence_away strength_defence_home strength_overall_away strength_overall_home
+14                   1320                 1310                  1330                  1310                  1350                  1340
+538                  1210                 1190                  1230                  1300                  1210                  1250
+932                  1130                 1120                  1120                  1040                  1110                  1080
+964                  1320                 1310                  1330                  1310                  1350                  1340
+1493                 1210                 1190                  1230                  1300                  1210                  1250
+1997                 1130                 1120                  1120                  1040                  1110                  1080
+2032                 1320                 1310                  1330                  1310                  1350                  1340
+2561                 1210                 1190                  1230                  1300                  1210                  1250
+3080                 1130                 1120                  1120                  1040                  1110                  1080
+3116                 1320                 1310                  1330                  1310                  1350                  1340
+3648                 1210                 1190                  1230                  1300                  1210                  1250
+4173                 1130                 1120                  1120                  1040                  1110                  1080
+4212                 1320                 1310                  1330                  1310                  1350                  1340
+4750                 1210                 1190                  1230                  1300                  1210                  1250
+5294                 1130                 1120                  1120                  1040                  1110                  1080
+5334                 1320                 1310                  1330                  1310                  1350                  1340
+5874                 1210                 1190                  1230                  1300                  1210                  1250
+6425                 1130                 1120                  1120                  1040                  1110                  1080
+6466                 1320                 1310                  1330                  1310                  1350                  1340
+7010                 1210                 1190                  1230                  1300                  1210                  1250
+7568                 1130                 1120                  1120                  1040                  1110                  1080
+7609                 1320                 1310                  1330                  1310                  1350                  1340
+8158                 1210                 1190                  1230                  1300                  1210                  1250
+8719                 1130                 1120                  1120                  1040                  1110                  1080
+8760                 1320                 1310                  1330                  1310                  1350                  1340
+ [ reached 'max' / getOption("max.print") -- omitted 106 rows ]
+autoEDA | Setting color theme 
+autoEDA | Setting color theme 
+autoEDA | Setting color theme 
+autoEDA | Setting color theme 
+autoEDA | Cleaning data 
+autoEDA | Correcting sparse categorical feature levels 
+autoEDA | Sorting features 
+autoEDA | Binary classification outcome detected 
+autoEDA | Calculating feature predictive power 
+autoEDA | Visualizing data 
+autoEDA | Output generated to C://Users//jd-vz//Desktop//Code//src//explore//pdf// 
+autoEDA | Output contained in file name univariate.pdf 
+                 Feature Observations FeatureClass FeatureType PercentageMissing PercentageUnique ConstantFeature ZeroSpreadFeature
+1                assists        21087    character Categorical                 0             0.02              No                No
+2                  bonus        21087    character Categorical                 0             0.02              No                No
+3                    bps        21087      numeric  Continuous                 0             0.46              No                No
+4           clean_sheets        21087    character Categorical                 0             0.01              No                No
+5             creativity        21087      numeric  Continuous                 0             3.45              No                No
+6         goals_conceded        21087    character Categorical                 0             0.05              No                No
+7           goals_scored        21087    character Categorical                 0             0.02              No                No
+8                     GW        21087      numeric  Continuous                 0             0.18              No                No
+9              ict_index        21087      numeric  Continuous                 0             1.16              No                No
+10             influence        21087      numeric  Continuous                 0             2.17              No                No
+11            key_passes        21087    character Categorical                 0             0.05              No                No
+12          kickoff_time        21087    character Categorical                 0             1.19              No                No
+13               minutes        21087      numeric  Continuous                 0             0.43              No                No
+14                   npg        21087    character Categorical                 0             0.02              No                No
+15                  npxG        21087      numeric  Continuous                 0            46.99              No                No
+16         opponent_team        21087    character Categorical                 0             0.11              No                No
+17             own_goals        21087    character Categorical                 0             0.01              No                No
+18      penalties_missed        21087    character Categorical                 0             0.01              No                No
+19       penalties_saved        21087    character Categorical                 0             0.01              No                No
+20           player_name        21087    character Categorical                 0             3.31              No                No
+21              position        21087    character Categorical                 0             0.02              No                No
+22             red_cards        21087    character Categorical                 0             0.01              No                No
+23                 saves        21087    character Categorical                 0             0.06              No                No
+24                season        21087    character Categorical                 0             0.01              No                No
+25              selected        21087      numeric  Continuous                 0            92.92              No                No
+26                 shots        21087    character Categorical                 0             0.05              No                No
+27  strength_attack_away        21087      numeric  Continuous                 0             0.12              No                No
+28  strength_attack_home        21087      numeric  Continuous                 0             0.10              No                No
+29 strength_defence_away        21087      numeric  Continuous                 0             0.13              No                No
+30 strength_defence_home        21087      numeric  Continuous                 0             0.12              No                No
+31 strength_overall_away        21087      numeric  Continuous                 0             0.13              No                No
+32 strength_overall_home        21087      numeric  Continuous                 0             0.11              No                No
+33                  team        21087    character Categorical                 0             0.11              No                No
+34          team_a_score        21087    character Categorical                 0             0.04              No                No
+35          team_h_score        21087    character Categorical                 0             0.05              No                No
+36                threat        21087      numeric  Continuous                 0             0.65              No                No
+37          total_points        21087      numeric  Continuous                 0             0.14              No                No
+38     transfers_balance        21087      numeric  Continuous                 0            63.39              No                No
+39          transfers_in        21087      numeric  Continuous                 0            55.57              No                No
+40         transfers_out        21087      numeric  Continuous                 0            58.52              No                No
+41                 value        21087      numeric  Continuous                 0             0.44              No                No
+42              was_home        21087    character Categorical                 0             0.01              No                No
+43                    xA        21087      numeric  Continuous                 0            39.51              No                No
+44                    xG        21087      numeric  Continuous                 0            47.01              No                No
+45             xGBuildup        21087      numeric  Continuous                 0            51.52              No                No
+   LowerOutliers UpperOutliers    ImputationValue MinValue FirstQuartile   Median      Mean              Mode   ThirdQuartile
+1              0             0                  0        0           0.0     0.00      0.00                 0      0.00000000
+2              0             0                  0        0           0.0     0.00      0.00                 0      0.00000000
+3              0           367                 11      -14           5.0    11.00     13.01                 3     19.00000000
+4              0             0                  0        0           0.0     0.00      0.00                 0      0.00000000
+5              0          1177                3.4        0           0.6     3.40     10.21                 0     15.10000000
+6              0             0          ALL_OTHER        0           0.0     0.00      0.00                 0      0.00000000
+7              0             0                  0        0           0.0     0.00      0.00                 0      0.00000000
+8              0             0                 20        1          10.0    20.00     19.76                26     29.00000000
+9              0          1102                2.7        0           1.4     2.70      3.74                 0      5.10000000
+10             0           917                 12        0           4.6    12.00     15.54                 0     21.40000000
+11             0             0                  0        0           0.0     0.00      0.00                 0      0.00000000
+12             0             0          ALL_OTHER        0           0.0     0.00      0.00        2020-07-26      0.00000000
+13          2407             0                 90        0          61.0    90.00     70.98                90     90.00000000
+14             0             0                  0        0           0.0     0.00      0.00                 0      0.00000000
+15             0          2775                  0        0           0.0     0.00      0.09                 0      0.07950196
+16             0             0          ALL_OTHER        0           0.0     0.00      0.00          MAN CITY      0.00000000
+17             0             0                  0        0           0.0     0.00      0.00                 0      0.00000000
+18             0             0                  0        0           0.0     0.00      0.00                 0      0.00000000
+19             0             0                  0        0           0.0     0.00      0.00                 0      0.00000000
+20             0             0          ALL_OTHER        0           0.0     0.00      0.00 JAMES WARD-PROWSE      0.00000000
+21             0             0                MID        0           0.0     0.00      0.00               MID      0.00000000
+22             0             0                  0        0           0.0     0.00      0.00                 0      0.00000000
+23             0             0          ALL_OTHER        0           0.0     0.00      0.00                 0      0.00000000
+24             0             0               2019        0           0.0     0.00      0.00              2019      0.00000000
+25             0          2521              84799        0       22489.5 84799.00 322049.00                 0 329017.00000000
+26             0             0                  0        0           0.0     0.00      0.00                 0      0.00000000
+27             0             0               1140      980        1080.0  1140.00   1146.10              1150   1210.00000000
+28             0             0               1130      970        1050.0  1130.00   1124.68              1030   1180.00000000
+29             0             0               1140      990        1060.0  1140.00   1152.10              1040   1230.00000000
+30             0             0               1110      970        1040.0  1110.00   1128.11              1040   1220.00000000
+31             0             0               1160     1010        1070.0  1160.00   1165.60              1240   1250.00000000
+32             0             0               1150      980        1060.0  1150.00   1147.12              1250   1220.00000000
+33             0             0          ALL_OTHER        0           0.0     0.00      0.00           ARSENAL      0.00000000
+34             0             0                  1        0           0.0     0.00      0.00                 1      0.00000000
+35             0             0                  1        0           0.0     0.00      0.00                 1      0.00000000
+36             0          1291                  4        0           0.0     4.00     11.68                 0     18.00000000
+37            20          2530                  2       -7           1.0     2.00      2.96                 1      3.00000000
+38          2785          3429                -61 -1308054       -2919.0   -61.00   7460.69                 0   3023.00000000
+39             0          2965               3268        0         567.5  3268.00  25493.80                 0  17432.00000000
+40             0          2374               4193        0         863.5  4193.00  18033.63                 0  16860.00000000
+41             0          1471                 52       38          47.0    52.00     55.58                45     59.00000000
+42             0             0              FALSE        0           0.0     0.00      0.00             FALSE      0.00000000
+43             0          2647                  0        0           0.0     0.00      0.07                 0      0.06209613
+44             0          2877                  0        0           0.0     0.00      0.10                 0      0.08143547
+45             0          2098 0.0626806020736694        0           0.0     0.06      0.17                 0      0.21377032
+         MaxValue LowerOutlierValue UpperOutlierValue PredictivePowerPercentage PredictivePower
+1        0.000000         0.0000000         0.0000000                         0             Low
+2        0.000000         0.0000000         0.0000000                         1             Low
+3       93.000000       -16.0000000        40.0000000                         3             Low
+4        0.000000         0.0000000         0.0000000                         4             Low
+5      133.500000       -21.1500000        36.8500000                         4             Low
+6        0.000000         0.0000000         0.0000000                         5             Low
+7        0.000000         0.0000000         0.0000000                         1             Low
+8       38.000000       -18.5000000        57.5000000                         0             Low
+9       35.800000        -4.1500000        10.6500000                         5             Low
+10     144.000000       -20.6000000        46.6000000                         1             Low
+11       0.000000         0.0000000         0.0000000                         3             Low
+12       0.000000         0.0000000         0.0000000                         0             Low
+13      90.000000        17.5000000       133.5000000                         1             Low
+14       0.000000         0.0000000         0.0000000                         1             Low
+15       2.939826        -0.1192529         0.1987549                         5             Low
+16       0.000000         0.0000000         0.0000000                         0             Low
+17       0.000000         0.0000000         0.0000000                         0             Low
+18       0.000000         0.0000000         0.0000000                         0             Low
+19       0.000000         0.0000000         0.0000000                         0             Low
+20       0.000000         0.0000000         0.0000000                         0             Low
+21       0.000000         0.0000000         0.0000000                         0             Low
+22       0.000000         0.0000000         0.0000000                         0             Low
+23       0.000000         0.0000000         0.0000000                         0             Low
+24       0.000000         0.0000000         0.0000000                         0             Low
+25 5186954.000000   -437301.7500000    788808.2500000                         1             Low
+26       0.000000         0.0000000         0.0000000                         4             Low
+27    1330.000000       885.0000000      1405.0000000                         0             Low
+28    1310.000000       855.0000000      1375.0000000                         0             Low
+29    1350.000000       805.0000000      1485.0000000                         0             Low
+30    1340.000000       770.0000000      1490.0000000                         0             Low
+31    1360.000000       800.0000000      1520.0000000                         0             Low
+32    1340.000000       820.0000000      1460.0000000                         0             Low
+33       0.000000         0.0000000         0.0000000                         0             Low
+34       0.000000         0.0000000         0.0000000                         0             Low
+35       0.000000         0.0000000         0.0000000                         0             Low
+36     181.000000       -27.0000000        45.0000000                         5             Low
+37      26.000000        -2.0000000         6.0000000                         3             Low
+38 1907229.000000    -11832.0000000     11936.0000000                         5             Low
+39 1991731.000000    -24729.2500000     42728.7500000                         2             Low
+40 1380165.000000    -23131.2500000     40854.7500000                         1             Low
+41     129.000000        29.0000000        77.0000000                         1             Low
+42       0.000000         0.0000000         0.0000000                         0             Low
+43       2.003428        -0.0931442         0.1552403                         4             Low
+44       2.939826        -0.1221532         0.2035887                         5             Low
+45       2.929134        -0.3206555         0.5344258                         5             Low
+ [ reached 'max' / getOption("max.print") -- omitted 2 rows ]

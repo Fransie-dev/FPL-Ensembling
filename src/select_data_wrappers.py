@@ -8,12 +8,12 @@ import matplotlib.pyplot as plt
 
 season = '2019-20'
 training_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//training//'
-fpl = pd.read_csv(training_path + 'cleaned_fpl.csv', index_col=0)
+fpl = pd.read_csv(training_path + 'shifted_fpl.csv', index_col=0)
 # %%
 # load data
 data  = fpl.select_dtypes(include='number')
-feat  = np.asarray(data.drop('total_points', axis=1))
-label = np.asarray(data['total_points'])
+feat  = np.asarray(data.drop('total_points_shift', axis=1))
+label = np.asarray(data['total_points_shift'])
 # %%
 # split data into train & validation (70 -- 30)
 xtrain, xtest, ytrain, ytest = train_test_split(feat, label, test_size=0.3)
@@ -72,4 +72,26 @@ ax.set_title('GA')
 ax.grid()
 plt.show()
 
+# %%
+from sklearn.ensemble import RandomForestRegressor
+from skrebate import ReliefF
+
+ReliefF(n_features_to_select=2, n_neighbors=100).fit_transform(X_train, y_train)
+# %%
+import sklearn_relief as relief
+# %%
+import skrebate as relief
+r = relief.()
+r.fit_transform(X_train, y_train)
+# %%
+import sklearn_relief as relief
+r = relief.RReliefF(
+    n_features=3 # Choose the best 3 features
+) # Will run by default on all processors concurrently
+
+my_transformed_matrix = r.fit_transform(
+    X_train,
+    y_train
+)
+print(my_transformed_matrix)
 # %%

@@ -1,0 +1,35 @@
+\begin{center}
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Fri Sep 17 12:37:55 2021
+\begin{tabular}{llrrr}
+  \toprule
+   & Level &   & N & \% \\ 
+    \cmidrule{2-2} \cmidrule{4-5} 
+ position & DEF &  & 7090 & 33.6 \\ 
+   & FWD &  & 3031 & 14.4 \\ 
+   & GK &  & 1531 & 7.3 \\ 
+   & MID &  & 9435 & 44.7 \\ 
+     \cmidrule{2-2} \cmidrule{4-5} 
+season & 2019 &  & 10658 & 50.5 \\ 
+   & 2020 &  & 10429 & 49.5 \\ 
+     \cmidrule{2-2} \cmidrule{4-5} 
+own\_goals & 0 &  & 21016 & 99.7 \\ 
+   & 1 &  &  71 & 0.3 \\ 
+     \cmidrule{2-2} \cmidrule{4-5} 
+penalties\_missed & 0 &  & 21044 & 99.8 \\ 
+   & 1 &  &  43 & 0.2 \\ 
+     \cmidrule{2-2} \cmidrule{4-5} 
+red\_cards & 0 &  & 20994 & 99.6 \\ 
+   & 1 &  &  93 & 0.4 \\ 
+     \cmidrule{2-2} \cmidrule{4-5} 
+yellow\_cards & 0 &  & 18716 & 88.8 \\ 
+   & 1 &  & 2371 & 11.2 \\ 
+     \cmidrule{2-2} \cmidrule{4-5} 
+clean\_sheets & 0 &  & 16250 & 77.1 \\ 
+   & 1 &  & 4837 & 22.9 \\ 
+     \cmidrule{2-2} \cmidrule{4-5} 
+was\_home & False &  & 10548 & 50.0 \\ 
+   & True &  & 10539 & 50.0 \\ 
+   \bottomrule
+\end{tabular}
+\end{center}

@@ -47,9 +47,6 @@ def test_results(model, model_str, X_train, X_test, y_train, y_test, parameter =
     print(f'{model_str}: MAE: %.3f' % mae, end = '\n\n') 
     
     
-
-# <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-# Fitter
 def check_data_dist(df, feat = None):
     if feat is None:
         for feat in df.select_dtypes('number').columns:
@@ -122,3 +119,19 @@ for cntm in np.arange(0, 0.05, 0.01):
     test_results(ee, 'Minimum Covariance Determinant', X_train, X_test, y_train, y_test, parameter = cntm)
 # %%
 
+
+
+
+
+
+
+
+
+
+
+
+
+# %%
+
+
+# %%

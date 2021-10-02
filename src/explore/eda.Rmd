@@ -1,0 +1,108 @@
+---
+title: "explore_data"
+author: "Francois van Zyl"
+date: "06/09/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(ggplot2)
+library(knitr)
+library(dplyr)
+library(kableExtra)
+library(autoEDA)
+library(rattle)
+library(rpart)
+library(rpart.plot)
+library(partykit)
+library(tidyrules)
+# 2019 season
+cleaned_fpl <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2019-20/training/cleaned_fpl.csv')
+cleaned_us <- read.csv('C:/Users/jd-vz/Desktop/Code/data/2019-20/training/cleaned_understat.csv') 
+```
+
+## Univariate Plots
+
+```{r}
+df_temp <- cleaned_us
+```
+
+
+```{r}
+# Univariate analysis -----------------------------------------------------
+
+# According to all positions ----------------------------------------------
+autoEDA(df_temp, y = 'position', IDFeats = NULL, sampleRate = 1,
+        outcomeType = "automatic", maxUniques = 15, maxLevels = 25,
+        removeConstant = FALSE, removeZeroSpread = FALSE,
+        removeMajorityMissing = FALSE, imputeMissing = FALSE, clipOutliers = FALSE,
+        minLevelPercentage = 0.025, predictivePower = TRUE,
+        outlierMethod = "tukey", lowPercentile = 0.01, upPercentile = 0.99,
+        plotCategorical = "stackedBar", plotContinuous = "density", bins = 20,
+        rotateLabels = FALSE, colorTheme = 1, theme = 2, color = "#26A69A",
+        transparency = 0.005, outputPath = 'C://Users//jd-vz//Desktop//Code//src//explore//', filename = "all_positions",
+        verbose = TRUE)
+
+
+# According to GK ---------------------------------------------------------
+df_temp <- df
+df_temp$position <- recode_factor(df_temp$position, FWD = 'other', DEF = 'other', MID = 'other')
+autoEDA(df_temp, y = 'position', IDFeats = NULL, sampleRate = 1,
+        outcomeType = "automatic", maxUniques = 15, maxLevels = 25,
+        removeConstant = FALSE, removeZeroSpread = FALSE,
+        removeMajorityMissing = FALSE, imputeMissing = FALSE, clipOutliers = FALSE,
+        minLevelPercentage = 0.025, predictivePower = TRUE,
+        outlierMethod = "tukey", lowPercentile = 0.01, upPercentile = 0.99,
+        plotCategorical = "stackedBar", plotContinuous = "density", bins = 20,
+        rotateLabels = FALSE, colorTheme = 1, theme = 2, color = "#26A69A",
+        transparency = 0.005, outputPath = 'C://Users//jd-vz//Desktop//Code//src//explore//', filename = "GK",
+        verbose = TRUE)
+
+
+# According to FWD --------------------------------------------------------
+df_temp <- df
+df_temp$position <- recode_factor(df_temp$position, GK = 'other', DEF = 'other', MID = 'other')
+autoEDA(df_temp, y = 'position', IDFeats = NULL, sampleRate = 1,
+        outcomeType = "automatic", maxUniques = 15, maxLevels = 25,
+        removeConstant = FALSE, removeZeroSpread = FALSE,
+        removeMajorityMissing = FALSE, imputeMissing = FALSE, clipOutliers = FALSE,
+        minLevelPercentage = 0.025, predictivePower = TRUE,
+        outlierMethod = "tukey", lowPercentile = 0.01, upPercentile = 0.99,
+        plotCategorical = "stackedBar", plotContinuous = "density", bins = 20,
+        rotateLabels = FALSE, colorTheme = 1, theme = 2, color = "#26A69A",
+        transparency = 0.005, outputPath = 'C://Users//jd-vz//Desktop//Code//src//explore//', filename = "FWD",
+        verbose = TRUE)
+
+# According to DEF --------------------------------------------------------
+df_temp <- df
+df_temp$position <- recode_factor(df_temp$position, FWD = 'other', GK = 'other', MID = 'other')
+autoEDA(df_temp, y = 'position', IDFeats = NULL, sampleRate = 1,
+        outcomeType = "automatic", maxUniques = 15, maxLevels = 25,
+        removeConstant = FALSE, removeZeroSpread = FALSE,
+        removeMajorityMissing = FALSE, imputeMissing = FALSE, clipOutliers = FALSE,
+        minLevelPercentage = 0.025, predictivePower = TRUE,
+        outlierMethod = "tukey", lowPercentile = 0.01, upPercentile = 0.99,
+        plotCategorical = "stackedBar", plotContinuous = "density", bins = 20,
+        rotateLabels = FALSE, colorTheme = 1, theme = 2, color = "#26A69A",
+        transparency = 0.005, outputPath = 'C://Users//jd-vz//Desktop//Code//src//explore//', filename = "DEF",
+        verbose = TRUE)
+
+# According to MID --------------------------------------------------------
+df_temp <- df
+df_temp$position <- recode_factor(df_temp$position, FWD = 'other', DEF = 'other', GK = 'other')
+autoEDA(df_temp, y = 'position', IDFeats = NULL, sampleRate = 1,
+        outcomeType = "automatic", maxUniques = 15, maxLevels = 25,
+        removeConstant = FALSE, removeZeroSpread = FALSE,
+        removeMajorityMissing = FALSE, imputeMissing = FALSE, clipOutliers = FALSE,
+        minLevelPercentage = 0.025, predictivePower = TRUE,
+        outlierMethod = "tukey", lowPercentile = 0.01, upPercentile = 0.99,
+        plotCategorical = "stackedBar", plotContinuous = "density", bins = 20,
+        rotateLabels = FALSE, colorTheme = 1, theme = 2, color = "#26A69A",
+        transparency = 0.005, outputPath = 'C://Users//jd-vz//Desktop//Code//src//explore//', filename = "MID",
+        verbose = TRUE)
+```
+

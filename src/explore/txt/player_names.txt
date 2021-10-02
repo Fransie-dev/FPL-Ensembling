@@ -1,0 +1,22 @@
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Sun Sep 19 11:25:16 2021
+\begin{table}[ht]
+\centering
+\begin{tabular}{rllrlllrl}
+  \hline
+ & Level &   & N & \% & Level &   & N & \% \\ 
+  \hline
+1 & Ben Davies &  & 93.00 & 0.2 & James Ward-Prowse &  & 76.00 & 0.4 \\ 
+  2 & Cédric Soares &  & 77.00 & 0.2 & Kasper Schmeichel &  & 76.00 & 0.4 \\ 
+  3 & Dale Stephens &  & 77.00 & 0.2 & Aaron Ramsdale &  & 75.00 & 0.4 \\ 
+  4 & Ross Barkley &  & 77.00 & 0.2 & Conor Coady &  & 75.00 & 0.4 \\ 
+  5 & Theo Walcott &  & 77.00 & 0.2 & Georginio Wijnaldum &  & 75.00 & 0.4 \\ 
+  6 & 0 & 0 & 0.00 & 0 & 0 & 0 & 0.00 & 0 \\ 
+  923 & Sylvester Jasper &  & 1.00 & 0.0 & Theo Corbeanu &  & 1.00 & 0.0 \\ 
+  924 & Tim Iroegbunam &  & 1.00 & 0.0 & Tommy Doyle &  & 1.00 & 0.0 \\ 
+  925 & Tyrese Francois &  & 1.00 & 0.0 & Tyrese Francois &  & 1.00 & 0.0 \\ 
+  926 & William Fish &  & 1.00 & 0.0 & William Fish &  & 1.00 & 0.0 \\ 
+  927 & William Osula &  & 1.00 & 0.0 & Zack Steffen &  & 1.00 & 0.0 \\ 
+   \hline
+\end{tabular}
+\end{table}

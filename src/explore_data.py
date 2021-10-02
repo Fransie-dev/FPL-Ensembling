@@ -5,6 +5,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 import missingno
+from IPython.display import display
 import warnings
 warnings.filterwarnings("ignore")
 df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//2019-20//training//cleaned_fpl.csv', index_col=0)
@@ -127,10 +128,7 @@ def eda(df):
     
 # %%
 df['kickoff_time'] = pd.to_datetime(df['kickoff_time'])
-time_series_plot(df)
+# time_series_plot(df)
+top5(df)
 # %%
-# set datetime data
-import seaborn as sns
-sns.violinplot(x = 'position', y = 'total_points', data = df)
-# %%
-df.groupby('Sex').size
+categorical_eda(df)
