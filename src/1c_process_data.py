@@ -45,14 +45,13 @@ def merge_seasons(sort_by):
     training_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//training//'
     df_1 = pd.read_csv(training_path + 'cleaned_fpl.csv')
     df_3= pd.read_csv(training_path + 'cleaned_understat.csv')
-        
     season='2020-21'
     training_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//training//'
     df_2 = pd.read_csv(training_path + 'cleaned_fpl.csv')
     df_4 = pd.read_csv(training_path + 'cleaned_understat.csv')
 
     fpl_cols=['player_name','team','position','value','minutes','bps','GW','kickoff_time','season','total_points','creativity','influence','threat','ict_index','assists','bonus','goals_conceded','goals_scored','saves','own_goals','penalties_saved','penalties_missed','red_cards','yellow_cards','team_h_score','team_a_score','clean_sheets','was_home','opponent_team','selected','transfers_in','transfers_out','transfers_balance','strength_attack_away','strength_attack_home','strength_defence_away','strength_defence_home','strength_overall_away','strength_overall_home']
-    us_cols = fpl_cols + ['shots','key_passes','xG','xA','npg','npxG','xGChain','xGBuildup']
+    us_cols = fpl_cols + ['position_stat', 'shots','key_passes','xG','xA','npg','npxG','xGChain','xGBuildup']
     pd.concat([df_1, df_2]).sort_values(by=sort_by).reindex(columns = fpl_cols).to_csv('C://Users//jd-vz//Desktop//Code//data//collected_fpl.csv', index = False)
     pd.concat([df_3, df_4]).sort_values(by=sort_by).reindex(columns = us_cols).to_csv('C://Users//jd-vz//Desktop//Code//data//collected_us.csv', index = False)
     
@@ -60,8 +59,9 @@ def main(season):
     training_path = f'C://Users//jd-vz//Desktop//Code//data//{season}//training//'
     fpl = pd.read_csv(training_path + 'fpl.csv').pipe(drop_dups).pipe(add_season, season)
     fpl.sort_values(by=['GW', 'season']).to_csv(training_path + 'cleaned_fpl.csv', index = False)
-    understat = pd.read_csv(training_path + 'understat_merged.csv').pipe(drop_dups).pipe(add_season, season)
-    understat.sort_values(by=['GW', 'season']).to_csv(training_path + 'cleaned_understat.csv', index = False)
+    understat = pd.read_csv(training_path + 'understat_merged.csv')
+    understat['position_stat'] = understat['position_y']
+    understat.pipe(drop_dups).pipe(add_season, season).sort_values(by=['GW', 'season']).to_csv(training_path + 'cleaned_understat.csv', index = False)
 
 if __name__ == "__main__": 
     main(season='2020-21') # Successful execution

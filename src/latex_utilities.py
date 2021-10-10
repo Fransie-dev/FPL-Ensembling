@@ -16,7 +16,7 @@ def check_dups():
 import pandas as pd
 training_path = 'C://Users//jd-vz//Desktop//Code//data//2020-21//'
 df = pd.read_csv(training_path + 'players_raw.csv')
-print(df[['first_name', 'second_name', 'id','team', 'element_type', 'goals_scored', 'total_points']].iloc[300:305:,].to_latex())
+print(df[['first_name', 'second_name', 'id','team', 'element_type', 'goals_scored', 'total_points']].iloc[:,].to_latex())
 # %%
 training_path = 'C://Users//jd-vz//Desktop//Code//data//2020-21//players//Aaron_Connolly_78//'
 df = pd.read_csv(training_path + 'gw.csv')
@@ -37,8 +37,9 @@ def count_fixtures():
 count_fixtures()
     
 # %%
-df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//collected_fpl.csv')
-print(df[df['player_name'] == 'Yves Bissouma'][['player_name', 'team', 'position', 'GW', 'season', 'total_points']].tail(6).to_latex())
+import pandas as pd
+df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//collected_us.csv')
+df['position_stat'].value_counts()
 # %%
 df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//2020-21//understat//all_understat_players.csv')
 
@@ -95,7 +96,7 @@ print(df.to_latex())
 print(pd.DataFrame(name_mapper).to_latex())
 # %%
 df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//2020-21//understat//all_understat_players.csv')
-
+print(df[['player_name', 'date', 'xG', 'npg', 'npxG' ]].to_latex())
 # %%
 list = ['Tottenham', 'Aston Villa', 'Wolverhampton Wanderers',
        'Sheffield United', 'Manchester United', 'Crystal Palace',
@@ -119,13 +120,19 @@ list = ['Tottenham', 'Aston Villa', 'Wolverhampton Wanderers',
 
 # %%
 tms = ['Paris Saint Germain', 'Lens', 'Lille', 'Strasbourg', 'Metz', 'Marseille', 'Verona', 'Fiorentina']
-print(df.loc[df['h_team'].isin(tms)][['player_name', 'date', 'xG', 'h_team', 'a_team']].head(30).to_latex())
+print(df.loc[df['h_team'].isin(tms)][['player_name', 'date', 'xG', 'h_team', 'a_team']].to_latex())
 # %%
 
 
+df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//2020-21//players_raw.csv')
+df.head(10)
 
 
 
 
 
+# %%
 
+# sns.kdeplot(x = 'minutes', data = df)
+# %%
+sns.histplot(x = 'total_points', data = df, fill = True, hue = 'Season', palette = 'pastel', alpha = 0.9, multiple = 'stack', bins = 20)

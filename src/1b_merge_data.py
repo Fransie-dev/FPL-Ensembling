@@ -136,7 +136,7 @@ def get_matching_names(understat_names, fpl_names):
             ratio.append(ratio_similar)
     similarity_matched_df = pd.DataFrame({'understat':understat_similar, 'fpl':fpl_similar, 'similarity': ratio}).copy()
     similarity_matched_df_final = similarity_matched_df.loc[similarity_matched_df.groupby('understat')['similarity'].idxmax()].copy()
-    # print(similarity_matched_df_final.sort_values('similarity',ascending=False).head(10).to_latex())
+    # print(similarity_matched_df_final.sort_values('similarity',ascending=False).to_latex())
     return similarity_matched_df_final
 
 def exact_matches(understat, fpl, join = 'inner'):
@@ -150,7 +150,7 @@ def exact_matches(understat, fpl, join = 'inner'):
     Returns:
         [type]: [The merged data, and the sets of data used to construct it]
     """    
-    matching_names = intersect(understat['player_name'].unique(),fpl['player_name'].unique())
+    matching_names = intersect(understat['player_name'].unique(), fpl['player_name'].unique())
     fpl_matched = fpl[fpl['player_name'].isin(matching_names)]
     understat_matched = understat[understat['player_name'].isin(matching_names)]
     exact_merge = pd.merge(fpl_matched, understat_matched, left_on=['player_name', 'kickoff_time'], right_on=['player_name', 'date'], how= join) 
@@ -195,7 +195,9 @@ def map_similar_names(similarity_matched_df, understat_not_matched, fpl_not_matc
                                  'Jorginho','Jota', 'Kepa','Kiko Femenía','Pedro', 'Ricardo Pereira', 'Rodri','Rúben Vinagre','Trézéguet','Wesley','Willian']
     
     similar_rename = similarity_matched_df[~similarity_matched_df['understat'].isin(wrongly_matched_names)] # Subset Similar: Similar match
-    
+    # no_similar_rename = similarity_matched_df[similarity_matched_df['understat'].isin(wrongly_matched_names)] # Subset Similar: Similar match
+    # print(similar_rename.to_latex())
+    # print(no_similar_rename.to_latex())
     understat_no_similar = understat_not_matched[understat_not_matched['player_name'].isin(wrongly_matched_names)] # Subset Understat: No similar match
     understat_similar = understat_not_matched[~understat_not_matched['player_name'].isin(wrongly_matched_names)] # Subset Understat: Similar match
 
@@ -274,14 +276,13 @@ def final_merge_understat(exact_merge, similar_merge, manual_merge, understat):
         [type]: [description]
     """    
     understat_final = pd.concat([exact_merge, similar_merge, manual_merge])
-    
-    print('Exact: ', exact_merge.shape[0], ' instances merged corresponding to: ', exact_merge['player_name'].unique().__len__(), ' unique players')
-    print('Similar: ', similar_merge.shape[0], ' instances merged corresponding to: ', similar_merge['player_name'].unique().__len__(), ' unique players')
-    print('Manually: ', manual_merge.shape[0], ' instances merged corresponding to: ', manual_merge['player_name'].unique().__len__(), ' unique players')
-    print('Lost: ', understat.shape[0] -  understat_final.shape[0], ' instances corresponding to: ', understat['player_name'].unique().__len__() 
-          -  understat_final['player_name'].unique().__len__(), ' unique players', end='\n\n')
-    print(list(set(understat_final['player_name'].unique()) - set(understat['player_name'].unique())))
-    
+    # print('Exact: ', exact_merge.shape[0], ' instances merged corresponding to: ', exact_merge['player_name'].unique().__len__(), ' unique players')
+    # print('Similar: ', similar_merge.shape[0], ' instances merged corresponding to: ', similar_merge['player_name'].unique().__len__(), ' unique players')
+    # print('Manually: ', manual_merge.shape[0], ' instances merged corresponding to: ', manual_merge['player_name'].unique().__len__(), ' unique players')
+    # print('Lost: ', understat.shape[0] -  understat_final.shape[0], ' instances corresponding to: ', understat['player_name'].unique().__len__() 
+    #       -  understat_final['player_name'].unique().__len__(), ' unique players', end='\n\n')
+    # print(list(set(understat_final['player_name'].unique()) - set(understat['player_name'].unique())))
+    # print(understat_final['player_name'].unique().isin(understat['player_name'].unique()))
     return understat_final
 
 def join_data(fpl, understat, season):
@@ -291,6 +292,7 @@ def join_data(fpl, understat, season):
     
     similarity_matched_df = get_matching_names(understat_not_matched, fpl_not_matched) 
     understat_no_similar, understat_similar, fpl_similar, fpl_no_similar = map_similar_names(similarity_matched_df, understat_not_matched, fpl_not_matched, season)  # Note: Manual investigation
+    # print(understat_no_similar, understat_similar)
     similar_merge = pd.merge(fpl_similar, understat_similar, left_on=['player_name', 'kickoff_time'], right_on=['player_name', 'date']) 
     
     no_similar_matches_df = get_matching_names(understat_no_similar, fpl_no_similar) # Note: Manual investigation

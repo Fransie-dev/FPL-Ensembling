@@ -145,13 +145,13 @@ df_f <- read.csv(file = 'C://Users//jd-vz//Desktop//Code//data//collected_fpl.cs
 df_u <- read.csv(file = 'C://Users//jd-vz//Desktop//Code//data//collected_us.csv')
 df_f <- encode_factors(df_f)
 df_u <- encode_factors(df_u)
-df_f$Source <- 'Offical'
-df_u$Source <- 'Merged'
-df_f$shots <- df_f$key_passes <- df_f$xG <- df_f$xA <- df_f$npg <- df_f$npxG <- df_f$xGChain <- df_f$xGChain <- df_f$xGBuildup <- NA
+df_f$Source <- 'Fantasy'
+df_u$Source <- 'Understat'
+df_f$shots <- df_f$key_passes <- df_f$xG <- df_f$xA <- df_f$npg <- df_f$npxG <- df_f$xGChain <- df_f$xGChain <- df_f$xGBuildup <-  df_f$position_stat <- NA
 df_temp <- rbind(df_f,df_u)
 df_temp$Source <- as.factor(df_temp$Source)
 save_ggs <- function(df_temp, i, ax.tit, ax.text, wrap,sz,y_label_scl){
-  if(names(df_temp[i]) %in% c('shots', 'key_passes','xG','xA','npg','npxG','xGChain','xGBuildup')) df_temp <- df_temp[complete.cases(df_temp), ]
+  if(names(df_temp[i]) %in% c('shots', 'key_passes','xG','xA','npg','npxG','xGChain','xGBuildup', 'position_stat')) df_temp <- df_temp[complete.cases(df_temp), ]
   if(is.numeric(df_temp[[i]]))
   {
     ifelse(length(unique(df_temp[[i]])) < 30 && !anyNA(df_temp[[i]]),
@@ -190,8 +190,9 @@ save_ggs <- function(df_temp, i, ax.tit, ax.text, wrap,sz,y_label_scl){
   ggsave(filename = paste0(i, '.pdf'), width = 15, height = 15)
 }
 setwd('C://Users//jd-vz//Desktop//Code//src//explore//pdf//fpl//')
-for(i in 1:(ncol(df_temp) - 1)) save_ggs(df_temp, i, ax.tit = 75, ax.text = 50, wrap = 50, sz = 3.5,y_label_scl = 0.4)
+for(i in 1:(ncol(df_temp))) save_ggs(df_temp, i, ax.tit = 75, ax.text = 50, wrap = 50, sz = 3.5,y_label_scl = 0.4)
 
+library(dplyr)
 # Non-duplicated entries --------------------------------------------------
 df_f <- read.csv(file = 'C://Users//jd-vz//Desktop//Code//data//collected_fpl.csv')
 df_u <- read.csv(file = 'C://Users//jd-vz//Desktop//Code//data//collected_us.csv')
@@ -204,22 +205,23 @@ unique(dup$player_name)
 dup <- anti_join(df_f[df_f$minutes > 0, ], df_u[df_u$minutes > 0, ]) # Instances in fpl data not in us data with non-zero min
 a <- df_f[df_f$player_name %in% unique(dup$player_name),]
 a <- a[a$minutes > 0,] # Three players logged
+a
 nrow(a[a$player_name == 'Vitor Ferreira',])
-nrow(a[a$player_name == 'AdriÃ¡n San Miguel del Castillo',])
-nrow(a[a$player_name == 'JoÃ£o Pedro Junqueira de Jesus',])
+nrow(a[a$player_name == 'Adrián San Miguel del Castillo',])
+nrow(a[a$player_name == 'João Pedro Junqueira de Jesus',])
 
-mean(a[a$player_name == 'Vitor Ferreira','minutes'])
-mean(a[a$player_name == 'AdriÃ¡n San Miguel del Castillo','minutes'])
-mean(a[a$player_name == 'JoÃ£o Pedro Junqueira de Jesus','minutes'])
+max(a[a$player_name == 'Vitor Ferreira','transfers_balance'])
+max(a[a$player_name == 'Adrián San Miguel del Castillo','transfers_balance'])
+max(a[a$player_name == 'João Pedro Junqueira de Jesus','transfers_balance'])
 
 mean(a[a$player_name == 'Vitor Ferreira','total_points'])
-mean(a[a$player_name == 'AdriÃ¡n San Miguel del Castillo','total_points'])
-mean(a[a$player_name == 'JoÃ£o Pedro Junqueira de Jesus','total_points'])
+mean(a[a$player_name == 'Adrián San Miguel del Castillo','total_points'])
+mean(a[a$player_name == 'João Pedro Junqueira de Jesus','total_points'])
 
 
-summary(a[a$player_name == 'AdriÃ¡n San Miguel del Castillo',c('total_points', 'minutes')]) %>% kable('latex')
+summary(a[a$player_name == 'Adrián San Miguel del Castillo',c('total_points', 'minutes')]) %>% kable('latex')
 
-summarize(a[a$player_name == 'AdriÃ¡n San Miguel del Castillo',c('total_points', 'minutes')]) %>% xtable() %>% print()
+summarize(a[a$player_name == 'Adrián San Miguel del Castillo',c('total_points', 'minutes')]) %>% xtable() %>% print()
 a <- droplevels.data.frame(a)
 summarize(a[c('total_points', 'minutes', 'player_name')], group = 'player_name', test = FALSE) %>% xtable() %>% print()
 a <- droplevels.data.frame(a)
@@ -232,18 +234,18 @@ nrow(df_u[df_u$total_points == 0,])/nrow(df_u)
 
 
 a[a$player_name == 'Vitor Ferreira',]
-a[a$player_name == 'JoÃ£o Pedro Junqueira de Jesus',]
+a[a$player_name == 'João Pedro Junqueira de Jesus',]
 # Initial distributions ---------------------------------------------------
 for(i in c('clean_sheets', 'own_goals', 'penalties_missed', 'was_home', 'red_cards', 'was_home', 'yellow_cards', 'season')) autoEDA(df_u, i, sampleRate = 1,
-        outcomeType = "automatic", maxUniques = 15, maxLevels = 25,
-        removeConstant = FALSE, removeZeroSpread = FALSE,
-        removeMajorityMissing = FALSE, imputeMissing = FALSE, clipOutliers = FALSE,
-        minLevelPercentage = 0.025, predictivePower = TRUE,
-        outlierMethod = "tukey", lowPercentile = 0.01, upPercentile = 0.99,
-        plotCategorical = "stackedBar", plotContinuous = "histogram",
-        outputPath = 'C://Users//jd-vz//Desktop//Code//src//explore//pdf//',
-        filename = i,
-        verbose = TRUE)
+                                                                                                                                    outcomeType = "automatic", maxUniques = 15, maxLevels = 25,
+                                                                                                                                    removeConstant = FALSE, removeZeroSpread = FALSE,
+                                                                                                                                    removeMajorityMissing = FALSE, imputeMissing = FALSE, clipOutliers = FALSE,
+                                                                                                                                    minLevelPercentage = 0.025, predictivePower = TRUE,
+                                                                                                                                    outlierMethod = "tukey", lowPercentile = 0.01, upPercentile = 0.99,
+                                                                                                                                    plotCategorical = "stackedBar", plotContinuous = "histogram",
+                                                                                                                                    outputPath = 'C://Users//jd-vz//Desktop//Code//src//explore//pdf//',
+                                                                                                                                    filename = i,
+                                                                                                                                    verbose = TRUE)
 
 
 # Pairs plot of ten highest correlated features ---------------------------
@@ -557,6 +559,5 @@ factoextra::fviz_dist(factoextra::get_dist(data_scaled, method = "euclidean"),
 
 
 merged_gw[c('element','fixture','opponent_team','total_points','was_home')]%>% head(5) %>%  kable( "latex", longtable = T, booktabs = T)
-
 
 
