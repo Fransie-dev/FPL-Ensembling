@@ -11,26 +11,30 @@ sns.set(rc={"figure.figsize":(12, 6)})
 plt.figure(figsize=(12, 6))
 data_file =  'C://Users//jd-vz//Desktop//Code//data//collected_us.csv'
 # %%
+df = pd.read_csv(data_file)
+# %%
+df[(df['position'] == 'GK') & (df['goals_scored'] > 0)]['opponent_team']
+# %%
 # * 1. The total team points scored in different seasons (Complete)
 # * Note: Set season
 sns.set(rc={"figure.figsize":(12, 6)}) 
 df = pd.read_csv(data_file)
-df = df[df['season'] == 2020] # Change season here
+df = df[df['season'] == 2019] # Change season here
 df['TeamTotalPointsCount'] = df.groupby(['team', 'season'])['total_points'].transform('sum')
 df['TeamTotalCount'] = df.groupby(['team', 'season'])['total_points'].transform('sum')
 df['TeamTotalCostCount'] = df.groupby(['team', 'season'])['value'].transform('sum')
 df.sort_values('TeamTotalCount',ascending=False, inplace=True);
 df = df[['team', 'TeamTotalPointsCount', 'TeamTotalCount','season', 'TeamTotalCostCount']].drop_duplicates()
-ax = sns.barplot(x="team", y="TeamTotalPointsCount", data=df, ci=None, label = 'Total team points scored', palette =sns.color_palette('Blues_r', 40))
+ax = sns.barplot(x="team", y="TeamTotalPointsCount", data=df, ci=None, label = 'Points', palette =sns.color_palette('Blues_r', 40))
 plt.xticks(rotation=90)
 plt.xlabel('Teams')
-plt.ylabel('Total team points')
+plt.ylabel('Points')
 width_scale = 0.5
 for bar in ax.containers[0]:
     bar.set_width(bar.get_width() * width_scale)
 ax2 = ax.twinx()
-ax_3 = sns.barplot(x='team', y='TeamTotalCostCount', label = 'Total team cost', data=df, ci=None,ax=ax2, color = 'gray')
-plt.ylabel('Total team cost')
+ax_3 = sns.barplot(x='team', y='TeamTotalCostCount', label = 'Cost', data=df, ci=None,ax=ax2, color = 'gray')
+plt.ylabel('Cost')
 # ax_3.legend(loc='upper right')
 for bar in ax2.containers[0]:
     x = bar.get_x()
@@ -38,32 +42,72 @@ for bar in ax2.containers[0]:
     bar.set_x(x + w * (1- width_scale))
     bar.set_width(w * width_scale)
 plt.grid(False)
-handles, labels = [(a + b) for a, b in zip(ax.get_legend_handles_labels(), ax_3.get_legend_handles_labels())]
-ax_3.legend(handles, labels, loc='upper right')
+# handles, labels = [(a + b) for a, b in zip(ax.get_legend_handles_labels(), ax_3.get_legend_handles_labels())]
+# ax_3.legend(handles, labels, loc='upper right')
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//team_points_2020.pdf', bbox_inches='tight') 
+# %%
+df = pd.read_csv(data_file)
+fig, ((ax1, ax2)) = plt.subplots(ncols=2, nrows =1, sharey=False, sharex = False, figsize = (20,5))
+df['TeamTotalPointsCount'] = df.groupby(['team', 'season'])['total_points'].transform('sum')
+df = df.sort_values(['TeamTotalPointsCount'], ascending=False)
+df['Season'] = df['season']
+df_temp = df[['team', 'Season', 'TeamTotalPointsCount',]]
+sns.barplot(data = df_temp, x = 'team', y = 'TeamTotalPointsCount',hue = 'Season', palette = 'pastel', dodge = True,ax = ax2, edgecolor = 'black',ci = None)
+df = df[['team', 'GW', 'season','kickoff_time']].drop_duplicates()
+df['counter'] = 1 # Num fixtures
+df['Fixtures/Week'] = df.groupby(['team', 'GW', 'season'])['counter'].transform('sum') # Num matc hes played per gameweek by team
+df['counter_matches'] = df.groupby(['team', 'Fixtures/Week'])['counter'].transform('sum') # Total matches played by team in both seasons
+df = df[['team', 'Fixtures/Week', 'counter_matches']].drop_duplicates()
+sns.barplot(x = 'team', y = 'counter_matches',hue = 'Fixtures/Week', palette = 'pastel',
+                  data = df,dodge = False,ax = ax1, edgecolor = 'black',ci = None)
+ax2.set_ylabel('Points')
+ax2.set_xlabel('Team')
+ax1.set_xlabel('Team')
+
+ax2.legend(title = 'Season',loc="upper right")
+ax1.set_ylabel('Fixtures')
+for ax in [ax1, ax2]:
+    matplotlib.pyplot.sca(ax)
+    plt.xticks(rotation=90)
+plt.savefig('C://Users//jd-vz//Desktop//Code//fig//team_pts_fix.pdf', bbox_inches='tight') 
+
+
 # %%
 # * 2. The total points scored by positions in different seasons (Complete)
 # * Plus the effect of supporters on player performance
+fig, ((ax1, ax2, ax3)) = plt.subplots(ncols=3, nrows =1, sharey=True, sharex = False, figsize = (20,5))
 df = pd.read_csv(data_file)
-ax_1 = sns.catplot(x="position", y="total_points",
-                   hue="was_home", ci=90, col = 'season', col_order = [2019,2020], 
-                   n_boot=2000, kind="point", data=df, palette = sns.color_palette(["#7e7e7e", "#69d"] ))
-ax_1.set_xlabels('Position', fontsize=15) # not set_label
-ax_1.set_ylabels('Average points scored', fontsize=15) # not set_label
-ax_1._legend.texts[0].set_text("Away")
-ax_1._legend.texts[1].set_text("Home")
-ax_1._legend.set_title('')
-plt.savefig('C://Users//jd-vz//Desktop//Code//fig//position_points_2019_2020.pdf', bbox_inches='tight') 
-df['Supporters'] = np.where(df['kickoff_time'] < '2020-03-13', True, False)
-ax_2 = sns.catplot(x="position", y="total_points", col="Supporters", col_order = [True, False],
-                   hue="was_home", ci=90, n_boot=2000, kind="point", data=df,palette = sns.color_palette(["#7e7e7e", "#69d"] ))
-ax_2.set_xlabels('Position', fontsize=15) # not set_label
-ax_2.set_ylabels('Average points scored', fontsize=15) # not set_label
-ax_2._legend.texts[0].set_text("Away")
-ax_2._legend.texts[1].set_text("Home")
-ax_2._legend.set_title('')
+df['Season'] = df['season']
+df['Position'] = df['position']
+df['Home fixture'] = df['was_home']
+ax_1 = sns.pointplot(x="Position", y="total_points", 
+                   hue="Home fixture", ci=None,
+                   n_boot=500, data=df, palette = 'magma', legend = False, ax = ax1,order=['GK','DEF','MID','FWD'])
+ax_1.get_legend().remove()
+df['Supporters'] = np.where(df['kickoff_time'] < '2020-04-01', True, False)
+ax_2 = sns.pointplot(x="Position", y="total_points", 
+                   hue="Home fixture", ci=None,
+                   n_boot=500, data=df[df['Supporters'] == True], palette = 'magma', legend = False, ax = ax2,order=['GK','DEF','MID','FWD'])
+ax_2.get_legend().remove()
+ax_3 = sns.pointplot(x="Position", y="total_points", 
+                   hue="Home fixture", ci=None, n_boot=500, data=df[df['Supporters'] == False],
+                   palette = 'magma', legend = True, ax = ax3, order=['GK','DEF','MID','FWD'])
+
+
+ax1.set_title('All fixtures', fontsize = 18)
+ax2.set_title('Fixtures with full stadiums', fontsize = 18)
+ax3.set_title('Fixtures with empty stadiums', fontsize = 18)
+ax1.set_ylabel('Points scored',fontsize=15)
+ax1.set_xlabel('Position',fontsize=15)
+ax2.set_ylabel('')
+ax3.set_ylabel('')
+ax2.set_xlabel('Position',fontsize=15)
+# ax3.set_ylabel('Points scored',fontsize=15)
+ax3.set_xlabel('Position',fontsize=15)
+
+
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//Supporters.pdf', bbox_inches='tight') 
-# df['Supporters'].value_counts()
+df['Supporters'].value_counts()
 # %%
 # * 3. The total team and unique player counts scored by positions in different seasons (Complete)
 sns.set(rc={"figure.figsize":(12, 6)}) 
@@ -72,11 +116,15 @@ df['counter'] = 1
 df['TeamTotalCount'] = df.groupby(['team'])['minutes'].transform('sum')
 df.loc[df['TeamTotalCount'].idxmax()]
 # %%
+sns.set(rc={"figure.figsize":(12, 6)}) 
 df.sort_values('TeamTotalCount',ascending=False, inplace=True);
-ax = sns.barplot(x='team', y = 'TeamTotalCount',  data=df, label = 'Team', ci = None,  color = matplotlib.colors.to_hex(sns.color_palette('pastel')[0]))
+ax = sns.barplot(x='team', y = 'TeamTotalCount',  data=df, dodge = False, label = 'Team', ci = None,  color = matplotlib.colors.to_hex(sns.color_palette('pastel')[0]))
+sns.barplot(x='team', ax = ax, y = 'total_points',  data=df, dodge = False, label = 'Team', ci = None,  color = matplotlib.colors.to_hex(sns.color_palette('pastel')[3]))
 plt.xticks(rotation=90)
 plt.xlabel('Teams')
 plt.ylabel('Minutes')
+plt.savefig('C://Users//jd-vz//Desktop//Code//fig//team_min_and_pt_counts.pdf', bbox_inches='tight') 
+# %%
 width_scale = 0.5
 for bar in ax.containers[0]:
     bar.set_width(bar.get_width() * width_scale)
@@ -101,11 +149,13 @@ plt.savefig('C://Users//jd-vz//Desktop//Code//fig//team_min_and_pt_counts.pdf', 
 df = pd.read_csv(data_file)
 df = df.groupby(['team', 'player_name', 'GW', 'season']).size().reset_index(name='counts') 
 df['total_player_counts'] = df.groupby(['team', 'season', 'GW'])['counts'].transform('sum')
+df['total_player_counts'] = df.groupby(['team', 'season', 'GW'])['player_name'].transform('nunique')
+
 df.sort_values(['total_player_counts'], ascending=False, inplace=True)
-ax = sns.catplot(x = 'team', y = 'total_player_counts',  kind = 'boxen', palette =sns.color_palette('Blues_r', 30),data = df, aspect = 3, height = 6)
+ax = sns.catplot(x = 'team', y = 'total_player_counts',  kind = 'boxen', palette =sns.color_palette('pastel', 30),data = df, aspect = 4, height = 5)
 plt.xlabel('Teams')
 plt.xticks(rotation=90)
-plt.ylabel('Non-unique players used in gameweeks')
+plt.ylabel('Unique players used in gameweeks')
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//team_with_gameweek_counts.pdf', bbox_inches='tight') 
 # ax._legend.set_title('Season')
 # * Plus the reason why some are so high (Complete)
@@ -175,46 +225,57 @@ plt.savefig('C://Users//jd-vz//Desktop//Code//fig//player_counts.pdf', bbox_inch
 df = pd.read_csv(data_file)
 df = df[['team', 'opponent_team','kickoff_time', 'GW', 'season']].drop_duplicates()
 df = df.groupby(['GW', 'team', 'season']).size().reset_index(name='Num_Matches_GW') # No consideration of season with this way
-plt.figure(figsize=(20, 8))
-ax = sns.histplot(df, x='GW', hue='team',
+plt.figure(figsize=(15, 8))
+df['Team'] = df['team']
+ax = sns.histplot(df, x='GW', hue='Team',
                   weights='Num_Matches_GW', 
                   multiple='stack',bins=38, 
-                  palette=sns.color_palette('tab20c', 23),legend=True,
-                  cumulative = True, edgecolor='black') # tab20c
+                  palette=sns.color_palette('tab20c', 23),legend=True, 
+                  cumulative = False, edgecolor='black') # tab20c
 plt.xlabel('Gameweek')
-plt.ylabel('Fixtures played')
+plt.ylabel('Fixtures')
 legend = ax.get_legend()
 handles = legend.legendHandles
 legend.remove()
-ax.legend(handles, df['team'].unique().ravel(), title='Team')
+ax.legend(handles, df['team'].unique().ravel(), title='Team', mode = 'expand', ncol = 8, bbox_to_anchor=(0, 1, 1, 0))
 # plt.show()
-plt.savefig('C://Users//jd-vz//Desktop//Code//fig//fixtures_played.pdf', bbox_inches='tight') 
+plt.savefig('C://Users//jd-vz//Desktop//Code//fig//fixtures_played.png', bbox_inches='tight') 
 # %%
 # *6) Histogram displaying distribution of kickoff times (Complete)
 # * Plus suspended 13 March 2020 to 17 June
 import matplotlib.dates as mdates
-plt.figure(figsize=(15, 6))
+fig, ((ax_1, ax_2)) = plt.subplots(ncols=2, nrows =1, sharey=False, sharex = False, figsize = (20,5))
 df = pd.read_csv(data_file)
 date_format = '%Y-%m-%d'
 df['kickoff_time'] = pd.to_datetime(df['kickoff_time'], format=date_format)
-# ax = sns.kdeplot(x = 'kickoff_time', data = df,hue='season',shade = True,cut = 0.8,clip_on=False,cumulative = False, fill=True, alpha=0.5,  palette ='pastel') 
-ax = sns.histplot(x = 'kickoff_time', data = df,hue='season',  palette ='pastel', alpha = 1, bins = 40) 
-fmt_half_year = mdates.WeekdayLocator(interval=2)
+ax = sns.histplot(x = 'kickoff_time', data = df,hue='season',  palette ='pastel', alpha = 1, bins = 80, edgecolor = 'black', ax = ax_1) 
+fmt_half_year = mdates.WeekdayLocator(interval=3)
 ax.xaxis.set_major_locator(fmt_half_year)
-fmt_month = mdates.WeekdayLocator(interval=2)
+fmt_month = mdates.WeekdayLocator(interval=3)
 ax.xaxis.set_minor_locator(fmt_month)
 ax.xaxis.set_major_formatter(mdates.DateFormatter(date_format))
 ax.format_xdata = mdates.DateFormatter(date_format)
 ax.grid(False)
+matplotlib.pyplot.sca(ax_1)
 plt.xticks(rotation=45)
-plt.xlabel('Kickoff Time')
-plt.ylabel('Density')
+plt.xlabel('Kickoff time')
+plt.ylabel('Count')
 legend = ax.get_legend()
 handles = legend.legendHandles
 legend.remove()
 ax.legend(handles, ['2019', '2020'], loc = 'upper left',title='Season')
-# plt.show()
-plt.savefig('C://Users//jd-vz//Desktop//Code//fig//distirb_kickoff_times.pdf', bbox_inches='tight') 
+matplotlib.pyplot.sca(ax_2)
+# ax2 = sns.barplot(x = 'GW', y = 'total_points', ci = None, hue = 'season', palette = 'pastel',data = df,dodge = True, edgecolor = 'black', ax = ax_2)
+ax2 = sns.histplot(data = df, x='GW', hue='season', weights='total_points', multiple='stack',bins=38, palette='pastel', edgecolor = 'black', ax = ax_2, legend = False)
+
+# legend = ax2.get_legend()
+# handles = legend.legendHandles
+# legend.remove()
+plt.xlabel('Gameweek')
+plt.ylabel('Points scored')
+# ax2._legend.set_title('Season')
+# plt.savefig('C://Users//jd-vz//Desktop//Code//fig//points_weeks.pdf', bbox_inches='tight') 
+plt.savefig('C://Users//jd-vz//Desktop//Code//fig//distirb_kickoff_times_gw_points.pdf', bbox_inches='tight') 
 print(min(df.loc[df['season'] == 2020, 'kickoff_time']))
 print(max(df.loc[df['season'] == 2019, 'kickoff_time']))
 # %%
@@ -299,32 +360,24 @@ plt.savefig('C://Users//jd-vz//Desktop//Code//fig//commonly_selected_points.pdf'
 # %%
 # * Binned minutes vs distribution cumulative density (Complete)
 df = pd.read_csv(data_file)
-plt.figure(figsize=(12, 6))
+fig, ((ax1, ax2)) = plt.subplots(ncols=2, nrows =1, sharey=False, sharex = False, figsize = (20,5))
 BIN_VALUE = 4
 df['minutes_bins'] = pd.cut(df['minutes'], bins=BIN_VALUE,  labels = ['[0, 22.5]', '(22.5, 45]', '(45, 67.5]', '(67.5,90]'])
 ax = sns.kdeplot(data=df, x="total_points", hue="minutes_bins", palette = 'inferno',
+            fill = True, alpha = 0.09, cumulative = False,
+            legend=False, common_norm=True, common_grid=False, ax = ax1)
+plt.xlabel('Points scored')
+plt.ylabel('Cumulative density')
+plt.savefig('C://Users//jd-vz//Desktop//Code//fig//minutes_points.pdf', bbox_inches='tight') 
+# * For > 1 points (partticipation)
+ax = sns.kdeplot(data=df[df['total_points'] > 1], x="total_points", hue="minutes_bins", palette = 'inferno',
             fill = True, alpha = 0.09, cumulative = False,legend=True,
-            common_norm=True, common_grid=False)
+            common_norm=True, common_grid=False, ax = ax2)
 legend = ax.get_legend()
 handles = legend.legendHandles
 legend.remove()
 ax.legend(handles,['[0, 22.5]', '(22.5, 45]', '(45, 67.5]', '(67.5,90]'], loc = 'upper right',title='Minutes played')
-plt.xlabel('Total points scored')
-plt.ylabel('Cumulative density')
-plt.savefig('C://Users//jd-vz//Desktop//Code//fig//minutes_points.pdf', bbox_inches='tight') 
-# * For > 1 points (partticipation)
-df = pd.read_csv(data_file)
-plt.figure(figsize=(12, 6))
-BIN_VALUE = 4
-df['minutes_bins'] = pd.cut(df['minutes'], bins=BIN_VALUE,  labels = ['[0, 22.5]', '(22.5, 45]', '(45, 67.5]', '(67.5,90]'])
-ax = sns.kdeplot(data=df[df['total_points'] > 1], x="total_points", hue="minutes_bins", palette = 'inferno',
-            fill = True, alpha = 0.09, cumulative = False,legend=True,
-            common_norm=True, common_grid=False)
-legend = ax.get_legend()
-handles = legend.legendHandles
-legend.remove()
-ax.legend(handles,['[0, 22.5]', '(22.5, 45]', '(45, 67.5]', '(67.5,90]'], loc = 'upper left',title='Minutes played')
-plt.xlabel('Total points scored')
+plt.xlabel('Points scored [ > 1]')
 plt.ylabel('Cumulative density')
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//minutes_points_above_1_pt.pdf', bbox_inches='tight') 
 # %%
@@ -352,7 +405,8 @@ plt.savefig('C://Users//jd-vz//Desktop//Code//fig//transfers_gameweek.pdf', bbox
 # *7 Plot the top fifty scoring players with their associated cost (Complete)
 # * Plus we aim to maximize ROI
 from matplotlib.lines import Line2D
-plt.figure(figsize=(15, 8))
+sns.set()
+plt.figure(figsize=(12, 6))
 sns.set_style('darkgrid')
 df = pd.read_csv(data_file)
 df = df[df['season'] == 2019]
@@ -374,10 +428,10 @@ palette = [color for color in [[matplotlib.colors.to_hex(sns.color_palette('YlOr
 flt = list(np.array(palette).ravel())
     
 ax = sns.barplot(x='player_name', y='player_season_points', label = 'Return on investment for season', data = df_temp, ci=None, palette=flt, edgecolor = 'black')
-sns.barplot(x='player_name', y='player_season_cost', data = df_temp, ci=None, alpha = 0.3, color = 'white', edgecolor ='black')
+sns.barplot(x='player_name', y='player_season_cost', data = df_temp, ci=None, alpha = 0.55, color = 'white', edgecolor ='black')
 plt.xticks(rotation=90)
 plt.xlabel('Player name')
-plt.ylabel('Player season points') 
+plt.ylabel('Season points and cost') 
 plt.grid(False)
 
 colors = [sns.color_palette('YlOrBr_r', 20)[0],
@@ -385,10 +439,11 @@ colors = [sns.color_palette('YlOrBr_r', 20)[0],
           sns.color_palette('PuBu_r', 20)[0],
           sns.color_palette('PiYG', 40)[0]]
 
-legend_elements = [Line2D([0], [0], color=colors[0], lw=2, label='MID'), # MID, FWD, DEF, GK, 2,1,4,3
-                   Line2D([0], [0], color=colors[1], lw=2, label='FWD'),
-                   Line2D([0], [0], color=colors[2], lw=2, label='DEF'), 
-                   Line2D([0], [0], color=colors[3], lw=2, label='GK')]
+legend_elements = [Line2D([0], [0], color=colors[0], lw=4, label='MID'), # MID, FWD, DEF, GK, 2,1,4,3
+                   Line2D([0], [0], color=colors[1], lw=4, label='FWD'),
+                   Line2D([0], [0], color=colors[2], lw=4, label='DEF'), 
+                   Line2D([0], [0], color=colors[3], lw=4, label='GK'),
+                   Line2D([0], [0], color='white', lw=4, label='Cost')]
 
 ax.legend(handles=legend_elements, loc='upper right',  title = 'Position')
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//top_15_positions_pts_2019.pdf', bbox_inches='tight') 
@@ -399,7 +454,7 @@ import matplotlib
 from matplotlib.lines import Line2D
 df = pd.read_csv(data_file)
 df = df[df['season'] == 2019]
-plt.figure(figsize=(15, 8))
+plt.figure(figsize=(12, 6))
 df['player_season_points'] = df.groupby(['player_name'])['total_points'].transform('sum') # All player points in a season
 df['player_season_cost'] = df.groupby(['player_name'])['value'].transform('mean') # Mean cost throughout the season
 df['player_season_roi'] = df['player_season_points'] / df['player_season_cost']
@@ -413,8 +468,8 @@ df_4 = df[df['position'] == 'DEF'].head(NUM)
 df_temp = pd.concat([df_3, df_4,df_1, df_2])
 palette = [color for color in [[matplotlib.colors.to_hex(sns.color_palette('PiYG', 40)[i]) for i in range(NUM)], 
                                [matplotlib.colors.to_hex(sns.color_palette('PuBu_r', 20)[i]) for i in range(NUM)], 
-                               [matplotlib.colors.to_hex(sns.color_palette('YlOrBr_r', 20)[i]) for i in range(NUM)],
-                               [matplotlib.colors.to_hex(sns.color_palette('YlGn_r', 20)[i]) for i in range(NUM)]]]
+                               [matplotlib.colors.to_hex(sns.color_palette('YlGn_r', 20)[i]) for i in range(NUM)],
+                               [matplotlib.colors.to_hex(sns.color_palette('YlOrBr_r', 20)[i]) for i in range(NUM)]]]
 flt = list(np.array(palette).ravel())
 ax = sns.barplot(x='player_name', y='player_season_roi', label = 'Return on investment for season', data = df_temp, ci=None, palette=flt,  edgecolor = 'black')
 plt.xticks(rotation=90)
@@ -422,15 +477,15 @@ plt.xlabel('Player name')
 plt.ylabel('Return on investment') 
 plt.grid(False)
 
-colors = [sns.color_palette('YlOrBr_r', 20)[0],
-          sns.color_palette('YlGn_r', 20)[0],
+colors = [sns.color_palette('PiYG', 20)[0],
           sns.color_palette('PuBu_r', 20)[0],
-          sns.color_palette('PiYG', 40)[0]]
+          sns.color_palette('YlGn_r', 20)[0],
+          sns.color_palette('YlOrBr_r', 40)[0]]
 
-legend_elements = [Line2D([0], [0], color=colors[0], lw=2, label='FWD'), # MID, FWD, DEF, GK, 2,1,4,3 Old order
-                   Line2D([0], [0], color=colors[1], lw=2, label='MID'), # GK, DEF, MID, FWD New order 3,4,2,1
-                   Line2D([0], [0], color=colors[2], lw=2, label='DEF'), 
-                   Line2D([0], [0], color=colors[3], lw=2, label='GK')]
+legend_elements = [Line2D([0], [0], color=colors[0], lw=4, label='GK'), # MID, FWD, DEF, GK, 2,1,4,3 Old order
+                   Line2D([0], [0], color=colors[1], lw=4, label='DEF'), # GK, DEF, MID, FWD New order 3,4,2,1
+                   Line2D([0], [0], color=colors[2], lw=4, label='FWD'), 
+                   Line2D([0], [0], color=colors[3], lw=4, label='MID')]
 
 ax.legend(handles=legend_elements, loc='upper right', title = 'Position')
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//player_season_roi.pdf', bbox_inches='tight') 
@@ -439,16 +494,15 @@ plt.savefig('C://Users//jd-vz//Desktop//Code//fig//player_season_roi.pdf', bbox_
 import seaborn as sns
 sns.set_style('darkgrid')
 plt.figure(figsize=(15, 8))
-pal = sns.dark_palette("#69d", reverse=True, as_cmap=False,n_colors=150)
 df = pd.read_csv(data_file)
-BIN_VALUE = 4
 df['Position'] = df['position']
-ax = sns.jointplot(x = 'value', y = 'total_points', hue = 'Position', palette = sns.color_palette('deep', 4),
-                data = df,  edgecolor="gray", alpha = 0.8, height = 10)
-ax.set_axis_labels('Value', 'Points', fontsize=16)
-
-
-plt.savefig('C://Users//jd-vz//Desktop//Code//fig//positions_value_vs_total_points.png', bbox_inches='tight') 
+df['Total points'] = df['total_points']
+df['Value'] = df['value']
+# ax = sns.kdeplot(x = 'value', y = 'total_points', hue = 'Position', data = df)
+# ax.set_axis_labels('Value', 'Points', fontsize=16)
+g = sns.FacetGrid(df, col="Position", col_order = ['GK', 'DEF', 'MID', 'FWD'],  hue = 'Position', palette = 'deep')
+g.map(sns.kdeplot, "Value", "Total points", fill = True)
+plt.savefig('C://Users//jd-vz//Desktop//Code//fig//value_pts_kde.pdf', bbox_inches='tight') 
 # %%
 # %%
 # * Plots ppm to value(Complete)
@@ -466,9 +520,10 @@ plt.ylabel('Player points to value')
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//ppm_value.pdf', bbox_inches='tight') 
 # %%
 # * 10 Plot some position statistics (Complete)
+pal = sns.color_palette("pastel")
+sns.set_palette(pal)
 df = pd.read_csv(data_file)
-fig, ((ax1, ax2)) = plt.subplots(ncols=2, nrows =1, sharey=False, sharex = False)
-sns.set()
+fig, ((ax1, ax2)) = plt.subplots(ncols=2, nrows =1, sharey=False, sharex = False, figsize = (20,5))
 df = df[['position', 'influence',  'bps', 'threat', 'creativity', 'ict_index', 'total_points']]
 df.groupby('position').sum().T.plot(kind='bar', stacked=True,ax = ax1)
 ax1.get_legend().remove()
@@ -487,6 +542,14 @@ df.groupby('position').sum().T.plot(kind='bar', stacked=True)
 plt.legend(title = 'Position')
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//position_understat_bar.pdf', bbox_inches='tight') 
 # %%
+sns.set(style='darkgrid')
+plt.figure(figsize=(12,6))
+df = pd.read_csv(data_file)
+df = df[['position', 'goals_scored', 'assists', 'penalties_missed', 'penalties_saved', 'saves']]
+df.groupby('position').sum().T.plot(kind='bar', stacked=True)
+plt.legend(title = 'Position')
+plt.savefig('C://Users//jd-vz//Desktop//Code//fig//position_understat_bar.pdf', bbox_inches='tight') 
+# %%
 # * 10 Plot goals vs xG measures (Complete)
 df = pd.read_csv(data_file)
 sns.pointplot(x = 'goals_scored', y = 'xG',
@@ -497,37 +560,42 @@ plt.xlabel('Goals scored')
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//xg_goals.pdf', bbox_inches='tight') 
 # %%
 # * 10 Plot npg vs npxG measures (Complete)
-sns.pointplot(x = 'npg', y = 'npxG',
+g = sns.pointplot(x = 'npg', y = 'npxG',
                   data = df,  ci = None,  hue = 'position',
-                 legend = True)
+                 legend = False)
 plt.legend(title = 'Position')
 plt.xlabel('Non-penalty goals')
 plt.legend(title = 'Position')
+g.legend([],[], frameon=False)
+
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//npg_npxG.pdf', bbox_inches='tight') 
 # %%
 # * 10 Plot assists vs xA measures (Complete)
-sns.pointplot(x = 'assists', y = 'xA',
+g = sns.pointplot(x = 'assists', y = 'xA',
                   data = df,  ci = None,  hue = 'position',
-                 legend = True)
+                 legend = False)
 plt.xlabel('Assists')
-plt.legend(title = 'Position')
+g.legend([],[], frameon=False)
+
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//assists_xA.pdf', bbox_inches='tight') 
 # %%
 # * 10 Plot assists vs key passes measures (Complete)
-sns.pointplot(x = 'assists', y = 'key_passes',
+g = sns.pointplot(x = 'assists', y = 'key_passes',
                   data = df,  ci = None,  hue = 'position',
-                 legend = True)
+                 legend = False)
 plt.xlabel('Assists')
 plt.ylabel('Key passes')
-plt.legend(title = 'Position')
+g.legend([],[], frameon=False)
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//assists_key_passes.pdf', bbox_inches='tight') 
 # %%
 # * 10 Plot goals_scored vs shots taken (Complete)
-sns.pointplot(x = 'goals_scored', y = 'shots',
+g = sns.pointplot(x = 'goals_scored', y = 'shots',
                   data = df,  ci = None,  hue = 'position',
                  legend = True)
 plt.xlabel('Goals scored')
 plt.ylabel('Shots taken')
+g.legend([],[], frameon=False)
+
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//goals_to_shots.pdf', bbox_inches='tight') 
 # %%
 # * Plot distribution of positions
@@ -617,19 +685,48 @@ plt.savefig('C://Users//jd-vz//Desktop//Code//fig//position_vs_amiddmid_gt_0.pdf
 df = pd.read_csv(data_file) 
 df = position_stats(df)
 df['Detailed positions'] = df['position_stat']
-plt.figure(figsize=(12, 6))
-sns.kdeplot(x = 'total_points', hue = 'Detailed positions', data = df,
-            multiple="stack", palette='pastel', edgecolor=".3",  alpha = 0.7)
-plt.xlabel('Total points')
+df['Total points'] = df['total_points']
+df['Position'] = df['position']
+fig, (ax1, ax2) = plt.subplots(ncols=1, nrows =2, sharey=False, sharex = False, figsize = (12, 12))
+sns.kdeplot(x = 'Total points', hue = 'Detailed positions', data = df, legend = True,
+            multiple="stack", palette='pastel', edgecolor="black",  alpha = 0.7, ax = ax1)
+plt.legend(loc = 'upper left')
+
+sns.histplot(df, x='Position', hue='Detailed positions', multiple='stack', ax = ax2, palette = 'pastel',
+              edgecolor ='black',legend = False)
+# legend = ax1.get_legend()
+# handles = legend.legendHandles
+# labels = legend.legendLabels
+# ax1.legend(handles, df['Detailed positions'].unique().ravel(),
+#            title='Detailed positions', 
+#            mode = 'expand', ncol = 8, bbox_to_anchor=(0, 1, 1, 0))
+
+
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//understat_positions_points.pdf', bbox_inches='tight') 
 # %%
 # * Distribution of fantasy positions to points
 df = pd.read_csv(data_file) 
 df['Positions'] = df['position']
-plt.figure(figsize=(12, 6))
+fig, (ax1, ax2) = plt.subplots(ncols=2, nrows =1, sharey=False, sharex = False, figsize = (20, 5))
 sns.kdeplot(x = 'total_points', hue = 'Positions', data = df,
-            multiple="stack", palette='pastel', edgecolor=".3",  alpha = 0.7)
-plt.xlabel('Total points')
+            multiple="stack", palette='pastel', edgecolor=".3",  alpha = 0.7, ax = ax2)
+plt.xlabel('Points scored')
+plt.ylabel('Density (Stacked)')
+df = pd.read_csv(data_file)
+df['counter'] = 1
+df['TeamTotalCount'] = df.groupby(['team'])['minutes'].transform('sum')
+df.loc[df['TeamTotalCount'].idxmax()]
+sns.set(rc={"figure.figsize":(12, 6)}) 
+df.sort_values('TeamTotalCount',ascending=False, inplace=True);
+sns.barplot(x='team', ax = ax1, y = 'TeamTotalCount',  data=df, dodge = False, label = 'Team', ci = None,  color = matplotlib.colors.to_hex(sns.color_palette('pastel')[0]))
+plt.xticks(rotation=90)
+ax1.set_ylabel('Minutes')
+ax2.set_ylabel('Density (Stacked)')
+ax1.set_xlabel('')
+ax2.set_xlabel('Total points')
+matplotlib.pyplot.sca(ax1)
+plt.xticks(rotation=90)
+# plt.savefig('C://Users//jd-vz//Desktop//Code//fig//team_min_and_pt_counts.pdf', bbox_inches='tight') 
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//fantasy_positions_points.pdf', bbox_inches='tight') 
 # %%
 # * Distribution of attacking and defending midfielders
@@ -637,20 +734,32 @@ df = pd.read_csv(data_file)
 df = position_stats(df)
 df = df[df['position_role'].isin(['AMID', 'DMID'])]
 df['Midfielders'] = df['position_role']
-plt.figure(figsize=(12, 6))
-sns.kdeplot(x = 'total_points', hue = 'Midfielders', data = df[df['total_points'] > 5],
-            multiple="stack", palette='pastel', edgecolor=".3",  alpha = 0.7)
-plt.xlabel('Total points')
+fig, (ax1, ax2) = plt.subplots(ncols=2, nrows =1, sharey=False, sharex = False, figsize = (20, 5))
+sns.kdeplot(x = 'total_points', hue = 'Midfielders', data = df,
+            multiple="stack", palette='pastel', edgecolor=".3",  alpha = 0.7, ax = ax1)
+df = pd.read_csv(data_file) 
+df = position_stats(df)
+df['Substitution'] = df['Sub']
+df.loc[df['Substitution'] == 1, 'Substitution'] = True
+df.loc[df['Substitution'] == 0, 'Substitution'] = False
+sns.kdeplot(x = 'total_points', hue = 'SubstitutionP', data = df,
+            multiple="stack", palette='pastel', edgecolor=".3",  alpha = 0.7, ax = ax2)
+ax1.set_xlabel('Points scored')
+ax2.set_xlabel('Points scored')
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//points_to_mids.pdf', bbox_inches='tight') 
 # %% 
 # * Distribution of position locations
 df = pd.read_csv(data_file) 
 df = position_stats(df)
 df['Location'] = df['position_location']
-plt.figure(figsize=(12, 6))
-sns.kdeplot(x = 'total_points', hue = 'Location', data =df[df['total_points'] > 5],
-            multiple="stack", palette='pastel', edgecolor=".3",  alpha = 0.7)
-plt.xlabel('Total points')
+df['Total points'] = df['total_points']
+df['Position'] = df['position']
+fig, (ax1, ax2) = plt.subplots(ncols=1, nrows =2, sharey=False, sharex = False, figsize = (12, 12))
+sns.kdeplot(x = 'Total points', hue = 'Location', data = df,
+            multiple="stack", palette='pastel', edgecolor="black",  alpha = 0.7, ax = ax1, legend = True)
+sns.histplot(df, x='Position', hue='Location', multiple='stack', ax = ax2, palette = 'pastel',
+              edgecolor ='black',legend = False)
+
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//points_to_location.pdf', bbox_inches='tight') 
 # %%
 # * Plot attacking vs defneding midfielders
@@ -685,23 +794,79 @@ df['premium_players'] = np.where(df['value'] >= df['premium_cutoff'], 'Premium',
                                  np.where(df['value'] >= df['medium_cutoff'], 'Medium', 'Budget' ))
 df['Cost bracket'] = np.where(df['value'] >= df['premium_cutoff'], 'Premium', 
                                  np.where(df['value'] >= df['medium_cutoff'], 'Medium', 'Budget' ))
-g = sns.FacetGrid(df, col="Midfielder", row = 'FDR',
-                  row_order = ['Low', 'Med', 'High'], 
-                  col_order = ['DMID', 'AMID'])
+g = sns.FacetGrid(df, row="Midfielder", col = 'FDR',
+                  col_order = ['Low', 'Med', 'High'], 
+                  row_order = ['DMID', 'AMID'])
 g.map(sns.pointplot, "Cost bracket", "Total points",'season', ci=None, order = ['Budget', 'Medium', 'Premium'],
-      legend_out=True, hue_order = [2019,2020],palette = 'pastel')
+      legend_out=True, hue_order = [2019,2020],palette = 'magma')
 g.add_legend(title = 'Season')
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//att_def_mid.pdf', bbox_inches='tight') 
 # %%
 # * Plot centre, right, and general
-# * Plot centre, right, and general
+df = pd.read_csv(data_file) 
+df = position_stats(df)
+team_stats = df[['team', 'strength_attack_home', 'strength_attack_away',
+                    'strength_defence_home', 'strength_defence_away', 'season']].drop_duplicates()
+team_stats.rename(columns={'team': 'opponent_team', 'strength_attack_home': 'opponent_strength_attack_home',
+                            'strength_attack_away': 'opponent_strength_attack_away', 'strength_defence_home': 'opponent_strength_defence_home',
+                            'strength_defence_away': 'opponent_strength_defence_away'}, inplace=True)
+df = pd.merge(df, team_stats, on=['opponent_team', 'season'])
+df['player_team_strength'] = np.where(df['was_home'], df['strength_attack_home'], df['strength_attack_away'])
+df['player_team_defence'] = np.where(df['was_home'], df['strength_defence_home'], df['strength_defence_away'])
+df['player_team_overall'] = df['player_team_strength'] / 2 + df['player_team_defence']/2
+df['opponent_team_strength'] = np.where(df['was_home'], df['opponent_strength_attack_away'], df['opponent_strength_attack_home'])
+df['opponent_team_defence'] = np.where(df['was_home'], df['opponent_strength_defence_away'], df['opponent_strength_defence_home'])
+df['opponent_team_overall'] = df['opponent_team_strength'] / 2 + df['opponent_team_defence']/2
+
+def quantile_function(df, quantile_point, col = 'value'):
+    #Get the quantile value
+    quantile_value = df.quantile(quantile_point)[col]
+    #Select the data in the group that falls at or below the quantile value and return it
+    return df[df[col] >= quantile_value]
+df['Midfielder'] = df['position_role']
+df['Total points'] = df['total_points']
+df['FDR'] = np.where(df['opponent_team_overall'] > df['player_team_overall'] + 10, 'High',
+                     np.where(df['opponent_team_overall'] < df['player_team_overall'] - 10, 'Low', 'Med')) 
+df['premium_cutoff'] = df.groupby('Midfielder')['value'].transform('quantile', 0.75)
+df['medium_cutoff'] = df.groupby('Midfielder')['value'].transform('quantile', 0.5)
+df['premium_players'] = np.where(df['value'] >= df['premium_cutoff'], 'Premium', 
+                                 np.where(df['value'] >= df['medium_cutoff'], 'Medium', 'Budget' ))
+df['Cost bracket'] = np.where(df['value'] >= df['premium_cutoff'], 'Premium', 
+                                 np.where(df['value'] >= df['medium_cutoff'], 'Medium', 'Budget' ))
 df['Location'] = df['position_location']
-g = sns.FacetGrid(df,  col = 'FDR', col_order = ['Low', 'Med', 'High'])
+g = sns.FacetGrid(df[df['position'].isin(['FWD', 'MID', 'MID', 'DEF', 'GK'])],
+                                    col = 'position')
 g.map(sns.pointplot, "Location", "Total points", 'season', ci=None, 
       order = ['General', 'Centre', 'Left', 'Right'],
       legend_out=True, hue_order = [2019,2020],palette = 'magma')
 g.add_legend(title = 'Season')
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//player_field_positions.pdf', bbox_inches='tight')
+# %%
+fig, ((ax1, ax2, ax3, ax4), (ax5, ax6, ax7, ax8), (ax9, ax10, ax11, ax12)) = plt.subplots(ncols=4, nrows = 3, sharey=False,
+                                                                                          sharex = True, figsize = (20, 10), 
+                                                                                          constrained_layout = True)
+feats = ['influence', 'bps', 'threat', 'creativity', 'ict_index', 'total_points', 
+         'xGChain', 'xGBuildup', 'xG', 'xA', 'npg', 'npxG']
+axs = [ax1, ax2, ax3, ax4, ax5, ax6, ax7, ax8, ax9, ax10, ax11, ax12]
+for feat, ax in list(zip(feats, axs)):
+    sns.boxenplot(x = 'position', y = feat, data = df, ax = ax, palette = 'pastel')
+    ax.set_xlabel('')
+    ax.set_ylabel(feat)
+plt.savefig('C://Users//jd-vz//Desktop//Code//fig//updated_pos_distribs.pdf', bbox_inches='tight')
+
+# %%
+fig, ((ax1, ax2, ax3, ax4), (ax5, ax6, ax7, ax8), (ax9, ax10, ax11, ax12), (ax13, ax14, ax15, ax16)) = plt.subplots(ncols=4, nrows = 4, sharey=False,
+                                                                                          sharex = True, figsize = (20, 10), 
+                                                                                          constrained_layout = True)
+axs = [ax1, ax2, ax3, ax4, ax5, ax6, ax7, ax8, ax9, ax10, ax11, ax12, ax13, ax14, ax15, ax16]
+feats = ['bonus', 'goals_conceded', 'goals_scored', 'saves', 'own_goals', 'penalties_saved',
+         'penalties_missed', 'red_cards', 'yellow_cards', 'clean_sheets', 'selected', 'transfers_in', 
+         'transfers_out', 'assists', 'key_passes', 'shots']
+for feat, ax in list(zip(feats, axs)):
+    sns.boxenplot(x = 'position', y = feat, data = df, ax = ax, palette = 'pastel')
+    ax.set_xlabel('')
+    ax.set_ylabel(feat, fontsize = 15)
+plt.savefig('C://Users//jd-vz//Desktop//Code//fig//updated_pos_distribs.pdf', bbox_inches='tight')
 # %%
 # * Plot subsitution vs total points
 df['Substitution'] = df['Sub']
@@ -737,6 +902,38 @@ df['opponent_team_strength'] = np.where(df['was_home'], df['opponent_strength_at
 df['opponent_team_defence'] = np.where(df['was_home'], df['opponent_strength_defence_away'], df['opponent_strength_defence_home'])
 df['opponent_team_overall'] = df['opponent_team_strength'] / 2 + df['opponent_team_defence']/2
 
+def position_stats(df):
+    df.loc[df['position'] == 'GK','position_stat'].value_counts() # Marginal 
+    df.loc[df['position'] == 'GK','position_role'] = 'GK'
+    df.loc[df['position'] == 'FWD','position_stat'].value_counts() # Marginal
+    df.loc[df['position'] == 'FWD','position_role'] = 'FWD'
+    df.loc[df['position'] == 'DEF','position_stat'].value_counts() # Marginal
+    df.loc[df['position'] == 'DEF','position_role'] = 'DEF'
+    df.loc[df['position'] == 'MID','position_stat'].value_counts() # Potential for dividing here
+    df.loc[df['position'] == 'MID','position_role'] = 'DMID' 
+    df['str_cut'] = df['position_stat'].astype(str).str[0]
+    df_temp  = df.loc[df['position'] == 'MID']
+    def_names = df_temp.loc[df_temp['str_cut'] == 'D','player_name'].unique()
+    attack_names = df_temp.loc[df_temp['str_cut'] == 'A','player_name'].unique()
+    df.loc[df['player_name'].isin(def_names) & (df['position'] == 'MID'), 'position_role'] = 'DMID'
+    df.loc[df['player_name'].isin(attack_names) & (df['position'] == 'MID'), 'position_role'] = 'AMID'
+    # Create substitution boolean
+    df['Sub'] = np.where(df['position_stat'] == 'Sub', 1,0)
+    df['position_stat'].value_counts()
+    # Create position location
+    df['str_cut_1'] = df['position_stat'].astype(str).str[1]
+    df['str_cut_2'] = df['position_stat'].astype(str).str[2]
+    df['position_location'] = 'General'
+    for feat in ['str_cut_1', 'str_cut_2']:
+        df.loc[df[feat] == 'C', 'position_location'] = 'Centre'
+        df.loc[df[feat] == 'R', 'position_location'] = 'Right'
+        df.loc[df[feat] == 'L', 'position_location'] = 'Left'
+    df = df.drop(['str_cut_1', 'str_cut_2'], axis = 1)
+    return df
+
+# *- Plot positions vs understat positions
+df = position_stats(df)
+
 def quantile_function(df, quantile_point, col = 'value'):
     #Get the quantile value
     quantile_value = df.quantile(quantile_point)[col]
@@ -745,14 +942,19 @@ def quantile_function(df, quantile_point, col = 'value'):
 
 df['FDR'] = np.where(df['opponent_team_overall'] > df['player_team_overall'] + 10, 'High',
                      np.where(df['opponent_team_overall'] < df['player_team_overall'] - 10, 'Low', 'Med')) 
-df['premium_cutoff'] = df.groupby('position')['value'].transform('quantile', 0.75)
-df['medium_cutoff'] = df.groupby('position')['value'].transform('quantile', 0.5)
+df['premium_cutoff'] = df.groupby('position_role')['value'].transform('quantile', 0.75)
+df['medium_cutoff'] = df.groupby('position_role')['value'].transform('quantile', 0.5)
 
 df['premium_players'] = np.where(df['value'] >= df['premium_cutoff'], 'Premium', 
                                  np.where(df['value'] >= df['medium_cutoff'], 'Medium', 'Budget' ))
-g = sns.FacetGrid(df, col="position", row = 'FDR',
+df['Position'] = df['position_role']
+# g = sns.FacetGrid(df, col="Position", row = 'FDR',
+#                   row_order = ['Low', 'Med', 'High'], 
+#                   col_order = ['GK', 'DEF', 'DMID', 'AMID', 'FWD'])
+df['Location'] = df['position_location']
+g = sns.FacetGrid(df, col="Location", row = 'FDR',
                   row_order = ['Low', 'Med', 'High'], 
-                  col_order = ['GK', 'DEF', 'MID', 'FWD'])
+                  col_order = ['General', 'Centre', 'Left', 'Right'])
 g.map(sns.pointplot, "premium_players", "total_points",'season', ci=None, order = ['Budget', 'Medium', 'Premium'],
       legend_out=True, hue_order = [2019,2020],palette = 'magma')
 g.add_legend(title = 'Season')
@@ -762,7 +964,7 @@ g.add_legend(title = 'Season')
 i = 0
 for ax in g.axes.flat:
     i = i + 1
-    if i in [1,5,9]:
+    if i in [1,5,9]: # 5, 9 na 6,11
         ax.set_ylabel('Total points')
     ax.set_xlabel('')
     if ax.texts:
@@ -774,7 +976,7 @@ for ax in g.axes.flat:
                 va='center')
         # Remove the original text
         ax.texts[0].remove()
-plt.savefig('C://Users//jd-vz//Desktop//Code//fig//premium_points.pdf', bbox_inches='tight') 
+plt.savefig('C://Users//jd-vz//Desktop//Code//fig//location_points.pdf', bbox_inches='tight') 
 df.groupby(['position', 'premium_players', 'was_home'])[['value','total_points']].corr().drop(['total_points'], axis = 1)
 # Goalkeepers: Price is not a significant barrier to performance
 # Midfielders: The strongest correlation, where you get what you pay for
@@ -863,7 +1065,7 @@ import statsmodels.api as sm
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 from statsmodels.tools.tools import add_constant
 scale = StandardScaler()
-df = pd.read_csv(data_file)
+# df = pd.read_csv(data_file)
 df = pd.DataFrame(scale.fit_transform(df.select_dtypes(include = 'number')),
                   columns=df.select_dtypes(include = 'number').columns, index=df.index)
 
@@ -885,6 +1087,7 @@ def get_VIF(dataFrame , target):
 
 print(get_VIF(df,'total_points'))
 print(calculate_vif(df.select_dtypes(include = 'number').drop('total_points', axis = 1)))
+# %%
 print(df.head(5))
 print(df.corrwith(df["key_passes"]).abs().sort_values(ascending = False).head(5)) # 0.96 correlation with creativity
 print(df.corrwith(df["npg"]).abs().sort_values(ascending = False).head(5)) # 0.95 with goals scored
@@ -930,14 +1133,24 @@ df = pd.read_csv(data_file)
 df['avg_position'] = df.groupby(['position', 'team'])['total_points'].transform('mean') # All player points in a season
 df_temp = df[['avg_position', 'position', 'team']].drop_duplicates()
 df_temp['Position'] = df_temp['position']
-fig = px.bar_polar(df_temp, r="avg_position", theta="team", color="Position", template="plotly",
-            color_discrete_sequence= px.colors.sequential.Plasma_r)
+fig = px.bar_polar(df_temp, r="avg_position", theta="team", color="Position", template="seaborn",
+            color_discrete_sequence= px.colors.qualitative.Pastel1)
 fig.write_image('C://Users//jd-vz//Desktop//Code//fig//polar_position_scores.pdf') #
 fig.show()
 # 1. Spurs (by far), 2. Leicester, and 3. Leeds have the best forwards
 # 1. Leeds (tight), 2. Liverpool, 3. Burnely have the best goalies 
 # 1. Man City (by far), Liverpool, Man Utd best midfielders
 # 1. Liverpool, Man City, Chelsea have the best midfielders
+# %%
+df_temp[df_temp['position'] == 'DEF'].sort_values('avg_position', ascending = False).head(3)
+# %%
+df = pd.read_csv(data_file)
+df['avg_position'] = df.groupby(['position', 'team'])['total_points'].transform('mean') # All player points in a season
+df_temp = df[['avg_position', 'position', 'team']].drop_duplicates()
+sns.barplot(x = 'team', y = 'avg_position', hue = 'position', data = df_temp[df_temp['position'] == 'GK'], dodge = False)
+sns.barplot(x = 'team', y = 'avg_position', hue = 'position', data = df_temp[df_temp['position'] == 'MID'], dodge = False)
+sns.barplot(x = 'team', y = 'avg_position', hue = 'position', data = df_temp[df_temp['position'] == 'FWD'], dodge = False)
+sns.barplot(x = 'team', y = 'avg_position', hue = 'position', data = df_temp[df_temp['position'] == 'DEF'], dodge = False)
 # %%
 # * Polar lot of premium players and average points in teams (Complete)
 df = pd.read_csv(data_file)
@@ -1024,16 +1237,16 @@ df['TeamTotalPointsCount'] = df.groupby(['team', 'season'])['total_gw_pts'].tran
 df = df[['team', 'TeamTotalPointsCount', 'total_team_wins']].drop_duplicates()
 sns.set(rc={"figure.figsize":(12, 6)}) 
 df.sort_values('TeamTotalPointsCount',ascending=False, inplace=True);
-ax = sns.barplot(x="team", y="TeamTotalPointsCount", data=df, ci=None, label = 'Total team points scored', palette =sns.color_palette('Blues_r', 40))
+ax = sns.barplot(x="team", y="TeamTotalPointsCount", data=df, ci=None,edgecolor = 'black', label = 'Points', color = matplotlib.colors.to_hex(sns.color_palette('pastel')[0]))
 plt.xticks(rotation=90)
 plt.xlabel('Teams')
-plt.ylabel('Team points')
+plt.ylabel('Points')
 plt.grid(False)
 width_scale = 0.5
 for bar in ax.containers[0]:
     bar.set_width(bar.get_width() * width_scale)
 ax2 = ax.twinx()
-ax_3 = sns.barplot(x='team', y='total_team_wins', label = 'Total team wins', data=df, ci=None,ax=ax2, color = 'gray')
+ax_3 = sns.barplot(x='team', y='total_team_wins', label = 'Wins', data=df, ci=None,ax=ax2,edgecolor = 'black',color = matplotlib.colors.to_hex(sns.color_palette('pastel')[1]))
 plt.ylabel('Wins')
 # ax_3.legend(loc='upper right')
 for bar in ax2.containers[0]:
@@ -1097,12 +1310,38 @@ plt.savefig('C://Users//jd-vz//Desktop//Code//fig//player_game_min_pts.pdf', bbo
 # %%
 # * Plot cumulative season points to cumulative season minutes
 df = pd.read_csv(data_file)
+# df = df[['player_name','season', 'value', 'minutes', 'total_points', 'position']].drop_duplicates()
+fig, (ax1, ax2) = plt.subplots(ncols=2, nrows =1, sharey=False, sharex = False, figsize = (20, 5))
 df['Cumulative season points'] = df.groupby(['player_name', 'season'])['total_points'].transform('sum') # All player points in a season
 df['Cumulative season minutes'] = df.groupby(['player_name', 'season'])['minutes'].transform('sum') # All minutes played throughout the season
 df['Position'] = df['position']
-sns.scatterplot(x = df['Cumulative season minutes'], y = df['Cumulative season points'], hue = df['Position'])
+df['player_points'] = df.groupby(['player_name','season'])['total_points'].transform('sum') # Cut of point for bottom 90 and top 10 of each gameweek
+df['player_value'] = df.groupby(['player_name','season'])['value'].transform('mean') # Cut of point for bottom 90 and top 10 of each gameweek
+df['player_points_per_million_cost'] = df['player_points'] / df['player_value'] 
+ax1 = sns.scatterplot(y = 'player_points', x = 'player_points_per_million_cost', 
+                      data = df, hue = 'Position', ax = ax1, legend = True)
+df = pd.read_csv(data_file)
+df = df[['value','total_points', 'position']].drop_duplicates()
+ax = sns.scatterplot(x = 'value', y = 'total_points', hue = 'position', legend = False,  data = df, ax = ax2)
+ax1.set_xlabel('Season ROI', fontsize = 18)
+ax1.set_ylabel('Season points', fontsize = 18)
+ax2.set_ylabel('Fixture points', fontsize = 18)
+ax2.set_xlabel('Fixture value', fontsize = 18)
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//player_game_min_pts.png', bbox_inches='tight') 
 #
+# %%
+
+import seaborn as sns
+sns.set_style('darkgrid')
+plt.figure(figsize=(15, 8))
+pal = sns.dark_palette("#69d", reverse=True, as_cmap=False,n_colors=150)
+df = pd.read_csv(data_file)
+BIN_VALUE = 4
+df['Position'] = df['position']
+ax = sns.jointplot(x = 'value', y = 'total_points', hue = 'Position', palette = sns.color_palette('deep', 4),
+                data = df,  edgecolor="gray", ax = ax2)
+ax.set_axis_labels('Value', 'Points', fontsize=16)
+
 
 
 # %%
@@ -1169,40 +1408,19 @@ ax1.set_ylabel('Fixtures')
 ax2.set_ylabel('Players')
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//players_gameweeks.pdf', bbox_inches='tight') 
 # %%
+# Over achievers plot
 def create_premium_players(df): 
     df['premium_cutoff'] = df.groupby(['GW', 'season', 'position'])['value'].transform('quantile', 0.75)
     df['medium_cutoff'] = df.groupby(['GW', 'season', 'position'])['value'].transform('quantile', 0.5)
-    df['premium_players'] = np.where(df['value'] >= df['premium_cutoff'], 'Premium', 'Budget')
-    df['over_achiever_cutoff'] =  df.groupby(['GW', 'season', 'position'])['total_points'].transform('quantile', 0.7)
-    df['over_achiever_val_cutoff'] =  df.groupby(['GW', 'season', 'position'])['value'].transform('quantile', 0.7)
-    df['over_achiever'] = np.where((df['value'] < df['over_achiever_val_cutoff'] ) & (df['total_points'] > df['over_achiever_cutoff']),  True, False)
+    df['premium_players'] = np.where(df['value'] >= df['premium_cutoff'], 'Premium', np.where(df['value'] >= df['medium_cutoff'], 'Medium', 'Budget'))
+    df['over_achiever_cutoff'] =  df.groupby(['GW', 'season', 'position'])['total_points'].transform('quantile', 0.70)
+    df['over_achiever'] = np.where(df['premium_players'].isin(['Medium', 'Budget']) & (df['total_points'] > df['over_achiever_cutoff']),  True, False)
     df = df.drop(['over_achiever_cutoff', 'medium_cutoff', 'premium_cutoff'], axis = 1)
     return df
 
 df = pd.read_csv(data_file)
 df = create_premium_players(df)
-team_stats = df[['team', 'strength_attack_home', 'strength_attack_away',
-                    'strength_defence_home', 'strength_defence_away', 'season']].drop_duplicates()
-team_stats.rename(columns={'team': 'opponent_team', 'strength_attack_home': 'opponent_strength_attack_home',
-                            'strength_attack_away': 'opponent_strength_attack_away', 'strength_defence_home': 'opponent_strength_defence_home',
-                            'strength_defence_away': 'opponent_strength_defence_away'}, inplace=True)
-df = pd.merge(df, team_stats, on=['opponent_team', 'season'])
-df['player_team_strength'] = np.where(df['was_home'], df['strength_attack_home'], df['strength_attack_away'])
-df['player_team_defence'] = np.where(df['was_home'], df['strength_defence_home'], df['strength_defence_away'])
-df['player_team_overall'] = df['player_team_strength'] / 2 + df['player_team_defence']/2
-df['opponent_team_strength'] = np.where(df['was_home'], df['opponent_strength_attack_away'], df['opponent_strength_attack_home'])
-df['opponent_team_defence'] = np.where(df['was_home'], df['opponent_strength_defence_away'], df['opponent_strength_defence_home'])
-df['opponent_team_overall'] = df['opponent_team_strength'] / 2 + df['opponent_team_defence']/2
-df['FDR'] = np.where(df['opponent_team_overall'] > df['player_team_overall'] + 10, 'High',
-                     np.where(df['opponent_team_overall'] < df['player_team_overall'] - 10, 'Low', 'Med')) 
-df['Season'] = df['season']
-df['Cost bracket'] = df['premium_players']
-df['Total points'] = df['total_points']
-df['Position'] = df['position']
-# df = df[df['premium_players'].isin(['Medium', 'Budget'])]
-g = sns.FacetGrid(df, col="Position", col_order = ['GK', 'DEF', 'MID', 'FWD'],legend_out =True)
-g.map(sns.pointplot, "Cost bracket", "Total points", 'over_achiever', 
-      ci=None, order = ['Budget', 'Premium'], hue_order = [False, True], palette = 'deep' )
+sns.boxplot(x = 'premium_players', y = 'total_points', data = df, order = ['Budget', 'Medium', 'Premium'], palette = 'pastel')
 # %%
 ax = sns.scatterplot(x = 'value', y = 'total_points', hue = 'position', style = 'over_achiever',
                 data = df,  edgecolor="gray", alpha = 0.8)
@@ -1262,17 +1480,36 @@ plt.savefig('C://Users//jd-vz//Desktop//Code//fig//players_gameweeks.pdf', bbox_
 # %%
 df = pd.read_csv(data_file)
 fig, ((ax1, ax2)) = plt.subplots(ncols=2, nrows =1, sharey=False, sharex = False, figsize = (20,5))
-df['counts'] = df.groupby(['position', 'team', 'kickoff_time', 'season']).size().reset_index(name='counts') 
-
-
-
-df['total_position_counts'] = df.groupby(['position', 'team', 'kickoff_time'])['counts'].transform('sum')
+df = df.groupby(['position', 'team', 'kickoff_time', 'season']).size().reset_index(name='counts') 
+df['total_position_counts'] = df.groupby(['position', 'team', 'kickoff_time', 'season'])['counts'].transform('sum')
 df.sort_values(['total_position_counts'], ascending=False, inplace=True)
 df['Positions'] = df['position']
 df['Season'] = df['season']
 sns.boxenplot(x = 'Positions', y = 'total_position_counts', order= ['DEF', 'MID', 'GK', 'FWD'],
                 data = df, ax = ax1,
                  palette = 'pastel')
+df[(df['total_position_counts'] == 2) & (df['position'] == 'DEF')]
+# %%
+df = pd.read_csv(data_file)
+print(df[(df['team'] == 'Liverpool') & ((df['kickoff_time'] == '2021-01-17') | (df['kickoff_time'] == '2021-01-04')) & (df['position'] == 'DEF')][['player_name','team', 'position','minutes', 'kickoff_time']].to_latex())
+# %%
+df = pd.read_csv(data_file)
+df[(df['team'] == 'Crystal Palace') & (df['kickoff_time'] == '2020-06-24') & (df['minutes'] == 0)]
+# %%
+df[(df['team'] == 'Spurs') & (df['kickoff_time'] == '2020-01-22') & (df['minutes'] == 0)]
+# %%
+df[(df['team'] == 'Spurs') & (df['kickoff_time'] == '2020-02-02') & (df['minutes'] == 0)]
+# %%
+df[(df['team'] == 'Spurs') & (df['kickoff_time'] == '2020-07-09') & (df['minutes'] == 0)]
+# %%
+df[(df['team'] == 'Spurs') & (df['kickoff_time'] == '2020-07-19') & (df['minutes'] == 0)]
+# %%
+# %%
+df[(df['team'] == 'Spurs') & (df['kickoff_time'] == '2020-07-19') & (df['minutes'] == 0)]
+# %%
+df = pd.read_csv(data_file) 
+df[(df['team'] == 'Liverpool') & (df['kickoff_time'] == '2021-01-17')]['position'].value_counts().sum()
+# %%
 df = pd.read_csv(data_file) 
 df['Positions'] = df['position']
 sns.kdeplot(x = 'total_points', hue = 'Positions', data = df,
@@ -1281,7 +1518,6 @@ plt.xlabel('Total points')
 ax1.set_ylabel('Counts')
 ax2.set_ylabel('Density')
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//positions_p_occurences.pdf', bbox_inches='tight') 
-
 # %%
 df = pd.read_csv(data_file)
 fig, ((ax1, ax2)) = plt.subplots(ncols=2, nrows =1, sharey=False, sharex = False, figsize = (20,5))
@@ -1367,3 +1603,68 @@ ax2.set_ylabel('Count')
 ax2.set_xlabel('Player measurements in fixtures')
 plt.savefig('C://Users//jd-vz//Desktop//Code//fig//positions_times_occurences.pdf', bbox_inches='tight') 
 # %%
+# * Effect of fixture difficulty rating on premium_players (Complete)
+df = pd.read_csv(data_file)
+team_stats = df[['team', 'strength_attack_home', 'strength_attack_away',
+                    'strength_defence_home', 'strength_defence_away', 'season']].drop_duplicates()
+team_stats.rename(columns={'team': 'opponent_team', 'strength_attack_home': 'opponent_strength_attack_home',
+                            'strength_attack_away': 'opponent_strength_attack_away', 'strength_defence_home': 'opponent_strength_defence_home',
+                            'strength_defence_away': 'opponent_strength_defence_away'}, inplace=True)
+df = pd.merge(df, team_stats, on=['opponent_team', 'season'])
+df['player_team_strength'] = np.where(df['was_home'], df['strength_attack_home'], df['strength_attack_away'])
+df['player_team_defence'] = np.where(df['was_home'], df['strength_defence_home'], df['strength_defence_away'])
+df['player_team_overall'] = df['player_team_strength'] / 2 + df['player_team_defence']/2
+df['opponent_team_strength'] = np.where(df['was_home'], df['opponent_strength_attack_away'], df['opponent_strength_attack_home'])
+df['opponent_team_defence'] = np.where(df['was_home'], df['opponent_strength_defence_away'], df['opponent_strength_defence_home'])
+df['opponent_team_overall'] = df['opponent_team_strength'] / 2 + df['opponent_team_defence']/2
+
+def quantile_function(df, quantile_point, col = 'value'):
+    #Get the quantile value
+    quantile_value = df.quantile(quantile_point)[col]
+    #Select the data in the group that falls at or below the quantile value and return it
+    return df[df[col] >= quantile_value]
+
+# df['FDR'] = np.where(df['opponent_team_overall'] > df['player_team_overall'], 'High', 'Low') 
+df['premium_cutoff'] = df.groupby('position')['value'].transform('quantile', 0.75)
+df['medium_cutoff'] = df.groupby('position')['value'].transform('quantile', 0.5)
+df['Position'] = df['position']
+df['premium_players'] = np.where(df['value'] >= df['premium_cutoff'], 'Premium', 
+                                 np.where(df['value'] >= df['medium_cutoff'], 'Medium', 'Budget' ))
+df['FDR'] = pd.cut((df['opponent_team_overall'] - df['player_team_overall']), bins = 3, labels = ['Easy', 'Medium', 'Hard'])
+g = sns.FacetGrid(df, col="Position", 
+                  col_order = ['GK', 'DEF', 'MID', 'FWD'])
+g.map(sns.pointplot, "premium_players", "total_points",'season', ci=None, order = ['Budget', 'Medium', 'Premium'],
+      legend_out=True, hue_order = [2019,2020],palette = 'magma')
+g.add_legend(title = 'Season')
+
+
+# Iterate thorugh each axis
+i = 0
+for ax in g.axes.flat:
+    i = i + 1
+    if i in [1,5,9]:
+        ax.set_ylabel('Total points')
+    ax.set_xlabel('')
+    if ax.texts:
+        # This contains the right ylabel text
+        txt = ax.texts[0]
+        ax.text(txt.get_unitless_position()[0], txt.get_unitless_position()[1],
+                txt.get_text().split('=')[1],
+                transform=ax.transAxes,
+                va='center')
+        # Remove the original text
+        ax.texts[0].remove()
+plt.savefig('C://Users//jd-vz//Desktop//Code//fig//premium_points.pdf', bbox_inches='tight') 
+# df.groupby(['position', 'premium_players', 'was_home'])[['value','total_points']].corr().drop(['total_points'], axis = 1)
+
+# %%
+(df['opponent_team_overall'] - df['player_team_overall']).value_counts()
+
+df['FDR'] = pd.cut((df['opponent_team_overall'] - df['player_team_overall']), bins = 5, labels = ['VE', 'E', 'M', 'H', 'VH'])
+
+# %%
+df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//collected_fpl.csv')
+print(df[(df['team'] == 'Liverpool') & ((df['kickoff_time'] == '2021-01-17') | (df['kickoff_time'] == '2021-01-04')) & (df['position'] == 'DEF')][['player_name','team', 'position','minutes', 'kickoff_time']].to_latex())
+
+# %%
+df[(df['team'] == 'Liverpool') & ((df['kickoff_time'] == '2021-01-17') | (df['kickoff_time'] == '2021-01-04')) & (df['position'] == 'DEF')][['player_name','team', 'position','minutes', 'kickoff_time']]

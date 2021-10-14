@@ -152,7 +152,7 @@ class FeatureSelector():
         self.ops['single_unique'] = to_drop
         
         print('%d features with a single unique value.\n' % len(self.ops['single_unique']))
-    
+   
     def identify_collinear(self, correlation_threshold, one_hot=False):
         """
         Finds collinear features based on the correlation coefficient between features. 
@@ -224,6 +224,7 @@ class FeatureSelector():
         self.ops['collinear'] = to_drop
         
         print('%d features with a correlation magnitude greater than %0.2f.\n' % (len(self.ops['collinear']), self.correlation_threshold))
+        print(self.ops['collinear'])
 
     def identify_zero_importance(self, task, eval_metric=None, 
                                  n_iterations=10, early_stopping = True):
@@ -536,7 +537,7 @@ class FeatureSelector():
         plt.ylabel('Frequency', size = 14); plt.xlabel('Unique Values', size = 14); 
         plt.title('Number of Unique Values Histogram', size = 16);
         
-    
+
     def plot_collinear(self, plot_all = False):
         """
         Heatmap of the correlation values. If plot_all = True plots all the correlations otherwise
@@ -582,7 +583,7 @@ class FeatureSelector():
         ax.set_yticklabels(list(corr_matrix_plot.index), size = int(160 / corr_matrix_plot.shape[0]));
 
         # Set the xlabels 
-        ax.set_xticks([x + 0.5 for x in list(range(corr_matrix_plot.shape[1]))])
+        ax.set_xticks([x + 0.5 for x in list(range(corr_matrix_plot.shape[1]))], rotation=90)
         ax.set_xticklabels(list(corr_matrix_plot.columns), size = int(160 / corr_matrix_plot.shape[1]));
         plt.title(title, size = 14)
         

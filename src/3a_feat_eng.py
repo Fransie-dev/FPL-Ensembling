@@ -3,19 +3,27 @@ import numpy as np
 import pandas as pd
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import GridSearchCV
+from feature_selector import *
 
-def shift_data():
+def shift_data(df):
     non_shift = ['player_name', 'team', 'position', 'value', 'GW',
        'kickoff_time', 'season', 'was_home', 'opponent_team', 'selected', 
-       'transfers_in', 'transfers_out', 'transfers_balance', 'strength_attack_away',
-       'strength_attack_home', 'strength_defence_away', 'strength_defence_home', 'strength_overall_away',
-       'strength_overall_home']
+       'transfers_in', 'transfers_out', 'transfers_balance', 'substitution', 'field_location',
+       'supporters', 'FDR', 'common_select', 'common_transfer', 'premium_players', 
+       'double_week']
 
     shift = set(df.columns) - set(non_shift)
     for col in shift:
-        df[col + '_shift'] = df.groupby('player_name')[col].shift(1).fillna(0)
+        if pd.api.types.is_bool_dtype(df[col]):
+            df[col + '_shift'] = df.groupby('player_name')[col].shift(1).fillna(df[col].mode()[0])
+        elif pd.api.types.is_categorical_dtype(df[col]):
+            df[col + '_shift'] = df.groupby('player_name')[col].shift(1).fillna(df[col].mode()[0])
+        elif pd.api.types.is_numeric_dtype(df[col]):
+            df[col + '_shift'] = df.groupby('player_name')[col].shift(1).fillna(0)
     df.drop(shift, axis=1, inplace=True)
     return df
+
+
 
 def to_cat(df):
     for col in ['season', 'clean_sheets_shift', 'own_goals_shift', 'penalties_missed_shift', 'red_cards_shift', 'yellow_cards_shift']:
@@ -24,7 +32,7 @@ def to_cat(df):
 
 def univariate_mse(df, num):
     df = df.select_dtypes(include='number')
-    X_train, y_train = df.drop(columns=['total_points_shift']), df['total_points_shift']
+    X_train, y_train = df.drop(columns=['total_points']), df['total_points']
     mse_values = []
     for feature in X_train.columns:
         regressor = DecisionTreeRegressor()
@@ -41,7 +49,7 @@ def univariate_mse(df, num):
     mse_values.index = X_train.columns
     return mse_values.sort_values(ascending=True).head(num).index.to_list()
 
-def rolling_avg(data, prev_games, feats):
+def rolling_avg(data):
     """[This function creates a previous game rolling average for the selected features]
 
     Args:
@@ -52,10 +60,12 @@ def rolling_avg(data, prev_games, feats):
     Returns:
         [type]: [description]
     """
-    new_feats = []
-    for feat in feats:
-        new_feats.append(feat + '_last_' + str(prev_games))
-    data[new_feats] = data[feats].rolling(min_periods=1, window=prev_games).mean().fillna(0)
+    df['form'] = df['total_points'].rolling(min_periods=1, window=4).mean().fillna(0) # 4 week form for all players
+    df['rolling_influence'] = np.where(df['position'].isin(['FWD', 'MID']), df['influence'].rolling(min_periods=1, window=4).sum().fillna(0), 0)
+    df['rolling_goals'] = np.where(df['position'].isin(['FWD', 'MID']), df['goals_scored'].rolling(min_periods=1, window=4).sum().fillna(0), 0)
+    df['rolling_sheets'] = np.where(df['position'].isin(['DEF', 'MID']), df['clean_sheets'].rolling(min_periods=1, window=4).sum().fillna(0), 0)
+    df['rolling_conceded'] = np.where(df['position'].isin(['FWD', 'MID']), df['goals_conceded'].rolling(min_periods=1, window=4).sum().fillna(0), 0)
+    df['rolling_bps'] = np.where(df['position'].isin(['FWD', 'MID']), df['goals_conceded'].rolling(min_periods=1, window=4).sum().fillna(0), 0)
     return data
 
 
@@ -91,8 +101,9 @@ def create_team_stats(df): # TODO: Updt: 0, doe snot include the teams scores
     df['opponent_team_strength'] = np.where(df['was_home'], df['opponent_strength_attack_away'], df['opponent_strength_attack_home'])
     df['opponent_team_defence'] = np.where(df['was_home'], df['opponent_strength_defence_away'], df['opponent_strength_defence_home'])
     df['opponent_team_overall'] = df['opponent_team_strength'] / 2 + df['opponent_team_defence']/2
-    df['FDR'] = np.where(df['opponent_team_overall'] > df['player_team_overall'] + 10, 'High',
-                     np.where(df['opponent_team_overall'] < df['player_team_overall'] - 10, 'Low', 'Med')) 
+    # df['FDR'] = np.where(df['opponent_team_overall'] > df['player_team_overall'] + 10, 'High',
+    #                  np.where(df['opponent_team_overall'] < df['player_team_overall'] - 10, 'Low', 'Med')) 
+    df['FDR'] = np.where(df['opponent_team_overall'] > df['player_team_overall'], True, False) 
     df['team_score'] = np.where(df['was_home'], df['team_h_score'], df['team_a_score']) # Replaces h_team, a_team
     df['opponent_team_score'] = np.where(df['was_home'], df['team_a_score'], df['team_h_score']) # Replaces h_team_ateam
     df['win'] = np.where(df['team_score'] > df['opponent_team_score'], 1, 0)
@@ -146,6 +157,7 @@ def create_supporters(df):
 def common_selected(df):
     df['selected_qnt'] = df.groupby(['GW','position', 'season'])['selected'].transform('quantile', 0.8)
     df['common_select'] = np.where(df['selected'] > df['selected_qnt'], True, False)
+    df.drop('selected_qnt', axis = 1, inplace=True)
     return df
 
 def transferred(df):
@@ -157,9 +169,10 @@ def create_premium_players(df):
     df['premium_cutoff'] = df.groupby(['GW', 'season', 'position'])['value'].transform('quantile', 0.75)
     df['medium_cutoff'] = df.groupby(['GW', 'season', 'position'])['value'].transform('quantile', 0.5)
     df['premium_players'] = np.where(df['value'] >= df['premium_cutoff'], 'Premium', np.where(df['value'] >= df['medium_cutoff'], 'Medium', 'Budget'))
-    df['over_achiever_cutoff'] =  df.groupby(['GW', 'season', 'position'])['total_points'].transform('quantile', 0.70)
+    premium_qnt = df[df['premium_players'] == 'Premium'].groupby(['GW', 'season', 'position'])['total_points'].quantile(0.75)
+    df['over_achiever_cutoff'] = pd.merge(df, premium_qnt, on=['GW', 'season', 'position'])['total_points_y']
     df['over_achiever'] = np.where(df['premium_players'].isin(['Medium', 'Budget']) & (df['total_points'] > df['over_achiever_cutoff']),  True, False)
-    df = df.drop(['over_achiever_cutoff', 'medium_cutoff', 'premium_cutoff'], axis = 1)
+    df = df.drop(['medium_cutoff', 'premium_cutoff', 'over_achiever_cutoff'], axis = 1)
     return df
 
 def create_double_week(df):
@@ -173,12 +186,10 @@ def create_double_week(df):
     return df
 
 def cumulative_mm(df):
-    df['match_played'] = np.where(df['minutes'] > 60, True, False)
-    # df['matches_played'] = df.groupby(['player_name', 'season'])['match_played'].cumsum()
+    df['played_60'] = np.where(df['minutes'] > 60, True, False)
     df['minutes_played'] = df.groupby(['player_name', 'season'])['minutes'].cumsum()
     df.reset_index(drop=True, inplace=True)
-    print(df['match_played'].value_counts())
-    df.drop(columns=['match_played'], axis = 1, inplace=True)
+    # print(df['match_played'].value_counts())
     return df
 
 def best_teams(df):
@@ -187,7 +198,7 @@ def best_teams(df):
     df['top_team'] = np.where(df['gw_team_points'] > df['team_points_cutoff'], True, False)
     df['top_player_cutoff'] = df.groupby(['GW', 'season', 'position'])['total_points'].transform('quantile', 0.9)
     df['top_players'] = np.where(df['total_points'] > df['top_player_cutoff'],  True, False)
-    df.drop(['gw_team_points', 'team_points_cutoff'], axis=1, inplace=True)
+    df.drop(['gw_team_points', 'team_points_cutoff', 'top_player_cutoff'], axis=1, inplace=True)
     return df
 
 def ratio_to_value(df):
@@ -201,15 +212,15 @@ def create_penalty(df):
     df.drop(['penalties_scored', 'npg'], axis = 1, inplace = True)
     return df
 
+def rolling_avgs(df):
+    df = df.groupby(['player_name']).apply(rolling_avg) 
+    return df
 
-    
-
-from feature_selector import *
-
+# %%
 df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//collected_us.csv')
 fs = FeatureSelector(data = df.select_dtypes(include='number').drop('total_points', axis=1), labels = df['total_points'])
-fs.identify_collinear(correlation_threshold = 0.8, one_hot = False)
-fs.plot_collinear()
+# fs.identify_collinear(correlation_threshold = 0.8, one_hot = False)
+# fs.plot_collinear()
 df = create_position_stats(df) # * 1. Create team and opponent team scores, update position feature, get field locations
 df = create_supporters(df) # * 2. Create supporters
 df = create_team_stats(df)
@@ -219,122 +230,167 @@ df =  create_premium_players(df) # * 4. Create premium players and overachieving
 df = create_double_week(df) # * Create double week
 df = cumulative_mm(df)
 df = best_teams(df)
-df = ratio_to_value(df)
 df = create_penalty(df)
-fs = FeatureSelector(data = df.select_dtypes(include='number').drop('total_points', axis=1), labels = df['total_points'])
-fs.identify_collinear(correlation_threshold = 0.8, one_hot = False)
-fs.plot_collinear()
-df.shape
-# %%
-df.loc[df['penalties_scored'] == -1]
-# %%
-df[['goals_scored', 'penalties_scored', 'npg', 'team_penalty', 'penalties_missed', 'penalties_saved']].drop_duplicates()
-# %%
-df.select_dtypes(include='number').corrwith(df['xG']).abs().sort_values()
-
-
-# %%
-def ratio_to_value(df, top_5):
-    for col in top_5 + ['total_points_shift']:
-        df[col + '_to_value'] = df[col] / df['value']
-        df[col + '_per_90'] = df[col] / 90 # 
-    # Since some players play 0 minutes
-    return df.replace([np.inf, -np.inf, np.nan], 0)
-
-
-def create_top_scorer(df):
-    df['max_points'] = df.groupby(
-        ['GW'])['total_points_shift'].transform('max')
-    df['top_scorer'] = np.where(
-        df['total_points_shift'] == df['max_points'], True, False)
-    df.drop(columns='max_points', inplace=True)
-    return df
-
-def create_top_team(df):
-    df['team_points'] = df.groupby(['team', 'season', 'GW'])[
-        'total_points_shift'].transform('sum')
-    df['max_points'] = df.groupby(['season', 'GW'])['total_points_shift'].transform('max')
-    df['top_team'] = np.where(df['team_points'] == df['max_points'], True, False)
-    df.drop(columns=['max_points', 'team_points'], inplace=True)
-    return df
-
-def top_3(df, option):
-    if option == 'team':
-        first, second, third = [],[],[]
-        df['team_points'] = df.groupby(['team', 'season', 'GW'])['total_points_shift'].transform('sum') # All points in a week
-        for season in [2019,2020]:
-            for gw in range(1, 39, 1):
-                df_gw = df[(df['GW'] == gw) & (df['season'] == season)]
-                for lst in [first, second, third]:
-                        df_temp=df_gw[df_gw['team_points']==df_gw['team_points'].max()]
-                        lst.append(df_temp.index[0])
-                        df_gw = df_gw.drop(df_temp.index[0], axis=0)
-        df = df.drop(columns = ['team_points'])
-        df['Team_Rank'] = 'No'
-        df['Team_Rank'][first] = 'First'
-        df['Team_Rank'][second] = 'Second'
-        df['Team_Rank'][third] = 'Third'
-    if option == 'player':
-        first, second, third = [],[],[]
-        df['player_points'] = df.groupby(['player_name', 'season', 'GW'])['total_points_shift'].transform('sum') # All points in a week
-        for season in [2019,2020]:
-            for gw in range(1, 39, 1):
-                df_gw = df[(df['GW'] == gw) & (df['season'] == season)]
-                for lst in [first, second, third]:
-                        df_temp=df_gw[df_gw['player_points']==df_gw['player_points'].max()]
-                        lst.append(df_temp.index[0])
-                        df_gw = df_gw.drop(df_temp.index[0], axis=0)
-        df = df.drop(columns = ['player_points'])
-        df['Player_Rank'] = 'No'
-        df['Player_Rank'][first] = 'First'
-        df['Player_Rank'][second] = 'Second'
-        df['Player_Rank'][third] = 'Third'
-    return df
-
-
-def feat_eng(df, feat_choice):
-    df['form'] = df['total_points_shift'].rolling(min_periods=1, window=4).mean().fillna(0) # * 1. Calculate 4 week form
-    df = df.groupby(['player_name']).apply(rolling_avg, prev_games=4, feats=feat_choice) #* 2. Associated 4 week rolling average of five highest univariate features
-    df = ratio_to_value(df, feat_choice)  # * 3. Top five + total_points to ratio to value and per minute played
-    df = create_team_stats(df) # * 4. Created opponent strength, defense and overall statistics
-    df = create_FDR(df)  # *5. Created a fixture difficulty rating of L, M, H
-    df = create_double_week(df)  # * 5. Created a binary double week
-    df = change_different_teams(df)  # * 6. Changed seasonal teams to other
-    df = top_3(df, 'team') # * Ranks teams in gameweeks
-    df = top_3(df, 'player') # * Ranks players in gameweeks
-    df = cumulative_mm(df)  # * 8. Cumulative matches and minutes played for a player
-    df = create_supporters(df)
-    # df = one_hot_encode(df) #* No one hot encoding or scaling just yet
-    return df
-
-# %%
-df = read_and_shift().pipe(to_cat)  # * 1: Shift the data
-feat_choice = ['bps_shift', 'influence_shift', 'bonus_shift', 'goals_scored_shift'] # Obtained from below
-df = feat_eng(df, feat_choice)
+df = rolling_avgs(df)
+df = df.drop(['npxG', 'key_passes', 'rolling_bps'], axis = 1)
+fs = FeatureSelector(data = df.select_dtypes(include='number').drop(['total_points'], axis=1), labels = df['total_points'])
+# fs.identify_collinear(correlation_threshold = 0.9, one_hot = False)
+df = df.sort_values(['kickoff_time'], ascending = False)
+df = shift_data(df)
 df.to_csv('C://Users//jd-vz//Desktop//Code//data//engineered_us.csv', index = False)
+print(df.columns)
+# %%
+df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//engineered_us.csv')
+# df = best_teams(df)
+df['top_team_shift'].value_counts() 
+# %%
+
+
+import statsmodels.formula.api as sm
+
+def vif_cal(input_data, dependent_col):
+    x_vars=input_data.drop([dependent_col], axis=1)
+    xvar_names=x_vars.columns
+    for i in range(0,xvar_names.shape[0]):
+        y=x_vars[xvar_names[i]] 
+        x=x_vars[xvar_names.drop(xvar_names[i])]
+        rsq=sm.ols(formula="y~x", data=x_vars).fit().rsquared  
+        vif=round(1/(1-rsq),2)
+        print (xvar_names[i], " VIF = " , vif)
+        
+vif_cal(input_data=df.select_dtypes(include='number').drop(['ict_index'], axis = 1), dependent_col="total_points")
+# %%
+col = 'was_home'
+# %%
+data['Native Country'].fillna(data['Native Country'].mode()[0])
+# %%
+
+# %%
+
+# %%
+
+# # %%
+# def ratio_to_value(df, top_5):
+#     for col in top_5 + ['total_points_shift']:
+#         df[col + '_to_value'] = df[col] / df['value']
+#         df[col + '_per_90'] = df[col] / 90 # 
+#     # Since some players play 0 minutes
+#     return df.replace([np.inf, -np.inf, np.nan], 0)
+
+
+# def create_top_scorer(df):
+#     df['max_points'] = df.groupby(
+#         ['GW'])['total_points_shift'].transform('max')
+#     df['top_scorer'] = np.where(
+#         df['total_points_shift'] == df['max_points'], True, False)
+#     df.drop(columns='max_points', inplace=True)
+#     return df
+
+# def create_top_team(df):
+#     df['team_points'] = df.groupby(['team', 'season', 'GW'])[
+#         'total_points_shift'].transform('sum')
+#     df['max_points'] = df.groupby(['season', 'GW'])['total_points_shift'].transform('max')
+#     df['top_team'] = np.where(df['team_points'] == df['max_points'], True, False)
+#     df.drop(columns=['max_points', 'team_points'], inplace=True)
+#     return df
+
+# def top_3(df, option):
+#     if option == 'team':
+#         first, second, third = [],[],[]
+#         df['team_points'] = df.groupby(['team', 'season', 'GW'])['total_points_shift'].transform('sum') # All points in a week
+#         for season in [2019,2020]:
+#             for gw in range(1, 39, 1):
+#                 df_gw = df[(df['GW'] == gw) & (df['season'] == season)]
+#                 for lst in [first, second, third]:
+#                         df_temp=df_gw[df_gw['team_points']==df_gw['team_points'].max()]
+#                         lst.append(df_temp.index[0])
+#                         df_gw = df_gw.drop(df_temp.index[0], axis=0)
+#         df = df.drop(columns = ['team_points'])
+#         df['Team_Rank'] = 'No'
+#         df['Team_Rank'][first] = 'First'
+#         df['Team_Rank'][second] = 'Second'
+#         df['Team_Rank'][third] = 'Third'
+#     if option == 'player':
+#         first, second, third = [],[],[]
+#         df['player_points'] = df.groupby(['player_name', 'season', 'GW'])['total_points_shift'].transform('sum') # All points in a week
+#         for season in [2019,2020]:
+#             for gw in range(1, 39, 1):
+#                 df_gw = df[(df['GW'] == gw) & (df['season'] == season)]
+#                 for lst in [first, second, third]:
+#                         df_temp=df_gw[df_gw['player_points']==df_gw['player_points'].max()]
+#                         lst.append(df_temp.index[0])
+#                         df_gw = df_gw.drop(df_temp.index[0], axis=0)
+#         df = df.drop(columns = ['player_points'])
+#         df['Player_Rank'] = 'No'
+#         df['Player_Rank'][first] = 'First'
+#         df['Player_Rank'][second] = 'Second'
+#         df['Player_Rank'][third] = 'Third'
+#     return df
+
+
+# def feat_eng(df, feat_choice):
+#     df['form'] = df['total_points_shift'].rolling(min_periods=1, window=4).mean().fillna(0) # * 1. Calculate 4 week form
+#     df = df.groupby(['player_name']).apply(rolling_avg, prev_games=4, feats=feat_choice) #* 2. Associated 4 week rolling average of five highest univariate features
+#     df = ratio_to_value(df, feat_choice)  # * 3. Top five + total_points to ratio to value and per minute played
+#     df = create_team_stats(df) # * 4. Created opponent strength, defense and overall statistics
+#     df = create_FDR(df)  # *5. Created a fixture difficulty rating of L, M, H
+#     df = create_double_week(df)  # * 5. Created a binary double week
+#     df = change_different_teams(df)  # * 6. Changed seasonal teams to other
+#     df = top_3(df, 'team') # * Ranks teams in gameweeks
+#     df = top_3(df, 'player') # * Ranks players in gameweeks
+#     df = cumulative_mm(df)  # * 8. Cumulative matches and minutes played for a player
+#     df = create_supporters(df)
+#     # df = one_hot_encode(df) #* No one hot encoding or scaling just yet
+#     return df
+
+# # %%
+# df = read_and_shift().pipe(to_cat)  # * 1: Shift the data
+# feat_choice = ['bps_shift', 'influence_shift', 'bonus_shift', 'goals_scored_shift'] # Obtained from below
+# df = feat_eng(df, feat_choice)
+# df.to_csv('C://Users//jd-vz//Desktop//Code//data//engineered_us.csv', index = False)
+# # %%
+# import pandas as pd
+# df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//engineered_us.csv')
+# # %%
+# # df = read_and_shift().pipe(to_cat)  # * 1: Shift the data
+# feat_choice_FWD = univariate_mse(df[df['position'] == 'FWD'], 15)  # * Highest univariate decrease
+# feat_choice_MID = univariate_mse(df[df['position'] == 'MID'], 15)  # * Highest univariate decrease
+# feat_choice_DEF = univariate_mse(df[df['position'] == 'DEF'], 15)  # * Highest univariate decrease
+# feat_choice_GK = univariate_mse(df[df['position'] == 'GK'], 15)  # * Highest univariate decrease
+# # %%
+# df_feats = pd.DataFrame([feat_choice_FWD, feat_choice_MID, feat_choice_DEF, feat_choice_GK],
+#                         index=['FWD', 'MID', 'DEF', 'GK'])
+# df_feats # bps_shift, bonus_shift, influence_shift, goals_scored_shift
+# # %%
+# df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//collected_us.csv')
+# # %%
+# print(df[df['position'] == 'GK'].corrwith(df["total_points"]).abs().sort_values(ascending = False).head(5)) # bonus, clean sheets, influence
+# print(df[df['position'] == 'FWD'].corrwith(df["total_points"]).abs().sort_values(ascending = False).head(5)) # Clean sheets
+# print(df[df['position'] == 'DEF'].corrwith(df["total_points"]).abs().sort_values(ascending = False).head(5)) # Bonus
+# print(df[df['position'] == 'MID'].corrwith(df["total_points"]).abs().sort_values(ascending = False).head(5)) 
+# # df['FWD_rolling_influence'] = np.where(df['position'] == 'FWD', df[''].rolling(min_periods=1, window=4).mean().fillna(0), 0)
+
+
+# # %%
+# df = read_and_shift().pipe(to_cat).sort_values(['player_name', 'kickoff_time'],ascending = True)
+# df
+# # %%
+# df = read_and_shift()
+# # %%
+# df['form'] = np.where(df['position'] == 'GK', 
+#                       df['total_points'].rolling(min_periods=1, window=4).mean().fillna(0), 0)
+# df['form'].value_counts()
+
 # %%
 import pandas as pd
-df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//engineered_us.csv')
+df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//collected_us.csv')
+df[df['position'] =='GK']['minutes'].sum()/(780 * 2)
 # %%
-df = read_and_shift().pipe(to_cat)  # * 1: Shift the data
-feat_choice_FWD = univariate_mse(df[df['position'] == 'FWD'], 15)  # * Highest univariate decrease
-feat_choice_MID = univariate_mse(df[df['position'] == 'MID'], 15)  # * Highest univariate decrease
-feat_choice_DEF = univariate_mse(df[df['position'] == 'DEF'], 15)  # * Highest univariate decrease
-feat_choice_GK = univariate_mse(df[df['position'] == 'GK'], 15)  # * Highest univariate decrease
+df[df['position'] =='MID']['minutes'].sum()/(780 * 2)
+#
+df[df['position'] =='FWD']['minutes'].sum()/(780  * 2)
 # %%
-df_feats = pd.DataFrame([feat_choice_FWD, feat_choice_MID, feat_choice_DEF, feat_choice_GK],
-                        index=['FWD', 'MID', 'DEF', 'GK'])
-df_feats # bps_shift, bonus_shift, influence_shift, goals_scored_shift
+df[df['position'] =='DEF']['minutes'].sum()/(780 * 11 * 2)
+
 # %%
-df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//collected_us.csv').pipe(to_cat)  # * 1: Shift the data
-# %%
-print(df[df['position'] == 'GK'].corrwith(df["total_points_shift"]).abs().sort_values(ascending = False).head(5)) # BPS, Bonus, Clean sheets, influence
-print(df[df['position'] == 'FWD'].corrwith(df["total_points_shift"]).abs().sort_values(ascending = False).head(5)) # Clean sheets
-print(df[df['position'] == 'DEF'].corrwith(df["total_points_shift"]).abs().sort_values(ascending = False).head(5)) # Bonus
-print(df[df['position'] == 'MID'].corrwith(df["total_points_shift"]).abs().sort_values(ascending = False).head(5)) 
-# %%
-df = read_and_shift().pipe(to_cat).sort_values(['player_name', 'kickoff_time'],ascending = True)
-df
-# %%
-df = read_and_shift()
-# %%
+df['minutes'].sum()/(780*11*2)
