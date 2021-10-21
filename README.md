@@ -20,11 +20,12 @@ This repository contains the source code for my mini-dissertation project, which
 ## Data Selection
 ## Data Exploration
 
-![Cost analysis](fig/eda/correlations.pdf "Cost analysis")
+![Pts_min](fig/eda/player_game_min_pts.png "Pts_min")
+
 
 ## Project Results
 
 ## Credits
-Historical season data: https://github.com/vaastav/Fantasy-Premier-League
-Fantasy Premier League API: 
-Understat API: 
+* Historical season data: https://github.com/vaastav/Fantasy-Premier-League
+* Fantasy Premier League API: 
+* Understat API: 
