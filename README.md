@@ -20,7 +20,7 @@ This repository contains the source code for my mini-dissertation project, which
 ## Data Selection
 ## Data Exploration
 
-![Cost analysis](fig/eda/premium_points_no_amid.pdf "Cost analysis")
+![Cost analysis](fig/eda/correlations.pdf "Cost analysis")
 
 ## Project Results
 
