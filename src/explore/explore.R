@@ -14,8 +14,10 @@ library(xtable)
 library(tidyr)
 
 # Read data ---------------------------------------------------------------
+
 df_f <- read.csv(file = 'C://Users//jd-vz//Desktop//Code//data//collected_fpl.csv')
 df_u <- read.csv(file = 'C://Users//jd-vz//Desktop//Code//data//collected_us.csv')
+df_e <- read.csv(file = 'C://Users//jd-vz//Desktop//Code//data//engineered_us.csv')
 
 # Check encoding ----------------------------------------------------------
 head(df_f[,colnames(df_f)[grepl('factor|logical|character',sapply(df_f,class))]])
@@ -44,6 +46,7 @@ encode_factors <- function(df){
 
 df_f <- encode_factors(df_f)
 df_u <- encode_factors(df_u)
+df_e <- encode_factors(df_e)
 
 
 # Distribution plots ------------------------------------------------------
@@ -71,10 +74,8 @@ setwd('C://Users//jd-vz//Desktop//Code//src//explore//pdf//understat//')
 plot_dist(df_u)
 
 # Statistical summaries ---------------------------------------------------
-printx <- function(df, filename, type){
-  sink(file = filename)
-  print(xtable(summarize(df, type = type)))
-  sink(file = NULL)}
+
+
 name_date_viz <- function(df_f, df_u, ft){
   df_1 <- rbind(df_f %>% select(ft)  %>% summarize(type = 'factor') %>% select(- ' ') %>% arrange(desc(N)) %>% head(5),
                 0, 
@@ -98,6 +99,53 @@ df_f %>% select(-player_name, -kickoff_time, -team, -opponent_team) %>% printx(f
 setwd('C://Users//jd-vz//Desktop//Code//src//explore//txt//us//')
 df_u %>% printx(filename = "us_numeric_summary.txt", type = 'numeric')
 df_u %>% select(-player_name, -kickoff_time, -team, -opponent_team) %>% printx(filename = "us_factor_summary.txt", type = 'factor')
+
+
+
+
+
+
+
+
+
+
+
+printx <- function(df, filename, type){
+  sink(file = filename)
+  print.xtable(summarize(df, type = type, test = FALSE), booktabs = FALSE)
+  sink(file = NULL)}
+
+setwd('C://Users//jd-vz//Desktop//Code//src//explore//txt//eng//')
+df_e <- read.csv(file = 'C://Users//jd-vz//Desktop//Code//data//engineered_us.csv')
+df_e <- encode_factors(df_e)
+# df_e %>% printx(filename = "eng_numeric_summary.txt", type = 'numeric')
+df_e %>% select(-player_name, -kickoff_time, -team, -opponent_team) %>% printx(filename = "eng_factor_summary.txt", type = 'factor')
+
+
+
+
+xtable(summarize(df_e %>% select(team), type = 'factor',test = FALSE),booktabs = FALSE) %>% print.xtable()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Merge name and kickoff time ---------------------------------------------
 setwd('C://Users//jd-vz//Desktop//Code//src//explore//txt//')
