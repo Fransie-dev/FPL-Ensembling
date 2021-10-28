@@ -7,13 +7,25 @@ This repository contains the source code for my mini-dissertation project, which
 
 ## Project Goals
 
-* Use a stacked ensemble of five machine learning models to forecast player points
-* Use a linear programming technique to construct a suggested team
-* Evaluate how well the system would have done in the 2020/21 season
+* Implement variants of five distinctly functioning machine learning models 
+* Implement a stacked ensemble of said models in an attempt to adjust for errors
+* Define and solve the team formulation problem as a linear programming problem subject to team, position, transfer and cost constraints 
+* Investigate the effect of chips on a team's point accumulation capacity
+* Investigate how well the best performing model could have done in the 2020/21 Fantasy Premier League season
 
-## Project Flow
-![Project Flow](fig/flow_img.png "Project")
+(This will be updated as soon as the project is finished)
+
+## Data Collection
+## Data Construction
+## Data Selection
+## Data Exploration
+
+![Pts_min](fig/eda/player_game_min_pts.png "Pts_min")
+
+
+## Project Results
 
 ## Credits
-Historical season data: https://github.com/vaastav/Fantasy-Premier-League
-
+* Historical season data: https://github.com/vaastav/Fantasy-Premier-League
+* Fantasy Premier League API: 
+* Understat API: 
