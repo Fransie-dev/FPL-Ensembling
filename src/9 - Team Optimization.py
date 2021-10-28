@@ -316,7 +316,7 @@ def format_squad(df_repeated, starting_indices, captain_indice, sub_indices, act
     squad['actual_points'] = actual_points
     return squad
 
-use = 'LR' 
+use = 'total_points' 
 total_points, squads = [], []
 df_repeated = get_repeat(use) # Replicate all players`
 WILDCARD = [18, 36] # Cannot use in GW 1

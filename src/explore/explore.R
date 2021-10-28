@@ -18,7 +18,7 @@ library(tidyr)
 df_f <- read.csv(file = 'C://Users//jd-vz//Desktop//Code//data//collected_fpl.csv')
 df_u <- read.csv(file = 'C://Users//jd-vz//Desktop//Code//data//collected_us.csv')
 df_e <- read.csv(file = 'C://Users//jd-vz//Desktop//Code//data//engineered_us.csv')
-
+df_r <- read.csv(file = 'C://Users//jd-vz//Desktop//Code//data//rollbacked_us.csv')
 # Check encoding ----------------------------------------------------------
 head(df_f[,colnames(df_f)[grepl('factor|logical|character',sapply(df_f,class))]])
 head(df_u[,colnames(df_u)[grepl('factor|logical|character',sapply(df_f,class))]])
@@ -47,7 +47,7 @@ encode_factors <- function(df){
 df_f <- encode_factors(df_f)
 df_u <- encode_factors(df_u)
 df_e <- encode_factors(df_e)
-
+df_r <- encode_factors(df_r)
 
 # Distribution plots ------------------------------------------------------
 plot_dist <- function(df){
@@ -115,16 +115,16 @@ printx <- function(df, filename, type){
   print.xtable(summarize(df, type = type, test = FALSE), booktabs = FALSE)
   sink(file = NULL)}
 
-setwd('C://Users//jd-vz//Desktop//Code//src//explore//txt//eng//')
-df_e <- read.csv(file = 'C://Users//jd-vz//Desktop//Code//data//engineered_us.csv')
-df_e <- encode_factors(df_e)
-# df_e %>% printx(filename = "eng_numeric_summary.txt", type = 'numeric')
-df_e %>% select(-player_name, -kickoff_time, -team, -opponent_team) %>% printx(filename = "eng_factor_summary.txt", type = 'factor')
+setwd('C://Users//jd-vz//Desktop//Code//src//explore//txt//roll//')
+df_r <- read.csv(file = 'C://Users//jd-vz//Desktop//Code//data//rollbacked_us.csv')
+df_r <- encode_factors(df_r)
+df_r %>% printx(filename = "roll_numeric_summary.txt", type = 'numeric')
+df_r %>% select(-player_name, -kickoff_time, -team, -opponent_team) %>% printx(filename = "roll_factor_summary.txt", type = 'factor')
 
 
 
 
-xtable(summarize(df_e %>% select(team), type = 'factor',test = FALSE),booktabs = FALSE) %>% print.xtable()
+xtable(summarize(df_r %>% select(-kickoff_time, -opponent_team, -team, -player_name), type = 'factor',test = FALSE), booktabs = FALSE) %>% print.xtable()
 
 
 

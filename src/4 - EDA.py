@@ -925,9 +925,7 @@ plt.savefig('C://Users//jd-vz//Desktop//Code//fig//player_field_positions.pdf', 
 df = pd.read_csv(data_file) 
 fig, ((ax1, ax2, ax3, ax4), (ax5, ax6, ax7, ax8), (ax9, ax10, ax11, ax12),
       (ax13, ax14, ax15, ax16), (ax17, ax18, ax19, ax20), (ax21, ax22, ax23, ax24),
-      (ax25,ax26,ax27,ax28)) = plt.subplots(ncols=4, nrows = 7, sharey=False,
-                                                                                          sharex = True, figsize = (25, 15), 
-                                                                                          constrained_layout = True)
+      (ax25,ax26,ax27,ax28)) = plt.subplots(ncols=4, nrows = 7, sharey=False, sharex = True, figsize = (25, 15),  constrained_layout = True)
 feats = ['influence', 'threat', 'creativity', 'ict_index', 
          'total_points', 'bonus',  'bps', 'goals_scored',
          'goals_conceded', 'saves', 'own_goals', 'penalties_saved',
@@ -1889,4 +1887,12 @@ df = df.reset_index(drop = True)
 df.iloc[df['total_points'].idxmax()]
 # %%
 df['total_points'].idxmax()
+# %%
+df_fpl = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//collected_fpl.csv')
+df_fpl['Source'] = 'Fantasy'
+df_us = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//collected_us.csv')
+df_us['Source'] = 'Understat'
+pd.concat([df_fpl, df_us])
+# %%
+sns.countplot(df['player_name'])
 # %%

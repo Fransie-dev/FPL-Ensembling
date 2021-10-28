@@ -1,0 +1,88 @@
+Called from: print.xtable(summarize(df, type = type, test = FALSE), booktabs = FALSE)
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Sun Oct 24 14:23:01 2021
+\begin{table}[ht]
+\centering
+\begin{tabular}{lllrrr}
+  \hline
+ &   & Level &   & N & \% \\ 
+  \hline
+1 & team & Arsenal &  & 1095 & 5.2 \\ 
+  2 &  & Aston Villa &  & 1040 & 4.9 \\ 
+  3 &  & Brighton &  & 1077 & 5.1 \\ 
+  4 &  & Burnley &  & 991 & 4.7 \\ 
+  5 &  & Chelsea &  & 1068 & 5.1 \\ 
+  6 &  & Crystal Palace &  & 1033 & 4.9 \\ 
+  7 &  & Everton &  & 1070 & 5.1 \\ 
+  8 &  & Leicester &  & 1059 & 5.0 \\ 
+  9 &  & Liverpool &  & 1056 & 5.0 \\ 
+  10 &  & Man City &  & 1037 & 4.9 \\ 
+  11 &  & Man Utd &  & 1064 & 5.0 \\ 
+  12 &  & Newcastle &  & 1064 & 5.0 \\ 
+  13 &  & Other &  & 3183 & 15.1 \\ 
+  14 &  & Sheffield Utd &  & 1049 & 5.0 \\ 
+  15 &  & Southampton &  & 1052 & 5.0 \\ 
+  16 &  & Spurs &  & 1065 & 5.1 \\ 
+  17 &  & West Ham &  & 1054 & 5.0 \\ 
+  18 &  & Wolves &  & 1030 & 4.9 \\ 
+   \hline
+\end{tabular}
+\end{table}
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Sun Oct 24 14:23:04 2021
+\begin{table}[ht]
+\centering
+\begin{tabular}{lllrrr}
+  \hline
+ &   & Level &   & N & \% \\ 
+  \hline
+1 & team & Arsenal &  & 1095 & 5.2 \\ 
+  2 &  & Aston Villa &  & 1040 & 4.9 \\ 
+  3 &  & Brighton &  & 1077 & 5.1 \\ 
+  4 &  & Burnley &  & 991 & 4.7 \\ 
+  5 &  & Chelsea &  & 1068 & 5.1 \\ 
+  6 &  & Crystal Palace &  & 1033 & 4.9 \\ 
+  7 &  & Everton &  & 1070 & 5.1 \\ 
+  8 &  & Leicester &  & 1059 & 5.0 \\ 
+  9 &  & Liverpool &  & 1056 & 5.0 \\ 
+  10 &  & Man City &  & 1037 & 4.9 \\ 
+  11 &  & Man Utd &  & 1064 & 5.0 \\ 
+  12 &  & Newcastle &  & 1064 & 5.0 \\ 
+  13 &  & Other &  & 3183 & 15.1 \\ 
+  14 &  & Sheffield Utd &  & 1049 & 5.0 \\ 
+  15 &  & Southampton &  & 1052 & 5.0 \\ 
+  16 &  & Spurs &  & 1065 & 5.1 \\ 
+  17 &  & West Ham &  & 1054 & 5.0 \\ 
+  18 &  & Wolves &  & 1030 & 4.9 \\ 
+   \hline
+\end{tabular}
+\end{table}
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Sun Oct 24 14:23:09 2021
+\begin{table}[ht]
+\centering
+\begin{tabular}{lllrrr}
+  \hline
+ &   & Level &   & N & \% \\ 
+  \hline
+1 & team & Arsenal &  & 1095 & 5.2 \\ 
+  2 &  & Aston Villa &  & 1040 & 4.9 \\ 
+  3 &  & Brighton &  & 1077 & 5.1 \\ 
+  4 &  & Burnley &  & 991 & 4.7 \\ 
+  5 &  & Chelsea &  & 1068 & 5.1 \\ 
+  6 &  & Crystal Palace &  & 1033 & 4.9 \\ 
+  7 &  & Everton &  & 1070 & 5.1 \\ 
+  8 &  & Leicester &  & 1059 & 5.0 \\ 
+  9 &  & Liverpool &  & 1056 & 5.0 \\ 
+  10 &  & Man City &  & 1037 & 4.9 \\ 
+  11 &  & Man Utd &  & 1064 & 5.0 \\ 
+  12 &  & Newcastle &  & 1064 & 5.0 \\ 
+  13 &  & Other &  & 3183 & 15.1 \\ 
+  14 &  & Sheffield Utd &  & 1049 & 5.0 \\ 
+  15 &  & Southampton &  & 1052 & 5.0 \\ 
+  16 &  & Spurs &  & 1065 & 5.1 \\ 
+  17 &  & West Ham &  & 1054 & 5.0 \\ 
+  18 &  & Wolves &  & 1030 & 4.9 \\ 
+   \hline
+\end{tabular}
+\end{table}

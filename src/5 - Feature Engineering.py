@@ -8,7 +8,8 @@ from feature_selector import *
 
 def shift_data(df):
     df.rename(columns=lambda x: x.strip(), inplace=True)
-    df = df.sort_values(['player_name', 'season',  'kickoff_time'])
+    df['form'] = df['total_points']
+    df = df.sort_values(['season', 'player_name', 'GW', 'kickoff_time'])
     non_shift = ['player_name', 'team', 'position', 'value', 'GW',
        'kickoff_time', 'season', 'was_home', 'opponent_team', 'selected', 
        'transfers_in', 'transfers_out', 'transfers_balance', 'substitution', 'position_location',
@@ -118,8 +119,8 @@ def create_team_stats(df): # updt: function was merged and is messy... fix me
     df_temp = df_temp[['team', 'opponent_team', 'kickoff_time', 'team_win_perc', 'opp_team_win_perc', 'season']].drop_duplicates() # *4. Create team and opponent team winning percentage
     df = pd.merge(df, df_temp, on=['team', 'opponent_team', 'kickoff_time', 'season'], how = 'left')
     df = df.dropna(subset = ['total_points'])
-    df['win'] = np.where(df['team_score'] > df['opponent_team_score'], True, False)
-    df['loss'] = np.where(df['opponent_team_score'] > df['team_score'], True, False)
+    df['win'] = np.where(df['team_score'] > df['opponent_team_score'], 1, 0)
+    df['loss'] = np.where(df['opponent_team_score'] > df['team_score'], 1, 0)
     drop_feat = ['opponent_strength_attack_home', 'opponent_strength_attack_away', 'opponent_strength_defence_home',
                 'opponent_strength_defence_away', 'player_team_strength','player_team_defence', 'player_team_overall',
                 'opponent_team_strength', 'opponent_team_defence', 'opponent_team_overall', 'strength_attack_away',
@@ -162,7 +163,7 @@ def common_selected(df):
     return df
 
 def transferred(df):
-    df['common_transfer'] = np.where(df['transfers_in'] > df['transfers_out'], True, False)
+    df['common_transfer'] = np.where(df['transfers_in'] > df['transfers_out'], 1, 0)
     df.drop(['transfers_in', 'transfers_out', 'transfers_balance'], axis =1, inplace=True)
     return df
     
@@ -173,7 +174,7 @@ def create_premium_players(df):
     premium_qnt = df[df['premium_players'] == 'Premium'].groupby(['GW', 'season', 'position'])['total_points'].quantile(0.75)
     df['over_achiever_cutoff'] = pd.merge(df, premium_qnt, on=['GW', 'season', 'position'], how = 'left')['total_points_y']
     df = df.dropna(subset = ['total_points'])
-    df['over_achiever'] = np.where(df['premium_players'].isin(['Medium', 'Budget']) & (df['total_points'] > df['over_achiever_cutoff']),  True, False)
+    df['over_achiever'] = np.where(df['premium_players'].isin(['Medium', 'Budget']) & (df['total_points'] > df['over_achiever_cutoff']),  1, 0)
     df = df.drop(['medium_cutoff', 'premium_cutoff', 'over_achiever_cutoff'], axis = 1)
     return df
 
@@ -190,7 +191,7 @@ def create_double_week(df):
     return df
 
 def cumulative_mm(df):
-    df['played_67'] = np.where(df['minutes'] > 67.5, True, False)
+    df['played_67'] = np.where(df['minutes'] > 67.5, 1, 0)
     df['minutes_played'] = df.groupby(['player_name', 'season'])['minutes'].cumsum()
     df.reset_index(drop=True, inplace=True)
     # print(df['match_played'].value_counts())
@@ -201,7 +202,7 @@ def best_teams(df):
     df['team_points_cutoff'] = df.groupby(['GW', 'season'])['gw_team_points'].transform('quantile', 0.9)
     df['top_team'] = np.where(df['gw_team_points'] > df['team_points_cutoff'], True, False)
     df['top_player_cutoff'] = df.groupby(['GW', 'season', 'position'])['total_points'].transform('quantile', 0.9)
-    df['top_players'] = np.where(df['total_points'] > df['top_player_cutoff'],  True, False)
+    df['top_players'] = np.where(df['total_points'] > df['top_player_cutoff'],  1, 0)
     df.drop(['gw_team_points', 'team_points_cutoff', 'top_player_cutoff', 'top_team'], axis=1, inplace=True)
     return df
 
@@ -212,7 +213,7 @@ def ratio_to_value(df):
 
 def create_penalty(df):
     df['penalties_scored'] = df['goals_scored'] - df['npg']
-    df['team_penalty'] = np.where(df['penalties_scored'] > 0, True, False)
+    df['team_penalty'] = np.where(df['penalties_scored'] > 0, 1, 0)
     df.drop(['penalties_scored', 'npg'], axis = 1, inplace = True)
     return df
 
@@ -239,13 +240,42 @@ def calculate_vif(X):
     vif["VIF"] = [variance_inflation_factor(X.values, i) for i in range(X.shape[1])]
     vif = vif.sort_values('VIF', ascending = False).reset_index(drop = True)
     return(vif)
-    
+
+def avg_per_match(df, prev = 4, params = []):
+    match_params = [para + '_last_' + str(prev) for para in params]
+    df['minutes' + '_last_' + str(prev)] = df.groupby('player_name')['minutes'].rolling(min_periods=1, window=prev).sum().fillna(0).reset_index().set_index('level_1').drop('player_name',axis=1)
+    df['matches' + '_last_' + str(prev)] = df['minutes' + '_last_' + str(prev)] / 90
+    df[match_params] = df.groupby('player_name')[params].rolling(min_periods=1, window=prev).sum().fillna(0).reset_index().set_index('level_1').drop('player_name',axis=1)
+    df[match_params].divide(df['matches' + '_last_' + str(prev)], axis=0)
+    return df
+
+def find_best_rollback(df, feats):
+    for feat in feats:
+        window_size = list(range(2,38))
+        new_feat = [feat + '_rolling_' + str(i) for i in window_size]
+        total_feats = [feat]
+        for wind, rollback in enumerate(new_feat):
+            df[rollback + '_sum'] = df.groupby(['player_name', 'season'])[feat].rolling(min_periods=1, window=(wind + min(window_size))).sum().droplevel(level=[0,1])
+            if df[feat]
+            df[rollback + '_mean'] = df.groupby(['player_name', 'season'])[feat].rolling(min_periods=1, window=(wind + min(window_size))).mean().droplevel(level=[0,1])
+            # df[rollback + '_sum'] = df.groupby('player_name')[feat].rolling(min_periods=1, window=(wind + min(window_size))).sum().reset_index().set_index('level_1').drop('player_name',axis=1)
+            # df[rollback + '_mean'] = df.groupby('player_name')[feat].rolling(min_periods=1, window=(wind + min(window_size))).mean().reset_index().set_index('level_1').drop('player_name',axis=1)
+            total_feats.append(rollback + '_sum')
+            total_feats.append(rollback + '_mean')
+        keep = df[total_feats].corrwith(df['total_points']).idxmax()
+        improved_correlation = df[total_feats].corrwith(df['total_points']).max()
+        # print([feature for feature in total_feats if feature not in keep]) # No response
+        total_feats.remove(keep) # + Response
+        df.drop(total_feats, axis = 1, inplace=True) 
+        print(f'{keep} = {improved_correlation}')
+    return df
+
 def main():
     # *1. Create FDR
     # *2. Replace home_team and away team score with team and opponent team scores
     # *3. Create team win and team loss features
     # *4. Create team and opponent team winning percentage
-    df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//collected_us.csv')
+    df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//collected_us.csv').sort_values(by = ['season', 'GW', 'player_name'])
     df = create_team_stats(df)
     #* 5. AMID + DMID
     #* 6. Location
@@ -267,24 +297,24 @@ def main():
     df = best_teams(df)
     # * 16. Replaces npg with penalty boolean
     df = create_penalty(df)
-    # * 17. Create form -- 4 week rolling average of points
-    # * 18. Create rolling influence sum for forwards and attacking + defending midfielders
-    # * 19. Create rolling goals sum for forwards and attacking + defending midfielders
-    # * 20. Create rolling sheets sum for fdefenders and goalkeepers
-    # * 21. Create rolling conceded sum for fdefenders and goalkeepers
-    df.sort_values(['player_name', 'season',  'kickoff_time'], inplace = True)
-    df = rolling_avgs(df)
-    # * 22. Shift all features unavailable
-    df = shift_data(df)
+    # * 22. Create last week's form and shift all features unavailable 
+    df = shift_data(df) 
     # * 23. Change the different teams to be consistent
     df = change_different_teams(df) 
     # * Write to CSV
-    df.to_csv('C://Users//jd-vz//Desktop//Code//data//engineered_us.csv', index = False)
-    return df
+    df.sort_values(by = ['season', 'GW', 'player_name']).to_csv('C://Users//jd-vz//Desktop//Code//data//engineered_us.csv', index = False)
+    print(df.select_dtypes(include = 'number').corrwith(df['total_points']).abs().sort_values(ascending = False).head(10).to_latex())
+    # * 24 Find best rollback features with indicators
+    df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//engineered_us.csv')
+    feats = df.select_dtypes(include='number').drop(['GW', 'season'], axis = 1).columns
+    df_roll = find_best_rollback(df, feats)
+    df_roll.sort_values(by = ['season', 'GW', 'player_name']).to_csv('C://Users//jd-vz//Desktop//Code//data//rollbacked_us.csv', index = False)
+    print(df_roll.select_dtypes(include = 'number').corrwith(df['total_points']).abs().sort_values(ascending = False).head(10).to_latex())
 
 if __name__ == '__main__':
     df = main()
     sanity_check()
-    calculate_vif(df.select_dtypes(include='number').drop(['ict_index_shift', 'GW', 'total_points', 'season'], axis = 1))
+    # calculate_vif(df.select_dtypes(include='number').drop(['ict_index_shift', 'GW', 'total_points', 'season'], axis = 1))
+# %%
 
 # %%
