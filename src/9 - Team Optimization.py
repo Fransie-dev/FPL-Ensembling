@@ -38,7 +38,13 @@ def regression_results(y_true, y_pred):
     print('RMSE: ', round(np.sqrt(mse),4))
     
 def get_repeat(use):
-    df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//new_meta_cboost_with_prop_and_early_stop.csv')
+    # df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//new_meta_cboost_with_prop_and_early_stop.csv')
+    # Testing the h2o model
+    df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//h2o_results.csv')
+    df_idx = pd.read_csv('C://Users//jd-vz//Desktop//Code//data/collected_us_updated.csv').sort_values(by = ['season', 'GW', 'player_name', 'kickoff_time'])
+    df[use] = df[use].round(1)
+    for name in ['value', 'position', 'team', 'kickoff_time']:
+        df[name] = df_idx[name]
     names = pd.DataFrame({'player_name': df['player_name'].unique()})
     df_repeated = pd.concat([names]*38, ignore_index=True) 
     df_repeated['GW'] = np.repeat(range(1, 39), names.shape[0]) # Contains all names duplicated 38 times
@@ -313,13 +319,13 @@ def format_squad(df_repeated, starting_indices, captain_indice, sub_indices, act
     squad['actual_points'] = actual_points
     return squad
 
-use = 'LR'  # Possible values: 'LR', 'CBoost', 'SVR', 'KNN', 'MLP', 'meta', 'total_points'
+use = 'automl'  # Possible values: 'LR', 'CBoost', 'SVR', 'KNN', 'MLP', 'meta', 'total_points'
 total_points, squads = [], []
 df_repeated = get_repeat(use) # Replicate all players`
-WILDCARD = [18, 36] # Cannot use in GW 1
-TRIPLE_CAPTAIN = [1]
-BENCH_BOOST = [1]
-FREE_HIT = [29] # Cannot use in GW 1
+WILDCARD = [50, 50] # Cannot use in GW 1
+TRIPLE_CAPTAIN = [50]
+BENCH_BOOST = [50]
+FREE_HIT = [50] # Cannot use in GW 1
 BUDGET = 100
 for GW in range(1,39):
     print()
@@ -343,6 +349,23 @@ df = pd.concat(squads)
 df_repeated = get_repeat(use) # Replicate all players`
 df_repeated
 # %%
+df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//rollbacked_us_testing.csv')['value']
+
+
+
+# %%
+df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//rollbacked_us_testing.csv')
+df = df[df['season'] == 2020]
+df['value'] 
+# %%
+df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//rollbacked_us_testing.csv')
+df['season'].value_counts()
+# %%
 df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//new_meta_cboost_with_prop_and_early_stop.csv')
+print('Merging on player name and dates', df.shape)
+df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//h2o_results.csv')
+print('H2O manual re-insert', df.shape)
+# %%
 df
 # %%
+df['engineered_us'] 
