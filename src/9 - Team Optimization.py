@@ -38,7 +38,7 @@ def regression_results(y_true, y_pred):
     print('RMSE: ', round(np.sqrt(mse),4))
     
 def get_repeat(use):
-    df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//model_predictions.csv')
+    df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//new_meta_cboost_with_prop_and_early_stop.csv')
     names = pd.DataFrame({'player_name': df['player_name'].unique()})
     df_repeated = pd.concat([names]*38, ignore_index=True) 
     df_repeated['GW'] = np.repeat(range(1, 39), names.shape[0]) # Contains all names duplicated 38 times
@@ -54,7 +54,6 @@ def get_repeat(use):
 
 def select_team(expected_scores, prices, positions, clubs, total_budget=100, sub_factor=0.2):
     """[Function to pick a starting XV]
-
     Args:
         expected_scores ([type]): [description]
         prices ([type]): [description]
@@ -62,7 +61,6 @@ def select_team(expected_scores, prices, positions, clubs, total_budget=100, sub
         clubs ([type]): [description]
         total_budget (int, optional): [description]. Defaults to 100.
         sub_factor (float, optional): [description]. Defaults to 0.2.
-
     Returns:
         [type]: [description]
     """    
@@ -146,10 +144,10 @@ def get_starting_XV(df_repeated, GW = 1, max_budget = 100):
     act_captain_point = actual_scores.iloc[captain_indice].sum()*2 if GW in TRIPLE_CAPTAIN else actual_scores.iloc[captain_indice].sum()
     actual_points = round(actual_scores.iloc[squad_indices].sum() + act_captain_point, 2) if GW in BENCH_BOOST else round(actual_scores.iloc[starting_indices].sum() +  act_captain_point, 2)
     ex_pts = round(expected_scores.iloc[squad_indices].sum() + exp_captain_point, 2) if GW in BENCH_BOOST else round(expected_scores.iloc[starting_indices].sum()  + exp_captain_point, 2)
-    # print(f'Starting budget: {max_budget}')
-    # print('Budget left:', budget, end = '\n')
-    # print(f'Expected scored = {expected_scores.iloc[starting_indices].sum()} + {expected_scores.iloc[captain_indice].sum()} = {ex_pts}') 
-    # print(f'Points scored = {actual_scores.iloc[starting_indices].sum()}  + {actual_scores.iloc[captain_indice].sum()} = {actual_points}') 
+    print(f'Starting budget: {max_budget}')
+    print('Budget left:', budget, end = '\n')
+    print(f'Expected scored = {expected_scores.iloc[starting_indices].sum()} + {expected_scores.iloc[captain_indice].sum()} = {ex_pts}') 
+    print(f'Points scored = {actual_scores.iloc[starting_indices].sum()}  + {actual_scores.iloc[captain_indice].sum()} = {actual_points}') 
     return squad_indices, starting_indices, sub_indices, captain_indice, budget, actual_points
 
 def get_decision_array(name, length):
@@ -203,7 +201,7 @@ class TransferOptimiser:
         starters = next_week_squad - sub_decisions
 
         # points penalty for additional transfers
-        transfer_penalty = sum(transfer_in_decisions_paid) if GW in WILDCARD or FREE_HIT else sum(transfer_in_decisions_paid) * 4 # 4-pt incremental hit
+        transfer_penalty =  sum(transfer_in_decisions_paid) * 4 # 4-pt incremental hit
 
         self.apply_transfer_constraints(model, transfer_in_decisions_free, transfer_in_decisions, transfer_out_decisions, budget_now)
         self.apply_formation_constraints(model, squad=next_week_squad, starters=starters, subs=sub_decisions, captains=captain_decisions)
@@ -216,7 +214,6 @@ class TransferOptimiser:
 
     def get_objective(self, starters, subs, captains, sub_factor, transfer_penalty, scores):
         """[Maximize points scored by starters, substitutions, captains subtracted by the transfer penalty]
-
         Args:
             starters ([type]): [description]
             subs ([type]): [description]
@@ -224,7 +221,6 @@ class TransferOptimiser:
             sub_factor ([type]): [description]
             transfer_penalty ([type]): [description]
             scores ([type]): [description]
-
         Returns:
             [type]: [description]
         """        
@@ -287,18 +283,19 @@ def manage_squad(df_repeated, GW, squad_indices, budget = 0):
     for i in range(len(transfer_in_decisions)):
         if transfer_in_decisions[i].value() == 1:
             p_in.append(prices.iloc[i])
-    penalty = 0 if GW in WILDCARD or FREE_HIT else ((len(p_in) - 1) * 4)
+    # penalty = 0 if GW in WILDCARD or FREE_HIT else ((len(p_in) - 1) * 4)
+    penalty = ((len(p_in) - 1) * 4)
     exp_captain_point = expected_scores.iloc[captain_indice].sum()*2 if GW in TRIPLE_CAPTAIN else expected_scores.iloc[captain_indice].sum()
     act_captain_point = actual_scores.iloc[captain_indice].sum()*2 if GW in TRIPLE_CAPTAIN else actual_scores.iloc[captain_indice].sum()
     actual_points = round(actual_scores.iloc[squad_indices].sum() - penalty + act_captain_point, 2) if GW in BENCH_BOOST else round(actual_scores.iloc[starting_indices].sum() - penalty + act_captain_point, 2)
     ex_pts = round(expected_scores.iloc[squad_indices].sum() - penalty + exp_captain_point, 2) if GW in BENCH_BOOST else round(expected_scores.iloc[starting_indices].sum() - penalty + exp_captain_point, 2)
     budget_new = round(old_price - prices.iloc[squad_indices].sum() + budget, 2)
-    # print('Starting budget', budget)
-    # print('Transferred', len(p_out), 'players out for ', '+', round(sum(p_out), 2))
-    # print('Transferred', len(p_in), 'players in at ', '-', round(sum(p_in), 2))
-    # print(f'Expected scored = {expected_scores.iloc[starting_indices].sum()} - {penalty} + {exp_captain_point} = {ex_pts}') 
-    # print(f'Points scored = {actual_scores.iloc[starting_indices].sum()} - {penalty} + {act_captain_point} = {actual_points}') 
-    # print(f'Budget left = {old_price} - {round(prices.iloc[squad_indices].sum(), 2)} + {budget} = {budget_new}', end = '\n')
+    print('Starting budget', budget)
+    print('Transferred', len(p_out), 'players out for ', '+', round(sum(p_out), 2))
+    print('Transferred', len(p_in), 'players in at ', '-', round(sum(p_in), 2))
+    print(f'Expected scored = {expected_scores.iloc[starting_indices].sum()} - {penalty} + {exp_captain_point} = {ex_pts}') 
+    print(f'Points scored = {actual_scores.iloc[starting_indices].sum()} - {penalty} + {act_captain_point} = {actual_points}') 
+    print(f'Budget left = {old_price} - {round(prices.iloc[squad_indices].sum(), 2)} + {budget} = {budget_new}', end = '\n')
     return squad_indices, starting_indices, sub_indices, captain_indice, budget_new, actual_points
 
 def format_squad(df_repeated, starting_indices, captain_indice, sub_indices, actual_points):
@@ -316,7 +313,7 @@ def format_squad(df_repeated, starting_indices, captain_indice, sub_indices, act
     squad['actual_points'] = actual_points
     return squad
 
-use = 'total_points' 
+use = 'LR'  # Possible values: 'LR', 'CBoost', 'SVR', 'KNN', 'MLP', 'meta', 'total_points'
 total_points, squads = [], []
 df_repeated = get_repeat(use) # Replicate all players`
 WILDCARD = [18, 36] # Cannot use in GW 1
@@ -325,6 +322,7 @@ BENCH_BOOST = [1]
 FREE_HIT = [29] # Cannot use in GW 1
 BUDGET = 100
 for GW in range(1,39):
+    print()
     if GW in FREE_HIT:
         reset_squad_indices, reset_starting_indices, reset_sub_indices, reset_captain_indice = squad_indices, starting_indices, sub_indices, captain_indice 
     # Main Loop
@@ -338,12 +336,13 @@ for GW in range(1,39):
     if GW in FREE_HIT:
         squad_indices, starting_indices, sub_indices, captain_indice = reset_squad_indices, reset_starting_indices, reset_sub_indices, reset_captain_indice 
 print(f'Total season points (including penalty, double captain, and chips): {sum(total_points)}')
-df = pd.concat(squads) # 2245 sonder wildcards
-# %%# %%
-# Chip strategy
-# df[['GW', 'actual_points']].drop_duplicates().sort_values('actual_points') 
-# Iter 1: Gameweek 18 gets worst score -- Use WILDCARD 
-# Iter 2: Gameweek 36 does the worst -- Use WILDCARD
-# Iter 3: Gameweek 1 Captain does the best -- Use TRIPLE_CAPTAIN
-# Iter 4: Gameweek 1 Bench does the best -- Use BENCH_BOOST
-# Iter 5: Gameweek 29 does the worst -- Use FREEHIT
+df = pd.concat(squads) 
+
+
+# %%
+df_repeated = get_repeat(use) # Replicate all players`
+df_repeated
+# %%
+df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//new_meta_cboost_with_prop_and_early_stop.csv')
+df
+# %%

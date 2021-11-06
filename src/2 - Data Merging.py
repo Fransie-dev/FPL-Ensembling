@@ -185,7 +185,7 @@ def map_similar_names(similarity_matched_df, understat_not_matched, fpl_not_matc
     NOTE:
         New names from different seasons need to be added here
     """    
-    if season == '2020-21':
+    if season == '2020-21' or '2021-22':
         wrongly_matched_names = ['Adrián', 'Alisson', 'Allan', 'André Gomes', 'Bernard', 'Bernardo', 'Bernardo Silva', 'David Luiz', 'Ederson', 'Emerson', 
                             'Fabinho', 'Felipe Anderson', 'Fred',  'Hélder Costa', 'Joelinton', 'Jonny', 'Jorginho', 'Kepa', 'Lucas Moura', 'Raphinha', 
                             'Ricardo Pereira', 'Rodri', 'Rúben Dias','Rúben Vinagre', 'Semi Ajayi', 'Trézéguet', 'Wesley', 'Willian'] 
@@ -193,6 +193,8 @@ def map_similar_names(similarity_matched_df, understat_not_matched, fpl_not_matc
         wrongly_matched_names = ['Adrián','Alisson','André Gomes','Angelino', 'Bernard', 'Bernardo', 'Bernardo Silva','Borja Bastón', 
                                  'Chicharito','David Luiz','Ederson', 'Emerson', 'Fabinho', 'Felipe Anderson', 'Fred','Joelinton', 'Jonny',
                                  'Jorginho','Jota', 'Kepa','Kiko Femenía','Pedro', 'Ricardo Pereira', 'Rodri','Rúben Vinagre','Trézéguet','Wesley','Willian']
+
+        
     
     similar_rename = similarity_matched_df[~similarity_matched_df['understat'].isin(wrongly_matched_names)] # Subset Similar: Similar match
     # no_similar_rename = similarity_matched_df[similarity_matched_df['understat'].isin(wrongly_matched_names)] # Subset Similar: Similar match
@@ -314,7 +316,8 @@ def main(season):
 
 
 if __name__ == "__main__":
-    main(season='2020-21') # Successful execution
-    main(season='2019-20') # Successful execution
+    main(season='2021-22') # Successful execution
+    # main(season='2020-21') # Successful execution
+    # main(season='2019-20') # Successful execution
     print('Success!')
 # %%

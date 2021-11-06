@@ -17,17 +17,12 @@ def shift_data(df):
     shift = set(df.columns) - set(non_shift)
     for col in shift:
         if pd.api.types.is_bool_dtype(df[col]):
-            df[col + '_shift'] = df.groupby('player_name')[col].shift(1).fillna(df[col].mode()[0])
+            df[col + '_shift'] = df.groupby('player_name')[col].shift(1).fillna(False)
         elif pd.api.types.is_categorical_dtype(df[col]):
             df[col + '_shift'] = df.groupby('player_name')[col].shift(1).fillna(df[col].mode()[0])
         elif pd.api.types.is_numeric_dtype(df[col]):
             df[col + '_shift'] = df.groupby('player_name')[col].shift(1).fillna(0)
     df.drop(shift, axis=1, inplace=True)
-    return df
-
-def to_cat(df):
-    for col in ['season', 'clean_sheets_shift', 'own_goals_shift', 'penalties_missed_shift', 'red_cards_shift', 'yellow_cards_shift']:
-        df[col] = df[col].astype('category')
     return df
 
 def univariate_mse(df, num):
@@ -179,7 +174,7 @@ def create_premium_players(df):
     return df
 
 def create_double_week(df):
-    df_temp = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//collected_us.csv')[['team', 'GW', 'season', 'kickoff_time']].drop_duplicates()
+    df_temp = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//collected_us_updated.csv')[['team', 'GW', 'season', 'kickoff_time']].drop_duplicates()
     df_temp['counter'] = 1 # Num fixtures
     df_temp['num_matches'] = df_temp.groupby(['team', 'GW', 'season'])['counter'].transform('sum') # Num matc hes played per gameweek by team
     df = pd.merge(df, df_temp[['team', 'kickoff_time', 'num_matches']], on=['team', 'kickoff_time'], how = 'left') # Trouble child
@@ -255,15 +250,14 @@ def find_best_rollback(df, feats):
         new_feat = [feat + '_rolling_' + str(i) for i in window_size]
         total_feats = [feat]
         for wind, rollback in enumerate(new_feat):
-            df[rollback + '_sum'] = df.groupby(['player_name', 'season'])[feat].rolling(min_periods=1, window=(wind + min(window_size))).sum().droplevel(level=[0,1])
-            if df[feat]
-            df[rollback + '_mean'] = df.groupby(['player_name', 'season'])[feat].rolling(min_periods=1, window=(wind + min(window_size))).mean().droplevel(level=[0,1])
-            # df[rollback + '_sum'] = df.groupby('player_name')[feat].rolling(min_periods=1, window=(wind + min(window_size))).sum().reset_index().set_index('level_1').drop('player_name',axis=1)
-            # df[rollback + '_mean'] = df.groupby('player_name')[feat].rolling(min_periods=1, window=(wind + min(window_size))).mean().reset_index().set_index('level_1').drop('player_name',axis=1)
+            df[rollback + '_sum'] = df.groupby(['player_name', 'season'])[feat].rolling(min_periods=1, window=(wind + min(window_size))).sum().droplevel(level=[0, 1])
             total_feats.append(rollback + '_sum')
+            df[rollback + '_mean'] = df.groupby(['player_name', 'season'])[feat].rolling(min_periods=1, window=(wind + min(window_size))).mean().droplevel(level=[0,1])
             total_feats.append(rollback + '_mean')
-        keep = df[total_feats].corrwith(df['total_points']).idxmax()
+        keep = df[df['season'] < 2021][total_feats].corrwith(df[df['season'] < 2021]['total_points']).idxmax()
         improved_correlation = df[total_feats].corrwith(df['total_points']).max()
+        # df[keep] = np.where(df[keep].min() < df[feat].min()/4, 0.25*df[feat].min(), df[keep])
+        # df[keep] = np.where(df[keep].max() > 4*df[feat].max(), 4*df[feat].max(), df[keep])
         # print([feature for feature in total_feats if feature not in keep]) # No response
         total_feats.remove(keep) # + Response
         df.drop(total_feats, axis = 1, inplace=True) 
@@ -275,7 +269,8 @@ def main():
     # *2. Replace home_team and away team score with team and opponent team scores
     # *3. Create team win and team loss features
     # *4. Create team and opponent team winning percentage
-    df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//collected_us.csv').sort_values(by = ['season', 'GW', 'player_name'])
+    df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//collected_us_updated.csv')
+    df.sort_values(by = ['season', 'GW', 'player_name', 'kickoff_time'], inplace = True)
     df = create_team_stats(df)
     #* 5. AMID + DMID
     #* 6. Location
@@ -301,14 +296,17 @@ def main():
     df = shift_data(df) 
     # * 23. Change the different teams to be consistent
     df = change_different_teams(df) 
+    # df['team'] =df['team'].astype('str') + '_' + df['season'].astype('str')
+    # df['opponent_team'] = df['opponent_team'].astype('str') + '_' + df['season'].astype('str')
+    # df['player_name'] = df['player_name'].astype('str') + '_' + df['season'].astype('str')
     # * Write to CSV
-    df.sort_values(by = ['season', 'GW', 'player_name']).to_csv('C://Users//jd-vz//Desktop//Code//data//engineered_us.csv', index = False)
+    df.sort_values(by = ['season', 'GW', 'player_name',  'kickoff_time']).to_csv('C://Users//jd-vz//Desktop//Code//data//engineered_us.csv', index = False)
     print(df.select_dtypes(include = 'number').corrwith(df['total_points']).abs().sort_values(ascending = False).head(10).to_latex())
     # * 24 Find best rollback features with indicators
     df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//engineered_us.csv')
     feats = df.select_dtypes(include='number').drop(['GW', 'season'], axis = 1).columns
     df_roll = find_best_rollback(df, feats)
-    df_roll.sort_values(by = ['season', 'GW', 'player_name']).to_csv('C://Users//jd-vz//Desktop//Code//data//rollbacked_us.csv', index = False)
+    df_roll.round(7).sort_values(by = ['season', 'GW', 'player_name', 'kickoff_time']).to_csv('C://Users//jd-vz//Desktop//Code//data//rollbacked_us_testing.csv', index = False)
     print(df_roll.select_dtypes(include = 'number').corrwith(df['total_points']).abs().sort_values(ascending = False).head(10).to_latex())
 
 if __name__ == '__main__':
@@ -316,5 +314,15 @@ if __name__ == '__main__':
     sanity_check()
     # calculate_vif(df.select_dtypes(include='number').drop(['ict_index_shift', 'GW', 'total_points', 'season'], axis = 1))
 # %%
-
+df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//rollbacked_us_testing_4.csv')
+df.describe()
+# %%
+df.select_dtypes(include = 'number').columns
+# %%
+a = df.groupby('season')['GW'].value_counts().sort_index()
+a# %%
+df = pd.read_csv('C://Users//jd-vz//Desktop//Code//data//engineered_us.csv')
+df['xA_shift']
+# %%
+print(a)
 # %%

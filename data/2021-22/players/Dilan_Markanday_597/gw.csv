@@ -1,0 +1,8 @@
+element,fixture,opponent_team,total_points,was_home,kickoff_time,team_h_score,team_a_score,round,minutes,goals_scored,assists,clean_sheets,goals_conceded,own_goals,penalties_saved,penalties_missed,yellow_cards,red_cards,saves,bonus,bps,influence,creativity,threat,ict_index,value,transfers_balance,selected,transfers_in,transfers_out
+597,34,7,0,False,2021-09-11T11:30:00Z,3,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0.0,0.0,45,0,0,0,0
+597,48,6,0,True,2021-09-19T15:30:00Z,0,3,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0.0,0.0,45,199,439,259,60
+597,51,1,0,False,2021-09-26T15:30:00Z,3,1,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0.0,0.0,45,138,864,252,114
+597,68,2,0,True,2021-10-03T13:00:00Z,2,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0.0,0.0,45,6,972,131,125
+597,77,14,0,False,2021-10-17T15:30:00Z,2,3,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0.0,0.0,45,-7,1122,137,144
+597,90,19,0,False,2021-10-24T13:00:00Z,1,0,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0.0,0.0,45,-1,1197,112,113
+597,98,13,0,True,2021-10-30T16:30:00Z,0,3,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0.0,0.0,45,-44,1279,89,133
