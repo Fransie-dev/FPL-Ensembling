@@ -2,3 +2,6 @@ fig/ProjectFlow.drawio
 src/stepwiseSelection.py
 src/feature_selector.py
 src/FS
+src/explore
+src/utilities.py
+src/old

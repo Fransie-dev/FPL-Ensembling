@@ -9,7 +9,7 @@ import matplotlib
 sns.set(style="darkgrid")
 sns.set(rc={"figure.figsize":(12, 6)}) 
 plt.figure(figsize=(12, 6))
-data_file =  'C://Users//jd-vz//Desktop//Code//data//collected_us.csv'
+data_file =  'C://Users//jd-vz//Desktop//Code//data//collected_us_updated.csv'
 df = pd.read_csv(data_file)
 # df = df.sort_values([ 'season', 'player_name', 'kickoff_time'])
 # df['form'] = df['total_points'].groupby('player_name').rolling(min_periods=1, window=4).mean().fillna(0) # 4 week form for all players
@@ -99,6 +99,7 @@ ax_1 = sns.pointplot(x="Position", y="total_points",
                    n_boot=500, data=df, palette = 'magma', legend = False, ax = ax1,order=['GK','DEF','MID','FWD'])
 ax_1.get_legend().remove()
 df['Supporters'] = np.where(df['kickoff_time'] < '2020-04-01', True, False)
+print(df['Supporters'].value_counts())
 ax_2 = sns.pointplot(x="Position", y="total_points", 
                    hue="Home fixture", ci=None,
                    n_boot=500, data=df[df['Supporters'] == True], palette = 'magma', legend = False, ax = ax2,order=['GK','DEF','MID','FWD'])
