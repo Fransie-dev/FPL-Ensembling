@@ -1,4 +1,4 @@
-# FPL-Ensembling
+# Fantasy Premier League Decision Support
 
 
 ## Project Description
